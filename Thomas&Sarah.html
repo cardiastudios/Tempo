@@ -2372,14 +2372,14 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
     ? lockedGuestNames.map((name, index) => ({
       slot: 'Guest ' + (index + 1),
       name: name,
-      attending: 'Yes',
+      attending: '',
       manualAttendance: false,
       locked: true
     }))
     : Array.from({ length: guestLimit }, (_, index) => ({
       slot: 'Guest ' + (index + 1),
       name: '',
-      attending: 'Yes',
+      attending: '',
       manualAttendance: false,
       locked: false
     }));
@@ -2485,17 +2485,7 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
 
   function setGuestName(index, value) {
     if (!guestResponses[index]) return;
-    const hadName = !!(guestResponses[index].name && guestResponses[index].name.trim());
     guestResponses[index].name = value.trim();
-    if (!hadName && guestResponses[index].name && !guestResponses[index].manualAttendance) {
-      guestResponses[index].attending = 'Yes';
-      renderGuestNameBoxes();
-      const restoredInput = document.getElementById('guestSlotInput' + index);
-      if (restoredInput) {
-        restoredInput.focus();
-        restoredInput.setSelectionRange(restoredInput.value.length, restoredInput.value.length);
-      }
-    }
     const errName = document.getElementById('errName');
     if (errName) errName.style.display = 'none';
     updateGuestTotal();
@@ -2530,12 +2520,18 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
         return;
       }
 
-      guestResponses.forEach(guest => {
-        if (guest.name && guest.name.trim()) {
-          if (!guest.attending) guest.attending = 'Yes';
-        } else {
-          guest.attending = 'No';
+      const guestsMissingAttendance = namedGuests.some(({ guest }) => guest.attending !== 'Yes' && guest.attending !== 'No');
+      if (guestsMissingAttendance) {
+        const errName = document.getElementById('errName');
+        if (errName) {
+          errName.textContent = 'Please choose Yes or No for each guest.';
+          errName.style.display = 'block';
         }
+        return;
+      }
+
+      guestResponses.forEach(guest => {
+        if (!guest.name || !guest.name.trim()) guest.attending = 'No';
       });
 
       const errName = document.getElementById('errName');
@@ -2598,6 +2594,14 @@ fill="none" stroke="#6f5945" stroke-width="2"/>
 
     if (!RSVP_SCRIPT_URL || RSVP_SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')) {
       alert('Please paste your Google Apps Script Web App URL into RSVP_SCRIPT_URL first.');
+      if (sendBtn) { sendBtn.textContent = 'Send RSVP'; sendBtn.disabled = false; }
+      return;
+    }
+
+    const namedGuests = getNamedGuestResponses();
+    const guestsMissingAttendance = namedGuests.some(({ guest }) => guest.attending !== 'Yes' && guest.attending !== 'No');
+    if (guestsMissingAttendance) {
+      alert('Please choose Yes or No for each guest before sending.');
       if (sendBtn) { sendBtn.textContent = 'Send RSVP'; sendBtn.disabled = false; }
       return;
     }
