@@ -2989,6 +2989,144 @@ body::after {
   }
 }
 
+
+
+/* FINAL CARDIA POLISH — readability + lighter hero gallery */
+
+/* 1) HOW IT WORKS — white, readable, elegant */
+.how-section h2,
+.how-section .reveal,
+.how-section .step h3 {
+  color: #fffdf8 !important;
+}
+
+.how-section > p {
+  color: rgba(255, 253, 248, .82) !important;
+}
+
+.how-section .step p {
+  color: rgba(255, 253, 248, .88) !important;
+}
+
+.how-section .step-num {
+  color: #f1ddb0 !important;
+  opacity: .88 !important;
+  text-shadow: 0 10px 30px rgba(0,0,0,.18);
+}
+
+/* 2) CONTACT — make email and Instagram visible */
+.contact-section .contact-label,
+.contact-section .contact-value,
+.contact-section .contact-value a,
+.contact-section .contact-inline-icon {
+  color: #fffdf8 !important;
+  opacity: 1 !important;
+}
+
+.contact-section .contact-label {
+  color: rgba(255, 253, 248, .82) !important;
+}
+
+.contact-section .contact-value a:hover {
+  color: #f1ddb0 !important;
+}
+
+.contact-section .contact-item {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,253,248,.20) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,.10);
+}
+
+/* 3) BEGINNING MOVING PNG / TEMPLATE AREA — lighter and less dark */
+.hero-template-marquee,
+.hero-template-gallery,
+.hero-template-wrap,
+.hero-template-section,
+.hero-showcase,
+.hero-template-preview,
+.hero-templates,
+.hero-marquee,
+.template-marquee,
+.hero-template-track {
+  background:
+    radial-gradient(ellipse at 18% 42%, rgba(255,255,255,.72) 0%, transparent 34%),
+    radial-gradient(ellipse at 64% 50%, rgba(226,238,250,.74) 0%, transparent 46%),
+    radial-gradient(ellipse at 86% 42%, rgba(255,248,231,.56) 0%, transparent 38%),
+    linear-gradient(90deg, #dfeaf6 0%, #edf4fb 42%, #f9fbff 100%) !important;
+}
+
+.hero-template-marquee {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), inset 0 -1px 0 rgba(17,26,46,.06);
+}
+
+.hero-template-track {
+  filter: none !important;
+}
+
+.hero-template-marquee::before,
+.hero-template-marquee::after,
+.hero-template-gallery::before,
+.hero-template-gallery::after,
+.hero-template-wrap::before,
+.hero-template-wrap::after,
+.hero-showcase::before,
+.hero-showcase::after,
+.hero-marquee::before,
+.hero-marquee::after,
+.template-marquee::before,
+.template-marquee::after {
+  background: radial-gradient(ellipse at 50% 50%, rgba(255,255,255,.34) 0%, transparent 58%) !important;
+  opacity: .58 !important;
+  pointer-events: none !important;
+}
+
+.hero-template-marquee img,
+.hero-template-gallery img,
+.hero-template-track img,
+.hero-showcase img,
+.hero-marquee img,
+.template-marquee img {
+  filter: drop-shadow(0 22px 42px rgba(17,26,46,.18)) !important;
+}
+
+.bestsellers-grid,
+.bestsellers-grid::before,
+.bestsellers-grid::after {
+  background: transparent !important;
+}
+
+#bestsellers .bestsellers-grid {
+  background:
+    radial-gradient(ellipse at 18% 50%, rgba(255,255,255,.70) 0%, transparent 38%),
+    radial-gradient(ellipse at 62% 50%, rgba(226,238,250,.74) 0%, transparent 48%),
+    linear-gradient(90deg, rgba(226,238,250,.86), rgba(249,251,255,.96)) !important;
+  border-radius: 28px;
+  padding-top: 1.4rem;
+  padding-bottom: 1.4rem;
+}
+
+/* Dark sections: still luxury blue, but less black */
+.how-section,
+#reviews,
+.contact-section {
+  background:
+    radial-gradient(ellipse at 16% 18%, rgba(216,189,127,.16) 0%, transparent 42%),
+    radial-gradient(ellipse at 84% 10%, rgba(154,190,232,.22) 0%, transparent 44%),
+    linear-gradient(135deg, #17243a 0%, #263d61 100%) !important;
+}
+
+/* Contact button clearer */
+.contact-cta {
+  background: rgba(255,255,255,.18) !important;
+  color: #f1ddb0 !important;
+  border-color: rgba(241,221,176,.65) !important;
+}
+
+.contact-cta:hover {
+  background: rgba(241,221,176,.20) !important;
+  color: #fffdf8 !important;
+}
+
 </style>
 </head>
 <body>
