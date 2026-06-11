@@ -112,7 +112,7 @@
       display: grid;
       grid-template-rows: auto 1fr auto;
       justify-items: center;
-      padding: 22px 0 24px;
+      padding: 12px 0 18px;
     }
 
     .hero-bg {
@@ -236,6 +236,7 @@
       align-items: center;
       gap: 14px;
       padding: 5px 8px;
+      margin-top: 8px;
       color: rgba(64, 44, 31, 0.88);
       font-family: "Jost", sans-serif;
       font-size: 9px;
@@ -250,6 +251,12 @@
       align-items: center;
       gap: 9px;
       white-space: nowrap;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+
+    .brand-mark:hover {
+      color: var(--gold-deep);
+      opacity: 0.86;
     }
 
     .brand-mark::before {
@@ -272,7 +279,7 @@
       position: relative;
       z-index: 5;
       align-self: start;
-      padding: clamp(44px, 9svh, 76px) 0 0;
+      padding: clamp(18px, 4.8svh, 42px) 0 0;
       text-align: center;
     }
 
@@ -396,7 +403,7 @@
       position: relative;
       z-index: 5;
       align-self: end;
-      padding-top: 38px;
+      padding-top: 18px;
     }
 
     .upload-panel {
@@ -857,7 +864,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       width: 100%;
-      margin: 12px auto 0;
+      margin: 8px auto 0;
       border: 1px solid rgba(156, 119, 64, 0.24);
       background: rgba(255, 255, 255, 0.52);
       backdrop-filter: blur(14px);
@@ -890,13 +897,91 @@
       color: var(--gold-deep);
     }
 
+    .hero-cardia-card {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      margin: 8px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(156, 119, 64, 0.24);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 247, 232, 0.8));
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 16px 40px rgba(90, 58, 30, 0.1);
+    }
+
+    .hero-cardia-copy {
+      min-width: 0;
+      text-align: left;
+    }
+
+    .hero-cardia-kicker {
+      display: block;
+      margin-bottom: 4px;
+      font-family: "Jost", sans-serif;
+      font-size: 7.5px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .hero-cardia-title {
+      display: block;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--espresso);
+    }
+
+    .hero-cardia-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: "Jost", sans-serif;
+      font-size: 8.5px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(61, 42, 30, 0.62);
+      border-bottom: 1px solid rgba(156, 119, 64, 0.36);
+      padding-bottom: 2px;
+    }
+
+    .hero-cardia-link:hover {
+      color: var(--gold-deep);
+      border-bottom-color: var(--gold-deep);
+    }
+
+    .hero-cardia-qr {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      display: block;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(156, 119, 64, 0.22);
+      box-shadow: 0 8px 20px rgba(90, 58, 30, 0.12);
+    }
+
+    .hero-cardia-qr img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
     .scroll-cue {
       position: relative;
       z-index: 5;
       display: grid;
       place-items: center;
       gap: 7px;
-      margin-top: 17px;
+      margin-top: 10px;
       color: rgba(61, 42, 30, 0.58);
       font-family: "Jost", sans-serif;
       font-size: 8px;
@@ -1129,12 +1214,12 @@
       }
 
       .hero {
-        padding-top: 20px;
-        padding-bottom: 22px;
+        padding-top: 10px;
+        padding-bottom: 16px;
       }
 
       .hero-content {
-        padding-top: 42px;
+        padding-top: 18px;
       }
 
       .title-veil {
@@ -1172,6 +1257,21 @@
         font-size: 15px;
       }
 
+      .hero-cardia-card {
+        padding: 9px 10px;
+        gap: 10px;
+      }
+
+      .hero-cardia-title {
+        font-size: 20px;
+      }
+
+      .hero-cardia-qr {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+      }
+
       .qr-section {
         padding: 66px 18px 58px;
       }
@@ -1185,6 +1285,20 @@
       :root {
         --mobile-side-gap: 36px;
       }
+
+      .hero-cardia-title {
+        font-size: 18px;
+      }
+
+      .hero-cardia-link {
+        font-size: 7.5px;
+      }
+
+      .hero-cardia-qr {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+      }
     }
 
     @media (min-width: 740px) {
@@ -1195,7 +1309,7 @@
       }
 
       .hero {
-        min-height: 920px;
+        min-height: 860px;
       }
     }
 
@@ -1225,7 +1339,9 @@
       </div>
 
       <header class="topbar">
-        <span class="brand-mark">Cardia Studios</span>
+        <a class="brand-mark" href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">
+          Cardia Studios
+        </a>
         <span class="topbar-line"></span>
         <span>Private Album</span>
       </header>
@@ -1314,22 +1430,23 @@
           </div>
         </div>
 
-        <div class="mini-info" aria-label="Upload information">
-          <div>
-            <strong>Private</strong>
-            <span>Album</span>
+    
+
+        <div class="hero-cardia-card">
+          <div class="hero-cardia-copy">
+            <span class="hero-cardia-kicker">Digital invitations</span>
+            <span class="hero-cardia-title">Cardia Studios</span>
+            <a class="hero-cardia-link" href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">
+              Instagram @cardiastudios
+            </a>
           </div>
-          <div>
-            <strong>Fast</strong>
-            <span>No app</span>
-          </div>
-          <div>
-            <strong>Secure</strong>
-            <span>Direct</span>
-          </div>
+
+          <a class="hero-cardia-qr" href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener" aria-label="Open Cardia Studios Instagram">
+            <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png" alt="Cardia Studios QR code">
+          </a>
         </div>
 
-        <a class="scroll-cue" href="#cardia-qr">Cardia Studios</a>
+        <a class="scroll-cue" href="#cardia-qr">More from Cardia Studios</a>
       </div>
     </section>
 
@@ -1363,7 +1480,7 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBdlBWSsjqekii94kusdVGE41EYudEx8YNVUWVtCQAHg5EllII5HIAslbuxdwxZLdPvA/exec";
+   const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZcsnCCgaZMP4lotemXbf_WNqRif0KYO7dGAzPfix_ulGSyEuYHfdYWK4jeZ2vrER18g/exec";
     const coupleName = "Thomas & Sarah";
 
     const MAX_FILES = 10;
