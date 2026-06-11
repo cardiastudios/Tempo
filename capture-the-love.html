@@ -414,7 +414,7 @@
 
 <script>
   // ── Configuration ─────────────────────────────────────────
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzIT2yR7LbBG2eswFgkqtBeLCoCHsXH36-udr9-lVYcdb77CJd4Gy_KEdHqbio5rQbQ4w/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBdlBWSsjqekii94kusdVGE41EYudEx8YNVUWVtCQAHg5EllII5HIAslbuxdwxZLdPvA/exec';
   const coupleName = 'Celeste & Mario';
   const params     = new URLSearchParams(window.location.search); // kept for optional overrides
 
@@ -426,19 +426,24 @@
   // Hide config warning (script URL is hardcoded)
   document.getElementById('configWarning').style.display = 'none';
 
+  // ── Limits ────────────────────────────────────────────────
+  const MAX_FILES = 10;
+  const MAX_MB    = 100;
+  const MAX_BYTES = MAX_MB * 1024 * 1024;
+
   // ── File state ─────────────────────────────────────────────
   let selectedFiles = [];
 
-  const fileInput   = document.getElementById('fileInput');
-  const dropZone    = document.getElementById('dropZone');
-  const fileList    = document.getElementById('fileList');
-  const uploadBtn   = document.getElementById('uploadBtn');
-  const progressWrap = document.getElementById('progressWrap');
-  const progressBar  = document.getElementById('progressBar');
-  const uploadZone  = document.getElementById('uploadZone');
-  const successMsg  = document.getElementById('successMsg');
+  const fileInput     = document.getElementById('fileInput');
+  const dropZone      = document.getElementById('dropZone');
+  const fileList      = document.getElementById('fileList');
+  const uploadBtn     = document.getElementById('uploadBtn');
+  const progressWrap  = document.getElementById('progressWrap');
+  const progressBar   = document.getElementById('progressBar');
+  const uploadZone    = document.getElementById('uploadZone');
+  const successMsg    = document.getElementById('successMsg');
   const uploadMoreBtn = document.getElementById('uploadMoreBtn');
-  const uploadNote  = document.getElementById('uploadNote');
+  const uploadNote    = document.getElementById('uploadNote');
 
   // ── Drop zone interactions ─────────────────────────────────
   dropZone.addEventListener('click', () => fileInput.click());
@@ -454,15 +459,30 @@
 
   fileInput.addEventListener('change', () => {
     addFiles([...fileInput.files]);
-    fileInput.value = ''; // reset so same file can be re-added
+    fileInput.value = '';
   });
 
   function addFiles(files) {
+    let skippedSize  = 0;
+    let skippedCount = 0;
+
     files.forEach(f => {
-      if (!selectedFiles.find(x => x.name === f.name && x.size === f.size)) {
-        selectedFiles.push(f);
-      }
+      // Skip duplicates
+      if (selectedFiles.find(x => x.name === f.name && x.size === f.size)) return;
+      // Skip oversized files
+      if (f.size > MAX_BYTES) { skippedSize++; return; }
+      // Skip if already at max
+      if (selectedFiles.length >= MAX_FILES) { skippedCount++; return; }
+      selectedFiles.push(f);
     });
+
+    if (skippedSize > 0) {
+      alert(`${skippedSize} file(s) skipped — maximum size is ${MAX_MB}MB per file.`);
+    }
+    if (skippedCount > 0) {
+      alert(`Maximum ${MAX_FILES} photos per session. Extra files were not added.`);
+    }
+
     renderFileList();
   }
 
@@ -479,9 +499,10 @@
       fileList.appendChild(item);
     });
     uploadBtn.disabled = selectedFiles.length === 0 || !SCRIPT_URL;
+    const remaining = MAX_FILES - selectedFiles.length;
     uploadNote.textContent = selectedFiles.length > 0
-      ? selectedFiles.length + ' photo' + (selectedFiles.length > 1 ? 's' : '') + ' selected'
-      : 'No account needed · Photos go directly to the couple';
+      ? `${selectedFiles.length} photo${selectedFiles.length > 1 ? 's' : ''} selected · ${remaining} slot${remaining !== 1 ? 's' : ''} remaining`
+      : `No account needed · Up to ${MAX_FILES} photos · Max ${MAX_MB}MB each`;
   }
 
   // ── Upload ─────────────────────────────────────────────────
@@ -510,9 +531,10 @@
           method: 'POST',
           mode: 'no-cors',
           body: JSON.stringify({
-            fileName: f.name,
-            mimeType: f.type || 'image/jpeg',
-            base64:   base64
+            fileName:  f.name,
+            mimeType:  f.type || 'image/jpeg',
+            base64:    base64,
+            fileIndex: i + 1
           })
         });
 
