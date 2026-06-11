@@ -21,6 +21,7 @@
       --qr-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png");
 
       --content-width: 450px;
+      --mobile-side-gap: 48px;
 
       --cream: #FFF9EF;
       --ivory: #FDF3E4;
@@ -111,7 +112,7 @@
       display: grid;
       grid-template-rows: auto 1fr auto;
       justify-items: center;
-      padding: 22px 20px 24px;
+      padding: 22px 0 24px;
     }
 
     .hero-bg {
@@ -216,12 +217,20 @@
       border-right: 1px solid;
     }
 
+    .topbar,
+    .hero-content,
+    .upload-panel-wrap {
+      width: min(var(--content-width), calc(100% - var(--mobile-side-gap)));
+      max-width: var(--content-width);
+      margin-left: auto;
+      margin-right: auto;
+      justify-self: center;
+      transform: none;
+    }
+
     .topbar {
       position: relative;
       z-index: 5;
-      width: 100%;
-      max-width: calc(var(--content-width) + 24px);
-      justify-self: center;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -263,10 +272,6 @@
       position: relative;
       z-index: 5;
       align-self: start;
-      justify-self: center;
-      width: 100%;
-      max-width: var(--content-width);
-      margin-inline: auto;
       padding: clamp(44px, 9svh, 76px) 0 0;
       text-align: center;
     }
@@ -391,10 +396,6 @@
       position: relative;
       z-index: 5;
       align-self: end;
-      justify-self: center;
-      width: 100%;
-      max-width: var(--content-width);
-      margin-inline: auto;
       padding-top: 38px;
     }
 
@@ -976,6 +977,15 @@
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
     }
 
+    .qr-title em,
+    .qr-title span {
+      font-family: inherit;
+      font-size: inherit;
+      font-style: normal;
+      font-weight: inherit;
+      color: inherit;
+    }
+
     .qr-text {
       width: min(330px, 92%);
       margin: 0 auto 30px;
@@ -1114,8 +1124,13 @@
     }
 
     @media (max-width: 390px) {
+      :root {
+        --mobile-side-gap: 44px;
+      }
+
       .hero {
-        padding: 20px 16px 22px;
+        padding-top: 20px;
+        padding-bottom: 22px;
       }
 
       .hero-content {
@@ -1163,6 +1178,12 @@
 
       .qr-title {
         font-size: clamp(42px, 12vw, 54px);
+      }
+    }
+
+    @media (max-width: 340px) {
+      :root {
+        --mobile-side-gap: 36px;
       }
     }
 
