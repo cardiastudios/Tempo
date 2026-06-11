@@ -503,21 +503,23 @@
 
       try {
         const base64 = await toBase64(f);
-        const res    = await fetch(SCRIPT_URL, {
+
+        // Google Apps Script requires no-cors mode.
+        // We can't read the response, so we assume success if no network error.
+        await fetch(SCRIPT_URL, {
           method: 'POST',
+          mode: 'no-cors',
           body: JSON.stringify({
             fileName: f.name,
             mimeType: f.type || 'image/jpeg',
             base64:   base64
           })
         });
-        const json = await res.json();
-        if (json.success) {
-          status.textContent = '✓ sent';
-          status.className   = 'file-item-status done';
-        } else {
-          throw new Error(json.message);
-        }
+
+        // With no-cors we can't read the response — treat reaching here as success
+        status.textContent = '✓ sent';
+        status.className   = 'file-item-status done';
+
       } catch (err) {
         status.textContent = '✗ failed';
         status.className   = 'file-item-status error';
