@@ -20,6 +20,8 @@
       --bg-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/wed_alb4.png");
       --qr-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png");
 
+      --content-width: 450px;
+
       --cream: #FFF9EF;
       --ivory: #FDF3E4;
       --pearl: #FFFDF8;
@@ -33,10 +35,6 @@
       --espresso: #2F2018;
       --muted: #8B7564;
 
-      --glass-light: rgba(255, 251, 244, 0.72);
-      --glass-strong: rgba(255, 248, 235, 0.88);
-      --glass-border: rgba(164, 123, 63, 0.28);
-
       --shadow-xl:
         0 34px 90px rgba(94, 60, 28, 0.22),
         0 12px 36px rgba(94, 60, 28, 0.16);
@@ -46,9 +44,12 @@
 
     html {
       scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden;
     }
 
     body {
+      width: 100%;
       min-height: 100%;
       background:
         radial-gradient(circle at 50% 0%, rgba(255, 248, 230, 0.9), transparent 38rem),
@@ -95,18 +96,21 @@
 
     .experience {
       width: min(100%, 560px);
-      margin: 0 auto;
+      margin-inline: auto;
       background: var(--cream);
       box-shadow: 0 0 80px rgba(116, 83, 48, 0.24);
+      overflow: hidden;
     }
 
     .hero {
       position: relative;
+      width: 100%;
       min-height: 100svh;
       overflow: hidden;
       isolation: isolate;
       display: grid;
       grid-template-rows: auto 1fr auto;
+      justify-items: center;
       padding: 22px 20px 24px;
     }
 
@@ -127,12 +131,12 @@
       z-index: -4;
       background:
         linear-gradient(180deg,
-          rgba(255, 252, 246, 0.56) 0%,
-          rgba(255, 249, 238, 0.28) 24%,
-          rgba(255, 246, 229, 0.18) 48%,
-          rgba(255, 242, 220, 0.78) 100%
+          rgba(255, 252, 246, 0.58) 0%,
+          rgba(255, 249, 238, 0.32) 24%,
+          rgba(255, 246, 229, 0.2) 48%,
+          rgba(255, 242, 220, 0.8) 100%
         ),
-        radial-gradient(circle at 50% 33%, rgba(255, 255, 255, 0.35), transparent 17rem),
+        radial-gradient(circle at 50% 33%, rgba(255, 255, 255, 0.38), transparent 17rem),
         radial-gradient(circle at 18% 22%, rgba(255, 243, 209, 0.5), transparent 16rem);
       pointer-events: none;
     }
@@ -215,6 +219,9 @@
     .topbar {
       position: relative;
       z-index: 5;
+      width: 100%;
+      max-width: calc(var(--content-width) + 24px);
+      justify-self: center;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -240,6 +247,7 @@
       content: "";
       width: 6px;
       height: 6px;
+      flex: 0 0 auto;
       border-radius: 50%;
       background: var(--gold);
       box-shadow: 0 0 18px rgba(199, 163, 90, 0.85);
@@ -255,18 +263,22 @@
       position: relative;
       z-index: 5;
       align-self: start;
-      width: min(100%, 440px);
-      margin: 0 auto;
+      justify-self: center;
+      width: 100%;
+      max-width: var(--content-width);
+      margin-inline: auto;
       padding: clamp(44px, 9svh, 76px) 0 0;
       text-align: center;
     }
 
     .title-veil {
       position: relative;
+      width: 100%;
+      margin-inline: auto;
       padding: 26px 14px 28px;
       border: 1px solid rgba(156, 119, 64, 0.18);
       background:
-        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.88), rgba(255, 250, 239, 0.54) 56%, rgba(255, 250, 239, 0.18) 100%);
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.9), rgba(255, 250, 239, 0.56) 56%, rgba(255, 250, 239, 0.2) 100%);
       backdrop-filter: blur(7px) saturate(1.05);
       -webkit-backdrop-filter: blur(7px) saturate(1.05);
       box-shadow:
@@ -278,7 +290,7 @@
       content: "";
       position: absolute;
       inset: 7px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.42);
       pointer-events: none;
     }
 
@@ -301,6 +313,7 @@
       display: grid;
       place-items: center;
       line-height: 1;
+      text-align: center;
       text-shadow:
         0 2px 0 rgba(255, 255, 255, 0.5),
         0 8px 28px rgba(80, 49, 28, 0.26);
@@ -310,11 +323,11 @@
       display: block;
       font-size: clamp(32px, 8vw, 45px);
       font-weight: 400;
-      letter-spacing: 0.24em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--brown);
-      transform: translateX(0.12em);
       line-height: 1.05;
+      padding-left: 0.22em;
     }
 
     .hero-title .script {
@@ -325,6 +338,7 @@
       color: var(--espresso);
       line-height: 0.92;
       margin-top: 5px;
+      text-align: center;
     }
 
     .ornament {
@@ -377,18 +391,22 @@
       position: relative;
       z-index: 5;
       align-self: end;
+      justify-self: center;
+      width: 100%;
+      max-width: var(--content-width);
+      margin-inline: auto;
       padding-top: 38px;
     }
 
     .upload-panel {
       position: relative;
-      width: min(100%, 450px);
-      margin: 0 auto;
+      width: 100%;
+      margin-inline: auto;
       padding: 16px;
       border: 1px solid rgba(156, 119, 64, 0.34);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 247, 232, 0.84)),
-        rgba(255, 249, 238, 0.74);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 247, 232, 0.86)),
+        rgba(255, 249, 238, 0.76);
       backdrop-filter: blur(18px) saturate(1.18);
       -webkit-backdrop-filter: blur(18px) saturate(1.18);
       box-shadow: var(--shadow-xl);
@@ -837,7 +855,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1px;
-      width: min(100%, 450px);
+      width: 100%;
       margin: 12px auto 0;
       border: 1px solid rgba(156, 119, 64, 0.24);
       background: rgba(255, 255, 255, 0.52);
@@ -931,8 +949,9 @@
     .qr-inner {
       position: relative;
       z-index: 1;
-      width: min(100%, 430px);
-      margin: 0 auto;
+      width: 100%;
+      max-width: 430px;
+      margin-inline: auto;
       text-align: center;
     }
 
@@ -947,19 +966,14 @@
     }
 
     .qr-title {
-      font-size: clamp(38px, 12vw, 58px);
-      font-weight: 300;
-      line-height: 0.98;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 12vw, 66px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.005em;
       color: var(--espresso);
       margin-bottom: 18px;
       text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
-    }
-
-    .qr-title em {
-      font-family: "Great Vibes", cursive;
-      font-style: normal;
-      font-size: 1.35em;
-      color: var(--brown);
     }
 
     .qr-text {
@@ -1114,7 +1128,8 @@
 
       .hero-title .small {
         font-size: clamp(28px, 8.2vw, 36px);
-        letter-spacing: 0.2em;
+        letter-spacing: 0.19em;
+        padding-left: 0.19em;
       }
 
       .hero-title .script {
@@ -1144,6 +1159,10 @@
 
       .qr-section {
         padding: 66px 18px 58px;
+      }
+
+      .qr-title {
+        font-size: clamp(42px, 12vw, 54px);
       }
     }
 
@@ -1296,7 +1315,7 @@
     <section class="qr-section" id="cardia-qr">
       <div class="qr-inner">
         <p class="qr-label">Discover more</p>
-        <h2 class="qr-title">Cardia <em>Studios</em></h2>
+        <h2 class="qr-title">Cardia Studios</h2>
         <p class="qr-text">
           Scan the QR code to explore Cardia Studios and discover our elegant digital wedding invitations.
         </p>
@@ -1323,9 +1342,6 @@
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
-    // ─────────────────────────────────────────────
-    // Configuration
-    // ─────────────────────────────────────────────
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBdlBWSsjqekii94kusdVGE41EYudEx8YNVUWVtCQAHg5EllII5HIAslbuxdwxZLdPvA/exec";
     const coupleName = "Thomas & Sarah";
 
@@ -1333,15 +1349,9 @@
     const MAX_MB = 100;
     const MAX_BYTES = MAX_MB * 1024 * 1024;
 
-    // ─────────────────────────────────────────────
-    // Text setup
-    // ─────────────────────────────────────────────
     document.getElementById("eyebrowText").textContent = coupleName;
     document.getElementById("footerNames").textContent = "With love · " + coupleName;
 
-    // ─────────────────────────────────────────────
-    // State
-    // ─────────────────────────────────────────────
     let selectedFiles = [];
     let previewUrls = [];
 
@@ -1357,9 +1367,6 @@
     const uploadNote = document.getElementById("uploadNote");
     const toast = document.getElementById("toast");
 
-    // ─────────────────────────────────────────────
-    // Events
-    // ─────────────────────────────────────────────
     dropZone.addEventListener("click", () => fileInput.click());
 
     dropZone.addEventListener("keydown", (event) => {
@@ -1407,9 +1414,6 @@
       renderFileList();
     });
 
-    // ─────────────────────────────────────────────
-    // File handling
-    // ─────────────────────────────────────────────
     function addFiles(files) {
       let skippedSize = 0;
       let skippedCount = 0;
@@ -1558,9 +1562,6 @@
       return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
     }
 
-    // ─────────────────────────────────────────────
-    // Upload
-    // ─────────────────────────────────────────────
     async function startUpload() {
       if (!SCRIPT_URL || selectedFiles.length === 0) return;
 
@@ -1646,9 +1647,6 @@
       });
     }
 
-    // ─────────────────────────────────────────────
-    // Toast
-    // ─────────────────────────────────────────────
     let toastTimer;
 
     function showToast(message) {
