@@ -3,641 +3,1575 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-  <title>Capture the Love</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <title>Capture the Love | Cardia Studios</title>
 
-    :root {
-      --ivory:    #FAF7F2;
-      --blush:    #E8C5B0;
-      --gold:     #C9A96E;
-      --gold-dk:  #A07840;
-      --charcoal: #2C2C2C;
-      --soft:     #7A6A5A;
-      --glass:    rgba(250,247,242,0.72);
-      --glass-border: rgba(201,169,110,0.3);
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html, body {
-      height: 100%;
-      background: var(--ivory);
-      color: var(--charcoal);
-      font-family: 'Cormorant Garamond', serif;
+    :root {
+      --bg-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/wed_alb3.png");
+      --qr-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png");
+
+      --black: #050403;
+      --ink: #0B0807;
+      --espresso: #17100C;
+      --gold: #D7B575;
+      --gold-soft: #B99355;
+      --ivory: #F8F0E3;
+      --glass: rgba(14, 10, 8, 0.54);
+      --line: rgba(215, 181, 117, 0.34);
+
+      --shadow-xl:
+        0 40px 120px rgba(0, 0, 0, 0.72),
+        0 14px 45px rgba(0, 0, 0, 0.45);
+
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(215, 181, 117, 0.12), transparent 36rem),
+        radial-gradient(circle at 50% 80%, rgba(96, 43, 28, 0.3), transparent 34rem),
+        #050403;
+      color: var(--ivory);
+      font-family: "Cormorant Garamond", serif;
       overflow-x: hidden;
     }
 
-    /* ── HERO ── */
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 60px 32px 120px;
-      text-align: center;
-      overflow: hidden;
+    button,
+    input {
+      font: inherit;
     }
 
-    /* Background image */
-    .hero-bg {
+    button {
+      border: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--bg-image);
+      background-position: center;
+      background-size: cover;
+      filter: blur(38px) brightness(0.34) saturate(0.78);
+      transform: scale(1.12);
+      opacity: 0.7;
+    }
+
+    .ambient-bg::after {
+      content: "";
       position: absolute;
       inset: 0;
       background:
-        url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/Wed_album.png')
-        center center / cover no-repeat;
-      z-index: 0;
+        radial-gradient(circle at 50% 18%, rgba(215, 181, 117, 0.12), transparent 26rem),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.9));
     }
 
-    /* Soft overlay to keep text legible but image visible */
-    .hero-bg::after {
-      content: '';
+    .experience {
+      width: min(100%, 560px);
+      margin: 0 auto;
+      background: var(--black);
+      box-shadow: 0 0 90px rgba(0, 0, 0, 0.8);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      overflow: hidden;
+      isolation: isolate;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      padding: 24px 20px 26px;
+    }
+
+    .hero-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        160deg,
-        rgba(250,247,242,0.55) 0%,
-        rgba(250,247,242,0.40) 40%,
-        rgba(250,247,242,0.62) 100%
-      );
+      z-index: -4;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.002);
     }
 
-    /* Gold frame */
-    .hero-frame {
+    .hero::before {
+      content: "";
       position: absolute;
-      inset: 20px;
-      border: 1px solid rgba(201,169,110,.4);
-      z-index: 1;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(circle at 78% 61%, rgba(255, 177, 77, 0.22), transparent 9rem),
+        linear-gradient(180deg,
+          rgba(2, 2, 2, 0.18) 0%,
+          rgba(5, 4, 3, 0.2) 20%,
+          rgba(5, 4, 3, 0.32) 48%,
+          rgba(5, 4, 3, 0.74) 100%
+        );
       pointer-events: none;
     }
-    .hero-frame::before {
-      content: '';
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.7), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.7)),
+        radial-gradient(ellipse at center, transparent 28%, rgba(0, 0, 0, 0.64) 100%);
+      pointer-events: none;
+    }
+
+    .grain {
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.16;
+      mix-blend-mode: soft-light;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+    }
+
+    .frame {
+      position: absolute;
+      inset: 14px;
+      z-index: 4;
+      pointer-events: none;
+      border: 1px solid rgba(215, 181, 117, 0.24);
+    }
+
+    .frame::before {
+      content: "";
       position: absolute;
       inset: 6px;
-      border: 1px solid rgba(201,169,110,.15);
+      border: 1px solid rgba(248, 240, 227, 0.06);
     }
-    /* Corner ornaments */
-    .hero-frame::after {
-      content: '';
+
+    .corner {
       position: absolute;
-      top: -1px; left: -1px;
-      width: 18px; height: 18px;
-      border-top: 2px solid var(--gold);
-      border-left: 2px solid var(--gold);
-    }
-    .corner-tr, .corner-bl, .corner-br {
-      position: absolute;
-      width: 18px; height: 18px;
-    }
-    .corner-tr { top: -1px; right: -1px; border-top: 2px solid var(--gold); border-right: 2px solid var(--gold); }
-    .corner-bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--gold); border-left: 2px solid var(--gold); }
-    .corner-br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--gold); border-right: 2px solid var(--gold); }
-
-    /* All content above bg */
-    .hero > *:not(.hero-bg):not(.hero-frame) { position: relative; z-index: 2; }
-
-    /* ── GLASS CARD ── */
-    .glass-card {
-      background: var(--glass);
-      backdrop-filter: blur(18px) saturate(1.4);
-      -webkit-backdrop-filter: blur(18px) saturate(1.4);
-      border: 1px solid var(--glass-border);
-      padding: 44px 36px 36px;
-      max-width: 380px;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      box-shadow:
-        0 8px 40px rgba(44,44,44,.08),
-        inset 0 1px 0 rgba(255,255,255,.6);
+      width: 28px;
+      height: 28px;
+      border-color: rgba(215, 181, 117, 0.68);
     }
 
-    /* ── CAMERA ── */
-    .camera-wrap {
+    .corner.tl {
+      top: -1px;
+      left: -1px;
+      border-top: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .corner.tr {
+      top: -1px;
+      right: -1px;
+      border-top: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .corner.bl {
+      bottom: -1px;
+      left: -1px;
+      border-bottom: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .corner.br {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .topbar {
       position: relative;
-      margin-bottom: 24px;
-      animation: floatY 5s ease-in-out infinite;
-    }
-    @keyframes floatY {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(-7px); }
-    }
-    .camera-svg {
-      width: 90px; height: auto;
-      filter: drop-shadow(0 4px 12px rgba(160,120,64,.3));
-    }
-    .camera-ring {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%,-50%);
-      width: 120px; height: 120px; border-radius: 50%;
-      border: 1px solid rgba(201,169,110,.35);
-      animation: pulse 4s ease-in-out infinite;
-    }
-    @keyframes pulse {
-      0%,100% { transform: translate(-50%,-50%) scale(1);    opacity:.5; }
-      50%      { transform: translate(-50%,-50%) scale(1.07); opacity:1; }
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 3px 6px;
+      color: rgba(248, 240, 227, 0.72);
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
     }
 
-    /* ── TYPE ── */
-    .eyebrow {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 9px;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold-dk);
-      margin-bottom: 14px;
-    }
-    .title-block { margin-bottom: 20px; line-height: 1; }
-    .title-plain {
-      display: block; font-family: 'Cormorant Garamond', serif; font-weight: 300;
-      font-size: clamp(18px,5vw,26px); letter-spacing: .16em; color: var(--soft);
-      text-transform: uppercase; margin-bottom: 0;
-    }
-    .title-script {
-      display: block; font-family: 'Great Vibes', cursive;
-      font-size: clamp(52px,14vw,76px); color: var(--charcoal); line-height: .9;
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      white-space: nowrap;
     }
 
-    .divider {
-      display: flex; align-items: center; gap: 12px;
-      justify-content: center; margin: 0 auto 20px; width: 180px;
-    }
-    .divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); }
-    .divider-line:last-child { background: linear-gradient(to left, transparent, var(--gold)); }
-    .divider-diamond { width: 4px; height: 4px; background: var(--gold); transform: rotate(45deg); }
-
-    .subtitle {
-      font-size: clamp(14px,4vw,17px); font-weight: 300; font-style: italic;
-      color: var(--soft); line-height: 1.8; max-width: 290px;
-      margin: 0 auto 28px;
+    .brand-mark::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(215, 181, 117, 0.9);
     }
 
-    /* ── UPLOAD AREA ── */
-    #fileInput { display: none; }
+    .topbar-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(215, 181, 117, 0.36), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      align-self: start;
+      padding: clamp(54px, 12svh, 96px) 7px 0;
+      text-align: center;
+    }
+
+    .overline {
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: rgba(215, 181, 117, 0.88);
+      margin-bottom: 18px;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-title {
+      display: grid;
+      place-items: center;
+      line-height: 0.88;
+      text-shadow:
+        0 3px 36px rgba(0, 0, 0, 0.88),
+        0 1px 1px rgba(0, 0, 0, 0.65);
+    }
+
+    .hero-title .small {
+      font-size: clamp(30px, 8vw, 42px);
+      font-weight: 300;
+      letter-spacing: 0.19em;
+      text-transform: uppercase;
+      color: rgba(248, 240, 227, 0.86);
+      transform: translateX(0.08em);
+    }
+
+    .hero-title .script {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(76px, 23vw, 118px);
+      font-weight: 400;
+      color: var(--ivory);
+      margin-top: -5px;
+    }
+
+    .ornament {
+      width: min(260px, 74vw);
+      height: 18px;
+      margin: 20px auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      opacity: 0.9;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(215, 181, 117, 0.7));
+    }
+
+    .ornament::after {
+      background: linear-gradient(90deg, rgba(215, 181, 117, 0.7), transparent);
+    }
+
+    .ornament span {
+      width: 5px;
+      height: 5px;
+      transform: rotate(45deg);
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(215, 181, 117, 0.86);
+    }
+
+    .hero-subtitle {
+      width: min(350px, 88vw);
+      margin: 0 auto;
+      color: rgba(248, 240, 227, 0.76);
+      font-size: clamp(17px, 4.6vw, 22px);
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.58;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.88);
+    }
+
+    .upload-panel-wrap {
+      position: relative;
+      z-index: 5;
+      align-self: end;
+      padding-top: 42px;
+    }
+
+    .upload-panel {
+      position: relative;
+      width: min(100%, 450px);
+      margin: 0 auto;
+      padding: 16px;
+      border: 1px solid rgba(215, 181, 117, 0.38);
+      background:
+        linear-gradient(180deg, rgba(248, 240, 227, 0.07), rgba(248, 240, 227, 0.025)),
+        rgba(10, 7, 6, 0.62);
+      backdrop-filter: blur(22px) saturate(1.25);
+      -webkit-backdrop-filter: blur(22px) saturate(1.25);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .upload-panel::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      pointer-events: none;
+      border: 1px solid rgba(248, 240, 227, 0.08);
+    }
+
+    .panel-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 4px 16px;
+    }
+
+    .camera-seal {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(215, 181, 117, 0.44);
+      background:
+        radial-gradient(circle, rgba(215, 181, 117, 0.18), transparent 58%),
+        rgba(248, 240, 227, 0.04);
+      box-shadow: inset 0 0 28px rgba(215, 181, 117, 0.09);
+    }
+
+    .camera-seal svg {
+      width: 23px;
+      height: 23px;
+      stroke: var(--gold);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .panel-kicker {
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(215, 181, 117, 0.86);
+      margin-bottom: 5px;
+    }
+
+    .panel-title {
+      font-size: 23px;
+      font-weight: 400;
+      color: rgba(248, 240, 227, 0.93);
+      line-height: 1.05;
+    }
+
+    .panel-text {
+      margin-top: 4px;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      line-height: 1.55;
+      color: rgba(248, 240, 227, 0.54);
+      letter-spacing: 0.04em;
+    }
+
+    #fileInput {
+      display: none;
+    }
 
     .drop-zone {
-      width: 100%;
-      border: 1px dashed rgba(160,120,64,.5);
-      padding: 22px 16px;
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      cursor: pointer;
-      transition: background .25s, border-color .25s;
-      margin-bottom: 14px;
-      background: rgba(201,169,110,.05);
-    }
-    .drop-zone:hover, .drop-zone.dragover {
-      background: rgba(201,169,110,.12);
-      border-color: var(--gold-dk);
-    }
-    .drop-zone-icon { font-size: 22px; line-height: 1; }
-    .drop-zone-label {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 10px;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--soft);
-    }
-    .drop-zone-sub {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 9.5px;
-      color: var(--soft); opacity: .55; letter-spacing: .05em;
-    }
-
-    /* File list */
-    .file-list {
-      width: 100%; margin-bottom: 14px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .file-item {
-      display: flex; align-items: center; gap: 10px;
-      padding: 9px 12px;
-      background: rgba(201,169,110,.07);
-      border: 1px solid rgba(201,169,110,.18);
-    }
-    .file-item-name {
-      flex: 1; font-family: 'Jost', sans-serif; font-weight: 300;
-      font-size: 10px; color: var(--charcoal); letter-spacing: .04em;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    }
-    .file-item-status {
-      font-family: 'Jost', sans-serif; font-size: 9.5px; font-weight: 300;
-      letter-spacing: .05em; white-space: nowrap;
-    }
-    .file-item-status.pending   { color: var(--soft); opacity: .6; }
-    .file-item-status.uploading { color: var(--gold-dk); }
-    .file-item-status.done      { color: #6a9a6a; }
-    .file-item-status.error     { color: #b05a5a; }
-
-    /* Progress */
-    .progress-bar-wrap {
-      width: 100%; height: 1px;
-      background: rgba(201,169,110,.2); margin-bottom: 14px; display: none;
-    }
-    .progress-bar { height: 100%; width: 0%; background: var(--gold); transition: width .3s; }
-
-    /* CTA */
-    .cta-btn {
-      display: inline-flex; align-items: center; gap: 10px;
-      padding: 15px 32px;
-      background: var(--charcoal); color: var(--ivory);
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 10.5px;
-      letter-spacing: .24em; text-transform: uppercase;
-      border: 1px solid var(--charcoal);
-      transition: background .35s, color .35s, border-color .35s, transform .2s;
-      cursor: pointer; width: 100%; justify-content: center;
-    }
-    .cta-btn:hover:not(:disabled) {
-      background: transparent; color: var(--charcoal);
-      border-color: var(--gold-dk); transform: translateY(-2px);
-    }
-    .cta-btn:disabled { opacity: .45; cursor: not-allowed; }
-    .cta-btn svg { width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }
-
-    .cta-note {
-      margin-top: 10px;
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 9.5px;
-      letter-spacing: .1em; color: var(--soft); opacity: .65; text-align: center;
-    }
-
-    /* ── SUCCESS ── */
-    .success-msg {
-      display: none; flex-direction: column; align-items: center; gap: 12px;
-      text-align: center; padding: 8px 0;
-    }
-    .success-icon { font-size: 36px; }
-    .success-msg h3 {
-      font-family: 'Great Vibes', cursive; font-size: 48px; color: var(--charcoal);
-    }
-    .success-msg p {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 11px;
-      letter-spacing: .12em; color: var(--soft); line-height: 1.9;
-    }
-    .upload-more-btn {
-      margin-top: 6px; background: none;
-      border: 1px solid rgba(201,169,110,.45);
-      padding: 11px 26px; font-family: 'Jost', sans-serif; font-weight: 300;
-      font-size: 10px; letter-spacing: .2em; text-transform: uppercase;
-      color: var(--soft); cursor: pointer; transition: border-color .2s, color .2s;
-    }
-    .upload-more-btn:hover { border-color: var(--gold-dk); color: var(--charcoal); }
-
-    /* ── NAMES BOTTOM ── */
-    .bottom-flourish {
-      position: absolute; bottom: 28px; left: 50%;
-      transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 6px;
-      z-index: 2;
-    }
-    .names {
-      font-family: 'Great Vibes', cursive;
-      font-size: clamp(20px,5.5vw,26px); color: var(--gold-dk); white-space: nowrap;
-      text-shadow: 0 1px 8px rgba(250,247,242,.8);
-    }
-    .scroll-hint {
-      font-family: 'Jost', sans-serif; font-size: 8.5px; letter-spacing: .22em;
-      text-transform: uppercase; color: var(--soft); opacity: .5;
-      animation: blink 2.5s ease-in-out infinite;
-    }
-    @keyframes blink { 0%,100% { opacity:.45; } 50% { opacity:.15; } }
-
-    /* ── HOW IT WORKS ── */
-    .steps-section {
       position: relative;
-      background: var(--charcoal);
-      color: var(--ivory);
-      padding: 80px 32px;
+      z-index: 1;
+      min-height: 116px;
+      display: grid;
+      place-items: center;
+      padding: 19px 16px;
       text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      border: 1px dashed rgba(215, 181, 117, 0.44);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(215, 181, 117, 0.16), transparent 60%),
+        rgba(248, 240, 227, 0.045);
+      transition:
+        border-color 0.35s var(--ease),
+        background 0.35s var(--ease),
+        transform 0.35s var(--ease);
+    }
+
+    .drop-zone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(248, 240, 227, 0.13), transparent);
+      transform: translateX(-120%);
+      transition: transform 0.7s var(--ease);
+    }
+
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      border-color: rgba(248, 240, 227, 0.58);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(215, 181, 117, 0.24), transparent 64%),
+        rgba(248, 240, 227, 0.075);
+      transform: translateY(-1px);
+    }
+
+    .drop-zone:hover::before,
+    .drop-zone.dragover::before {
+      transform: translateX(120%);
+    }
+
+    .drop-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .drop-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: rgba(215, 181, 117, 0.12);
+      border: 1px solid rgba(215, 181, 117, 0.26);
+    }
+
+    .drop-icon svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--ivory);
+      stroke-width: 1.6;
+      fill: none;
+      opacity: 0.84;
+    }
+
+    .drop-label {
+      display: block;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(248, 240, 227, 0.86);
+    }
+
+    .drop-sub {
+      display: block;
+      margin-top: 7px;
+      font-family: "Jost", sans-serif;
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      color: rgba(248, 240, 227, 0.48);
+    }
+
+    .file-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 8px;
+      max-height: 190px;
+      overflow: auto;
+      margin-top: 12px;
+      padding-right: 2px;
+    }
+
+    .file-list:empty {
+      display: none;
+    }
+
+    .file-list::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .file-list::-webkit-scrollbar-thumb {
+      background: rgba(215, 181, 117, 0.32);
+    }
+
+    .file-item {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 10px;
+      padding: 9px;
+      background: rgba(248, 240, 227, 0.055);
+      border: 1px solid rgba(248, 240, 227, 0.1);
+    }
+
+    .thumb {
+      width: 38px;
+      height: 38px;
+      object-fit: cover;
+      background: rgba(215, 181, 117, 0.12);
+      border: 1px solid rgba(215, 181, 117, 0.18);
+    }
+
+    .thumb-placeholder {
+      display: grid;
+      place-items: center;
+    }
+
+    .thumb-placeholder svg {
+      width: 16px;
+      height: 16px;
+      stroke: rgba(248, 240, 227, 0.7);
+      fill: none;
+    }
+
+    .file-meta {
+      min-width: 0;
+    }
+
+    .file-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-family: "Jost", sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.04em;
+      color: rgba(248, 240, 227, 0.82);
+    }
+
+    .file-size {
+      margin-top: 2px;
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      color: rgba(248, 240, 227, 0.43);
+    }
+
+    .file-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .file-status {
+      font-family: "Jost", sans-serif;
+      font-size: 8.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .file-status.pending {
+      color: rgba(248, 240, 227, 0.5);
+    }
+
+    .file-status.uploading {
+      color: var(--gold);
+    }
+
+    .file-status.done {
+      color: #A7C99E;
+    }
+
+    .file-status.error {
+      color: #F0A092;
+    }
+
+    .remove-file {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: rgba(248, 240, 227, 0.5);
+      background: transparent;
+      border: 1px solid rgba(248, 240, 227, 0.12);
+      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .remove-file:hover {
+      color: var(--ivory);
+      border-color: rgba(215, 181, 117, 0.4);
+      background: rgba(215, 181, 117, 0.08);
+    }
+
+    .progress-wrap {
+      position: relative;
+      z-index: 1;
+      display: none;
+      height: 2px;
+      margin-top: 13px;
+      background: rgba(248, 240, 227, 0.13);
       overflow: hidden;
     }
-    /* Subtle texture overlay */
-    .steps-section::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(201,169,110,.07) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .steps-eyebrow {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 9px;
-      letter-spacing: .28em; text-transform: uppercase; color: var(--gold);
-      margin-bottom: 52px; position: relative;
-    }
-    .steps-grid {
-      display: flex; flex-direction: column; gap: 44px;
-      max-width: 340px; margin: 0 auto; position: relative;
-    }
-    .step { display: flex; align-items: flex-start; gap: 22px; text-align: left; }
-    .step-num {
-      font-family: 'Cormorant Garamond', serif; font-size: 10px; font-weight: 300;
-      letter-spacing: .12em; color: var(--gold); opacity: .6; padding-top: 4px; white-space: nowrap;
-    }
-    .step-content h3 {
-      font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 400;
-      font-style: italic; margin-bottom: 7px; color: var(--ivory);
-    }
-    .step-content p {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 12px;
-      line-height: 1.75; opacity: .6; letter-spacing: .03em;
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--gold-soft), var(--ivory), var(--gold));
+      transition: width 0.35s var(--ease);
+      box-shadow: 0 0 18px rgba(215, 181, 117, 0.55);
     }
 
-    /* Step connector line */
-    .step-connector {
-      width: 1px; height: 32px; background: linear-gradient(to bottom, rgba(201,169,110,.3), transparent);
-      margin: 0 auto; display: block;
-    }
-
-    /* ── FOOTER ── */
-    .footer {
-      padding: 52px 32px 40px;
-      text-align: center;
-      background: var(--ivory);
+    .cta-row {
       position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
+      margin-top: 13px;
     }
+
+    .cta-btn {
+      position: relative;
+      isolation: isolate;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      color: #120D09;
+      background: linear-gradient(135deg, #F6E8C7, #D2AA62 48%, #F4DFA7);
+      border: 1px solid rgba(248, 240, 227, 0.32);
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.38),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      transition:
+        transform 0.3s var(--ease),
+        filter 0.3s var(--ease),
+        opacity 0.3s ease;
+    }
+
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      z-index: -1;
+      border: 1px solid rgba(65, 36, 12, 0.24);
+    }
+
+    .cta-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      filter: brightness(1.07);
+    }
+
+    .cta-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.42;
+      filter: grayscale(0.3);
+    }
+
+    .cta-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .note {
+      font-family: "Jost", sans-serif;
+      font-size: 9.5px;
+      line-height: 1.55;
+      letter-spacing: 0.07em;
+      text-align: center;
+      color: rgba(248, 240, 227, 0.5);
+    }
+
+    .success-msg {
+      position: relative;
+      z-index: 1;
+      display: none;
+      text-align: center;
+      padding: 20px 8px 12px;
+    }
+
+    .success-ring {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(215, 181, 117, 0.48);
+      background: rgba(215, 181, 117, 0.1);
+      box-shadow: 0 0 46px rgba(215, 181, 117, 0.15);
+    }
+
+    .success-ring svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--gold);
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .success-msg h3 {
+      font-family: "Great Vibes", cursive;
+      font-size: 58px;
+      font-weight: 400;
+      line-height: 0.9;
+      color: var(--ivory);
+      margin-bottom: 8px;
+    }
+
+    .success-msg p {
+      width: min(290px, 92%);
+      margin: 0 auto;
+      font-family: "Jost", sans-serif;
+      font-size: 10.5px;
+      line-height: 1.8;
+      letter-spacing: 0.08em;
+      color: rgba(248, 240, 227, 0.58);
+    }
+
+    .upload-more-btn {
+      margin-top: 18px;
+      padding: 12px 20px;
+      cursor: pointer;
+      background: rgba(248, 240, 227, 0.04);
+      border: 1px solid rgba(215, 181, 117, 0.34);
+      color: rgba(248, 240, 227, 0.78);
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .upload-more-btn:hover {
+      border-color: rgba(215, 181, 117, 0.65);
+      background: rgba(215, 181, 117, 0.08);
+      color: var(--ivory);
+    }
+
+    .mini-info {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      width: min(100%, 450px);
+      margin: 12px auto 0;
+      border: 1px solid rgba(248, 240, 227, 0.08);
+      background: rgba(248, 240, 227, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .mini-info div {
+      padding: 10px 8px;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.26);
+    }
+
+    .mini-info strong {
+      display: block;
+      margin-bottom: 3px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      font-weight: 400;
+      color: rgba(248, 240, 227, 0.86);
+    }
+
+    .mini-info span {
+      display: block;
+      font-family: "Jost", sans-serif;
+      font-size: 7.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(215, 181, 117, 0.62);
+    }
+
+    .scroll-cue {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      gap: 7px;
+      margin-top: 17px;
+      color: rgba(248, 240, 227, 0.52);
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.23em;
+      text-transform: uppercase;
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 24px;
+      background: linear-gradient(180deg, rgba(215, 181, 117, 0.75), transparent);
+      animation: scrollLine 2.2s var(--ease) infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(0.35); opacity: 0.35; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .qr-section {
+      position: relative;
+      padding: 74px 22px 66px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(215, 181, 117, 0.13), transparent 25rem),
+        linear-gradient(180deg, #080604, #120C09 55%, #050403);
+      overflow: hidden;
+    }
+
+    .qr-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center bottom;
+      opacity: 0.055;
+      filter: blur(2px);
+      transform: scale(1.04);
+    }
+
+    .qr-inner {
+      position: relative;
+      z-index: 1;
+      width: min(100%, 430px);
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .qr-label {
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: rgba(215, 181, 117, 0.72);
+      margin-bottom: 12px;
+    }
+
+    .qr-title {
+      font-size: clamp(38px, 12vw, 58px);
+      font-weight: 300;
+      line-height: 0.98;
+      color: rgba(248, 240, 227, 0.92);
+      margin-bottom: 18px;
+    }
+
+    .qr-title em {
+      font-family: "Great Vibes", cursive;
+      font-style: normal;
+      font-size: 1.35em;
+      color: var(--ivory);
+    }
+
+    .qr-text {
+      width: min(330px, 92%);
+      margin: 0 auto 30px;
+      font-family: "Jost", sans-serif;
+      font-size: 11px;
+      line-height: 1.85;
+      letter-spacing: 0.06em;
+      color: rgba(248, 240, 227, 0.55);
+    }
+
+    .qr-card {
+      position: relative;
+      width: min(258px, 72vw);
+      margin: 0 auto;
+      padding: 14px;
+      border: 1px solid rgba(215, 181, 117, 0.38);
+      background:
+        linear-gradient(180deg, rgba(248, 240, 227, 0.08), rgba(248, 240, 227, 0.025)),
+        rgba(0, 0, 0, 0.32);
+      box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.52),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .qr-card::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      pointer-events: none;
+      border: 1px solid rgba(248, 240, 227, 0.08);
+    }
+
+    .qr-code-wrap {
+      position: relative;
+      padding: 12px;
+      background: rgba(248, 240, 227, 0.95);
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+    }
+
+    .qr-code-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .qr-caption {
+      margin-top: 14px;
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(215, 181, 117, 0.76);
+    }
+
+    .footer {
+      position: relative;
+      padding: 54px 22px 42px;
+      text-align: center;
+      background: #050403;
+      overflow: hidden;
+    }
+
     .footer::before {
-      content: '';
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 60px; height: 1px; background: var(--gold);
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 110px;
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(215, 181, 117, 0.7), transparent);
     }
+
     .footer-script {
-      font-family: 'Great Vibes', cursive; font-size: 48px;
-      color: var(--charcoal); display: block; margin-bottom: 14px;
+      display: block;
+      font-family: "Great Vibes", cursive;
+      font-size: 66px;
+      line-height: 0.85;
+      color: var(--ivory);
+      margin-bottom: 20px;
     }
-    .footer-divider {
-      display: flex; align-items: center; gap: 12px;
-      justify-content: center; margin: 0 auto 16px; width: 160px;
+
+    .footer-names {
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: rgba(215, 181, 117, 0.7);
+      margin-bottom: 26px;
     }
-    .footer-divider-line { flex: 1; height: 1px; background: linear-gradient(to right, transparent, rgba(201,169,110,.5)); }
-    .footer-divider-line:last-child { background: linear-gradient(to left, transparent, rgba(201,169,110,.5)); }
-    .footer-divider-dot { width: 3px; height: 3px; background: var(--gold); border-radius: 50%; }
-    .footer-note {
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 10px;
-      letter-spacing: .18em; text-transform: uppercase; color: var(--soft); opacity: .55;
+
+    .powered {
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(248, 240, 227, 0.34);
     }
-    .footer-brand {
-      margin-top: 24px;
-      font-family: 'Jost', sans-serif; font-weight: 300; font-size: 9px;
-      letter-spacing: .2em; text-transform: uppercase; color: var(--soft); opacity: .35;
+
+    .powered a {
+      border-bottom: 1px solid rgba(248, 240, 227, 0.25);
+      padding-bottom: 2px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 99;
+      width: min(calc(100% - 32px), 430px);
+      transform: translate(-50%, 24px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 13px 16px;
+      background: rgba(11, 8, 7, 0.86);
+      border: 1px solid rgba(215, 181, 117, 0.32);
+      color: rgba(248, 240, 227, 0.78);
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+      transition: opacity 0.35s ease, transform 0.35s var(--ease);
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 390px) {
+      .hero {
+        padding: 20px 16px 22px;
+      }
+
+      .hero-content {
+        padding-top: 48px;
+      }
+
+      .upload-panel {
+        padding: 13px;
+      }
+
+      .panel-head {
+        gap: 10px;
+      }
+
+      .camera-seal {
+        width: 42px;
+        height: 42px;
+      }
+
+      .panel-title {
+        font-size: 21px;
+      }
+
+      .mini-info strong {
+        font-size: 15px;
+      }
+
+      .qr-section {
+        padding: 66px 18px 58px;
+      }
+    }
+
+    @media (min-width: 740px) {
+      .experience {
+        margin-top: 28px;
+        margin-bottom: 28px;
+        border: 1px solid rgba(215, 181, 117, 0.18);
+      }
+
+      .hero {
+        min-height: 920px;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .camera-wrap, .camera-ring, .scroll-hint { animation: none; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
     }
   </style>
 </head>
+
 <body>
+  <div class="ambient-bg" aria-hidden="true"></div>
 
-<!-- ── HERO ── -->
-<section class="hero">
+  <main class="experience">
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
 
-  <div class="hero-bg"></div>
-
-  <div class="hero-frame">
-    <div class="corner-tr"></div>
-    <div class="corner-bl"></div>
-    <div class="corner-br"></div>
-  </div>
-
-  <!-- Glass card -->
-  <div class="glass-card">
-
-    <div class="camera-wrap">
-      <div class="camera-ring"></div>
-      <svg class="camera-svg" viewBox="0 0 160 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="10" y="36" width="140" height="76" rx="12" stroke="#C9A96E" stroke-width="2.2"/>
-        <path d="M52 36V26C52 23.8 53.8 22 56 22H90C92.2 22 94 23.8 94 26V36" stroke="#C9A96E" stroke-width="2.2"/>
-        <circle cx="80" cy="76" r="26" stroke="#C9A96E" stroke-width="2.2"/>
-        <circle cx="80" cy="76" r="16" stroke="#C9A96E" stroke-width="1.4"/>
-        <circle cx="88" cy="68" r="3" fill="#C9A96E" opacity=".45"/>
-        <rect x="120" y="46" width="14" height="10" rx="3" stroke="#C9A96E" stroke-width="1.6"/>
-        <circle cx="32" cy="50" r="5" stroke="#C9A96E" stroke-width="1.6"/>
-      </svg>
-    </div>
-
-    <p class="eyebrow" id="eyebrowText">Cardia Studios · Celeste &amp; Mario</p>
-
-    <div class="title-block">
-      <span class="title-plain">Capture</span>
-      <span class="title-script">the Love</span>
-    </div>
-
-    <div class="divider">
-      <div class="divider-line"></div>
-      <div class="divider-diamond"></div>
-      <div class="divider-line"></div>
-    </div>
-
-    <p class="subtitle">
-      Every candid smile, every stolen glance —<br>
-      share your photos with us and help us<br>
-      relive every beautiful moment.
-    </p>
-
-    <!-- Upload UI -->
-    <div style="width:100%" id="uploadZone">
-      <input type="file" id="fileInput" accept="image/*,video/*" multiple />
-
-      <div class="drop-zone" id="dropZone">
-        <span class="drop-zone-icon">📷</span>
-        <span class="drop-zone-label">Tap to choose photos</span>
-        <span class="drop-zone-sub">JPG · PNG · HEIC · MP4 · Max 100 MB each</span>
+      <div class="frame" aria-hidden="true">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
       </div>
 
-      <div class="file-list" id="fileList"></div>
+      <header class="topbar">
+        <span class="brand-mark">Cardia Studios</span>
+        <span class="topbar-line"></span>
+        <span>Private Album</span>
+      </header>
 
-      <div class="progress-bar-wrap" id="progressWrap">
-        <div class="progress-bar" id="progressBar"></div>
+      <div class="hero-content">
+        <p class="overline" id="eyebrowText">Thomas &amp; Sarah</p>
+
+        <h1 class="hero-title">
+          <span class="small">Capture</span>
+          <span class="script">the Love</span>
+        </h1>
+
+        <div class="ornament" aria-hidden="true">
+          <span></span>
+        </div>
+
+        <p class="hero-subtitle">
+          Share the little moments they may have missed — the smiles, the candlelight, the dancing, the love.
+        </p>
       </div>
 
-      <button class="cta-btn" id="uploadBtn" disabled>
-        <svg viewBox="0 0 24 24"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>
+      <div class="upload-panel-wrap">
+        <div class="upload-panel">
+          <div id="uploadZone">
+            <div class="panel-head">
+              <div class="camera-seal" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4.5 8.2h3l1.4-2h6.2l1.4 2h3a1.8 1.8 0 0 1 1.8 1.8v7.1a1.8 1.8 0 0 1-1.8 1.8h-15a1.8 1.8 0 0 1-1.8-1.8V10a1.8 1.8 0 0 1 1.8-1.8Z"/>
+                  <circle cx="12" cy="13.5" r="3.6"/>
+                  <path d="M18.2 10.3h.01"/>
+                </svg>
+              </div>
+
+              <div>
+                <p class="panel-kicker">Guest photo drop</p>
+                <h2 class="panel-title">Send your memories</h2>
+                <p class="panel-text">No account needed. Select photos or videos from your phone.</p>
+              </div>
+            </div>
+
+            <input type="file" id="fileInput" accept="image/*,video/*,.heic,.HEIC" multiple />
+
+            <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Choose photos or videos to upload">
+              <div class="drop-inner">
+                <span class="drop-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 16V5"/>
+                    <path d="m7 10 5-5 5 5"/>
+                    <path d="M5 18.5h14"/>
+                  </svg>
+                </span>
+                <span class="drop-label">Tap to choose photos</span>
+                <span class="drop-sub">JPG · PNG · HEIC · MP4 · up to 100 MB each</span>
+              </div>
+            </div>
+
+            <div class="file-list" id="fileList" aria-live="polite"></div>
+
+            <div class="progress-wrap" id="progressWrap">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="cta-row">
+              <button class="cta-btn" id="uploadBtn" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                </svg>
+                Send your photos
+              </button>
+
+              <p class="note" id="uploadNote">Private upload · Up to 10 files · Max 100 MB each</p>
+            </div>
+          </div>
+
+          <div class="success-msg" id="successMsg">
+            <div class="success-ring" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12.6 9.2 17 19 7"/>
+              </svg>
+            </div>
+            <h3>Thank you</h3>
+            <p>Your memories have been received. The couple will treasure every photo you shared.</p>
+            <button class="upload-more-btn" id="uploadMoreBtn">Upload more</button>
+          </div>
+        </div>
+
+        <div class="mini-info" aria-label="Upload information">
+          <div>
+            <strong>Private</strong>
+            <span>Album</span>
+          </div>
+          <div>
+            <strong>Fast</strong>
+            <span>No app</span>
+          </div>
+          <div>
+            <strong>Secure</strong>
+            <span>Direct</span>
+          </div>
+        </div>
+
+        <a class="scroll-cue" href="#cardia-qr">Cardia Studios</a>
+      </div>
+    </section>
+
+    <section class="qr-section" id="cardia-qr">
+      <div class="qr-inner">
+        <p class="qr-label">Discover more</p>
+        <h2 class="qr-title">Cardia <em>Studios</em></h2>
+        <p class="qr-text">
+          Scan the QR code to explore Cardia Studios and discover our elegant digital wedding invitations.
+        </p>
+
+        <div class="qr-card">
+          <div class="qr-code-wrap">
+            <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png" alt="Cardia Studios QR code">
+          </div>
+          <p class="qr-caption">Scan to visit Cardia Studios</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="footer-script">Thank you</span>
+      <p class="footer-names" id="footerNames">With love · Thomas &amp; Sarah</p>
+      <p class="powered">
+        Powered by
+        <a href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">Cardia Studios</a>
+      </p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    // ─────────────────────────────────────────────
+    // Configuration
+    // ─────────────────────────────────────────────
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzBdlBWSsjqekii94kusdVGE41EYudEx8YNVUWVtCQAHg5EllII5HIAslbuxdwxZLdPvA/exec";
+    const coupleName = "Thomas & Sarah";
+
+    const MAX_FILES = 10;
+    const MAX_MB = 100;
+    const MAX_BYTES = MAX_MB * 1024 * 1024;
+
+    // ─────────────────────────────────────────────
+    // Text setup
+    // ─────────────────────────────────────────────
+    document.getElementById("eyebrowText").textContent = coupleName;
+    document.getElementById("footerNames").textContent = "With love · " + coupleName;
+
+    // ─────────────────────────────────────────────
+    // State
+    // ─────────────────────────────────────────────
+    let selectedFiles = [];
+    let previewUrls = [];
+
+    const fileInput = document.getElementById("fileInput");
+    const dropZone = document.getElementById("dropZone");
+    const fileList = document.getElementById("fileList");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const progressWrap = document.getElementById("progressWrap");
+    const progressBar = document.getElementById("progressBar");
+    const uploadZone = document.getElementById("uploadZone");
+    const successMsg = document.getElementById("successMsg");
+    const uploadMoreBtn = document.getElementById("uploadMoreBtn");
+    const uploadNote = document.getElementById("uploadNote");
+    const toast = document.getElementById("toast");
+
+    // ─────────────────────────────────────────────
+    // Events
+    // ─────────────────────────────────────────────
+    dropZone.addEventListener("click", () => fileInput.click());
+
+    dropZone.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    dropZone.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      dropZone.classList.add("dragover");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("dragover");
+    });
+
+    dropZone.addEventListener("drop", (event) => {
+      event.preventDefault();
+      dropZone.classList.remove("dragover");
+      addFiles([...event.dataTransfer.files]);
+    });
+
+    fileInput.addEventListener("change", () => {
+      addFiles([...fileInput.files]);
+      fileInput.value = "";
+    });
+
+    uploadBtn.addEventListener("click", startUpload);
+
+    uploadMoreBtn.addEventListener("click", () => {
+      clearSelectedFiles();
+      progressBar.style.width = "0%";
+      progressWrap.style.display = "none";
+      uploadBtn.disabled = true;
+      uploadBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+        </svg>
         Send your photos
-      </button>
-      <p class="cta-note" id="uploadNote">No account needed · Photos go directly to the couple</p>
-    </div>
-
-    <!-- Success -->
-    <div class="success-msg" id="successMsg">
-      <span class="success-icon">🌸</span>
-      <h3>Thank you</h3>
-      <p>Your photos have been received.<br>We'll treasure every one of them.</p>
-      <button class="upload-more-btn" id="uploadMoreBtn">Upload more photos</button>
-    </div>
-
-  </div><!-- /glass-card -->
-
-  <div class="bottom-flourish">
-    <span class="names" id="namesText">Celeste &amp; Mario</span>
-    <span class="scroll-hint">scroll to see how</span>
-  </div>
-
-</section>
-
-<!-- ── HOW IT WORKS ── -->
-<section class="steps-section">
-  <p class="steps-eyebrow">How it works</p>
-  <div class="steps-grid">
-
-    <div class="step">
-      <span class="step-num">I</span>
-      <div class="step-content">
-        <h3>Choose your photos</h3>
-        <p>Tap the area above and select photos or videos from your camera roll. You can pick up to 10 at once.</p>
-      </div>
-    </div>
-
-    <span class="step-connector"></span>
-
-    <div class="step">
-      <span class="step-num">II</span>
-      <div class="step-content">
-        <h3>Send with one tap</h3>
-        <p>Press "Send your photos" — no account, no app, no redirect. It uploads directly from this page.</p>
-      </div>
-    </div>
-
-    <span class="step-connector"></span>
-
-    <div class="step">
-      <span class="step-num">III</span>
-      <div class="step-content">
-        <h3>Done</h3>
-        <p>Your photos go straight to the couple's private album. They'll relive every moment thanks to you.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ── FOOTER ── -->
-<footer class="footer">
-  <span class="footer-script">Thank you</span>
-  <div class="footer-divider">
-    <div class="footer-divider-line"></div>
-    <div class="footer-divider-dot"></div>
-    <div class="footer-divider-line"></div>
-  </div>
-  <p class="footer-note" id="footerNames">With love · Celeste &amp; Mario</p>
-  <p class="footer-brand">Cardia Studios</p>
-</footer>
-
-<script>
-  // ── Configuration ──────────────────────────────────────────
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzBdlBWSsjqekii94kusdVGE41EYudEx8YNVUWVtCQAHg5EllII5HIAslbuxdwxZLdPvA/exec';
-  const coupleName = 'Celeste & Mario';
-
-  document.getElementById('eyebrowText').textContent = 'Cardia Studios · ' + coupleName;
-  document.getElementById('namesText').innerHTML     = coupleName;
-  document.getElementById('footerNames').textContent = 'With love · ' + coupleName;
-
-  // ── Limits ────────────────────────────────────────────────
-  const MAX_FILES = 10;
-  const MAX_MB    = 100;
-  const MAX_BYTES = MAX_MB * 1024 * 1024;
-
-  // ── State ─────────────────────────────────────────────────
-  let selectedFiles = [];
-
-  const fileInput     = document.getElementById('fileInput');
-  const dropZone      = document.getElementById('dropZone');
-  const fileList      = document.getElementById('fileList');
-  const uploadBtn     = document.getElementById('uploadBtn');
-  const progressWrap  = document.getElementById('progressWrap');
-  const progressBar   = document.getElementById('progressBar');
-  const uploadZone    = document.getElementById('uploadZone');
-  const successMsg    = document.getElementById('successMsg');
-  const uploadMoreBtn = document.getElementById('uploadMoreBtn');
-  const uploadNote    = document.getElementById('uploadNote');
-
-  // ── Drop zone ─────────────────────────────────────────────
-  dropZone.addEventListener('click', () => fileInput.click());
-  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
-  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
-  dropZone.addEventListener('drop', e => {
-    e.preventDefault(); dropZone.classList.remove('dragover');
-    addFiles([...e.dataTransfer.files]);
-  });
-  fileInput.addEventListener('change', () => { addFiles([...fileInput.files]); fileInput.value = ''; });
-
-  function addFiles(files) {
-    let skippedSize = 0, skippedCount = 0;
-    files.forEach(f => {
-      if (selectedFiles.find(x => x.name === f.name && x.size === f.size)) return;
-      if (f.size > MAX_BYTES) { skippedSize++; return; }
-      if (selectedFiles.length >= MAX_FILES) { skippedCount++; return; }
-      selectedFiles.push(f);
+      `;
+      uploadZone.style.display = "block";
+      successMsg.style.display = "none";
+      renderFileList();
     });
-    if (skippedSize  > 0) alert(`${skippedSize} file(s) skipped — maximum size is ${MAX_MB}MB per file.`);
-    if (skippedCount > 0) alert(`Maximum ${MAX_FILES} photos per session.`);
-    renderFileList();
-  }
 
-  function renderFileList() {
-    fileList.innerHTML = '';
-    selectedFiles.forEach((f, i) => {
-      const item = document.createElement('div');
-      item.className = 'file-item';
-      item.innerHTML = `<span class="file-item-name">${f.name}</span><span class="file-item-status pending" id="status-${i}">ready</span>`;
-      fileList.appendChild(item);
-    });
-    uploadBtn.disabled = selectedFiles.length === 0;
-    const rem = MAX_FILES - selectedFiles.length;
-    uploadNote.textContent = selectedFiles.length > 0
-      ? `${selectedFiles.length} photo${selectedFiles.length > 1 ? 's' : ''} selected · ${rem} slot${rem !== 1 ? 's' : ''} remaining`
-      : `No account needed · Up to ${MAX_FILES} photos · Max ${MAX_MB}MB each`;
-  }
+    // ─────────────────────────────────────────────
+    // File handling
+    // ─────────────────────────────────────────────
+    function addFiles(files) {
+      let skippedSize = 0;
+      let skippedCount = 0;
+      let skippedDuplicate = 0;
 
-  // ── Upload ────────────────────────────────────────────────
-  uploadBtn.addEventListener('click', startUpload);
+      files.forEach((file) => {
+        const isDuplicate = selectedFiles.some(
+          (existing) => existing.name === file.name && existing.size === file.size && existing.lastModified === file.lastModified
+        );
 
-  async function startUpload() {
-    if (!SCRIPT_URL || selectedFiles.length === 0) return;
-    uploadBtn.disabled = true;
-    progressWrap.style.display = 'block';
-    let done = 0;
+        if (isDuplicate) {
+          skippedDuplicate++;
+          return;
+        }
 
-    for (let i = 0; i < selectedFiles.length; i++) {
-      const f = selectedFiles[i];
-      const status = document.getElementById('status-' + i);
-      status.textContent = 'uploading…'; status.className = 'file-item-status uploading';
+        if (file.size > MAX_BYTES) {
+          skippedSize++;
+          return;
+        }
 
-      try {
-        const base64 = await toBase64(f);
-        await fetch(SCRIPT_URL, {
-          method: 'POST', mode: 'no-cors',
-          body: JSON.stringify({ fileName: f.name, mimeType: f.type || 'image/jpeg', base64, fileIndex: i + 1 })
-        });
-        status.textContent = '✓ sent'; status.className = 'file-item-status done';
-      } catch (err) {
-        status.textContent = '✗ failed'; status.className = 'file-item-status error';
+        if (selectedFiles.length >= MAX_FILES) {
+          skippedCount++;
+          return;
+        }
+
+        selectedFiles.push(file);
+      });
+
+      if (skippedSize > 0) {
+        showToast(`${skippedSize} file(s) skipped because the maximum size is ${MAX_MB} MB each.`);
       }
 
-      done++;
-      progressBar.style.width = Math.round((done / selectedFiles.length) * 100) + '%';
+      if (skippedCount > 0) {
+        showToast(`You can upload up to ${MAX_FILES} files per session.`);
+      }
+
+      if (skippedDuplicate > 0) {
+        showToast(`${skippedDuplicate} duplicate file(s) skipped.`);
+      }
+
+      renderFileList();
     }
 
-    const allDone = [...document.querySelectorAll('.file-item-status')].every(el => el.classList.contains('done'));
-    if (allDone) {
-      setTimeout(() => { uploadZone.style.display = 'none'; successMsg.style.display = 'flex'; }, 600);
-    } else {
-      uploadBtn.disabled = false;
-      uploadBtn.innerHTML = `<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg> Retry failed photos`;
+    function renderFileList() {
+      revokePreviewUrls();
+      fileList.innerHTML = "";
+
+      selectedFiles.forEach((file, index) => {
+        const item = document.createElement("div");
+        item.className = "file-item";
+
+        const thumb = createThumbnail(file);
+
+        const meta = document.createElement("div");
+        meta.className = "file-meta";
+
+        const name = document.createElement("div");
+        name.className = "file-name";
+        name.textContent = file.name;
+
+        const size = document.createElement("div");
+        size.className = "file-size";
+        size.textContent = formatFileSize(file.size);
+
+        meta.appendChild(name);
+        meta.appendChild(size);
+
+        const actions = document.createElement("div");
+        actions.className = "file-actions";
+
+        const status = document.createElement("span");
+        status.className = "file-status pending";
+        status.id = `status-${index}`;
+        status.textContent = "Ready";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "remove-file";
+        removeBtn.setAttribute("aria-label", `Remove ${file.name}`);
+        removeBtn.textContent = "×";
+        removeBtn.addEventListener("click", () => {
+          selectedFiles.splice(index, 1);
+          renderFileList();
+        });
+
+        actions.appendChild(status);
+        actions.appendChild(removeBtn);
+
+        item.appendChild(thumb);
+        item.appendChild(meta);
+        item.appendChild(actions);
+
+        fileList.appendChild(item);
+      });
+
+      uploadBtn.disabled = selectedFiles.length === 0;
+
+      if (selectedFiles.length === 0) {
+        uploadNote.textContent = `Private upload · Up to ${MAX_FILES} files · Max ${MAX_MB} MB each`;
+      } else {
+        const remaining = MAX_FILES - selectedFiles.length;
+        uploadNote.textContent =
+          `${selectedFiles.length} file${selectedFiles.length > 1 ? "s" : ""} selected · ` +
+          `${remaining} slot${remaining !== 1 ? "s" : ""} remaining`;
+      }
     }
-  }
 
-  uploadMoreBtn.addEventListener('click', () => {
-    selectedFiles = [];
-    progressBar.style.width = '0%';
-    progressWrap.style.display = 'none';
-    uploadBtn.innerHTML = `<svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:currentColor"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg> Send your photos`;
-    renderFileList();
-    uploadZone.style.display = 'block';
-    successMsg.style.display = 'none';
-  });
+    function createThumbnail(file) {
+      const isImage = file.type.startsWith("image/");
+      const isVideo = file.type.startsWith("video/");
 
-  function toBase64(file) {
-    return new Promise((resolve, reject) => {
-      const r = new FileReader();
-      r.onload  = () => resolve(r.result.split(',')[1]);
-      r.onerror = reject;
-      r.readAsDataURL(file);
-    });
-  }
-</script>
+      if (isImage) {
+        const img = document.createElement("img");
+        img.className = "thumb";
+        img.alt = "";
+        const url = URL.createObjectURL(file);
+        previewUrls.push(url);
+        img.src = url;
+        return img;
+      }
 
+      const placeholder = document.createElement("div");
+      placeholder.className = "thumb thumb-placeholder";
+      placeholder.innerHTML = isVideo
+        ? `<svg viewBox="0 0 24 24"><path d="M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="m10 9 5 3-5 3V9Z"/></svg>`
+        : `<svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/></svg>`;
+
+      return placeholder;
+    }
+
+    function revokePreviewUrls() {
+      previewUrls.forEach((url) => URL.revokeObjectURL(url));
+      previewUrls = [];
+    }
+
+    function clearSelectedFiles() {
+      selectedFiles = [];
+      revokePreviewUrls();
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024 * 1024) {
+        return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+      }
+
+      return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    }
+
+    // ─────────────────────────────────────────────
+    // Upload
+    // ─────────────────────────────────────────────
+    async function startUpload() {
+      if (!SCRIPT_URL || selectedFiles.length === 0) return;
+
+      uploadBtn.disabled = true;
+      progressWrap.style.display = "block";
+      progressBar.style.width = "0%";
+
+      let completed = 0;
+      let failed = 0;
+
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
+        const status = document.getElementById(`status-${i}`);
+
+        if (status) {
+          status.textContent = "Sending";
+          status.className = "file-status uploading";
+        }
+
+        try {
+          const base64 = await toBase64(file);
+
+          await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({
+              fileName: file.name,
+              mimeType: file.type || "application/octet-stream",
+              base64: base64,
+              fileIndex: i + 1,
+              totalFiles: selectedFiles.length,
+              coupleName: coupleName,
+              uploadedAt: new Date().toISOString()
+            })
+          });
+
+          if (status) {
+            status.textContent = "Sent";
+            status.className = "file-status done";
+          }
+        } catch (error) {
+          failed++;
+
+          if (status) {
+            status.textContent = "Failed";
+            status.className = "file-status error";
+          }
+        }
+
+        completed++;
+        progressBar.style.width = Math.round((completed / selectedFiles.length) * 100) + "%";
+      }
+
+      if (failed === 0) {
+        showToast("Your memories were sent successfully.");
+        setTimeout(() => {
+          uploadZone.style.display = "none";
+          successMsg.style.display = "block";
+        }, 650);
+      } else {
+        uploadBtn.disabled = false;
+        uploadBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 5V2L7 7l5 5V9c3.31 0 6 2.69 6 6a6 6 0 0 1-10.24 4.24l-1.42 1.42A8 8 0 1 0 12 5Z"/>
+          </svg>
+          Retry upload
+        `;
+        showToast(`${failed} file(s) could not be sent. Please try again.`);
+      }
+    }
+
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const result = String(reader.result || "");
+          resolve(result.includes(",") ? result.split(",")[1] : result);
+        };
+
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // ─────────────────────────────────────────────
+    // Toast
+    // ─────────────────────────────────────────────
+    let toastTimer;
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3600);
+    }
+  </script>
 </body>
 </html>
