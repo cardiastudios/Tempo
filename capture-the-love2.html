@@ -17,7 +17,7 @@
     }
 
     :root {
-      --bg-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/wed_alb4.png");
+      --bg-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/Sunny_hall.png");
       --qr-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png");
 
       --content-width: 450px;
@@ -81,9 +81,9 @@
       background-image: var(--bg-image);
       background-position: center;
       background-size: cover;
-      filter: blur(40px) brightness(1.06) saturate(0.94);
-      transform: scale(1.12);
-      opacity: 0.42;
+      filter: blur(22px) brightness(1.04) saturate(1.02);
+      transform: scale(1.08);
+      opacity: 0.58;
     }
 
     .ambient-bg::after {
@@ -91,8 +91,8 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.46), transparent 22rem),
-        linear-gradient(180deg, rgba(255, 250, 240, 0.7), rgba(244, 226, 203, 0.78));
+        radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.28), transparent 22rem),
+        linear-gradient(180deg, rgba(255, 250, 240, 0.42), rgba(244, 226, 203, 0.52));
     }
 
     .experience {
@@ -132,13 +132,13 @@
       z-index: -4;
       background:
         linear-gradient(180deg,
-          rgba(255, 252, 246, 0.58) 0%,
-          rgba(255, 249, 238, 0.32) 24%,
-          rgba(255, 246, 229, 0.2) 48%,
-          rgba(255, 242, 220, 0.8) 100%
+          rgba(255, 252, 246, 0.38) 0%,
+          rgba(255, 249, 238, 0.22) 24%,
+          rgba(255, 246, 229, 0.12) 48%,
+          rgba(255, 242, 220, 0.56) 100%
         ),
-        radial-gradient(circle at 50% 33%, rgba(255, 255, 255, 0.38), transparent 17rem),
-        radial-gradient(circle at 18% 22%, rgba(255, 243, 209, 0.5), transparent 16rem);
+        radial-gradient(circle at 50% 33%, rgba(255, 255, 255, 0.22), transparent 17rem),
+        radial-gradient(circle at 18% 22%, rgba(255, 243, 209, 0.28), transparent 16rem);
       pointer-events: none;
     }
 
@@ -148,8 +148,8 @@
       inset: 0;
       z-index: -3;
       background:
-        linear-gradient(90deg, rgba(255, 248, 235, 0.64), transparent 16%, transparent 84%, rgba(255, 248, 235, 0.64)),
-        radial-gradient(ellipse at center, transparent 34%, rgba(104, 72, 42, 0.18) 100%);
+        linear-gradient(90deg, rgba(255, 248, 235, 0.36), transparent 16%, transparent 84%, rgba(255, 248, 235, 0.36)),
+        radial-gradient(ellipse at center, transparent 34%, rgba(104, 72, 42, 0.12) 100%);
       pointer-events: none;
     }
 
@@ -237,10 +237,10 @@
       gap: 14px;
       padding: 5px 8px;
       margin-top: 8px;
-      color: rgba(64, 44, 31, 0.88);
+      color: #000;
       font-family: "Jost", sans-serif;
       font-size: 9px;
-      font-weight: 500;
+      font-weight: 700;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       text-shadow: 0 1px 14px rgba(255, 255, 255, 0.78);
@@ -290,9 +290,9 @@
       padding: 26px 14px 28px;
       border: 1px solid rgba(156, 119, 64, 0.18);
       background:
-        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.9), rgba(255, 250, 239, 0.56) 56%, rgba(255, 250, 239, 0.2) 100%);
-      backdrop-filter: blur(7px) saturate(1.05);
-      -webkit-backdrop-filter: blur(7px) saturate(1.05);
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.72), rgba(255, 250, 239, 0.42) 56%, rgba(255, 250, 239, 0.12) 100%);
+      backdrop-filter: blur(3px) saturate(1.04);
+      -webkit-backdrop-filter: blur(3px) saturate(1.04);
       box-shadow:
         0 18px 55px rgba(92, 61, 33, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.8);
@@ -413,10 +413,10 @@
       padding: 16px;
       border: 1px solid rgba(156, 119, 64, 0.34);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.74), rgba(255, 247, 232, 0.86)),
-        rgba(255, 249, 238, 0.76);
-      backdrop-filter: blur(18px) saturate(1.18);
-      -webkit-backdrop-filter: blur(18px) saturate(1.18);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 247, 232, 0.68)),
+        rgba(255, 249, 238, 0.54);
+      backdrop-filter: blur(8px) saturate(1.12);
+      -webkit-backdrop-filter: blur(8px) saturate(1.12);
       box-shadow: var(--shadow-xl);
     }
 
@@ -728,6 +728,11 @@
       margin-top: 13px;
     }
 
+    /* Auto-upload version: guests only tap to choose, then upload starts immediately */
+    #uploadBtn {
+      display: none;
+    }
+
     .cta-btn {
       position: relative;
       isolation: isolate;
@@ -907,9 +912,9 @@
       padding: 12px 12px;
       border: 1px solid rgba(156, 119, 64, 0.24);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 247, 232, 0.82));
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 247, 232, 0.66));
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
       box-shadow: 0 16px 40px rgba(90, 58, 30, 0.1);
     }
 
@@ -1009,9 +1014,9 @@
       padding: 10px 12px;
       border: 1px solid rgba(156, 119, 64, 0.24);
       background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 247, 232, 0.8));
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+        linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 247, 232, 0.64));
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
       box-shadow: 0 16px 40px rgba(90, 58, 30, 0.1);
     }
 
@@ -1481,7 +1486,7 @@
 
       <div class="hero-content">
         <div class="title-veil">
-          <p class="overline" id="eyebrowText">Thomas &amp; Sarah</p>
+          <p class="overline" id="eyebrowText">Raymond &amp; Celia</p>
 
           <h1 class="hero-title">
             <span class="small">Capture</span>
@@ -1513,7 +1518,7 @@
               <div>
                 <p class="panel-kicker">Guest photo drop</p>
                 <h2 class="panel-title">Send your memories</h2>
-                <p class="panel-text">No account needed. Select photos or videos from your phone.</p>
+                <p class="panel-text">No account needed. Select photos or videos and they upload automatically.</p>
               </div>
             </div>
 
@@ -1528,7 +1533,7 @@
                     <path d="M5 18.5h14"/>
                   </svg>
                 </span>
-                <span class="drop-label">Tap to choose photos</span>
+                <span class="drop-label">Tap to choose & upload</span>
                 <span class="drop-sub">JPG · PNG · HEIC · MP4 · up to 100 MB each</span>
               </div>
             </div>
@@ -1547,7 +1552,7 @@
                 Send your photos
               </button>
 
-              <p class="note" id="uploadNote">Private upload · Up to 10 files · Max 100 MB each</p>
+              <p class="note" id="uploadNote">Private automatic upload · Up to 10 files · Max 100 MB each</p>
             </div>
           </div>
 
@@ -1574,7 +1579,7 @@
               <p class="gallery-text">View the photos and videos shared by everyone.</p>
             </div>
 
-            <a class="gallery-btn" href="https://drive.google.com/drive/folders/17d09TkziZWdPpoPPFwXnxm8TLUZ-gUwN?dmr=1&amp;ec=wgc-drive-%5Bmodule%5D-goto" target="_blank" rel="noopener">
+            <a class="gallery-btn" href="https://drive.google.com/drive/folders/17d09TkziZWdPpoPPFwXnxm8TLUZ-gUwN?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v10h16V7H4Zm2 8 3.2-4 2.4 3 1.7-2.1L18 15H6Zm10.2-5.5a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8Z"/>
               </svg>
@@ -1596,31 +1601,12 @@
             <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png" alt="Cardia Studios QR code">
           </a>
         </div>
-
-        <a class="scroll-cue" href="#cardia-qr">More from Cardia Studios</a>
-      </div>
-    </section>
-
-    <section class="qr-section" id="cardia-qr">
-      <div class="qr-inner">
-        <p class="qr-label">Discover more</p>
-        <h2 class="qr-title">Cardia Studios</h2>
-        <p class="qr-text">
-          Scan the QR code to explore Cardia Studios and discover our elegant digital wedding invitations.
-        </p>
-
-        <div class="qr-card">
-          <div class="qr-code-wrap">
-            <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png" alt="Cardia Studios QR code">
-          </div>
-          <p class="qr-caption">Scan to visit Cardia Studios</p>
-        </div>
       </div>
     </section>
 
     <footer class="footer">
       <span class="footer-script">Thank you</span>
-      <p class="footer-names" id="footerNames">With love · Thomas &amp; Sarah</p>
+      <p class="footer-names" id="footerNames">With love · Raymond &amp; Celia · 16th of July 2026</p>
       <p class="powered">
         Powered by
         <a href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">Cardia Studios</a>
@@ -1632,17 +1618,19 @@
 
   <script>
     const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyZcsnCCgaZMP4lotemXbf_WNqRif0KYO7dGAzPfix_ulGSyEuYHfdYWK4jeZ2vrER18g/exec";
-    const coupleName = "Thomas & Sarah";
+    const coupleName = "Raymond & Celia";
+    const weddingDate = "16th of July 2026";
 
     const MAX_FILES = 10;
     const MAX_MB = 100;
     const MAX_BYTES = MAX_MB * 1024 * 1024;
 
     document.getElementById("eyebrowText").textContent = coupleName;
-    document.getElementById("footerNames").textContent = "With love · " + coupleName;
+    document.getElementById("footerNames").textContent = "With love · " + coupleName + " · " + weddingDate;
 
     let selectedFiles = [];
     let previewUrls = [];
+    let isUploading = false;
 
     const fileInput = document.getElementById("fileInput");
     const dropZone = document.getElementById("dropZone");
@@ -1678,11 +1666,13 @@
       event.preventDefault();
       dropZone.classList.remove("dragover");
       addFiles([...event.dataTransfer.files]);
+      if (selectedFiles.length > 0) startUpload();
     });
 
     fileInput.addEventListener("change", () => {
       addFiles([...fileInput.files]);
       fileInput.value = "";
+      if (selectedFiles.length > 0) startUpload();
     });
 
     uploadBtn.addEventListener("click", startUpload);
@@ -1801,7 +1791,7 @@
       uploadBtn.disabled = selectedFiles.length === 0;
 
       if (selectedFiles.length === 0) {
-        uploadNote.textContent = `Private upload · Up to ${MAX_FILES} files · Max ${MAX_MB} MB each`;
+        uploadNote.textContent = `Private automatic upload · Up to ${MAX_FILES} files · Max ${MAX_MB} MB each`;
       } else {
         const remaining = MAX_FILES - selectedFiles.length;
         uploadNote.textContent =
@@ -1852,9 +1842,13 @@
     }
 
     async function startUpload() {
-      if (!SCRIPT_URL || selectedFiles.length === 0) return;
+      if (!SCRIPT_URL || selectedFiles.length === 0 || isUploading) return;
 
+      isUploading = true;
       uploadBtn.disabled = true;
+      dropZone.style.pointerEvents = "none";
+      dropZone.setAttribute("aria-disabled", "true");
+      uploadNote.textContent = "Uploading automatically… please keep this page open.";
       progressWrap.style.display = "block";
       progressBar.style.width = "0%";
 
@@ -1905,12 +1899,18 @@
       }
 
       if (failed === 0) {
+        isUploading = false;
+        dropZone.style.pointerEvents = "";
+        dropZone.removeAttribute("aria-disabled");
         showToast("Your memories were sent successfully.");
         setTimeout(() => {
           uploadZone.style.display = "none";
           successMsg.style.display = "block";
         }, 650);
       } else {
+        isUploading = false;
+        dropZone.style.pointerEvents = "";
+        dropZone.removeAttribute("aria-disabled");
         uploadBtn.disabled = false;
         uploadBtn.innerHTML = `
           <svg viewBox="0 0 24 24" aria-hidden="true">
