@@ -3220,7 +3220,7 @@ z-index:9999!important;
 }
 
 </style>
-<meta name="theme-color" content="#20112e"/>
+<meta name="theme-color" content="#fffdf8"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
 <style id="cardia-modern-striking-redesign">
 /* ═══════════════════════════════════════
@@ -4602,26 +4602,7 @@ document.addEventListener('DOMContentLoaded', function () {
 </button>
 </nav>
 
-<!-- CARDIA PALETTE SWITCHER -->
-<div class="palette-switcher" aria-label="Choose website color palette">
-  <span class="palette-switcher-label">Palette</span>
-  <button class="palette-choice" type="button" data-palette-option="champagne" aria-pressed="true" title="Champagne Ivory">
-    <span class="palette-swatch palette-swatch-champagne" aria-hidden="true"></span>
-    <span class="palette-choice-text">Champagne</span>
-  </button>
-  <button class="palette-choice" type="button" data-palette-option="blush" aria-pressed="false" title="Blush Rose">
-    <span class="palette-swatch palette-swatch-blush" aria-hidden="true"></span>
-    <span class="palette-choice-text">Blush</span>
-  </button>
-  <button class="palette-choice" type="button" data-palette-option="sage" aria-pressed="false" title="Ivory Sage">
-    <span class="palette-swatch palette-swatch-sage" aria-hidden="true"></span>
-    <span class="palette-choice-text">Sage</span>
-  </button>
-  <button class="palette-choice" type="button" data-palette-option="midnight" aria-pressed="false" title="Midnight Gold">
-    <span class="palette-swatch palette-swatch-midnight" aria-hidden="true"></span>
-    <span class="palette-choice-text">Midnight</span>
-  </button>
-</div>
+
 
 <!-- HERO -->
 <section class="hero">
@@ -7158,12 +7139,11 @@ if (document.readyState === 'loading') {
 
 <style id="cardia-wedding-palettes-final">
 /* ═══════════════════════════════════════
-   CARDIA WEDDING PALETTES
-   Softer bridal colors + live palette preview.
-   Change the default by editing body data-palette="champagne".
+   CARDIA CLASSIC IVORY BEIGE PALETTE
+   Soft bridal colors fixed as the only website palette.
 ═══════════════════════════════════════ */
 
-/* Default / fallback: Champagne Ivory */
+/* Fixed default: Classic Ivory Beige */
 body[data-palette="champagne"],
 body:not([data-palette]) {
   --bg: #fff8f0;
@@ -7215,158 +7195,8 @@ body:not([data-palette]) {
   --pal-card-grad: radial-gradient(ellipse at 50% 70%, rgba(234,213,170,.24) 0%, rgba(217,175,168,.11) 55%, transparent 78%);
 }
 
-/* Blush Rose */
-body[data-palette="blush"] {
-  --bg: #fff6f7;
-  --bg2: rgba(255,255,255,.82);
-  --ink: #342228;
-  --ink-lt: #7c6269;
-  --rose: #b96f84;
-  --rose-lt: #e5b6c1;
-  --gold: #c5a06a;
-  --gold-lt: #ead1a1;
-  --plum: #351c28;
-  --plum-2: #5a2e40;
-  --berry: #a04d66;
-  --cream: #fff9f6;
-  --mist: #faedf1;
-  --border: rgba(185,111,132,.22);
-  --glass: rgba(255,255,255,.74);
-  --glass-dark: rgba(53,28,40,.74);
-  --shadow-soft: 0 22px 70px rgba(74,34,45,.12);
-  --shadow-deep: 0 30px 90px rgba(53,28,40,.30);
 
-  --pal-page-bg:
-    radial-gradient(circle at 8% 8%, rgba(229,182,193,.26) 0 18%, transparent 36%),
-    radial-gradient(circle at 92% 12%, rgba(234,209,161,.22) 0 16%, transparent 34%),
-    radial-gradient(circle at 50% 100%, rgba(185,111,132,.14) 0 18%, transparent 38%),
-    linear-gradient(135deg, #fff9f6 0%, #faedf1 48%, #fff3ec 100%);
-  --pal-nav-bg: linear-gradient(135deg, rgba(53,28,40,.88), rgba(111,57,75,.68));
-  --pal-nav-border: rgba(255,235,240,.22);
-  --pal-hero-bg:
-    radial-gradient(circle at 18% 24%, rgba(185,111,132,.36) 0 14%, transparent 36%),
-    radial-gradient(circle at 82% 18%, rgba(234,209,161,.22) 0 13%, transparent 35%),
-    radial-gradient(circle at 50% 100%, rgba(160,77,102,.20) 0 18%, transparent 48%),
-    linear-gradient(145deg, #2a1820 0%, #542d3b 50%, #2c1720 100%);
-  --pal-hero-texture:
-    linear-gradient(120deg, rgba(255,255,255,.055) 0 1px, transparent 1px),
-    radial-gradient(ellipse at 50% 20%, rgba(255,235,240,.12), transparent 55%);
-  --pal-hero-em: linear-gradient(100deg, #fff7e9, #ead1a1 33%, #e5b6c1 70%, #fff1f3);
-  --pal-hero-orb-1: radial-gradient(circle, rgba(234,209,161,.22), transparent 66%);
-  --pal-hero-orb-2: radial-gradient(circle, rgba(229,182,193,.24), transparent 62%);
-  --pal-soft-panel:
-    radial-gradient(circle at 0% 0%, rgba(229,182,193,.14), transparent 32%),
-    radial-gradient(circle at 100% 30%, rgba(234,209,161,.13), transparent 36%),
-    linear-gradient(180deg, #fff9f6 0%, #faedf1 100%);
-  --pal-dark-section:
-    radial-gradient(circle at 18% 0%, rgba(229,182,193,.15), transparent 32%),
-    radial-gradient(circle at 90% 10%, rgba(234,209,161,.12), transparent 34%),
-    linear-gradient(145deg, #2a1820 0%, #542d3b 52%, #2c1720 100%);
-  --pal-special: linear-gradient(135deg, #e5b6c1 0%, #ead1a1 58%, #fff1f3 100%);
-  --pal-card-grad: radial-gradient(ellipse at 50% 70%, rgba(229,182,193,.23) 0%, rgba(234,209,161,.12) 58%, transparent 80%);
-}
 
-/* Ivory Sage */
-body[data-palette="sage"] {
-  --bg: #f8f7ef;
-  --bg2: rgba(255,255,255,.80);
-  --ink: #273126;
-  --ink-lt: #68725f;
-  --rose: #7f967d;
-  --rose-lt: #bacbb2;
-  --gold: #b59b63;
-  --gold-lt: #ead8aa;
-  --plum: #1e3027;
-  --plum-2: #345244;
-  --berry: #7f967d;
-  --cream: #fffaf0;
-  --mist: #edf3e9;
-  --border: rgba(127,150,125,.24);
-  --glass: rgba(255,255,255,.73);
-  --glass-dark: rgba(30,48,39,.76);
-  --shadow-soft: 0 22px 70px rgba(36,56,45,.12);
-  --shadow-deep: 0 30px 90px rgba(20,38,30,.28);
-
-  --pal-page-bg:
-    radial-gradient(circle at 8% 8%, rgba(186,203,178,.28) 0 18%, transparent 36%),
-    radial-gradient(circle at 92% 12%, rgba(234,216,170,.24) 0 16%, transparent 34%),
-    radial-gradient(circle at 50% 100%, rgba(127,150,125,.16) 0 18%, transparent 38%),
-    linear-gradient(135deg, #fffaf0 0%, #edf3e9 45%, #f8f7ef 100%);
-  --pal-nav-bg: linear-gradient(135deg, rgba(30,48,39,.90), rgba(55,84,70,.68));
-  --pal-nav-border: rgba(242,233,207,.22);
-  --pal-hero-bg:
-    radial-gradient(circle at 18% 24%, rgba(127,150,125,.38) 0 14%, transparent 36%),
-    radial-gradient(circle at 82% 18%, rgba(234,216,170,.20) 0 13%, transparent 35%),
-    radial-gradient(circle at 50% 100%, rgba(181,155,99,.18) 0 18%, transparent 48%),
-    linear-gradient(145deg, #17251d 0%, #344c40 50%, #19271f 100%);
-  --pal-hero-texture:
-    linear-gradient(120deg, rgba(255,255,255,.052) 0 1px, transparent 1px),
-    radial-gradient(ellipse at 50% 20%, rgba(242,233,207,.11), transparent 55%);
-  --pal-hero-em: linear-gradient(100deg, #fff7e0, #ead8aa 34%, #bacbb2 70%, #f4fff0);
-  --pal-hero-orb-1: radial-gradient(circle, rgba(234,216,170,.22), transparent 66%);
-  --pal-hero-orb-2: radial-gradient(circle, rgba(186,203,178,.24), transparent 62%);
-  --pal-soft-panel:
-    radial-gradient(circle at 0% 0%, rgba(186,203,178,.16), transparent 32%),
-    radial-gradient(circle at 100% 30%, rgba(234,216,170,.13), transparent 36%),
-    linear-gradient(180deg, #fffaf0 0%, #edf3e9 100%);
-  --pal-dark-section:
-    radial-gradient(circle at 18% 0%, rgba(186,203,178,.15), transparent 32%),
-    radial-gradient(circle at 90% 10%, rgba(234,216,170,.11), transparent 34%),
-    linear-gradient(145deg, #17251d 0%, #344c40 52%, #19271f 100%);
-  --pal-special: linear-gradient(135deg, #bacbb2 0%, #ead8aa 58%, #fff7e0 100%);
-  --pal-card-grad: radial-gradient(ellipse at 50% 70%, rgba(186,203,178,.25) 0%, rgba(234,216,170,.12) 58%, transparent 80%);
-}
-
-/* Midnight Gold */
-body[data-palette="midnight"] {
-  --bg: #f9f5ec;
-  --bg2: rgba(255,255,255,.80);
-  --ink: #252936;
-  --ink-lt: #62697a;
-  --rose: #8c7a96;
-  --rose-lt: #c3b4c9;
-  --gold: #c2a56c;
-  --gold-lt: #f0dcae;
-  --plum: #111a2a;
-  --plum-2: #1b2941;
-  --berry: #7e6b90;
-  --cream: #fff9ed;
-  --mist: #eef0f6;
-  --border: rgba(194,165,108,.25);
-  --glass: rgba(255,255,255,.72);
-  --glass-dark: rgba(17,26,42,.78);
-  --shadow-soft: 0 22px 70px rgba(23,34,52,.12);
-  --shadow-deep: 0 30px 90px rgba(10,16,28,.31);
-
-  --pal-page-bg:
-    radial-gradient(circle at 8% 8%, rgba(195,180,201,.18) 0 18%, transparent 36%),
-    radial-gradient(circle at 92% 12%, rgba(240,220,174,.25) 0 16%, transparent 34%),
-    radial-gradient(circle at 50% 100%, rgba(194,165,108,.14) 0 18%, transparent 38%),
-    linear-gradient(135deg, #fff9ed 0%, #eef0f6 44%, #f9f5ec 100%);
-  --pal-nav-bg: linear-gradient(135deg, rgba(17,26,42,.92), rgba(42,52,78,.72));
-  --pal-nav-border: rgba(240,220,174,.22);
-  --pal-hero-bg:
-    radial-gradient(circle at 18% 24%, rgba(126,107,144,.30) 0 14%, transparent 36%),
-    radial-gradient(circle at 82% 18%, rgba(240,220,174,.22) 0 13%, transparent 35%),
-    radial-gradient(circle at 50% 100%, rgba(194,165,108,.18) 0 18%, transparent 48%),
-    linear-gradient(145deg, #0c1320 0%, #1b2941 50%, #0f1827 100%);
-  --pal-hero-texture:
-    linear-gradient(120deg, rgba(255,255,255,.052) 0 1px, transparent 1px),
-    radial-gradient(ellipse at 50% 20%, rgba(240,220,174,.10), transparent 55%);
-  --pal-hero-em: linear-gradient(100deg, #fff7df, #f0dcae 34%, #c3b4c9 70%, #e9ecff);
-  --pal-hero-orb-1: radial-gradient(circle, rgba(240,220,174,.21), transparent 66%);
-  --pal-hero-orb-2: radial-gradient(circle, rgba(195,180,201,.18), transparent 62%);
-  --pal-soft-panel:
-    radial-gradient(circle at 0% 0%, rgba(195,180,201,.10), transparent 32%),
-    radial-gradient(circle at 100% 30%, rgba(240,220,174,.14), transparent 36%),
-    linear-gradient(180deg, #fff9ed 0%, #eef0f6 100%);
-  --pal-dark-section:
-    radial-gradient(circle at 18% 0%, rgba(195,180,201,.12), transparent 32%),
-    radial-gradient(circle at 90% 10%, rgba(240,220,174,.13), transparent 34%),
-    linear-gradient(145deg, #0c1320 0%, #1b2941 52%, #0f1827 100%);
-  --pal-special: linear-gradient(135deg, #c3b4c9 0%, #f0dcae 58%, #fff7df 100%);
-  --pal-card-grad: radial-gradient(ellipse at 50% 70%, rgba(240,220,174,.22) 0%, rgba(195,180,201,.10) 58%, transparent 80%);
-}
 
 /* Global palette repaint: keeps the modern layout but makes it bridal. */
 html { background: var(--plum) !important; }
@@ -7748,49 +7578,305 @@ body::before {
   }
 }
 </style>
+<style id="cardia-classic-ivory-beige-final-polish">
+/* ═══════════════════════════════════════
+   CARDIA CLASSIC IVORY + BEIGE POLISH
+   Main/default palette: whiter, softer, more classic bridal.
+   Keeps the modern structure but removes the heavier colorful mood.
+═══════════════════════════════════════ */
 
-<script id="cardia-wedding-palette-switcher">
-(function () {
-  var allowed = ['champagne', 'blush', 'sage', 'midnight'];
-  var storageKey = 'cardiaWeddingPalette';
+/* New default palette: Classic Ivory Beige */
+body[data-palette="champagne"],
+body:not([data-palette]) {
+  --bg: #fffdf8;
+  --bg2: rgba(255,255,255,.92);
+  --ink: #383026;
+  --ink-lt: #7a6d5f;
+  --rose: #b7a48a;
+  --rose-lt: #d8cab6;
+  --gold: #b89a63;
+  --gold-lt: #e4d3af;
+  --plum: #463c32;
+  --plum-2: #6d5e4f;
+  --berry: #b7a48a;
+  --cream: #fffdf8;
+  --mist: #f8f1e7;
+  --border: rgba(184,154,99,.24);
+  --glass: rgba(255,255,255,.82);
+  --glass-dark: rgba(70,60,50,.76);
+  --shadow-soft: 0 22px 70px rgba(78,62,43,.095);
+  --shadow-deep: 0 28px 86px rgba(62,50,39,.18);
 
-  function isAllowed(value) {
-    return allowed.indexOf(value) !== -1;
+  --pal-page-bg:
+    radial-gradient(circle at 8% 10%, rgba(232,220,200,.38) 0 15%, transparent 33%),
+    radial-gradient(circle at 92% 8%, rgba(228,211,175,.32) 0 14%, transparent 31%),
+    radial-gradient(circle at 52% 100%, rgba(204,186,158,.24) 0 18%, transparent 42%),
+    linear-gradient(135deg, #fffdf8 0%, #fbf6ee 43%, #f5eadc 100%);
+  --pal-nav-bg: rgba(255,252,246,.90);
+  --pal-nav-border: rgba(184,154,99,.22);
+  --pal-hero-bg:
+    radial-gradient(circle at 12% 18%, rgba(230,218,200,.56) 0 15%, transparent 35%),
+    radial-gradient(circle at 84% 16%, rgba(228,211,175,.40) 0 14%, transparent 33%),
+    radial-gradient(circle at 50% 105%, rgba(210,190,160,.32) 0 23%, transparent 50%),
+    linear-gradient(145deg, #fffefa 0%, #fbf5ec 48%, #f3e7d8 100%);
+  --pal-hero-texture:
+    linear-gradient(120deg, rgba(184,154,99,.055) 0 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 8%, rgba(255,255,255,.95), transparent 64%);
+  --pal-hero-em: linear-gradient(100deg, #9f814b, #b89a63 35%, #d3b985 76%, #a78b5a);
+  --pal-hero-orb-1: radial-gradient(circle, rgba(228,211,175,.30), transparent 67%);
+  --pal-hero-orb-2: radial-gradient(circle, rgba(255,255,255,.62), transparent 62%);
+  --pal-soft-panel:
+    radial-gradient(circle at 0% 0%, rgba(228,211,175,.22), transparent 33%),
+    radial-gradient(circle at 100% 26%, rgba(255,255,255,.80), transparent 36%),
+    linear-gradient(180deg, #fffdf8 0%, #f8f1e7 100%);
+  --pal-dark-section:
+    radial-gradient(circle at 15% 0%, rgba(228,211,175,.16), transparent 34%),
+    radial-gradient(circle at 92% 8%, rgba(255,255,255,.10), transparent 38%),
+    linear-gradient(145deg, #4a4036 0%, #675847 54%, #493f35 100%);
+  --pal-special: linear-gradient(135deg, #fff9ec 0%, #ead9b9 52%, #d4bc8b 100%);
+  --pal-card-grad: radial-gradient(ellipse at 50% 70%, rgba(228,211,175,.34) 0%, rgba(255,255,255,.58) 58%, transparent 82%);
+}
+
+/* Make the default look airy instead of dark. */
+body[data-palette="champagne"] {
+  background: var(--pal-page-bg) !important;
+}
+
+body[data-palette="champagne"] .nav {
+  background: var(--pal-nav-bg) !important;
+  border-bottom: 1px solid var(--pal-nav-border) !important;
+  box-shadow: 0 14px 48px rgba(78,62,43,.075) !important;
+  backdrop-filter: blur(18px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(1.1) !important;
+}
+body[data-palette="champagne"] .nav-brand-text,
+body[data-palette="champagne"] .nav-link,
+body[data-palette="champagne"] .nav-select {
+  color: rgba(56,48,38,.86) !important;
+}
+body[data-palette="champagne"] .nav-link:hover,
+body[data-palette="champagne"] .nav-select:hover {
+  color: var(--gold) !important;
+  background: rgba(184,154,99,.08) !important;
+}
+body[data-palette="champagne"] .nav-select,
+body[data-palette="champagne"] .nav-select option {
+  background-color: #fffaf2 !important;
+  color: var(--ink) !important;
+}
+body[data-palette="champagne"] .nav-hamburger span {
+  background: rgba(56,48,38,.86) !important;
+}
+@media (max-width:640px) {
+  body[data-palette="champagne"] .nav-links.open {
+    background: rgba(255,252,246,.98) !important;
+    border-bottom: 1px solid var(--border) !important;
   }
+}
 
-  function setPalette(value, save) {
-    var palette = isAllowed(value) ? value : 'champagne';
-    if (document.body) {
-      document.body.setAttribute('data-palette', palette);
-    }
-    document.querySelectorAll('[data-palette-option]').forEach(function (button) {
-      var active = button.getAttribute('data-palette-option') === palette;
-      button.setAttribute('aria-pressed', active ? 'true' : 'false');
-    });
-    if (save) {
-      try { localStorage.setItem(storageKey, palette); } catch (e) {}
-    }
-  }
+/* Light bridal hero */
+body[data-palette="champagne"] .hero {
+  background: var(--pal-hero-bg) !important;
+}
+body[data-palette="champagne"] .hero-bg {
+  background: var(--pal-hero-texture) !important;
+  background-size: 96px 96px, auto !important;
+  opacity: 1 !important;
+}
+body[data-palette="champagne"] .hero::before {
+  background: var(--pal-hero-orb-1) !important;
+  opacity: .92 !important;
+}
+body[data-palette="champagne"] .hero::after {
+  background: var(--pal-hero-orb-2) !important;
+  opacity: .78 !important;
+}
+body[data-palette="champagne"] .hero h1 {
+  color: var(--ink) !important;
+  text-shadow: none !important;
+}
+body[data-palette="champagne"] .hero h1 em {
+  background: var(--pal-hero-em) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+}
+body[data-palette="champagne"] .hero-sub,
+body[data-palette="champagne"] .scroll-hint {
+  color: rgba(90,76,60,.66) !important;
+}
+body[data-palette="champagne"] .scroll-arrow {
+  background: linear-gradient(to bottom, rgba(184,154,99,.52), transparent) !important;
+}
+body[data-palette="champagne"] .hero-tag,
+body[data-palette="champagne"] .hero-cta {
+  background: rgba(255,255,255,.68) !important;
+  border-color: rgba(184,154,99,.36) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 12px 34px rgba(78,62,43,.07) !important;
+}
+body[data-palette="champagne"] .hero-cta:hover {
+  background: rgba(184,154,99,.11) !important;
+  color: var(--gold) !important;
+  border-color: var(--gold) !important;
+}
+body[data-palette="champagne"] .hero-top-offer,
+body[data-palette="champagne"] .special-offer-banner {
+  background: rgba(255,250,240,.84) !important;
+  border: 1px solid rgba(184,154,99,.30) !important;
+  box-shadow: 0 18px 48px rgba(78,62,43,.10) !important;
+  color: var(--ink) !important;
+}
+body[data-palette="champagne"] .hero-top-offer strong,
+body[data-palette="champagne"] .special-offer-banner strong {
+  color: var(--ink) !important;
+}
+body[data-palette="champagne"] .hero-top-offer span,
+body[data-palette="champagne"] .special-offer-banner span {
+  color: rgba(90,76,60,.70) !important;
+}
 
-  function initPaletteSwitcher() {
-    var saved = null;
-    try { saved = localStorage.getItem(storageKey); } catch (e) {}
-    setPalette(isAllowed(saved) ? saved : (document.body && document.body.getAttribute('data-palette')) || 'champagne', false);
+/* Whiter cards, beige details */
+body[data-palette="champagne"] .bs-card,
+body[data-palette="champagne"] .card-wrap,
+body[data-palette="champagne"] .price-card,
+body[data-palette="champagne"] .payment-region,
+body[data-palette="champagne"] .share-card,
+body[data-palette="champagne"] .faq-item,
+body[data-palette="champagne"] .rsvp-demo-card,
+body[data-palette="champagne"] .seo-intro-card,
+body[data-palette="champagne"] .add-review-wrap {
+  background: rgba(255,255,255,.88) !important;
+  border: 1px solid rgba(184,154,99,.20) !important;
+  box-shadow: 0 18px 55px rgba(78,62,43,.08) !important;
+}
+body[data-palette="champagne"] .card-header,
+body[data-palette="champagne"] .bs-card-info {
+  background: rgba(255,255,255,.90) !important;
+}
+body[data-palette="champagne"] .bs-card-visual,
+body[data-palette="champagne"] .template-card {
+  background:
+    var(--pal-card-grad),
+    linear-gradient(180deg, #fffdf8 0%, #f5eadc 100%) !important;
+}
+body[data-palette="champagne"] .phone-outer,
+body[data-palette="champagne"] .template-card::before {
+  background: #2d2923 !important;
+  border-color: #2d2923 !important;
+  box-shadow: 0 16px 46px rgba(52,42,32,.20), inset 0 0 0 1px rgba(255,255,255,.08) !important;
+}
+body[data-palette="champagne"] .bs-badge,
+body[data-palette="champagne"] .bs-template-id,
+body[data-palette="champagne"] .price-badge {
+  background: #fffaf2 !important;
+  color: var(--gold) !important;
+  border-color: rgba(184,154,99,.26) !important;
+}
+body[data-palette="champagne"] .section-header p,
+body[data-palette="champagne"] .bestsellers-header p,
+body[data-palette="champagne"] .category-title span,
+body[data-palette="champagne"] .pricing-section > p,
+body[data-palette="champagne"] .faq-header p,
+body[data-palette="champagne"] .share-header p,
+body[data-palette="champagne"] .rsvp-demo-header p,
+body[data-palette="champagne"] .currency-note,
+body[data-palette="champagne"] .template-id-note,
+body[data-palette="champagne"] .pricing-choice-kicker,
+body[data-palette="champagne"] .payment-note {
+  color: #a88d62 !important;
+}
+body[data-palette="champagne"] .gold-line,
+body[data-palette="champagne"] .seo-intro-section .gold-line {
+  background: #c6aa77 !important;
+  opacity: .72 !important;
+}
+body[data-palette="champagne"] .price-amount,
+body[data-palette="champagne"] .card-header-num,
+body[data-palette="champagne"] .bs-card-link,
+body[data-palette="champagne"] .price-feature::before,
+body[data-palette="champagne"] .payment-bullets li::before,
+body[data-palette="champagne"] .mobile-price-tab .mobile-plan-plus,
+body[data-palette="champagne"] .info-btn {
+  color: #b89a63 !important;
+}
+body[data-palette="champagne"] .price-cta {
+  color: #8f744b !important;
+  border-color: rgba(184,154,99,.50) !important;
+  background: rgba(255,255,255,.50) !important;
+}
+body[data-palette="champagne"] .price-cta:hover {
+  background: #b89a63 !important;
+  color: #fffaf2 !important;
+}
 
-    document.querySelectorAll('[data-palette-option]').forEach(function (button) {
-      button.addEventListener('click', function () {
-        setPalette(button.getAttribute('data-palette-option'), true);
-      });
-    });
-  }
+/* Keep contrast sections elegant, but beige instead of heavy dark/plum. */
+body[data-palette="champagne"] .how-section,
+body[data-palette="champagne"] .contact-section,
+body[data-palette="champagne"] #reviews {
+  background: var(--pal-dark-section) !important;
+}
+body[data-palette="champagne"] .how-section h2,
+body[data-palette="champagne"] .contact-section h2,
+body[data-palette="champagne"] .contact-section h3,
+body[data-palette="champagne"] #reviews h2,
+body[data-palette="champagne"] .reviews-header h2 {
+  color: #fffaf2 !important;
+}
+body[data-palette="champagne"] .how-section > p,
+body[data-palette="champagne"] .step p,
+body[data-palette="champagne"] .contact-section h3,
+body[data-palette="champagne"] .footer-note,
+body[data-palette="champagne"] .review-card-text,
+body[data-palette="champagne"] .reviews-header p {
+  color: rgba(255,250,242,.72) !important;
+}
+body[data-palette="champagne"] .step-num,
+body[data-palette="champagne"] .contact-section h2,
+body[data-palette="champagne"] .reviews-big-num,
+body[data-palette="champagne"] .star,
+body[data-palette="champagne"] .review-card-author strong {
+  color: #e8d4ab !important;
+}
+body[data-palette="champagne"] .review-card,
+body[data-palette="champagne"] .contact-item,
+body[data-palette="champagne"] .add-review-wrap {
+  background: rgba(255,255,255,.055) !important;
+  border-color: rgba(255,250,242,.16) !important;
+}
+body[data-palette="champagne"] .form-input,
+body[data-palette="champagne"] .pay-method {
+  background: rgba(255,255,255,.72) !important;
+  border-color: rgba(184,154,99,.22) !important;
+  color: var(--ink) !important;
+}
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPaletteSwitcher);
-  } else {
-    initPaletteSwitcher();
-  }
-})();
-</script>
+/* Featured price card: classic taupe-gold instead of strong color. */
+body[data-palette="champagne"] .price-card.featured,
+body[data-palette="champagne"] .mobile-price-tab.active {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(232,212,171,.13), transparent 36%),
+    linear-gradient(145deg, #4a4036 0%, #675847 55%, #4b4036 100%) !important;
+  border-color: rgba(232,212,171,.52) !important;
+  color: rgba(255,250,242,.90) !important;
+}
+body[data-palette="champagne"] .price-card.featured .price-name,
+body[data-palette="champagne"] .price-card.featured .price-feature,
+body[data-palette="champagne"] .price-card.featured .price-desc,
+body[data-palette="champagne"] .price-card.featured .price-period {
+  color: rgba(255,250,242,.78) !important;
+}
+body[data-palette="champagne"] .price-card.featured .price-amount,
+body[data-palette="champagne"] .price-card.featured .price-cta,
+body[data-palette="champagne"] .price-card.featured .luxury-demo-link {
+  color: #e8d4ab !important;
+}
+body[data-palette="champagne"] .price-card.featured .price-cta:hover {
+  background: #e8d4ab !important;
+  color: #463c32 !important;
+}
+
+</style>
 
 </body>
 </html>
