@@ -4228,6 +4228,129 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+
+<!-- CARDIA FIX: place language + currency inside the mobile dropdown menu -->
+<style id="cardia-mobile-controls-inside-menu-fix">
+/* Desktop/tablet: controls stay in the main nav row, beside the links. */
+.nav-links .nav-controls.nav-controls-in-menu {
+  flex: 0 0 auto !important;
+}
+
+/* Phone: controls are part of the dropdown, not floating over the hero. */
+@media (max-width: 640px) {
+  .nav .nav-links {
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: .42rem !important;
+    padding: 1rem !important;
+    max-height: calc(100svh - 96px) !important;
+    overflow-y: auto !important;
+  }
+
+  .nav .nav-links .nav-link {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 44px !important;
+    text-align: center !important;
+    border-radius: 16px !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu,
+  .nav-controls.nav-controls-in-menu {
+    position: static !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+    z-index: auto !important;
+    display: flex !important;
+    width: 100% !important;
+    margin: .65rem 0 0 !important;
+    padding: .75rem !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: .7rem !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255,255,255,.12) !important;
+    background: linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,.045)) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.08) !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu::before {
+    content: "" !important;
+    display: none !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu .nav-select {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 132px !important;
+    height: 42px !important;
+    padding: 0 .85rem !important;
+    border-radius: 999px !important;
+    background: rgba(12,7,18,.46) !important;
+    border: 1px solid rgba(255,255,255,.16) !important;
+    color: rgba(255,248,237,.96) !important;
+    font-size: .62rem !important;
+    letter-spacing: .10em !important;
+    text-align: center !important;
+    box-shadow: none !important;
+  }
+
+  .nav .nav-links:not(.open) .nav-controls.nav-controls-in-menu {
+    display: none !important;
+  }
+
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu {
+    display: flex !important;
+  }
+}
+
+
+/* ═══════════════════════════════════════
+   FINAL HERO TITLE BREATHING ROOM FIX
+   Gives the main headline more space and prevents italic descenders from being cropped.
+═══════════════════════════════════════ */
+.hero h1 {
+  line-height: 1.03 !important;
+  letter-spacing: -.045em !important;
+  margin: .12rem auto .25rem !important;
+  overflow: visible !important;
+  padding-bottom: .08em !important;
+}
+.hero h1 em {
+  line-height: 1.10 !important;
+  margin-top: .04em !important;
+  padding-bottom: .12em !important;
+  overflow: visible !important;
+}
+
+@media (max-width: 640px) {
+  .hero-content {
+    padding-left: .65rem !important;
+    padding-right: .65rem !important;
+  }
+  .hero h1 {
+    font-size: clamp(2.55rem, 14.6vw, 4.45rem) !important;
+    line-height: 1.08 !important;
+    letter-spacing: -.04em !important;
+    max-width: 96vw !important;
+    padding-bottom: .1em !important;
+  }
+  .hero h1 em {
+    font-size: clamp(2.12rem, 11.8vw, 3.75rem) !important;
+    line-height: 1.16 !important;
+    margin-top: .07em !important;
+    padding-bottom: .18em !important;
+  }
+}
+
+</style>
+
 </head>
 <body>
 <!-- NAV -->
@@ -4244,8 +4367,7 @@ document.addEventListener('DOMContentLoaded', function () {
     -->
 <a class="nav-link" href="#share" onclick="closeMenu()">Share</a>
 <a class="nav-link" href="#contact" onclick="closeMenu()">Contact</a>
-</div>
-<div class="nav-controls">
+<div class="nav-controls nav-controls-in-menu">
 <select aria-label="Language" class="nav-select" id="languageSelect">
 <option value="en">EN</option>
 <option value="fr">FR</option>
@@ -4260,6 +4382,8 @@ document.addEventListener('DOMContentLoaded', function () {
 <option value="CAD">CAD</option>
 <option value="AUD">AUD</option>
 </select>
+</div>
+
 </div>
 <button aria-label="Menu" class="nav-hamburger" id="navHamburger" onclick="toggleMenu()">
 <span></span><span></span><span></span>
