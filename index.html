@@ -1394,8 +1394,6 @@ textarea.form-input { resize: vertical; min-height: 90px; }
 }
 
 
-
-
 /* ═══════════════════════════════════════
    CARDIA MODERN REFRESH — requested homepage-only edits
 ═══════════════════════════════════════ */
@@ -3103,8 +3101,6 @@ z-index:9999!important;
 }
 
 
-
-
 /* CARDIA FIX — only RSVP demo, Pricing, and FAQ are foldable */
 .target-fold-toggle {
   width: min(920px, calc(100% - 2rem));
@@ -3220,7 +3216,7 @@ z-index:9999!important;
 }
 
 </style>
-<meta name="theme-color" content="#2a2018"/>
+<meta name="theme-color" content="#fffdf8"/>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&amp;display=swap" rel="stylesheet"/>
 <style id="cardia-modern-striking-redesign">
 /* ═══════════════════════════════════════
@@ -4563,6 +4559,1536 @@ document.addEventListener('DOMContentLoaded', function () {
 }
 </script>
 
+
+<style id="cardia-anti-flash-critical-fix">
+/* CARDIA FIX: prevent flash of older dark/purple design before final CSS is parsed. */
+html { background: #fffdf8 !important; }
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(184,144,60,.08), transparent 32%),
+    linear-gradient(180deg, #fffdf8 0%, #F7F7F7 34%, #f4eee5 100%) !important;
+  color: #2a2018 !important;
+}
+.nav {
+  background: rgba(255,250,242,.86) !important;
+  border-color: rgba(184,144,60,.25) !important;
+  color: #2a2018 !important;
+}
+.hero {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.92) 0 7%, transparent 28%),
+    radial-gradient(circle at 80% 18%, rgba(184,144,60,.14) 0 11%, transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(154,106,88,.12) 0 18%, transparent 46%),
+    linear-gradient(180deg, #fffdf8 0%, #fbf7ef 48%, #efe5d8 100%) !important;
+}
+</style>
+
+<style id="cardia-album-no-info-final-fix">
+  /* Final targeted fix: remove ONLY the (i) tooltip icons inside the Wedding Photo Album QR Card feature boxes. */
+  #photo-album-service .album-service-features .info-btn,
+  .share-section .album-service-features .info-btn {
+    display: none !important;
+  }
+</style>
+
+<style id="cardia-index2-color-match-final">
+/* ═══════════════════════════════════════
+   CARDIA COLORS — matched to index2.html
+   Warm chocolate, soft rose, classic gold, and clean ivory/white panels.
+   Keeps the modern layout, removes the whitish/beige-only look and all purple hover states.
+═══════════════════════════════════════ */
+
+:root,
+body {
+  --bg:      #F7F7F7;
+  --bg2:     #ffffff;
+  --ink:     #2a2018;
+  --ink-lt:  #6b5a48;
+  --rose:    #9a6a58;
+  --rose-lt: #c8988a;
+  --gold:    #b8903c;
+  --gold-lt: #d4b870;
+  --plum:    #2a2018;
+  --plum-2:  #3c2d24;
+  --berry:   #9a6a58;
+  --cream:   #f5f0e8;
+  --mist:    #f0ece4;
+  --border:  rgba(155,120,90,.20);
+  --glass:   rgba(255,255,255,.76);
+  --glass-dark: rgba(42,32,24,.76);
+  --shadow-soft: 0 16px 50px rgba(42,32,24,.10);
+  --shadow-deep: 0 24px 80px rgba(42,32,24,.26);
+}
+
+html {
+  background: var(--ink) !important;
+}
+
+body {
+  color: var(--ink) !important;
+  background:
+    radial-gradient(ellipse at 12% 6%, rgba(154,106,88,.070) 0%, transparent 42%),
+    radial-gradient(ellipse at 92% 12%, rgba(184,144,60,.065) 0%, transparent 44%),
+    linear-gradient(180deg, #F7F7F7 0%, #f5f1ec 48%, #F7F7F7 100%) !important;
+}
+
+body::before {
+  opacity: .14 !important;
+  background-image:
+    linear-gradient(rgba(42,32,24,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(42,32,24,.025) 1px, transparent 1px) !important;
+}
+
+/* NAV — same warm chocolate identity as index2.html */
+.nav {
+  background: rgba(42,32,24,.92) !important;
+  border: 1px solid rgba(212,184,112,.16) !important;
+  box-shadow: 0 18px 55px rgba(42,32,24,.22) !important;
+}
+.nav-brand-text,
+.nav-link,
+.nav-select {
+  color: rgba(240,220,200,.86) !important;
+}
+.nav-link:hover,
+.nav-select:hover {
+  background: rgba(184,144,60,.12) !important;
+  color: var(--gold-lt) !important;
+}
+.nav-select,
+.nav-select option {
+  background-color: var(--ink) !important;
+  color: #f0dcc8 !important;
+}
+.nav-hamburger span { background: rgba(200,180,160,.86) !important; }
+@media (max-width: 640px) {
+  .nav-links.open {
+    background: rgba(42,32,24,.985) !important;
+    border: 1px solid rgba(212,184,112,.14) !important;
+  }
+}
+
+/* HERO — original dark brown / rose / gold mood, not purple */
+.hero {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(154,106,88,.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(184,144,60,.15) 0%, transparent 55%),
+    var(--ink) !important;
+}
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(154,106,88,.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(184,144,60,.15) 0%, transparent 55%) !important;
+  background-size: auto !important;
+  opacity: 1 !important;
+}
+.hero::before,
+.hero::after {
+  background: none !important;
+  opacity: 0 !important;
+}
+.hero h1 {
+  color: #f5f0e8 !important;
+  text-shadow: none !important;
+}
+.hero h1 em {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: var(--gold-lt) !important;
+  -webkit-text-fill-color: var(--gold-lt) !important;
+}
+.hero-sub,
+.scroll-hint {
+  color: rgba(200,180,160,.62) !important;
+}
+.scroll-arrow {
+  background: linear-gradient(to bottom, rgba(200,180,160,.46), transparent) !important;
+}
+.hero-tag,
+.hero-cta,
+.contact-cta,
+.form-submit {
+  background: transparent !important;
+  border-color: rgba(184,144,60,.48) !important;
+  color: var(--gold-lt) !important;
+  box-shadow: none !important;
+}
+.hero-cta:hover,
+.contact-cta:hover,
+.form-submit:hover {
+  background: rgba(184,144,60,.12) !important;
+  border-color: var(--gold-lt) !important;
+  color: #fff !important;
+}
+.hero-top-offer,
+.special-offer-banner {
+  background: rgba(245,240,232,.92) !important;
+  border: 1px solid rgba(184,144,60,.34) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 16px 45px rgba(42,32,24,.16) !important;
+}
+.hero-top-offer strong,
+.special-offer-banner strong { color: var(--ink) !important; }
+.hero-top-offer span,
+.special-offer-banner span { color: var(--ink-lt) !important; }
+
+/* LIGHT SECTIONS */
+.section-header,
+#templates,
+#bestsellers,
+.seo-intro-section,
+.collection-subsection,
+.pricing-section,
+.faq-section,
+.share-section,
+.rsvp-demo-section {
+  background:
+    radial-gradient(ellipse at 12% 0%, rgba(154,106,88,.055) 0%, transparent 48%),
+    radial-gradient(ellipse at 88% 12%, rgba(184,144,60,.052) 0%, transparent 46%),
+    var(--bg) !important;
+}
+.section-header h2,
+.bestsellers-header h2,
+.category-title,
+.pricing-section > h2,
+.faq-header h2,
+.share-header h2,
+.rsvp-demo-header h2,
+.seo-intro-section h2,
+.price-name,
+.bs-card-name,
+.card-header-name,
+.target-fold-title,
+.share-details h3,
+.rsvp-demo-step h3,
+.album-service-copy h3 {
+  color: var(--ink) !important;
+}
+.section-header p,
+.bestsellers-header p,
+.category-title span,
+.pricing-section > p,
+.faq-header p,
+.share-header p,
+.rsvp-demo-header p,
+.currency-note,
+.template-id-note,
+.pricing-choice-kicker,
+.payment-note,
+.faq-kicker {
+  color: var(--rose-lt) !important;
+}
+.gold-line,
+.seo-intro-section .gold-line {
+  background: var(--gold) !important;
+  opacity: .55 !important;
+}
+
+/* CARDS — clean whites with warm beige preview zones */
+.bs-card,
+.card-wrap,
+.price-card,
+.payment-region,
+.share-card,
+.faq-item,
+.rsvp-demo-card,
+.rsvp-demo-panel,
+.seo-intro-card,
+.add-review-wrap,
+.album-service-card {
+  background: #fff !important;
+  border-color: var(--border) !important;
+  box-shadow: 0 8px 40px rgba(42,32,24,.10) !important;
+}
+.bs-card:hover,
+.card-wrap:hover,
+.price-card:hover,
+.share-card:hover,
+.faq-item:hover {
+  box-shadow: 0 20px 60px rgba(42,32,24,.16) !important;
+}
+.bs-card-visual,
+.template-card {
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(184,144,60,.18) 0%, transparent 70%),
+    #f0ece4 !important;
+}
+.card-header,
+.bs-card-info {
+  background: #fff !important;
+  border-color: rgba(155,120,90,.12) !important;
+}
+.phone-outer,
+.template-card::before,
+.rsvp-demo-phone {
+  background: #1a1210 !important;
+  border-color: #1a1210 !important;
+  box-shadow: 0 12px 50px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.08) !important;
+}
+.bs-badge,
+.bs-template-id,
+.price-badge {
+  background: #fff !important;
+  border-color: rgba(184,144,60,.30) !important;
+  color: var(--gold) !important;
+}
+.card-header-num,
+.bs-card-link,
+.price-amount,
+.price-feature::before,
+.payment-bullets li::before,
+.mobile-price-tab .mobile-plan-plus,
+.info-btn,
+.faq-question::after,
+.rsvp-demo-num,
+.star,
+.review-card-author strong {
+  color: var(--gold) !important;
+}
+.bs-card-desc,
+.price-desc,
+.price-feature,
+.payment-region p,
+.payment-bullets li,
+.pay-method,
+.faq-answer,
+.share-details p,
+.rsvp-demo-card p,
+.rsvp-demo-copy-body p,
+.rsvp-demo-list,
+.seo-intro-card p,
+.pricing-choice-text,
+.mobile-plan-short,
+.album-service-copy p,
+.album-service-features li {
+  color: var(--ink-lt) !important;
+}
+
+/* BUTTONS + INTERACTIVE ELEMENTS */
+.price-cta,
+.rsvp-demo-btn,
+.share-btn,
+.copy-link-btn,
+.album-service-cta {
+  border-color: rgba(154,106,88,.50) !important;
+  color: var(--rose) !important;
+  background: transparent !important;
+}
+.price-cta:hover,
+.rsvp-demo-btn:hover,
+.share-btn:hover,
+.copy-link-btn:hover,
+.album-service-cta:hover {
+  background: var(--rose) !important;
+  border-color: var(--rose) !important;
+  color: #fff !important;
+}
+.rsvp-demo-btn.primary,
+.copy-link-btn {
+  background: var(--ink) !important;
+  color: var(--gold-lt) !important;
+  border-color: var(--ink) !important;
+}
+.rsvp-demo-btn.primary:hover,
+.copy-link-btn:hover {
+  background: var(--rose) !important;
+  color: #fff !important;
+  border-color: var(--rose) !important;
+}
+.form-input,
+.pay-method,
+.share-url-box {
+  background: rgba(255,255,255,.62) !important;
+  border-color: var(--border) !important;
+  color: var(--ink) !important;
+}
+.form-input::placeholder { color: rgba(107,90,72,.50) !important; }
+.form-input:focus { border-color: rgba(184,144,60,.55) !important; }
+
+/* DARK SECTIONS — exactly the warm chocolate direction of index2.html */
+.how-section,
+.contact-section,
+#reviews {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184,144,60,.08) 0%, transparent 60%),
+    var(--ink) !important;
+}
+.how-section h2,
+.contact-section h2,
+.contact-section h3,
+#reviews h2,
+.reviews-header h2,
+.step h3 {
+  color: #f5f0e8 !important;
+}
+.how-section > p,
+.step p,
+.contact-section h3,
+.footer-note,
+.review-card-text,
+.reviews-header p,
+.contact-label,
+.review-card-author,
+.reviews-count {
+  color: rgba(200,180,160,.60) !important;
+}
+.step-num,
+.contact-section h2,
+.reviews-big-num {
+  color: var(--gold-lt) !important;
+}
+.review-card,
+.contact-item,
+.add-review-wrap {
+  background: rgba(255,255,255,.04) !important;
+  border-color: rgba(200,180,160,.12) !important;
+}
+.review-card:hover,
+.contact-item:hover {
+  border-color: rgba(184,144,60,.30) !important;
+}
+.contact-value,
+.contact-value a {
+  color: #f0ebe0 !important;
+}
+.contact-value a:hover { color: var(--gold-lt) !important; }
+
+/* FEATURED PRICING + MOBILE ACTIVE STATES */
+.price-card.featured,
+.mobile-price-tab.active {
+  background: var(--ink) !important;
+  border-color: var(--gold) !important;
+  color: #f0ebe0 !important;
+}
+.price-card.featured .price-name,
+.price-card.featured .price-feature,
+.price-card.featured .price-desc,
+.price-card.featured .price-period,
+.mobile-price-tab.active .mobile-plan-name,
+.mobile-price-tab.active .mobile-plan-tag,
+.mobile-price-tab.active .mobile-plan-short {
+  color: rgba(240,220,200,.82) !important;
+}
+.price-card.featured .price-amount,
+.price-card.featured .price-cta,
+.price-card.featured .luxury-demo-link,
+.mobile-price-tab.active .mobile-plan-plus,
+.mobile-price-tab.active::after {
+  color: var(--gold-lt) !important;
+}
+.price-card.featured .price-cta {
+  border-color: var(--gold) !important;
+  background: transparent !important;
+}
+.price-card.featured .price-cta:hover {
+  background: var(--gold) !important;
+  color: var(--ink) !important;
+}
+
+/* FOLDABLE SECTIONS — remove beige/purple hover; use original chocolate + gold */
+.target-fold-toggle {
+  background: rgba(255,255,255,.78) !important;
+  border: 1px solid rgba(155,120,90,.22) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 12px 34px rgba(42,32,24,.055) !important;
+}
+.target-fold-toggle:hover,
+.target-fold-toggle.is-open,
+.target-fold-toggle.is-open:hover {
+  background: var(--ink) !important;
+  color: var(--gold-lt) !important;
+  border-color: var(--ink) !important;
+  box-shadow: 0 18px 55px rgba(42,32,24,.18) !important;
+}
+.target-fold-toggle:hover .target-fold-title,
+.target-fold-toggle.is-open .target-fold-title {
+  color: var(--gold-lt) !important;
+}
+.target-fold-kicker {
+  color: var(--rose) !important;
+}
+.target-fold-toggle:hover .target-fold-kicker,
+.target-fold-toggle.is-open .target-fold-kicker {
+  color: rgba(240,220,200,.72) !important;
+}
+.target-fold-toggle::after {
+  color: var(--gold) !important;
+}
+.target-fold-toggle:hover::after,
+.target-fold-toggle.is-open::after {
+  color: var(--gold-lt) !important;
+}
+.target-fold-toggle:focus-visible {
+  outline: 2px solid rgba(184,144,60,.50) !important;
+  outline-offset: 4px !important;
+}
+
+@media (max-width:640px) {
+  .mobile-price-tab {
+    background: rgba(255,255,255,.80) !important;
+    border-color: rgba(155,120,90,.24) !important;
+    color: var(--ink) !important;
+  }
+  .mobile-price-tab.active {
+    background: var(--ink) !important;
+    color: var(--gold-lt) !important;
+    border-color: var(--ink) !important;
+    box-shadow: 0 18px 55px rgba(42,32,24,.18) !important;
+  }
+}
+</style>
+
+<style id="cardia-final-white-classic-homepage-fix">
+/* FINAL CARDIA FIX — light classic opening, smaller titles, compact SEO/About */
+:root {
+  --bg: #F7F7F7;
+  --bg2: #ffffff;
+  --ink: #2a2018;
+  --ink-lt: #6b5a48;
+  --rose: #9a6a58;
+  --rose-lt: #c8988a;
+  --gold: #b8903c;
+  --gold-lt: #d4b870;
+  --border: rgba(155,120,90,.20);
+}
+
+body {
+  background:
+    radial-gradient(circle at 15% 0%, rgba(184,144,60,.08), transparent 32%),
+    linear-gradient(180deg, #fffdf8 0%, #F7F7F7 34%, #f4eee5 100%) !important;
+}
+
+/* Light classic navigation at the top */
+.nav {
+  background: rgba(255,250,242,.86) !important;
+  border: 1px solid rgba(184,144,60,.25) !important;
+  box-shadow: 0 18px 55px rgba(42,32,24,.11) !important;
+  color: var(--ink) !important;
+}
+.nav-brand-text {
+  color: var(--ink) !important;
+}
+.nav-link {
+  color: rgba(42,32,24,.72) !important;
+}
+.nav-link:hover {
+  background: rgba(184,144,60,.12) !important;
+  color: var(--ink) !important;
+}
+.nav-select {
+  background: rgba(255,255,255,.62) !important;
+  border-color: rgba(155,120,90,.24) !important;
+  color: var(--ink) !important;
+}
+.nav-select option {
+  background: #fffaf2 !important;
+  color: var(--ink) !important;
+}
+.nav-hamburger span {
+  background: var(--ink) !important;
+}
+
+/* Start the website with a white / ivory classic wedding look */
+.hero {
+  min-height: 100svh !important;
+  padding: 9.2rem 2rem 3.3rem !important;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.92) 0 7%, transparent 28%),
+    radial-gradient(circle at 80% 18%, rgba(184,144,60,.14) 0 11%, transparent 34%),
+    radial-gradient(circle at 50% 100%, rgba(154,106,88,.12) 0 18%, transparent 46%),
+    linear-gradient(180deg, #fffdf8 0%, #fbf7ef 48%, #efe5d8 100%) !important;
+}
+.hero::before {
+  background: radial-gradient(circle, rgba(212,184,112,.22), transparent 66%) !important;
+  opacity: .70 !important;
+}
+.hero::after {
+  background: radial-gradient(circle, rgba(154,106,88,.12), transparent 62%) !important;
+  opacity: .75 !important;
+}
+.hero-bg {
+  opacity: .72 !important;
+  background:
+    linear-gradient(120deg, rgba(184,144,60,.055) 0 1px, transparent 1px),
+    radial-gradient(ellipse at 50% 20%, rgba(255,255,255,.70), transparent 58%) !important;
+  background-size: 92px 92px, auto !important;
+}
+.hero-content {
+  max-width: 880px !important;
+}
+.hero-top-offer {
+  background: rgba(255,255,255,.86) !important;
+  border-color: rgba(184,144,60,.30) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 16px 52px rgba(42,32,24,.10) !important;
+}
+.hero-top-offer strong {
+  color: var(--ink) !important;
+}
+.hero-top-offer span {
+  color: rgba(42,32,24,.58) !important;
+}
+.hero-tag {
+  background: rgba(255,255,255,.72) !important;
+  border-color: rgba(184,144,60,.34) !important;
+  color: var(--gold) !important;
+  box-shadow: 0 12px 34px rgba(42,32,24,.07), inset 0 1px 0 rgba(255,255,255,.86) !important;
+}
+.hero-tag::before {
+  color: var(--gold) !important;
+}
+.hero h1 {
+  max-width: 820px !important;
+  color: var(--ink) !important;
+  font-size: clamp(2.75rem, 6.2vw, 5.55rem) !important;
+  line-height: 1.02 !important;
+  letter-spacing: -.045em !important;
+  text-shadow: none !important;
+}
+.hero h1 em {
+  font-size: clamp(2.2rem, 4.85vw, 4.55rem) !important;
+  color: var(--gold) !important;
+  background: linear-gradient(100deg, #b8903c, #d4b870 46%, #9a6a58) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  text-shadow: none !important;
+}
+.hero-sub {
+  color: rgba(42,32,24,.62) !important;
+  font-size: clamp(.72rem, 1vw, .86rem) !important;
+  max-width: 690px !important;
+  margin: 1.05rem auto 1.1rem !important;
+}
+.hero-intro {
+  color: rgba(42,32,24,.74) !important;
+  max-width: 590px !important;
+  margin: 0 auto 1.8rem !important;
+  font-size: clamp(.82rem, 1.15vw, .94rem) !important;
+  line-height: 1.75 !important;
+}
+.hero-cta {
+  background: var(--ink) !important;
+  color: var(--gold-lt) !important;
+  box-shadow: 0 14px 42px rgba(42,32,24,.18) !important;
+}
+.hero-cta:hover {
+  background: var(--rose) !important;
+  color: #fff !important;
+}
+.scroll-hint {
+  color: rgba(42,32,24,.42) !important;
+}
+.scroll-arrow {
+  background: linear-gradient(to bottom, rgba(184,144,60,.62), transparent) !important;
+}
+.hero-template-track img {
+  background: rgba(255,255,255,.82) !important;
+  border-color: rgba(184,144,60,.24) !important;
+  box-shadow: 0 24px 60px rgba(42,32,24,.16) !important;
+}
+
+/* Smaller titles across the site */
+.section-header h2,
+.bestsellers-header h2,
+.bestsellers-header h3,
+.pricing-section > h2,
+.faq-header h2,
+.share-header h2,
+.rsvp-demo-header h2,
+.seo-intro-section h2,
+.about-seo-body h2,
+.album-service-copy h3 {
+  font-size: clamp(1.85rem, 3.25vw, 3.05rem) !important;
+  line-height: 1.08 !important;
+  letter-spacing: -.035em !important;
+}
+.category-title {
+  font-size: clamp(1.25rem, 2.2vw, 1.65rem) !important;
+}
+.card-header-name {
+  font-size: clamp(1.55rem, 2.35vw, 2rem) !important;
+}
+.bs-card-name,
+.price-name,
+.target-fold-title {
+  font-size: clamp(1.28rem, 2vw, 1.72rem) !important;
+  line-height: 1.12 !important;
+}
+.how-section h2,
+.contact-section h2,
+.reviews-header h2 {
+  font-size: clamp(1.85rem, 3.4vw, 3.05rem) !important;
+}
+
+/* Hide the long SEO copy inside a neat About accordion */
+.seo-intro-section {
+  display: none !important;
+}
+.about-seo-section {
+  background: transparent !important;
+  padding: 2.1rem 2rem .75rem !important;
+  position: relative !important;
+  z-index: 2 !important;
+}
+.about-seo-content {
+  max-width: 980px !important;
+  margin: 0 auto !important;
+}
+.about-seo-details {
+  background: rgba(255,255,255,.82) !important;
+  border: 1px solid rgba(155,120,90,.20) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 12px 34px rgba(42,32,24,.06) !important;
+  overflow: hidden !important;
+}
+.about-seo-details summary {
+  list-style: none !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 1.2rem !important;
+  padding: 1.25rem 1.5rem !important;
+  color: var(--ink) !important;
+}
+.about-seo-details summary::-webkit-details-marker {
+  display: none !important;
+}
+.about-seo-details summary::after {
+  content: "+" !important;
+  color: var(--gold) !important;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1.25rem !important;
+  line-height: 1 !important;
+}
+.about-seo-details[open] summary {
+  background: var(--ink) !important;
+  color: var(--gold-lt) !important;
+}
+.about-seo-details[open] summary::after {
+  content: "−" !important;
+  color: var(--gold-lt) !important;
+}
+.about-seo-title {
+  display: block !important;
+  font-family: 'Playfair Display', 'Cormorant Garamond', serif !important;
+  font-size: clamp(1.35rem, 2.8vw, 2rem) !important;
+  line-height: 1.05 !important;
+  letter-spacing: -.025em !important;
+}
+.about-seo-kicker {
+  display: block !important;
+  margin-top: .28rem !important;
+  font-size: .62rem !important;
+  letter-spacing: .18em !important;
+  text-transform: uppercase !important;
+  color: var(--rose) !important;
+  font-weight: 800 !important;
+}
+.about-seo-details[open] .about-seo-kicker {
+  color: rgba(240,220,200,.72) !important;
+}
+.about-seo-body {
+  padding: 1.65rem 1.65rem 1.85rem !important;
+  color: var(--ink-lt) !important;
+}
+.about-seo-body h2 {
+  color: var(--ink) !important;
+  margin: 0 0 .85rem !important;
+}
+.about-seo-body p {
+  max-width: 820px !important;
+  font-size: .9rem !important;
+  line-height: 1.8 !important;
+  margin: 0 0 .85rem !important;
+  color: var(--ink-lt) !important;
+}
+.about-seo-feature-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 1rem !important;
+  margin-top: 1.6rem !important;
+}
+.about-seo-feature-grid article {
+  background: #fff !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 18px !important;
+  padding: 1.1rem !important;
+  box-shadow: 0 10px 28px rgba(42,32,24,.055) !important;
+}
+.about-seo-feature-grid h3 {
+  color: var(--ink) !important;
+  font-size: 1.18rem !important;
+  margin-bottom: .45rem !important;
+}
+.about-seo-feature-grid p {
+  font-size: .78rem !important;
+  line-height: 1.65 !important;
+  margin: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .nav-link {
+    font-size: .58rem !important;
+    padding: .65rem .45rem !important;
+  }
+}
+@media (max-width: 760px) {
+  .about-seo-feature-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+@media (max-width: 640px) {
+  .nav {
+    background: rgba(255,250,242,.94) !important;
+  }
+  .nav-links {
+    background: rgba(255,250,242,.98) !important;
+    border-bottom: 1px solid rgba(155,120,90,.16) !important;
+  }
+  .nav-links.open .nav-link {
+    color: var(--ink) !important;
+  }
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu .nav-select {
+    background: rgba(255,255,255,.86) !important;
+    color: var(--ink) !important;
+    border-color: rgba(155,120,90,.24) !important;
+  }
+  .hero {
+    padding: 7.7rem 1rem 2.8rem !important;
+    gap: 1.65rem !important;
+  }
+  .hero h1 {
+    font-size: clamp(2.35rem, 11.5vw, 3.65rem) !important;
+    line-height: 1.08 !important;
+  }
+  .hero h1 em {
+    font-size: clamp(1.95rem, 9.4vw, 3.05rem) !important;
+    line-height: 1.14 !important;
+  }
+  .hero-sub {
+    font-size: .68rem !important;
+    letter-spacing: .12em !important;
+  }
+  .hero-intro {
+    font-size: .82rem !important;
+    margin-bottom: 1.35rem !important;
+  }
+  .hero-top-offer {
+    border-radius: 24px !important;
+    margin-bottom: -.55rem !important;
+  }
+  .section-header h2,
+  .bestsellers-header h2,
+  .bestsellers-header h3,
+  .pricing-section > h2,
+  .faq-header h2,
+  .share-header h2,
+  .rsvp-demo-header h2,
+  .about-seo-body h2 {
+    font-size: clamp(1.75rem, 8.6vw, 2.45rem) !important;
+  }
+  .about-seo-section {
+    padding: 1.45rem 1rem .35rem !important;
+  }
+  .about-seo-details summary {
+    padding: 1.05rem 1.1rem !important;
+  }
+  .about-seo-body {
+    padding: 1.2rem 1.15rem 1.45rem !important;
+  }
+}
+</style>
+
+<style id="cardia-first-moving-png-final-fix">
+/* FINAL FIX: the first visible homepage element is now the moving PNG gallery. */
+.hero {
+  min-height: auto !important;
+  padding: 6.9rem 0 3.2rem !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 1.35rem !important;
+  background:
+    radial-gradient(circle at 10% 18%, rgba(184,144,60,.10), transparent 32%),
+    radial-gradient(circle at 90% 10%, rgba(154,106,88,.08), transparent 35%),
+    linear-gradient(180deg, #fffaf2 0%, #f7f0e6 54%, #f7f7f7 100%) !important;
+}
+.hero-bg {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,0) 58%),
+    radial-gradient(ellipse at 50% 0%, rgba(184,144,60,.08), transparent 58%) !important;
+  opacity: 1 !important;
+  mask-image: none !important;
+}
+.hero-template-marquee {
+  order: 1 !important;
+  position: relative !important;
+  z-index: 4 !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 auto .45rem !important;
+  padding: .35rem 0 1.25rem !important;
+  overflow: hidden !important;
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent) !important;
+}
+.hero-template-track {
+  align-items: center !important;
+  gap: clamp(1.1rem, 2.1vw, 1.9rem) !important;
+  animation-duration: 38s !important;
+}
+.hero-template-track img,
+.hero-template-track img:nth-child(2n),
+.hero-template-track img:nth-child(3n),
+.hero-template-track img:nth-child(4),
+.hero-template-track img:nth-child(5n) {
+  width: clamp(185px, 14.7vw, 250px) !important;
+  height: clamp(329px, 26.1vw, 444px) !important;
+  aspect-ratio: 9 / 16 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 30px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: 0 18px 45px rgba(42,32,24,.10) !important;
+  filter: none !important;
+  transform: none !important;
+  --yaw: 0deg !important;
+  --tilt: 0deg !important;
+}
+.hero-top-offer {
+  order: 2 !important;
+  margin: .15rem auto .1rem !important;
+  width: min(720px, calc(100% - 2rem)) !important;
+  background: rgba(255,255,255,.78) !important;
+  border: 1px solid rgba(155,120,90,.18) !important;
+  color: var(--ink) !important;
+  box-shadow: 0 14px 42px rgba(42,32,24,.06) !important;
+  backdrop-filter: blur(14px) !important;
+}
+.hero-top-offer strong {
+  color: var(--ink) !important;
+}
+.hero-top-offer span {
+  color: rgba(42,32,24,.55) !important;
+}
+.hero-content {
+  order: 3 !important;
+  display: block !important;
+  max-width: 760px !important;
+  padding: 0 1.25rem !important;
+  margin: 0 auto !important;
+}
+.hero-tag {
+  background: rgba(255,255,255,.72) !important;
+  color: var(--rose) !important;
+  border: 1px solid rgba(155,120,90,.16) !important;
+  box-shadow: 0 10px 28px rgba(42,32,24,.045) !important;
+}
+.hero h1 {
+  font-size: clamp(2.15rem, 5.2vw, 4.35rem) !important;
+  line-height: 1.02 !important;
+  color: var(--ink) !important;
+  max-width: 760px !important;
+  letter-spacing: -.045em !important;
+  text-shadow: none !important;
+}
+.hero h1 em {
+  font-size: clamp(1.9rem, 4.4vw, 3.75rem) !important;
+  line-height: 1.08 !important;
+  color: var(--gold) !important;
+  background: linear-gradient(100deg, #b8903c, #d4b870 46%, #9a6a58) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}
+.hero-sub {
+  margin: .95rem auto .85rem !important;
+  color: rgba(42,32,24,.58) !important;
+  font-size: clamp(.68rem, .96vw, .82rem) !important;
+}
+.hero-intro {
+  margin: 0 auto 1.45rem !important;
+  max-width: 560px !important;
+  color: rgba(42,32,24,.70) !important;
+  font-size: clamp(.78rem, 1vw, .88rem) !important;
+}
+.hero-cta {
+  background: var(--ink) !important;
+  color: var(--gold-lt) !important;
+  box-shadow: 0 12px 35px rgba(42,32,24,.16) !important;
+}
+.hero-cta:hover {
+  background: var(--rose) !important;
+  color: #fff !important;
+}
+.scroll-hint {
+  display: none !important;
+}
+@media (max-width: 640px) {
+  .hero {
+    padding: 5.85rem 0 2.7rem !important;
+    gap: 1rem !important;
+  }
+  .hero-template-marquee {
+    padding: .1rem 0 .95rem !important;
+    margin-bottom: .15rem !important;
+  }
+  .hero-template-track {
+    gap: .85rem !important;
+    animation-duration: 28s !important;
+  }
+  .hero-template-track img,
+  .hero-template-track img:nth-child(2n),
+  .hero-template-track img:nth-child(3n),
+  .hero-template-track img:nth-child(4),
+  .hero-template-track img:nth-child(5n) {
+    width: 154px !important;
+    height: 274px !important;
+    border-radius: 24px !important;
+    box-shadow: 0 14px 34px rgba(42,32,24,.09) !important;
+  }
+  .hero-top-offer {
+    width: calc(100% - 1.5rem) !important;
+    border-radius: 22px !important;
+    padding: .78rem .9rem !important;
+    margin: .1rem auto .05rem !important;
+  }
+  .hero h1 {
+    font-size: clamp(2.05rem, 10vw, 3.15rem) !important;
+    line-height: 1.06 !important;
+  }
+  .hero h1 em {
+    font-size: clamp(1.72rem, 8.5vw, 2.62rem) !important;
+  }
+}
+</style>
+
+<style id="cardia-final-faq-contact-whitish-fix">
+/* ═══════════════════════════════════════
+   CARDIA FINAL FIX — FAQ + CONTACT COLORS
+   1) FAQ questions now use the same warm classic index2 palette
+      instead of purple/berry bars.
+   2) Final contact section is light ivory/white, not dark brown.
+═══════════════════════════════════════ */
+
+:root,
+body {
+  --bg:      #F7F7F7;
+  --bg2:     #ffffff;
+  --ink:     #2a2018;
+  --ink-lt:  #6b5a48;
+  --rose:    #9a6a58;
+  --rose-lt: #c8988a;
+  --gold:    #b8903c;
+  --gold-lt: #d4b870;
+  --border:  rgba(155,120,90,.20);
+}
+
+/* FAQ — remove the purple gradient and keep everything warm, classic, and bridal */
+.faq-section {
+  background:
+    radial-gradient(ellipse at 18% 5%, rgba(154,106,88,.065) 0%, transparent 42%),
+    radial-gradient(ellipse at 84% 22%, rgba(184,144,60,.070) 0%, transparent 46%),
+    linear-gradient(180deg, #F7F7F7 0%, #f6f1ea 100%) !important;
+}
+.faq-kicker {
+  color: var(--rose) !important;
+}
+.faq-header h2 {
+  color: var(--ink) !important;
+}
+.faq-header p {
+  color: rgba(42,32,24,.55) !important;
+}
+.faq-item,
+.faq-item:hover,
+.faq-item.open {
+  background: rgba(255,255,255,.86) !important;
+  border: 1px solid rgba(155,120,90,.16) !important;
+  box-shadow: 0 18px 55px rgba(42,32,24,.075) !important;
+  transform: none !important;
+  overflow: hidden !important;
+}
+.faq-question,
+.faq-item.open .faq-question,
+.faq-question[aria-expanded="true"] {
+  background:
+    linear-gradient(135deg, rgba(255,250,243,.98), rgba(240,236,228,.96)) !important;
+  color: var(--ink) !important;
+  border: 0 !important;
+  border-bottom: 1px solid rgba(155,120,90,.13) !important;
+  text-shadow: none !important;
+}
+.faq-question:hover,
+.faq-item.open .faq-question:hover,
+.faq-question[aria-expanded="true"]:hover {
+  background:
+    linear-gradient(135deg, #f5f0e8, #eadfce) !important;
+  color: var(--ink) !important;
+}
+.faq-question::after,
+.faq-item.open .faq-question::after,
+.faq-question[aria-expanded="true"]::after {
+  color: var(--gold) !important;
+  background: rgba(255,255,255,.65) !important;
+  border: 1px solid rgba(184,144,60,.28) !important;
+  box-shadow: 0 8px 24px rgba(42,32,24,.06) !important;
+}
+.faq-answer,
+.faq-item.open .faq-answer {
+  background: rgba(255,255,255,.88) !important;
+  color: rgba(42,32,24,.66) !important;
+  border-top: 0 !important;
+}
+
+/* Foldable headers — keep active/hover warm brown-gold, never purple */
+.target-fold-toggle:hover,
+.target-fold-toggle.is-open {
+  background:
+    linear-gradient(135deg, #2a2018 0%, #3c2d24 58%, #9a6a58 100%) !important;
+  color: #fff8ed !important;
+  border-color: rgba(212,184,112,.34) !important;
+  box-shadow: 0 24px 70px rgba(42,32,24,.20) !important;
+}
+.target-fold-kicker {
+  color: var(--rose) !important;
+}
+.target-fold-toggle.is-open .target-fold-kicker,
+.target-fold-toggle:hover .target-fold-kicker {
+  color: rgba(245,240,232,.72) !important;
+}
+.target-fold-toggle::after,
+.target-fold-toggle.is-open::after,
+.target-fold-toggle:hover::after {
+  color: var(--gold-lt) !important;
+}
+
+/* Final contact section — light ivory/white card instead of dark brown */
+.contact-section {
+  background:
+    radial-gradient(ellipse at 18% 0%, rgba(154,106,88,.070) 0%, transparent 45%),
+    radial-gradient(ellipse at 82% 12%, rgba(184,144,60,.075) 0%, transparent 46%),
+    linear-gradient(180deg, #fffaf3 0%, #F7F7F7 72%, #f5f0e8 100%) !important;
+  color: var(--ink) !important;
+  border: 1px solid rgba(155,120,90,.14) !important;
+  box-shadow: 0 24px 80px rgba(42,32,24,.075) !important;
+}
+.contact-section::before {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(184,144,60,.13) 0%, transparent 58%) !important;
+  opacity: 1 !important;
+}
+.contact-section h2 {
+  color: var(--gold) !important;
+}
+.contact-section h3 {
+  color: var(--ink) !important;
+}
+.contact-label {
+  color: rgba(154,106,88,.70) !important;
+}
+.contact-value,
+.contact-value a,
+.contact-inline-icon {
+  color: var(--ink) !important;
+}
+.contact-item {
+  background: rgba(255,255,255,.78) !important;
+  border: 1px solid rgba(155,120,90,.16) !important;
+  box-shadow: 0 16px 45px rgba(42,32,24,.065) !important;
+}
+.contact-item:hover {
+  border-color: rgba(184,144,60,.32) !important;
+  box-shadow: 0 20px 55px rgba(42,32,24,.095) !important;
+}
+.contact-cta {
+  background: var(--ink) !important;
+  border-color: var(--ink) !important;
+  color: var(--gold-lt) !important;
+  box-shadow: 0 14px 38px rgba(42,32,24,.13) !important;
+}
+.contact-cta:hover {
+  background: var(--rose) !important;
+  border-color: var(--rose) !important;
+  color: #fff !important;
+}
+.footer-note {
+  border-top-color: rgba(155,120,90,.16) !important;
+  color: rgba(42,32,24,.42) !important;
+}
+
+@media (max-width: 640px) {
+  .faq-question,
+  .faq-question[aria-expanded="true"] {
+    font-size: 1.08rem !important;
+    line-height: 1.18 !important;
+  }
+  .contact-section {
+    border-radius: 30px !important;
+  }
+}
+</style>
+
+<style id="cardia-about-bottom-and-template-header-removal-fix">
+/* CARDIA FIX: About SEO block moved near the bottom; duplicated collection title removed. */
+#templates > .section-header {
+  display: none !important;
+}
+#templates #bestsellers {
+  padding-top: clamp(3rem, 5vw, 4.5rem) !important;
+}
+.about-seo-section {
+  scroll-margin-top: 92px;
+}
+@media (max-width: 640px) {
+  #templates #bestsellers {
+    padding-top: 2.8rem !important;
+  }
+  .about-seo-section {
+    scroll-margin-top: 78px;
+  }
+}
+</style>
+
+
+
+<!-- CARDIA FINAL FIX: readable mobile menu + stronger offer banner -->
+<style id="cardia-mobile-menu-offer-colors-final-fix">
+/* 1) Mobile dropdown menu: force a light, readable panel and dark text. */
+@media (max-width: 640px) {
+  .nav {
+    background: rgba(255,250,242,.98) !important;
+    border: 1px solid rgba(184,144,60,.22) !important;
+    box-shadow: 0 12px 34px rgba(42,32,24,.10) !important;
+  }
+
+  .nav .nav-hamburger {
+    background: transparent !important;
+    border: 2px solid transparent !important;
+    border-radius: 12px !important;
+  }
+
+  .nav .nav-hamburger span {
+    background: #2a2018 !important;
+    opacity: 1 !important;
+  }
+
+  .nav .nav-hamburger.open {
+    border-color: #d09a27 !important;
+    background: rgba(255,255,255,.70) !important;
+  }
+
+  .nav .nav-links {
+    position: fixed !important;
+    top: 96px !important;
+    left: 1rem !important;
+    right: 1rem !important;
+    width: auto !important;
+    max-height: calc(100svh - 116px) !important;
+    overflow-y: auto !important;
+    padding: .95rem !important;
+    display: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    gap: .55rem !important;
+    background: linear-gradient(180deg, #fffdf8 0%, #fff7ec 100%) !important;
+    border: 1px solid rgba(184,144,60,.28) !important;
+    border-radius: 26px !important;
+    box-shadow: 0 24px 70px rgba(42,32,24,.22) !important;
+    backdrop-filter: blur(18px) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-8px) scale(.985) !important;
+    z-index: 9998 !important;
+  }
+
+  .nav .nav-links.open {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  .nav .nav-links.open .nav-link,
+  .nav .nav-links .nav-link {
+    width: 100% !important;
+    min-height: 43px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: .72rem .85rem !important;
+    border-radius: 16px !important;
+    background: rgba(184,144,60,.075) !important;
+    border: 1px solid rgba(184,144,60,.15) !important;
+    color: #2a2018 !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+  }
+
+  .nav .nav-links.open .nav-link:hover,
+  .nav .nav-links.open .nav-link:focus {
+    background: rgba(208,154,39,.18) !important;
+    color: #2a2018 !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu,
+  .nav-controls.nav-controls-in-menu {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    margin: .65rem 0 0 !important;
+    padding: .75rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: .7rem !important;
+    border-radius: 20px !important;
+    background: linear-gradient(135deg, rgba(184,144,60,.16), rgba(255,255,255,.78)) !important;
+    border: 1px solid rgba(184,144,60,.24) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.75) !important;
+  }
+
+  .nav .nav-links:not(.open) .nav-controls.nav-controls-in-menu {
+    display: none !important;
+  }
+
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu {
+    display: flex !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu .nav-select,
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu .nav-select {
+    flex: 1 1 0 !important;
+    min-width: 0 !important;
+    max-width: 136px !important;
+    height: 42px !important;
+    padding: 0 .85rem !important;
+    border-radius: 999px !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(184,144,60,.32) !important;
+    color: #2a2018 !important;
+    font-size: .62rem !important;
+    letter-spacing: .10em !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    box-shadow: 0 8px 22px rgba(42,32,24,.08) !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu .nav-select option {
+    background: #ffffff !important;
+    color: #2a2018 !important;
+  }
+}
+
+/* 2) Special offer banner: stronger, more visible gold style. */
+.hero-top-offer,
+.special-offer-banner {
+  background: linear-gradient(135deg, #b98521 0%, #f2d482 46%, #d3a137 100%) !important;
+  border: 1px solid rgba(118,75,8,.36) !important;
+  color: #2a2018 !important;
+  box-shadow: 0 18px 42px rgba(184,144,60,.32), inset 0 1px 0 rgba(255,255,255,.38) !important;
+  backdrop-filter: none !important;
+}
+
+.hero-top-offer strong,
+.special-offer-banner strong {
+  color: #2a2018 !important;
+  font-weight: 700 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.28) !important;
+}
+
+.hero-top-offer span,
+.special-offer-banner span {
+  color: rgba(42,32,24,.76) !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 0 rgba(255,255,255,.20) !important;
+}
+
+@media (max-width: 640px) {
+  .hero-top-offer,
+  .special-offer-banner {
+    width: calc(100% - 1.5rem) !important;
+    border-radius: 22px !important;
+    padding: .82rem .95rem !important;
+    box-shadow: 0 14px 34px rgba(184,144,60,.30), inset 0 1px 0 rgba(255,255,255,.35) !important;
+  }
+
+  .hero-top-offer strong,
+  .special-offer-banner strong {
+    font-size: .86rem !important;
+    letter-spacing: .03em !important;
+  }
+
+  .hero-top-offer span,
+  .special-offer-banner span {
+    font-size: .58rem !important;
+    letter-spacing: .12em !important;
+  }
+}
+</style>
+
+
+<style id="cardia-clean-nav-pricing-final-fix">
+/* Final cleanup: nav labels now match their anchors; no duplicate Contact; Pricing header is simplified. */
+.pricing-section > p:empty,
+.target-fold-kicker:empty {
+  display: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+@media (max-width: 640px) {
+  .nav .nav-links.open .nav-link {
+    color: rgba(255,248,237,.96) !important;
+    background: rgba(255,255,255,.07) !important;
+  }
+  .nav .nav-links.open .nav-link:hover {
+    color: var(--gold-lt) !important;
+    background: rgba(212,184,112,.16) !important;
+  }
+}
+</style>
+
+<style>
+/* CARDIA FIX — special offer colors copied from index2 */
+.special-offer-banner {
+  max-width: 820px !important;
+  margin: 0 auto 2rem !important;
+  padding: 1rem 1.5rem !important;
+  background: linear-gradient(135deg, #b8903c, #d4b870) !important;
+  color: #2a2018 !important;
+  text-align: center !important;
+  border-radius: 14px !important;
+  border: 0 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,.12) !important;
+  backdrop-filter: none !important;
+}
+.special-offer-banner strong {
+  display: block !important;
+  font-size: 1.3rem !important;
+  margin-bottom: .35rem !important;
+  font-family: 'Cormorant Garamond', serif !important;
+  font-weight: 400 !important;
+  color: #2a2018 !important;
+  text-shadow: none !important;
+  letter-spacing: normal !important;
+}
+.special-offer-banner span {
+  display: block !important;
+  font-size: .72rem !important;
+  letter-spacing: .12em !important;
+  text-transform: uppercase !important;
+  color: #2a2018 !important;
+  font-weight: 400 !important;
+  text-shadow: none !important;
+}
+.hero .hero-top-offer {
+  position: relative !important;
+  z-index: 2 !important;
+  width: min(820px, calc(100% - 2rem)) !important;
+  margin: 0 auto -.95rem !important;
+  padding: .9rem 1.35rem !important;
+  border-radius: 16px !important;
+  background: linear-gradient(135deg, #b8903c, #d4b870) !important;
+  color: #2a2018 !important;
+  border: 0 !important;
+  box-shadow: 0 12px 34px rgba(42,32,24,.10) !important;
+}
+.hero .hero-top-offer strong {
+  font-size: clamp(1.05rem, 2vw, 1.3rem) !important;
+}
+.hero .hero-top-offer span {
+  font-size: clamp(.56rem, 1vw, .7rem) !important;
+  line-height: 1.45 !important;
+  letter-spacing: .13em !important;
+}
+@media (max-width: 640px) {
+  .hero .hero-top-offer {
+    width: calc(100% - 1.5rem) !important;
+    margin-bottom: -.55rem !important;
+    padding: .78rem .85rem !important;
+    border-radius: 14px !important;
+    box-shadow: 0 12px 34px rgba(42,32,24,.10) !important;
+  }
+  .hero .hero-top-offer strong {
+    font-size: 1.05rem !important;
+  }
+  .hero .hero-top-offer span {
+    font-size: .54rem !important;
+    letter-spacing: .10em !important;
+  }
+}
+/* END CARDIA FIX — special offer colors copied from index2 */
+</style>
+
+
+<style id="cardia-mobile-menu-readable-text-final-fix">
+/* CARDIA FIX — mobile dropdown menu readable text colors */
+@media (max-width: 640px) {
+  .nav .nav-links,
+  .nav .nav-links.open {
+    background: linear-gradient(180deg, #fffdf8 0%, #fff7ec 100%) !important;
+    border: 1px solid rgba(184,144,60,.28) !important;
+    box-shadow: 0 24px 70px rgba(42,32,24,.22) !important;
+  }
+
+  .nav .nav-links .nav-link,
+  .nav .nav-links.open .nav-link {
+    color: #2a2018 !important;
+    -webkit-text-fill-color: #2a2018 !important;
+    background: rgba(255,255,255,.72) !important;
+    border: 1px solid rgba(184,144,60,.26) !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  .nav .nav-links .nav-link *,
+  .nav .nav-links.open .nav-link * {
+    color: inherit !important;
+    -webkit-text-fill-color: inherit !important;
+    opacity: 1 !important;
+    text-shadow: none !important;
+  }
+
+  .nav .nav-links.open .nav-link:hover,
+  .nav .nav-links.open .nav-link:focus,
+  .nav .nav-links.open .nav-link:active {
+    color: #2a2018 !important;
+    -webkit-text-fill-color: #2a2018 !important;
+    background: rgba(208,154,39,.18) !important;
+    border-color: rgba(184,144,60,.38) !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu,
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu {
+    background: linear-gradient(135deg, rgba(184,144,60,.14), rgba(255,255,255,.86)) !important;
+    border: 1px solid rgba(184,144,60,.24) !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu .nav-select,
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu .nav-select {
+    color: #2a2018 !important;
+    -webkit-text-fill-color: #2a2018 !important;
+    background: #ffffff !important;
+    border: 1px solid rgba(184,144,60,.34) !important;
+    opacity: 1 !important;
+    font-weight: 600 !important;
+    text-shadow: none !important;
+  }
+
+  .nav .nav-links .nav-controls.nav-controls-in-menu .nav-select option,
+  .nav .nav-links.open .nav-controls.nav-controls-in-menu .nav-select option {
+    color: #2a2018 !important;
+    background: #ffffff !important;
+  }
+}
+</style>
+
 </head>
 <body>
 <!-- NAV -->
@@ -4570,7 +6096,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <a class="nav-logo" href="#"><img alt="Cardia Studios digital wedding invitation designer logo" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/Nlogo3a.png"/><span class="nav-brand-text">Cardia Studios</span></a>
 <div class="nav-links" id="navLinks">
 <a class="nav-link" href="#templates" onclick="closeMenu()">Templates</a>
-<a class="nav-link" href="#about" onclick="closeMenu()">About</a>
 <a class="nav-link" href="#how" onclick="closeMenu()">How it works</a>
 <a class="nav-link" href="#rsvp-demo" onclick="closeMenu()">RSVP Demo</a>
 <a class="nav-link" href="#pricing" onclick="closeMenu()">Pricing</a>
@@ -5269,8 +6794,8 @@ document.addEventListener('DOMContentLoaded', function () {
 </div>
 </section>
 <section class="pricing-section" id="pricing">
-<h2 class="reveal">Digital Wedding Invitation Pricing</h2>
-<p class="reveal">Custom online wedding invitation plans with RSVP forms, hosting, personalization, and no hidden fees</p>
+<h2 class="reveal">Pricing</h2>
+<p class="reveal"></p>
 <span class="currency-note reveal">Choose your currency from the top menu</span>
 <div class="pricing-choice-intro reveal">
 <div class="pricing-choice-divider"><span class="pricing-choice-leaf">❦</span></div>
@@ -5667,7 +7192,7 @@ const CARDIA_TRANSLATIONS = {
       ['We customize it','We adapt the template to your wedding: names, date, venue, schedule, photos, wording, sections, and small design details are adjusted to match your event.'],
       ['Share with guests','Send a single link to all your guests. RSVPs go straight to your inbox automatically. You also receive a Google Sheet that updates in real time whenever a guest confirms or declines attendance.']
     ],
-    pricingTitle:'Digital Wedding Invitation Pricing', pricingSub:'Custom online wedding invitation plans with RSVP forms, hosting, personalization, and no hidden fees', currencyNote:'Choose your currency from the top menu',
+    pricingTitle:'Pricing', pricingSub:'', currencyNote:'Choose your currency from the top menu',
     plans:['Standard','Premium','Luxury'], popular:'Most Popular', oneTime:'one-time · hosted forever',
     planDesc:['The complete digital invitation','The full experience','For the perfect wedding'],
     features:{
@@ -5701,7 +7226,7 @@ const CARDIA_TRANSLATIONS = {
       ['Nous personnalisons','Nous adaptons le modèle à votre mariage : noms, date, lieu, programme, photos, textes, sections et petits détails visuels sont ajustés à votre événement.'],
       ['Partagez avec vos invités','Envoyez un seul lien à tous vos invités. Les RSVP arrivent directement dans votre boîte mail.']
     ],
-    pricingTitle:'Tarifs des invitations de mariage digitales', pricingSub:'Plans personnalisés avec RSVP, hébergement, personnalisation et aucun frais caché', currencyNote:'Choisissez votre devise dans le menu du haut',
+    pricingTitle:'Tarifs', pricingSub:'', currencyNote:'Choisissez votre devise dans le menu du haut',
     plans:['Standard','Premium','Luxury'], popular:'Le plus populaire', oneTime:'paiement unique · hébergement inclus',
     planDesc:['L’invitation digitale complète','L’expérience complète','Pour un mariage parfait'],
     features:{
@@ -5735,7 +7260,7 @@ const CARDIA_TRANSLATIONS = {
       ['Lo personalizamos','Adaptamos la plantilla a tu boda: nombres, fecha, lugar, programa, fotos, textos, secciones y pequeños detalles visuales se ajustan a tu evento.'],
       ['Comparte con invitados','Envía un solo enlace a todos tus invitados. Las respuestas RSVP llegan directamente a tu correo.']
     ],
-    pricingTitle:'Precios simples', pricingSub:'Sin costos ocultos · Contáctanos para empezar', currencyNote:'Elige tu moneda en el menú superior',
+    pricingTitle:'Precios', pricingSub:'', currencyNote:'Elige tu moneda en el menú superior',
     plans:['Standard','Premium','Luxury'], popular:'Más popular', oneTime:'pago único · alojamiento incluido',
     planDesc:['La invitación digital completa','La experiencia completa','Para una boda perfecta'],
     features:{
@@ -5769,7 +7294,7 @@ const CARDIA_TRANSLATIONS = {
       ['Lo personalizziamo','Adattiamo il modello al vostro matrimonio: nomi, data, luogo, programma, foto, testi, sezioni e piccoli dettagli visivi vengono personalizzati per il vostro evento.'],
       ['Condividi con gli ospiti','Invia un solo link a tutti i tuoi ospiti. Le risposte RSVP arrivano direttamente nella tua email.']
     ],
-    pricingTitle:'Prezzi degli inviti digitali per matrimonio', pricingSub:'Piani personalizzati con RSVP, hosting, personalizzazione e nessun costo nascosto', currencyNote:'Scegli la valuta dal menu in alto',
+    pricingTitle:'Prezzi', pricingSub:'', currencyNote:'Scegli la valuta dal menu in alto',
     plans:['Standard','Premium','Luxury'], popular:'Più popolare', oneTime:'pagamento unico · hosting incluso',
     planDesc:['L’invito digitale completo','L’esperienza completa','Per un matrimonio perfetto'],
     features:{
@@ -5803,7 +7328,7 @@ const CARDIA_TRANSLATIONS = {
       ['Nós personalizamos','Adaptamos o modelo ao vosso casamento: nomes, data, local, programa, fotos, textos, secções e pequenos detalhes visuais são ajustados ao vosso evento.'],
       ['Partilhe com os convidados','Envie um único link a todos os seus convidados. As respostas RSVP chegam diretamente ao seu email.']
     ],
-    pricingTitle:'Preços simples', pricingSub:'Sem taxas escondidas · Contacte-nos para começar', currencyNote:'Escolha a sua moeda no menu superior',
+    pricingTitle:'Preços', pricingSub:'', currencyNote:'Escolha a sua moeda no menu superior',
     plans:['Standard','Premium','Luxury'], popular:'Mais popular', oneTime:'pagamento único · alojamento incluído',
     planDesc:['O convite digital completo','A experiência completa','Para o casamento perfeito'],
     features:{
@@ -6886,7 +8411,7 @@ if (document.readyState === 'loading') {
       return { title: title || 'How it works', kicker: 'Simple steps' };
     }
     if (id === 'pricing' || cls.indexOf('pricing-section') !== -1) {
-      return { title: title || 'Pricing', kicker: 'Plans and payment details' };
+      return { title: 'Pricing', kicker: '' };
     }
     if (id === 'faq' || cls.indexOf('faq') !== -1) {
       return { title: title || 'FAQ', kicker: 'Questions and answers' };
@@ -7116,15 +8641,6 @@ if (document.readyState === 'loading') {
   }
 })();
 </script>
-
-
-<style id="cardia-album-no-info-final-fix">
-  /* Final targeted fix: remove ONLY the (i) tooltip icons inside the Wedding Photo Album QR Card feature boxes. */
-  #photo-album-service .album-service-features .info-btn,
-  .share-section .album-service-features .info-btn {
-    display: none !important;
-  }
-</style>
 <script id="cardia-album-no-info-final-fix-js">
 (function(){
   function removeAlbumInfoIcons(){
@@ -7147,1175 +8663,16 @@ if (document.readyState === 'loading') {
 })();
 </script>
 
-
-
-
-<style id="cardia-index2-color-match-final">
-/* ═══════════════════════════════════════
-   CARDIA COLORS — matched to index2.html
-   Warm chocolate, soft rose, classic gold, and clean ivory/white panels.
-   Keeps the modern layout, removes the whitish/beige-only look and all purple hover states.
-═══════════════════════════════════════ */
-
-:root,
-body {
-  --bg:      #F7F7F7;
-  --bg2:     #ffffff;
-  --ink:     #2a2018;
-  --ink-lt:  #6b5a48;
-  --rose:    #9a6a58;
-  --rose-lt: #c8988a;
-  --gold:    #b8903c;
-  --gold-lt: #d4b870;
-  --plum:    #2a2018;
-  --plum-2:  #3c2d24;
-  --berry:   #9a6a58;
-  --cream:   #f5f0e8;
-  --mist:    #f0ece4;
-  --border:  rgba(155,120,90,.20);
-  --glass:   rgba(255,255,255,.76);
-  --glass-dark: rgba(42,32,24,.76);
-  --shadow-soft: 0 16px 50px rgba(42,32,24,.10);
-  --shadow-deep: 0 24px 80px rgba(42,32,24,.26);
-}
-
-html {
-  background: var(--ink) !important;
-}
-
-body {
-  color: var(--ink) !important;
-  background:
-    radial-gradient(ellipse at 12% 6%, rgba(154,106,88,.070) 0%, transparent 42%),
-    radial-gradient(ellipse at 92% 12%, rgba(184,144,60,.065) 0%, transparent 44%),
-    linear-gradient(180deg, #F7F7F7 0%, #f5f1ec 48%, #F7F7F7 100%) !important;
-}
-
-body::before {
-  opacity: .14 !important;
-  background-image:
-    linear-gradient(rgba(42,32,24,.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(42,32,24,.025) 1px, transparent 1px) !important;
-}
-
-/* NAV — same warm chocolate identity as index2.html */
-.nav {
-  background: rgba(42,32,24,.92) !important;
-  border: 1px solid rgba(212,184,112,.16) !important;
-  box-shadow: 0 18px 55px rgba(42,32,24,.22) !important;
-}
-.nav-brand-text,
-.nav-link,
-.nav-select {
-  color: rgba(240,220,200,.86) !important;
-}
-.nav-link:hover,
-.nav-select:hover {
-  background: rgba(184,144,60,.12) !important;
-  color: var(--gold-lt) !important;
-}
-.nav-select,
-.nav-select option {
-  background-color: var(--ink) !important;
-  color: #f0dcc8 !important;
-}
-.nav-hamburger span { background: rgba(200,180,160,.86) !important; }
-@media (max-width: 640px) {
-  .nav-links.open {
-    background: rgba(42,32,24,.985) !important;
-    border: 1px solid rgba(212,184,112,.14) !important;
+<script id="cardia-clean-nav-pricing-final-fix-js">
+(function(){
+  function syncPricingFoldTitle(){
+    document.querySelectorAll('.target-fold-toggle[aria-controls="pricing"] .target-fold-title').forEach(function(el){ el.textContent = 'Pricing'; });
+    document.querySelectorAll('.target-fold-toggle[aria-controls="pricing"] .target-fold-kicker').forEach(function(el){ el.textContent = ''; });
   }
-}
-
-/* HERO — original dark brown / rose / gold mood, not purple */
-.hero {
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(154,106,88,.25) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 60%, rgba(184,144,60,.15) 0%, transparent 55%),
-    var(--ink) !important;
-}
-.hero-bg {
-  background:
-    radial-gradient(ellipse at 30% 40%, rgba(154,106,88,.25) 0%, transparent 55%),
-    radial-gradient(ellipse at 70% 60%, rgba(184,144,60,.15) 0%, transparent 55%) !important;
-  background-size: auto !important;
-  opacity: 1 !important;
-}
-.hero::before,
-.hero::after {
-  background: none !important;
-  opacity: 0 !important;
-}
-.hero h1 {
-  color: #f5f0e8 !important;
-  text-shadow: none !important;
-}
-.hero h1 em {
-  background: none !important;
-  -webkit-background-clip: initial !important;
-  background-clip: initial !important;
-  color: var(--gold-lt) !important;
-  -webkit-text-fill-color: var(--gold-lt) !important;
-}
-.hero-sub,
-.scroll-hint {
-  color: rgba(200,180,160,.62) !important;
-}
-.scroll-arrow {
-  background: linear-gradient(to bottom, rgba(200,180,160,.46), transparent) !important;
-}
-.hero-tag,
-.hero-cta,
-.contact-cta,
-.form-submit {
-  background: transparent !important;
-  border-color: rgba(184,144,60,.48) !important;
-  color: var(--gold-lt) !important;
-  box-shadow: none !important;
-}
-.hero-cta:hover,
-.contact-cta:hover,
-.form-submit:hover {
-  background: rgba(184,144,60,.12) !important;
-  border-color: var(--gold-lt) !important;
-  color: #fff !important;
-}
-.hero-top-offer,
-.special-offer-banner {
-  background: rgba(245,240,232,.92) !important;
-  border: 1px solid rgba(184,144,60,.34) !important;
-  color: var(--ink) !important;
-  box-shadow: 0 16px 45px rgba(42,32,24,.16) !important;
-}
-.hero-top-offer strong,
-.special-offer-banner strong { color: var(--ink) !important; }
-.hero-top-offer span,
-.special-offer-banner span { color: var(--ink-lt) !important; }
-
-/* LIGHT SECTIONS */
-.section-header,
-#templates,
-#bestsellers,
-.seo-intro-section,
-.collection-subsection,
-.pricing-section,
-.faq-section,
-.share-section,
-.rsvp-demo-section {
-  background:
-    radial-gradient(ellipse at 12% 0%, rgba(154,106,88,.055) 0%, transparent 48%),
-    radial-gradient(ellipse at 88% 12%, rgba(184,144,60,.052) 0%, transparent 46%),
-    var(--bg) !important;
-}
-.section-header h2,
-.bestsellers-header h2,
-.category-title,
-.pricing-section > h2,
-.faq-header h2,
-.share-header h2,
-.rsvp-demo-header h2,
-.seo-intro-section h2,
-.price-name,
-.bs-card-name,
-.card-header-name,
-.target-fold-title,
-.share-details h3,
-.rsvp-demo-step h3,
-.album-service-copy h3 {
-  color: var(--ink) !important;
-}
-.section-header p,
-.bestsellers-header p,
-.category-title span,
-.pricing-section > p,
-.faq-header p,
-.share-header p,
-.rsvp-demo-header p,
-.currency-note,
-.template-id-note,
-.pricing-choice-kicker,
-.payment-note,
-.faq-kicker {
-  color: var(--rose-lt) !important;
-}
-.gold-line,
-.seo-intro-section .gold-line {
-  background: var(--gold) !important;
-  opacity: .55 !important;
-}
-
-/* CARDS — clean whites with warm beige preview zones */
-.bs-card,
-.card-wrap,
-.price-card,
-.payment-region,
-.share-card,
-.faq-item,
-.rsvp-demo-card,
-.rsvp-demo-panel,
-.seo-intro-card,
-.add-review-wrap,
-.album-service-card {
-  background: #fff !important;
-  border-color: var(--border) !important;
-  box-shadow: 0 8px 40px rgba(42,32,24,.10) !important;
-}
-.bs-card:hover,
-.card-wrap:hover,
-.price-card:hover,
-.share-card:hover,
-.faq-item:hover {
-  box-shadow: 0 20px 60px rgba(42,32,24,.16) !important;
-}
-.bs-card-visual,
-.template-card {
-  background:
-    radial-gradient(ellipse at 50% 60%, rgba(184,144,60,.18) 0%, transparent 70%),
-    #f0ece4 !important;
-}
-.card-header,
-.bs-card-info {
-  background: #fff !important;
-  border-color: rgba(155,120,90,.12) !important;
-}
-.phone-outer,
-.template-card::before,
-.rsvp-demo-phone {
-  background: #1a1210 !important;
-  border-color: #1a1210 !important;
-  box-shadow: 0 12px 50px rgba(0,0,0,.30), inset 0 0 0 1px rgba(255,255,255,.08) !important;
-}
-.bs-badge,
-.bs-template-id,
-.price-badge {
-  background: #fff !important;
-  border-color: rgba(184,144,60,.30) !important;
-  color: var(--gold) !important;
-}
-.card-header-num,
-.bs-card-link,
-.price-amount,
-.price-feature::before,
-.payment-bullets li::before,
-.mobile-price-tab .mobile-plan-plus,
-.info-btn,
-.faq-question::after,
-.rsvp-demo-num,
-.star,
-.review-card-author strong {
-  color: var(--gold) !important;
-}
-.bs-card-desc,
-.price-desc,
-.price-feature,
-.payment-region p,
-.payment-bullets li,
-.pay-method,
-.faq-answer,
-.share-details p,
-.rsvp-demo-card p,
-.rsvp-demo-copy-body p,
-.rsvp-demo-list,
-.seo-intro-card p,
-.pricing-choice-text,
-.mobile-plan-short,
-.album-service-copy p,
-.album-service-features li {
-  color: var(--ink-lt) !important;
-}
-
-/* BUTTONS + INTERACTIVE ELEMENTS */
-.price-cta,
-.rsvp-demo-btn,
-.share-btn,
-.copy-link-btn,
-.album-service-cta {
-  border-color: rgba(154,106,88,.50) !important;
-  color: var(--rose) !important;
-  background: transparent !important;
-}
-.price-cta:hover,
-.rsvp-demo-btn:hover,
-.share-btn:hover,
-.copy-link-btn:hover,
-.album-service-cta:hover {
-  background: var(--rose) !important;
-  border-color: var(--rose) !important;
-  color: #fff !important;
-}
-.rsvp-demo-btn.primary,
-.copy-link-btn {
-  background: var(--ink) !important;
-  color: var(--gold-lt) !important;
-  border-color: var(--ink) !important;
-}
-.rsvp-demo-btn.primary:hover,
-.copy-link-btn:hover {
-  background: var(--rose) !important;
-  color: #fff !important;
-  border-color: var(--rose) !important;
-}
-.form-input,
-.pay-method,
-.share-url-box {
-  background: rgba(255,255,255,.62) !important;
-  border-color: var(--border) !important;
-  color: var(--ink) !important;
-}
-.form-input::placeholder { color: rgba(107,90,72,.50) !important; }
-.form-input:focus { border-color: rgba(184,144,60,.55) !important; }
-
-/* DARK SECTIONS — exactly the warm chocolate direction of index2.html */
-.how-section,
-.contact-section,
-#reviews {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(184,144,60,.08) 0%, transparent 60%),
-    var(--ink) !important;
-}
-.how-section h2,
-.contact-section h2,
-.contact-section h3,
-#reviews h2,
-.reviews-header h2,
-.step h3 {
-  color: #f5f0e8 !important;
-}
-.how-section > p,
-.step p,
-.contact-section h3,
-.footer-note,
-.review-card-text,
-.reviews-header p,
-.contact-label,
-.review-card-author,
-.reviews-count {
-  color: rgba(200,180,160,.60) !important;
-}
-.step-num,
-.contact-section h2,
-.reviews-big-num {
-  color: var(--gold-lt) !important;
-}
-.review-card,
-.contact-item,
-.add-review-wrap {
-  background: rgba(255,255,255,.04) !important;
-  border-color: rgba(200,180,160,.12) !important;
-}
-.review-card:hover,
-.contact-item:hover {
-  border-color: rgba(184,144,60,.30) !important;
-}
-.contact-value,
-.contact-value a {
-  color: #f0ebe0 !important;
-}
-.contact-value a:hover { color: var(--gold-lt) !important; }
-
-/* FEATURED PRICING + MOBILE ACTIVE STATES */
-.price-card.featured,
-.mobile-price-tab.active {
-  background: var(--ink) !important;
-  border-color: var(--gold) !important;
-  color: #f0ebe0 !important;
-}
-.price-card.featured .price-name,
-.price-card.featured .price-feature,
-.price-card.featured .price-desc,
-.price-card.featured .price-period,
-.mobile-price-tab.active .mobile-plan-name,
-.mobile-price-tab.active .mobile-plan-tag,
-.mobile-price-tab.active .mobile-plan-short {
-  color: rgba(240,220,200,.82) !important;
-}
-.price-card.featured .price-amount,
-.price-card.featured .price-cta,
-.price-card.featured .luxury-demo-link,
-.mobile-price-tab.active .mobile-plan-plus,
-.mobile-price-tab.active::after {
-  color: var(--gold-lt) !important;
-}
-.price-card.featured .price-cta {
-  border-color: var(--gold) !important;
-  background: transparent !important;
-}
-.price-card.featured .price-cta:hover {
-  background: var(--gold) !important;
-  color: var(--ink) !important;
-}
-
-/* FOLDABLE SECTIONS — remove beige/purple hover; use original chocolate + gold */
-.target-fold-toggle {
-  background: rgba(255,255,255,.78) !important;
-  border: 1px solid rgba(155,120,90,.22) !important;
-  color: var(--ink) !important;
-  box-shadow: 0 12px 34px rgba(42,32,24,.055) !important;
-}
-.target-fold-toggle:hover,
-.target-fold-toggle.is-open,
-.target-fold-toggle.is-open:hover {
-  background: var(--ink) !important;
-  color: var(--gold-lt) !important;
-  border-color: var(--ink) !important;
-  box-shadow: 0 18px 55px rgba(42,32,24,.18) !important;
-}
-.target-fold-toggle:hover .target-fold-title,
-.target-fold-toggle.is-open .target-fold-title {
-  color: var(--gold-lt) !important;
-}
-.target-fold-kicker {
-  color: var(--rose) !important;
-}
-.target-fold-toggle:hover .target-fold-kicker,
-.target-fold-toggle.is-open .target-fold-kicker {
-  color: rgba(240,220,200,.72) !important;
-}
-.target-fold-toggle::after {
-  color: var(--gold) !important;
-}
-.target-fold-toggle:hover::after,
-.target-fold-toggle.is-open::after {
-  color: var(--gold-lt) !important;
-}
-.target-fold-toggle:focus-visible {
-  outline: 2px solid rgba(184,144,60,.50) !important;
-  outline-offset: 4px !important;
-}
-
-@media (max-width:640px) {
-  .mobile-price-tab {
-    background: rgba(255,255,255,.80) !important;
-    border-color: rgba(155,120,90,.24) !important;
-    color: var(--ink) !important;
-  }
-  .mobile-price-tab.active {
-    background: var(--ink) !important;
-    color: var(--gold-lt) !important;
-    border-color: var(--ink) !important;
-    box-shadow: 0 18px 55px rgba(42,32,24,.18) !important;
-  }
-}
-</style>
-
-
-
-
-
-<style id="cardia-final-white-classic-homepage-fix">
-/* FINAL CARDIA FIX — light classic opening, smaller titles, compact SEO/About */
-:root {
-  --bg: #F7F7F7;
-  --bg2: #ffffff;
-  --ink: #2a2018;
-  --ink-lt: #6b5a48;
-  --rose: #9a6a58;
-  --rose-lt: #c8988a;
-  --gold: #b8903c;
-  --gold-lt: #d4b870;
-  --border: rgba(155,120,90,.20);
-}
-
-body {
-  background:
-    radial-gradient(circle at 15% 0%, rgba(184,144,60,.08), transparent 32%),
-    linear-gradient(180deg, #fffdf8 0%, #F7F7F7 34%, #f4eee5 100%) !important;
-}
-
-/* Light classic navigation at the top */
-.nav {
-  background: rgba(255,250,242,.86) !important;
-  border: 1px solid rgba(184,144,60,.25) !important;
-  box-shadow: 0 18px 55px rgba(42,32,24,.11) !important;
-  color: var(--ink) !important;
-}
-.nav-brand-text {
-  color: var(--ink) !important;
-}
-.nav-link {
-  color: rgba(42,32,24,.72) !important;
-}
-.nav-link:hover {
-  background: rgba(184,144,60,.12) !important;
-  color: var(--ink) !important;
-}
-.nav-select {
-  background: rgba(255,255,255,.62) !important;
-  border-color: rgba(155,120,90,.24) !important;
-  color: var(--ink) !important;
-}
-.nav-select option {
-  background: #fffaf2 !important;
-  color: var(--ink) !important;
-}
-.nav-hamburger span {
-  background: var(--ink) !important;
-}
-
-/* Start the website with a white / ivory classic wedding look */
-.hero {
-  min-height: 100svh !important;
-  padding: 9.2rem 2rem 3.3rem !important;
-  background:
-    radial-gradient(circle at 15% 20%, rgba(255,255,255,.92) 0 7%, transparent 28%),
-    radial-gradient(circle at 80% 18%, rgba(184,144,60,.14) 0 11%, transparent 34%),
-    radial-gradient(circle at 50% 100%, rgba(154,106,88,.12) 0 18%, transparent 46%),
-    linear-gradient(180deg, #fffdf8 0%, #fbf7ef 48%, #efe5d8 100%) !important;
-}
-.hero::before {
-  background: radial-gradient(circle, rgba(212,184,112,.22), transparent 66%) !important;
-  opacity: .70 !important;
-}
-.hero::after {
-  background: radial-gradient(circle, rgba(154,106,88,.12), transparent 62%) !important;
-  opacity: .75 !important;
-}
-.hero-bg {
-  opacity: .72 !important;
-  background:
-    linear-gradient(120deg, rgba(184,144,60,.055) 0 1px, transparent 1px),
-    radial-gradient(ellipse at 50% 20%, rgba(255,255,255,.70), transparent 58%) !important;
-  background-size: 92px 92px, auto !important;
-}
-.hero-content {
-  max-width: 880px !important;
-}
-.hero-top-offer {
-  background: rgba(255,255,255,.86) !important;
-  border-color: rgba(184,144,60,.30) !important;
-  color: var(--ink) !important;
-  box-shadow: 0 16px 52px rgba(42,32,24,.10) !important;
-}
-.hero-top-offer strong {
-  color: var(--ink) !important;
-}
-.hero-top-offer span {
-  color: rgba(42,32,24,.58) !important;
-}
-.hero-tag {
-  background: rgba(255,255,255,.72) !important;
-  border-color: rgba(184,144,60,.34) !important;
-  color: var(--gold) !important;
-  box-shadow: 0 12px 34px rgba(42,32,24,.07), inset 0 1px 0 rgba(255,255,255,.86) !important;
-}
-.hero-tag::before {
-  color: var(--gold) !important;
-}
-.hero h1 {
-  max-width: 820px !important;
-  color: var(--ink) !important;
-  font-size: clamp(2.75rem, 6.2vw, 5.55rem) !important;
-  line-height: 1.02 !important;
-  letter-spacing: -.045em !important;
-  text-shadow: none !important;
-}
-.hero h1 em {
-  font-size: clamp(2.2rem, 4.85vw, 4.55rem) !important;
-  color: var(--gold) !important;
-  background: linear-gradient(100deg, #b8903c, #d4b870 46%, #9a6a58) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-  text-shadow: none !important;
-}
-.hero-sub {
-  color: rgba(42,32,24,.62) !important;
-  font-size: clamp(.72rem, 1vw, .86rem) !important;
-  max-width: 690px !important;
-  margin: 1.05rem auto 1.1rem !important;
-}
-.hero-intro {
-  color: rgba(42,32,24,.74) !important;
-  max-width: 590px !important;
-  margin: 0 auto 1.8rem !important;
-  font-size: clamp(.82rem, 1.15vw, .94rem) !important;
-  line-height: 1.75 !important;
-}
-.hero-cta {
-  background: var(--ink) !important;
-  color: var(--gold-lt) !important;
-  box-shadow: 0 14px 42px rgba(42,32,24,.18) !important;
-}
-.hero-cta:hover {
-  background: var(--rose) !important;
-  color: #fff !important;
-}
-.scroll-hint {
-  color: rgba(42,32,24,.42) !important;
-}
-.scroll-arrow {
-  background: linear-gradient(to bottom, rgba(184,144,60,.62), transparent) !important;
-}
-.hero-template-track img {
-  background: rgba(255,255,255,.82) !important;
-  border-color: rgba(184,144,60,.24) !important;
-  box-shadow: 0 24px 60px rgba(42,32,24,.16) !important;
-}
-
-/* Smaller titles across the site */
-.section-header h2,
-.bestsellers-header h2,
-.bestsellers-header h3,
-.pricing-section > h2,
-.faq-header h2,
-.share-header h2,
-.rsvp-demo-header h2,
-.seo-intro-section h2,
-.about-seo-body h2,
-.album-service-copy h3 {
-  font-size: clamp(1.85rem, 3.25vw, 3.05rem) !important;
-  line-height: 1.08 !important;
-  letter-spacing: -.035em !important;
-}
-.category-title {
-  font-size: clamp(1.25rem, 2.2vw, 1.65rem) !important;
-}
-.card-header-name {
-  font-size: clamp(1.55rem, 2.35vw, 2rem) !important;
-}
-.bs-card-name,
-.price-name,
-.target-fold-title {
-  font-size: clamp(1.28rem, 2vw, 1.72rem) !important;
-  line-height: 1.12 !important;
-}
-.how-section h2,
-.contact-section h2,
-.reviews-header h2 {
-  font-size: clamp(1.85rem, 3.4vw, 3.05rem) !important;
-}
-
-/* Hide the long SEO copy inside a neat About accordion */
-.seo-intro-section {
-  display: none !important;
-}
-.about-seo-section {
-  background: transparent !important;
-  padding: 2.1rem 2rem .75rem !important;
-  position: relative !important;
-  z-index: 2 !important;
-}
-.about-seo-content {
-  max-width: 980px !important;
-  margin: 0 auto !important;
-}
-.about-seo-details {
-  background: rgba(255,255,255,.82) !important;
-  border: 1px solid rgba(155,120,90,.20) !important;
-  border-radius: 24px !important;
-  box-shadow: 0 12px 34px rgba(42,32,24,.06) !important;
-  overflow: hidden !important;
-}
-.about-seo-details summary {
-  list-style: none !important;
-  cursor: pointer !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  gap: 1.2rem !important;
-  padding: 1.25rem 1.5rem !important;
-  color: var(--ink) !important;
-}
-.about-seo-details summary::-webkit-details-marker {
-  display: none !important;
-}
-.about-seo-details summary::after {
-  content: "+" !important;
-  color: var(--gold) !important;
-  font-family: 'Jost', sans-serif !important;
-  font-size: 1.25rem !important;
-  line-height: 1 !important;
-}
-.about-seo-details[open] summary {
-  background: var(--ink) !important;
-  color: var(--gold-lt) !important;
-}
-.about-seo-details[open] summary::after {
-  content: "−" !important;
-  color: var(--gold-lt) !important;
-}
-.about-seo-title {
-  display: block !important;
-  font-family: 'Playfair Display', 'Cormorant Garamond', serif !important;
-  font-size: clamp(1.35rem, 2.8vw, 2rem) !important;
-  line-height: 1.05 !important;
-  letter-spacing: -.025em !important;
-}
-.about-seo-kicker {
-  display: block !important;
-  margin-top: .28rem !important;
-  font-size: .62rem !important;
-  letter-spacing: .18em !important;
-  text-transform: uppercase !important;
-  color: var(--rose) !important;
-  font-weight: 800 !important;
-}
-.about-seo-details[open] .about-seo-kicker {
-  color: rgba(240,220,200,.72) !important;
-}
-.about-seo-body {
-  padding: 1.65rem 1.65rem 1.85rem !important;
-  color: var(--ink-lt) !important;
-}
-.about-seo-body h2 {
-  color: var(--ink) !important;
-  margin: 0 0 .85rem !important;
-}
-.about-seo-body p {
-  max-width: 820px !important;
-  font-size: .9rem !important;
-  line-height: 1.8 !important;
-  margin: 0 0 .85rem !important;
-  color: var(--ink-lt) !important;
-}
-.about-seo-feature-grid {
-  display: grid !important;
-  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: 1rem !important;
-  margin-top: 1.6rem !important;
-}
-.about-seo-feature-grid article {
-  background: #fff !important;
-  border: 1px solid var(--border) !important;
-  border-radius: 18px !important;
-  padding: 1.1rem !important;
-  box-shadow: 0 10px 28px rgba(42,32,24,.055) !important;
-}
-.about-seo-feature-grid h3 {
-  color: var(--ink) !important;
-  font-size: 1.18rem !important;
-  margin-bottom: .45rem !important;
-}
-.about-seo-feature-grid p {
-  font-size: .78rem !important;
-  line-height: 1.65 !important;
-  margin: 0 !important;
-}
-
-@media (max-width: 900px) {
-  .nav-link {
-    font-size: .58rem !important;
-    padding: .65rem .45rem !important;
-  }
-}
-@media (max-width: 760px) {
-  .about-seo-feature-grid {
-    grid-template-columns: 1fr !important;
-  }
-}
-@media (max-width: 640px) {
-  .nav {
-    background: rgba(255,250,242,.94) !important;
-  }
-  .nav-links {
-    background: rgba(255,250,242,.98) !important;
-    border-bottom: 1px solid rgba(155,120,90,.16) !important;
-  }
-  .nav-links.open .nav-link {
-    color: var(--ink) !important;
-  }
-  .nav .nav-links.open .nav-controls.nav-controls-in-menu .nav-select {
-    background: rgba(255,255,255,.86) !important;
-    color: var(--ink) !important;
-    border-color: rgba(155,120,90,.24) !important;
-  }
-  .hero {
-    padding: 7.7rem 1rem 2.8rem !important;
-    gap: 1.65rem !important;
-  }
-  .hero h1 {
-    font-size: clamp(2.35rem, 11.5vw, 3.65rem) !important;
-    line-height: 1.08 !important;
-  }
-  .hero h1 em {
-    font-size: clamp(1.95rem, 9.4vw, 3.05rem) !important;
-    line-height: 1.14 !important;
-  }
-  .hero-sub {
-    font-size: .68rem !important;
-    letter-spacing: .12em !important;
-  }
-  .hero-intro {
-    font-size: .82rem !important;
-    margin-bottom: 1.35rem !important;
-  }
-  .hero-top-offer {
-    border-radius: 24px !important;
-    margin-bottom: -.55rem !important;
-  }
-  .section-header h2,
-  .bestsellers-header h2,
-  .bestsellers-header h3,
-  .pricing-section > h2,
-  .faq-header h2,
-  .share-header h2,
-  .rsvp-demo-header h2,
-  .about-seo-body h2 {
-    font-size: clamp(1.75rem, 8.6vw, 2.45rem) !important;
-  }
-  .about-seo-section {
-    padding: 1.45rem 1rem .35rem !important;
-  }
-  .about-seo-details summary {
-    padding: 1.05rem 1.1rem !important;
-  }
-  .about-seo-body {
-    padding: 1.2rem 1.15rem 1.45rem !important;
-  }
-}
-</style>
-
-
-
-<style id="cardia-first-moving-png-final-fix">
-/* FINAL FIX: the first visible homepage element is now the moving PNG gallery. */
-.hero {
-  min-height: auto !important;
-  padding: 6.9rem 0 3.2rem !important;
-  justify-content: flex-start !important;
-  align-items: center !important;
-  gap: 1.35rem !important;
-  background:
-    radial-gradient(circle at 10% 18%, rgba(184,144,60,.10), transparent 32%),
-    radial-gradient(circle at 90% 10%, rgba(154,106,88,.08), transparent 35%),
-    linear-gradient(180deg, #fffaf2 0%, #f7f0e6 54%, #f7f7f7 100%) !important;
-}
-.hero-bg {
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.72), rgba(255,255,255,0) 58%),
-    radial-gradient(ellipse at 50% 0%, rgba(184,144,60,.08), transparent 58%) !important;
-  opacity: 1 !important;
-  mask-image: none !important;
-}
-.hero-template-marquee {
-  order: 1 !important;
-  position: relative !important;
-  z-index: 4 !important;
-  width: 100% !important;
-  max-width: none !important;
-  margin: 0 auto .45rem !important;
-  padding: .35rem 0 1.25rem !important;
-  overflow: hidden !important;
-  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent) !important;
-}
-.hero-template-track {
-  align-items: center !important;
-  gap: clamp(1.1rem, 2.1vw, 1.9rem) !important;
-  animation-duration: 38s !important;
-}
-.hero-template-track img,
-.hero-template-track img:nth-child(2n),
-.hero-template-track img:nth-child(3n),
-.hero-template-track img:nth-child(4),
-.hero-template-track img:nth-child(5n) {
-  width: clamp(185px, 14.7vw, 250px) !important;
-  height: clamp(329px, 26.1vw, 444px) !important;
-  aspect-ratio: 9 / 16 !important;
-  object-fit: cover !important;
-  object-position: center center !important;
-  border-radius: 30px !important;
-  background: transparent !important;
-  border: 0 !important;
-  box-shadow: 0 18px 45px rgba(42,32,24,.10) !important;
-  filter: none !important;
-  transform: none !important;
-  --yaw: 0deg !important;
-  --tilt: 0deg !important;
-}
-.hero-top-offer {
-  order: 2 !important;
-  margin: .15rem auto .1rem !important;
-  width: min(720px, calc(100% - 2rem)) !important;
-  background: rgba(255,255,255,.78) !important;
-  border: 1px solid rgba(155,120,90,.18) !important;
-  color: var(--ink) !important;
-  box-shadow: 0 14px 42px rgba(42,32,24,.06) !important;
-  backdrop-filter: blur(14px) !important;
-}
-.hero-top-offer strong {
-  color: var(--ink) !important;
-}
-.hero-top-offer span {
-  color: rgba(42,32,24,.55) !important;
-}
-.hero-content {
-  order: 3 !important;
-  display: block !important;
-  max-width: 760px !important;
-  padding: 0 1.25rem !important;
-  margin: 0 auto !important;
-}
-.hero-tag {
-  background: rgba(255,255,255,.72) !important;
-  color: var(--rose) !important;
-  border: 1px solid rgba(155,120,90,.16) !important;
-  box-shadow: 0 10px 28px rgba(42,32,24,.045) !important;
-}
-.hero h1 {
-  font-size: clamp(2.15rem, 5.2vw, 4.35rem) !important;
-  line-height: 1.02 !important;
-  color: var(--ink) !important;
-  max-width: 760px !important;
-  letter-spacing: -.045em !important;
-  text-shadow: none !important;
-}
-.hero h1 em {
-  font-size: clamp(1.9rem, 4.4vw, 3.75rem) !important;
-  line-height: 1.08 !important;
-  color: var(--gold) !important;
-  background: linear-gradient(100deg, #b8903c, #d4b870 46%, #9a6a58) !important;
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
-}
-.hero-sub {
-  margin: .95rem auto .85rem !important;
-  color: rgba(42,32,24,.58) !important;
-  font-size: clamp(.68rem, .96vw, .82rem) !important;
-}
-.hero-intro {
-  margin: 0 auto 1.45rem !important;
-  max-width: 560px !important;
-  color: rgba(42,32,24,.70) !important;
-  font-size: clamp(.78rem, 1vw, .88rem) !important;
-}
-.hero-cta {
-  background: var(--ink) !important;
-  color: var(--gold-lt) !important;
-  box-shadow: 0 12px 35px rgba(42,32,24,.16) !important;
-}
-.hero-cta:hover {
-  background: var(--rose) !important;
-  color: #fff !important;
-}
-.scroll-hint {
-  display: none !important;
-}
-@media (max-width: 640px) {
-  .hero {
-    padding: 5.85rem 0 2.7rem !important;
-    gap: 1rem !important;
-  }
-  .hero-template-marquee {
-    padding: .1rem 0 .95rem !important;
-    margin-bottom: .15rem !important;
-  }
-  .hero-template-track {
-    gap: .85rem !important;
-    animation-duration: 28s !important;
-  }
-  .hero-template-track img,
-  .hero-template-track img:nth-child(2n),
-  .hero-template-track img:nth-child(3n),
-  .hero-template-track img:nth-child(4),
-  .hero-template-track img:nth-child(5n) {
-    width: 154px !important;
-    height: 274px !important;
-    border-radius: 24px !important;
-    box-shadow: 0 14px 34px rgba(42,32,24,.09) !important;
-  }
-  .hero-top-offer {
-    width: calc(100% - 1.5rem) !important;
-    border-radius: 22px !important;
-    padding: .78rem .9rem !important;
-    margin: .1rem auto .05rem !important;
-  }
-  .hero h1 {
-    font-size: clamp(2.05rem, 10vw, 3.15rem) !important;
-    line-height: 1.06 !important;
-  }
-  .hero h1 em {
-    font-size: clamp(1.72rem, 8.5vw, 2.62rem) !important;
-  }
-}
-</style>
-
-
-
-<style id="cardia-final-faq-contact-whitish-fix">
-/* ═══════════════════════════════════════
-   CARDIA FINAL FIX — FAQ + CONTACT COLORS
-   1) FAQ questions now use the same warm classic index2 palette
-      instead of purple/berry bars.
-   2) Final contact section is light ivory/white, not dark brown.
-═══════════════════════════════════════ */
-
-:root,
-body {
-  --bg:      #F7F7F7;
-  --bg2:     #ffffff;
-  --ink:     #2a2018;
-  --ink-lt:  #6b5a48;
-  --rose:    #9a6a58;
-  --rose-lt: #c8988a;
-  --gold:    #b8903c;
-  --gold-lt: #d4b870;
-  --border:  rgba(155,120,90,.20);
-}
-
-/* FAQ — remove the purple gradient and keep everything warm, classic, and bridal */
-.faq-section {
-  background:
-    radial-gradient(ellipse at 18% 5%, rgba(154,106,88,.065) 0%, transparent 42%),
-    radial-gradient(ellipse at 84% 22%, rgba(184,144,60,.070) 0%, transparent 46%),
-    linear-gradient(180deg, #F7F7F7 0%, #f6f1ea 100%) !important;
-}
-.faq-kicker {
-  color: var(--rose) !important;
-}
-.faq-header h2 {
-  color: var(--ink) !important;
-}
-.faq-header p {
-  color: rgba(42,32,24,.55) !important;
-}
-.faq-item,
-.faq-item:hover,
-.faq-item.open {
-  background: rgba(255,255,255,.86) !important;
-  border: 1px solid rgba(155,120,90,.16) !important;
-  box-shadow: 0 18px 55px rgba(42,32,24,.075) !important;
-  transform: none !important;
-  overflow: hidden !important;
-}
-.faq-question,
-.faq-item.open .faq-question,
-.faq-question[aria-expanded="true"] {
-  background:
-    linear-gradient(135deg, rgba(255,250,243,.98), rgba(240,236,228,.96)) !important;
-  color: var(--ink) !important;
-  border: 0 !important;
-  border-bottom: 1px solid rgba(155,120,90,.13) !important;
-  text-shadow: none !important;
-}
-.faq-question:hover,
-.faq-item.open .faq-question:hover,
-.faq-question[aria-expanded="true"]:hover {
-  background:
-    linear-gradient(135deg, #f5f0e8, #eadfce) !important;
-  color: var(--ink) !important;
-}
-.faq-question::after,
-.faq-item.open .faq-question::after,
-.faq-question[aria-expanded="true"]::after {
-  color: var(--gold) !important;
-  background: rgba(255,255,255,.65) !important;
-  border: 1px solid rgba(184,144,60,.28) !important;
-  box-shadow: 0 8px 24px rgba(42,32,24,.06) !important;
-}
-.faq-answer,
-.faq-item.open .faq-answer {
-  background: rgba(255,255,255,.88) !important;
-  color: rgba(42,32,24,.66) !important;
-  border-top: 0 !important;
-}
-
-/* Foldable headers — keep active/hover warm brown-gold, never purple */
-.target-fold-toggle:hover,
-.target-fold-toggle.is-open {
-  background:
-    linear-gradient(135deg, #2a2018 0%, #3c2d24 58%, #9a6a58 100%) !important;
-  color: #fff8ed !important;
-  border-color: rgba(212,184,112,.34) !important;
-  box-shadow: 0 24px 70px rgba(42,32,24,.20) !important;
-}
-.target-fold-kicker {
-  color: var(--rose) !important;
-}
-.target-fold-toggle.is-open .target-fold-kicker,
-.target-fold-toggle:hover .target-fold-kicker {
-  color: rgba(245,240,232,.72) !important;
-}
-.target-fold-toggle::after,
-.target-fold-toggle.is-open::after,
-.target-fold-toggle:hover::after {
-  color: var(--gold-lt) !important;
-}
-
-/* Final contact section — light ivory/white card instead of dark brown */
-.contact-section {
-  background:
-    radial-gradient(ellipse at 18% 0%, rgba(154,106,88,.070) 0%, transparent 45%),
-    radial-gradient(ellipse at 82% 12%, rgba(184,144,60,.075) 0%, transparent 46%),
-    linear-gradient(180deg, #fffaf3 0%, #F7F7F7 72%, #f5f0e8 100%) !important;
-  color: var(--ink) !important;
-  border: 1px solid rgba(155,120,90,.14) !important;
-  box-shadow: 0 24px 80px rgba(42,32,24,.075) !important;
-}
-.contact-section::before {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(184,144,60,.13) 0%, transparent 58%) !important;
-  opacity: 1 !important;
-}
-.contact-section h2 {
-  color: var(--gold) !important;
-}
-.contact-section h3 {
-  color: var(--ink) !important;
-}
-.contact-label {
-  color: rgba(154,106,88,.70) !important;
-}
-.contact-value,
-.contact-value a,
-.contact-inline-icon {
-  color: var(--ink) !important;
-}
-.contact-item {
-  background: rgba(255,255,255,.78) !important;
-  border: 1px solid rgba(155,120,90,.16) !important;
-  box-shadow: 0 16px 45px rgba(42,32,24,.065) !important;
-}
-.contact-item:hover {
-  border-color: rgba(184,144,60,.32) !important;
-  box-shadow: 0 20px 55px rgba(42,32,24,.095) !important;
-}
-.contact-cta {
-  background: var(--ink) !important;
-  border-color: var(--ink) !important;
-  color: var(--gold-lt) !important;
-  box-shadow: 0 14px 38px rgba(42,32,24,.13) !important;
-}
-.contact-cta:hover {
-  background: var(--rose) !important;
-  border-color: var(--rose) !important;
-  color: #fff !important;
-}
-.footer-note {
-  border-top-color: rgba(155,120,90,.16) !important;
-  color: rgba(42,32,24,.42) !important;
-}
-
-@media (max-width: 640px) {
-  .faq-question,
-  .faq-question[aria-expanded="true"] {
-    font-size: 1.08rem !important;
-    line-height: 1.18 !important;
-  }
-  .contact-section {
-    border-radius: 30px !important;
-  }
-}
-</style>
-
-
-<style id="cardia-about-bottom-and-template-header-removal-fix">
-/* CARDIA FIX: About SEO block moved near the bottom; duplicated collection title removed. */
-#templates > .section-header {
-  display: none !important;
-}
-#templates #bestsellers {
-  padding-top: clamp(3rem, 5vw, 4.5rem) !important;
-}
-.about-seo-section {
-  scroll-margin-top: 92px;
-}
-@media (max-width: 640px) {
-  #templates #bestsellers {
-    padding-top: 2.8rem !important;
-  }
-  .about-seo-section {
-    scroll-margin-top: 78px;
-  }
-}
-</style>
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', syncPricingFoldTitle);
+  else syncPricingFoldTitle();
+  window.addEventListener('load', syncPricingFoldTitle);
+})();
+</script>
 </body>
 </html>
