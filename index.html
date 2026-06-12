@@ -629,6 +629,34 @@ body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink)
 .info-tooltip { display: none; position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%); width: min(260px, 72vw); background: var(--ink); color: rgba(240,220,200,.85); font-size: .62rem; line-height: 1.6; padding: .7rem .9rem; border: 1px solid rgba(184,144,60,.3); text-transform: none; letter-spacing: 0; font-family: 'Jost', sans-serif; z-index: 20; pointer-events: none; }
 .info-btn:hover .info-tooltip, .info-btn:focus .info-tooltip, .info-btn:active .info-tooltip { display: block; }
 .info-tooltip::after { content: ""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: var(--ink); }
+.luxury-demo-link { display: inline-block; margin-top: .45rem; color: var(--gold-lt); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; line-height: 1.45; }
+.luxury-demo-link:hover { color: #fff; }
+@media (max-width: 640px) {
+  .price-card.featured .info-tooltip {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    bottom: auto;
+    transform: translate(-50%, -50%);
+    width: min(330px, calc(100vw - 44px));
+    max-width: calc(100vw - 44px);
+    max-height: 58vh;
+    overflow-y: auto;
+    padding: 1rem 1.05rem;
+    font-size: .78rem;
+    line-height: 1.65;
+    text-align: left;
+    background: #2a2018;
+    color: rgba(255,245,232,.94);
+    border: 1px solid rgba(212,184,112,.55);
+    box-shadow: 0 18px 55px rgba(0,0,0,.32);
+    z-index: 9999;
+    white-space: normal;
+  }
+  .price-card.featured .info-tooltip::after { display: none; }
+  .price-card.featured .info-btn { position: static; }
+  .luxury-demo-link { margin-top: .55rem; font-size: .66rem; }
+}
 .price-cta { display: block; width: 100%; padding: .85rem; border: 1px solid var(--rose); color: var(--rose); font-family: 'Jost', sans-serif; font-size: .65rem; letter-spacing: .18em; text-transform: uppercase; background: transparent; cursor: pointer; transition: all .25s; text-decoration: none; margin-top: 0; }
 .price-cta + .price-cta { margin-top: 8px; font-size: .58rem; opacity: .75; }
 .price-cta:hover { background: var(--rose); color: #fff; }
@@ -3789,7 +3817,7 @@ html, body { background: #F7F7F7 !important; }
         <li class="price-feature"><span>Everything in Premium</span></li>
         <li class="price-feature"><span>Up to 12 photos of your choice included (e.g., from your wedding photo shoot) </span></li>
         <li class="price-feature"><span>Priority service — ready in up to 2 days</span></li>
-        <li class="price-feature"><span>Photo album QR experience included — custom QR card + shared online album for 4 months <span class="info-btn">ⓘ<span class="info-tooltip">A beautiful printable table card with your own QR code, designed to match your wedding style and colors. Guests print it and place it on the reception tables, then scan it to instantly upload photos and videos into one shared online album — no app or account needed.</span></span></span></li>
+        <li class="price-feature"><span>Photo album QR experience included — custom QR card + shared online album for 4 months <span class="info-btn">ⓘ<span class="info-tooltip">A beautiful printable table card with your own QR code, designed to match your wedding style and colors. Guests print it and place it on the reception tables, then scan it to instantly upload photos and videos into one shared online album — no app or account needed.</span></span><br><a class="luxury-demo-link" href="#photo-album-service">See photo album demo below ↓</a></span></li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
 
@@ -3842,7 +3870,7 @@ html, body { background: #F7F7F7 !important; }
         <li class="price-feature"><span>Everything in Premium</span></li>
         <li class="price-feature"><span>Up to 12 photos included</span></li>
         <li class="price-feature"><span>Priority service — ready in up to 2 days</span></li>
-        <li class="price-feature"><span>Photo album QR experience included — custom QR card + shared online album for 4 months <span class="info-btn">ⓘ<span class="info-tooltip">A beautiful printable table card with your own QR code, designed to match your wedding style and colors. Guests print it and place it on the reception tables, then scan it to instantly upload photos and videos into one shared online album — no app or account needed.</span></span></span></li>
+        <li class="price-feature"><span>Photo album QR experience included — custom QR card + shared online album for 4 months <span class="info-btn">ⓘ<span class="info-tooltip">A beautiful printable table card with your own QR code, designed to match your wedding style and colors. Guests print it and place it on the reception tables, then scan it to instantly upload photos and videos into one shared online album — no app or account needed.</span></span><br><a class="luxury-demo-link" href="#photo-album-service">See photo album demo below ↓</a></span></li>
         <li class="price-feature"><span>Hosted forever on our servers</span></li>
       </ul>
     </div>
@@ -4160,6 +4188,7 @@ const CARDIA_TRANSLATIONS = {
     },
     tooltip:'We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.',
     qrTooltip:'A beautiful printable table card with your own QR code, designed to match your wedding style and colors. Guests print it and place it on the reception tables, then scan it to instantly upload photos and videos into one shared online album — no app or account needed.',
+    qrDemoLink:'See photo album demo below ↓',
     generator:'',
     paymentHead1:'Lebanon', paymentHead2:'France, EU & Worldwide',
     paymentLebanon:['For couples in Lebanon.','Outside Lebanon? Please look at the France, EU & Worldwide option.','Contact us by email or Instagram DM.','Preview sent before payment.'], paymentWorld:['For couples outside Lebanon.','Contact us by email or Instagram DM.','Preview sent before payment.'],
@@ -4193,6 +4222,7 @@ const CARDIA_TRANSLATIONS = {
     },
     tooltip:'Nous personnalisons le modèle choisi avec vos noms, la date, le lieu et le programme. Vous pouvez ajouter ou supprimer des étapes (cérémonie, cocktail, dîner, soirée, etc.).',
     qrTooltip:'Une belle carte de table imprimable avec votre propre QR code, conçue pour correspondre au style et aux couleurs de votre mariage. Les invités l’impriment/la placent sur les tables, puis scannent le QR code pour téléverser instantanément leurs photos et vidéos dans un album en ligne partagé — sans application ni compte.',
+    qrDemoLink:'Voir la démo de l’album photo plus bas ↓',
     generator:'',
     paymentHead1:'Liban', paymentHead2:'France, UE et monde entier',
     paymentLebanon:['Pour les couples au Liban.','Hors du Liban ? Veuillez consulter l’option France, UE et monde entier.','Contactez-nous par email ou DM Instagram.','Aperçu envoyé avant paiement.'], paymentWorld:['Pour les couples hors du Liban.','Contactez-nous par email ou DM Instagram.','Aperçu envoyé avant paiement.'],
@@ -4226,6 +4256,7 @@ const CARDIA_TRANSLATIONS = {
     },
     tooltip:'Personalizamos la plantilla elegida con nombres, fecha, lugar, programa y detalles personales. Puedes añadir o quitar secciones, reorganizar el contenido, reemplazar iconos por los tuyos y adaptar el estilo a tu evento.',
     qrTooltip:'Una bonita tarjeta de mesa imprimible con vuestro propio código QR, diseñada para combinar con el estilo y los colores de vuestra boda. Los invitados la colocan en las mesas y escanean el código para subir fotos y vídeos al álbum online compartido — sin aplicación ni cuenta.',
+    qrDemoLink:'Ver la demo del álbum abajo ↓',
     generator:'',
     paymentHead1:'Líbano', paymentHead2:'Francia, UE y todo el mundo',
     paymentLebanon:['Para parejas en Líbano.','¿Fuera de Líbano? Mira la opción Francia, UE y todo el mundo.','Contáctanos por email o DM de Instagram.','Vista previa enviada antes del pago.'], paymentWorld:['Para parejas fuera de Líbano.','Contáctanos por email o DM de Instagram.','Vista previa enviada antes del pago.'],
@@ -4259,6 +4290,7 @@ const CARDIA_TRANSLATIONS = {
     },
     tooltip:'Personalizziamo il modello scelto con nomi, data, luogo, programma e dettagli personali. Puoi aggiungere o rimuovere sezioni, riorganizzare i contenuti, sostituire le icone con le tue e adattare lo stile al tuo evento.',
     qrTooltip:'Un’elegante card da tavolo stampabile con il vostro QR code, progettata per abbinarsi allo stile e ai colori del matrimonio. Gli ospiti la mettono sui tavoli e scansionano il QR per caricare foto e video nell’album online condiviso — senza app né account.',
+    qrDemoLink:'Vedi la demo dell’album più sotto ↓',
     generator:'',
     paymentHead1:'Libano', paymentHead2:'Francia, UE e tutto il mondo',
     paymentLebanon:['Per coppie in Libano.','Fuori dal Libano? Guarda l’opzione Francia, UE e tutto il mondo.','Contattaci via email o DM Instagram.','Anteprima inviata prima del pagamento.'], paymentWorld:['Per coppie fuori dal Libano.','Contattaci via email o DM Instagram.','Anteprima inviata prima del pagamento.'],
@@ -4412,7 +4444,8 @@ function setFeatureList(card, items, tooltip, options = {}) {
       span.innerHTML = featureText + infoIconHTML(tooltip);
     }
     if (i === options.qrIndex && options.qrTooltip) {
-      span.innerHTML = featureText + infoIconHTML(options.qrTooltip);
+      const demoLabel = options.qrDemoLabel || 'See photo album demo below ↓';
+      span.innerHTML = featureText + infoIconHTML(options.qrTooltip) + '<br><a class="luxury-demo-link" href="#photo-album-service">' + escapeHTML(demoLabel) + '</a>';
     }
   });
 }
@@ -4486,11 +4519,11 @@ function applyLanguage(lang) {
   const desktopPriceCards = document.querySelectorAll('.pricing-cards .price-card');
   setFeatureList(desktopPriceCards[0], t.features.standard, t.tooltip, { personalizedIndex: 1 });
   setFeatureList(desktopPriceCards[1], t.features.premium, t.tooltip, { personalizedIndex: 1 });
-  setFeatureList(desktopPriceCards[2], t.features.luxury, null, { qrIndex: 3, qrTooltip: t.qrTooltip });
+  setFeatureList(desktopPriceCards[2], t.features.luxury, null, { qrIndex: 3, qrTooltip: t.qrTooltip, qrDemoLabel: t.qrDemoLink });
   const mobilePriceCards = document.querySelectorAll('.pricing-swiper-wrap .price-card');
   setFeatureList(mobilePriceCards[0], t.features.standard, t.tooltip, { personalizedIndex: 1 });
   setFeatureList(mobilePriceCards[1], t.features.premium, t.tooltip, { personalizedIndex: 1 });
-  setFeatureList(mobilePriceCards[2], t.features.luxuryMobile, null, { qrIndex: 3, qrTooltip: t.qrTooltip });
+  setFeatureList(mobilePriceCards[2], t.features.luxuryMobile, null, { qrIndex: 3, qrTooltip: t.qrTooltip, qrDemoLabel: t.qrDemoLink });
 
   const paymentHeads = document.querySelectorAll('.payment-region h4');
   if(paymentHeads[0]) paymentHeads[0].lastChild.textContent = ' ' + t.paymentHead1;
