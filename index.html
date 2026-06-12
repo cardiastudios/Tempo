@@ -4133,6 +4133,101 @@ h1, h2, h3,
 }
 </style>
 
+
+
+<!-- CARDIA FIX: mobile menu closed by default + equal hero gallery PNG sizing -->
+<style id="cardia-mobile-menu-gallery-final-fix">
+/* 1) Phone menu: keep the dropdown closed until the hamburger is tapped. */
+@media (max-width: 640px) {
+  .nav .nav-links {
+    display: none !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transform: translateY(-8px) scale(.985) !important;
+  }
+
+  .nav .nav-links.open {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: translateY(0) scale(1) !important;
+  }
+
+  .nav-hamburger {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 641px) {
+  .nav .nav-links {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* 2) Hero running PNGs: same large size, no glow/shadow, no tilt. */
+.hero-template-track {
+  align-items: center !important;
+  gap: clamp(1.15rem, 2vw, 1.9rem) !important;
+}
+
+.hero-template-track img,
+.hero-template-track img:nth-child(2n),
+.hero-template-track img:nth-child(3n),
+.hero-template-track img:nth-child(4),
+.hero-template-track img:nth-child(5n) {
+  flex: 0 0 auto !important;
+  width: clamp(170px, 14.5vw, 245px) !important;
+  height: clamp(302px, 25.8vw, 436px) !important;
+  aspect-ratio: 9 / 16 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  border-radius: 28px !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  filter: none !important;
+  transform: none !important;
+  --yaw: 0deg !important;
+  --tilt: 0deg !important;
+}
+
+@media (max-width: 640px) {
+  .hero-template-track {
+    gap: .9rem !important;
+  }
+
+  .hero-template-track img,
+  .hero-template-track img:nth-child(2n),
+  .hero-template-track img:nth-child(3n),
+  .hero-template-track img:nth-child(4),
+  .hero-template-track img:nth-child(5n) {
+    width: 148px !important;
+    height: 263px !important;
+    border-radius: 24px !important;
+    box-shadow: none !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+</style>
+<script id="cardia-mobile-menu-safety-final-fix">
+/* Safety reset: prevents the mobile dropdown from staying open after reload/back navigation. */
+document.addEventListener('DOMContentLoaded', function () {
+  var navLinks = document.getElementById('navLinks');
+  var navHamburger = document.getElementById('navHamburger');
+  if (navLinks) navLinks.classList.remove('open');
+  if (navHamburger) navHamburger.classList.remove('open');
+});
+</script>
+
 </head>
 <body>
 <!-- NAV -->
