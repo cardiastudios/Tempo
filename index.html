@@ -2722,6 +2722,91 @@ z-index:9999!important;
 .share-section .info-btn{position:static!important;}
 }
 
+
+
+/* CARDIA FINAL FIX — Wedding Album Demo info icon behaves like Luxury plan on mobile */
+.album-service-features li {
+  align-items: flex-start !important;
+  overflow: visible !important;
+}
+.album-feature-text {
+  flex: 1 1 auto;
+  min-width: 0;
+  line-height: inherit;
+}
+.share-section .album-service-features .info-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  margin-left: 6px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  overflow: visible !important;
+  vertical-align: -2px !important;
+  line-height: 1 !important;
+  position: relative !important;
+  flex-shrink: 0 !important;
+  z-index: 30 !important;
+}
+
+@media (max-width: 640px) {
+  .share-section .album-service-card,
+  .share-section .album-service-copy,
+  .share-section .album-service-features,
+  .share-section .album-service-features li {
+    overflow: visible !important;
+  }
+
+  .share-section .album-service-features li {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: .45rem !important;
+    padding-left: 0 !important;
+    position: relative !important;
+  }
+
+  .share-section .album-service-features li::before {
+    position: static !important;
+    flex: 0 0 auto !important;
+  }
+
+  .share-section .album-service-features .info-btn {
+    position: static !important;
+  }
+
+  .share-section .album-service-features .info-tooltip {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+    width: min(330px, calc(100vw - 44px)) !important;
+    max-width: calc(100vw - 44px) !important;
+    max-height: 58vh !important;
+    overflow-y: auto !important;
+    padding: 1rem 1.05rem !important;
+    font-size: .78rem !important;
+    line-height: 1.65 !important;
+    text-align: left !important;
+    background: #2a2018 !important;
+    color: rgba(255,245,232,.94) !important;
+    border: 1px solid rgba(212,184,112,.55) !important;
+    box-shadow: 0 18px 55px rgba(0,0,0,.32) !important;
+    z-index: 9999 !important;
+    white-space: normal !important;
+    pointer-events: auto !important;
+  }
+
+  .share-section .album-service-features .info-tooltip::after {
+    display: none !important;
+  }
+}
+
 </style>
 <style>
 /* ── Special offer banner ── */
@@ -3123,6 +3208,56 @@ z-index:9999!important;
   .share-section .info-btn{position:static!important;}
 }
 
+
+
+/* ═══════════════════════════════════════
+   FINAL MOBILE FIX — PRICING / ALBUM INFO TOOLTIPS
+   Makes every pricing (i) tooltip open centered on the phone screen,
+   including the standalone wedding album service card.
+═══════════════════════════════════════ */
+@media (max-width: 640px) {
+  .pricing-section .info-btn,
+  .pricing-swiper-wrap .info-btn,
+  .pricing-cards .info-btn {
+    position: static !important;
+  }
+
+  .pricing-section .info-tooltip,
+  .pricing-swiper-wrap .info-tooltip,
+  .pricing-cards .info-tooltip {
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: translate(-50%, -50%) !important;
+
+    width: min(330px, calc(100vw - 44px)) !important;
+    max-width: calc(100vw - 44px) !important;
+    max-height: 58vh !important;
+    overflow-y: auto !important;
+
+    padding: 1rem 1.05rem !important;
+    background: #2a2018 !important;
+    color: rgba(255,245,232,.94) !important;
+    border: 1px solid rgba(212,184,112,.55) !important;
+    box-shadow: 0 18px 55px rgba(0,0,0,.32) !important;
+
+    font-size: .78rem !important;
+    line-height: 1.65 !important;
+    text-align: left !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    white-space: normal !important;
+    z-index: 999999 !important;
+  }
+
+  .pricing-section .info-tooltip::after,
+  .pricing-swiper-wrap .info-tooltip::after,
+  .pricing-cards .info-tooltip::after {
+    display: none !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -5351,7 +5486,7 @@ if (document.readyState === 'loading') {
     features.forEach(function(li, i){
       if (!t.features[i]) return;
       if (i === 4) {
-        li.innerHTML = t.features[i] + ' <span class="info-btn" tabindex="0" aria-label="More information">ⓘ<span class="info-tooltip">' + t.tooltip + '</span></span>';
+        li.innerHTML = '<span class="album-feature-text">' + t.features[i] + ' <span class="info-btn" tabindex="0" aria-label="More information">ⓘ<span class="info-tooltip">' + t.tooltip + '</span></span></span>';
       } else {
         li.textContent = t.features[i];
       }
