@@ -5178,7 +5178,7 @@ document.addEventListener('DOMContentLoaded', function () {
 <li>Guests scan to instantly upload photos and videos — no app or account needed</li>
 <li>All memories collected automatically in one shared online album</li>
 <li>You and your guests can view and download the album anytime</li>
-<li>Album hosted and available for 4 months after your wedding date <span class="info-btn">ⓘ<span class="info-tooltip">After 4 months, you can download the full album or request an extension.</span></span></li>
+<li>Album hosted and available for 4 months after your wedding date</li>
 <li>Ready within 2–3 days of your order</li>
 </ul>
 <div class="album-service-actions">
@@ -6458,7 +6458,6 @@ if (document.readyState === 'loading') {
         'Album hosted and available for 4 months after your wedding date',
         'Ready within 2–3 days of your order'
       ],
-      tooltip: 'After 4 months, you can download the full album or request an extension.',
       buttons: ['View live demo', 'View printable card']
     },
     fr: {
@@ -6476,7 +6475,6 @@ if (document.readyState === 'loading') {
         'Album hébergé et disponible pendant 4 mois après la date de votre mariage',
         'Prêt sous 2 à 3 jours après votre commande'
       ],
-      tooltip: 'Après 4 mois, vous pouvez télécharger l’album complet ou demander une extension.',
       buttons: ['Voir la démo', 'Voir la carte imprimable']
     },
     es: {
@@ -6494,7 +6492,6 @@ if (document.readyState === 'loading') {
         'Álbum alojado y disponible durante 4 meses después de la fecha de la boda',
         'Listo en 2–3 días después del pedido'
       ],
-      tooltip: 'Después de 4 meses, puedes descargar el álbum completo o pedir una extensión.',
       buttons: ['Ver demo en vivo', 'Ver tarjeta imprimible']
     },
     it: {
@@ -6512,7 +6509,6 @@ if (document.readyState === 'loading') {
         'Album ospitato e disponibile per 4 mesi dopo la data del matrimonio',
         'Pronto entro 2–3 giorni dall’ordine'
       ],
-      tooltip: 'Dopo 4 mesi potete scaricare l’album completo o richiedere un’estensione.',
       buttons: ['Vedi demo live', 'Vedi card stampabile']
     },
     pt: {
@@ -6530,7 +6526,6 @@ if (document.readyState === 'loading') {
         'Álbum alojado e disponível durante 4 meses após a data do casamento',
         'Pronto em 2–3 dias após o pedido'
       ],
-      tooltip: 'Após 4 meses, pode descarregar o álbum completo ou pedir uma extensão.',
       buttons: ['Ver demo ao vivo', 'Ver cartão imprimível']
     }
   };
@@ -6868,6 +6863,36 @@ if (document.readyState === 'loading') {
   if (window.location.hash) {
     setTimeout(function(){ handleHash(window.location.hash); }, 300);
   }
+})();
+</script>
+
+
+<style id="cardia-album-no-info-final-fix">
+  /* Final targeted fix: remove ONLY the (i) tooltip icons inside the Wedding Photo Album QR Card feature boxes. */
+  #photo-album-service .album-service-features .info-btn,
+  .share-section .album-service-features .info-btn {
+    display: none !important;
+  }
+</style>
+<script id="cardia-album-no-info-final-fix-js">
+(function(){
+  function removeAlbumInfoIcons(){
+    document.querySelectorAll('#photo-album-service .album-service-features .info-btn, .share-section .album-service-features .info-btn').forEach(function(el){
+      el.remove();
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', removeAlbumInfoIcons);
+  } else {
+    removeAlbumInfoIcons();
+  }
+  window.addEventListener('load', removeAlbumInfoIcons);
+  document.addEventListener('change', function(e){
+    if (e.target && (e.target.id === 'languageSelect' || e.target.id === 'currencySelect')) {
+      setTimeout(removeAlbumInfoIcons, 0);
+      setTimeout(removeAlbumInfoIcons, 100);
+    }
+  });
 })();
 </script>
 
