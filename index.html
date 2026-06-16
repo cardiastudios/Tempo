@@ -1,5 +1,6 @@
 
 
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -6465,7 +6466,7 @@ body {
 
 
 
-/* CARDIA FIX 2026-06-12 — Book + Classic template covers now use PNG previews.
+/* CARDIA FIX 2026-06-12 — Book template covers now use PNG previews.
    The real template still opens on click, but the homepage card preview is a fast static PNG from /AB/. */
 #templates #row1 .template-card,
 #templates #row2 .template-card {
@@ -6508,7 +6509,7 @@ body {
 
 
 
-/* CARDIA FINAL FIX — Book + Classic template cards use static PNG covers and keep real template links.
+/* CARDIA FINAL FIX — Book template cards use static PNG covers and keep real template links.
    PNGs are loaded from https://www.cardiastudios.com/AB/B1.png ... B6.png and C1.png ... C8.png. */
 #templates #row1 a.card-wrap,
 #templates #row2 a.card-wrap,
@@ -6747,6 +6748,23 @@ body {
     padding: 1.12rem 3.85rem 1.12rem 1.15rem !important;
     font-size: 1.18rem !important;
   }
+}
+
+
+
+/* Pricing QR tooltip: keep the feature line short and place details/demo link inside the ⓘ popup. */
+.info-tooltip .luxury-tooltip-link {
+  display: block;
+  margin-top: .55rem;
+  color: var(--gold) !important;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+  line-height: 1.45;
+  pointer-events: auto;
+}
+.info-btn .info-tooltip {
+  pointer-events: auto !important;
 }
 
 </style>
@@ -7129,9 +7147,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-<!-- CARDIA FINAL FIX — Book/Classic previews like Best Sellers + modern footer -->
+<!-- CARDIA FINAL FIX — Book previews like Best Sellers + modern footer -->
 <style id="cardia-template-preview-footer-modern-fix">
-/* Book + Classic rows now use the same modern phone-stack language as Best Sellers. */
+/* Book rows now use the same modern phone-stack language as Best Sellers. */
 #templates #row1,
 #templates #row2 {
   width: max-content !important;
@@ -8130,238 +8148,6 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="card-strip" style="--accent:#4a7ab5;"></div>
 </div>
 </a>
-<!-- Duplicates for seamless loop -->
-<div aria-hidden="true" class="card-wrap card-garden">
-<div class="card-header"><span class="card-header-num">B1</span><span class="card-header-name">Blue Rose Garden</span></div>
-<div class="template-card card-garden" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/B1.png" alt="Blue Rose Garden digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#8a9bb5;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-garden">
-<div class="card-header"><span class="card-header-num">B2</span><span class="card-header-name">Dark blue Garden</span></div>
-<div class="template-card card-garden" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/B2.png" alt="Dark blue Garden digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#8a9bb5;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-garden">
-<div class="card-header"><span class="card-header-num">B3</span><span class="card-header-name">French Village</span></div>
-<div class="template-card card-garden" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/B3.png" alt="French Village digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#c4848a;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-garden">
-<div class="card-header"><span class="card-header-num">B4</span><span class="card-header-name">Jardin de Fleurs</span></div>
-<div class="template-card card-garden" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/B4.png" alt="Jardin de Fleurs digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#8a5a2a;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-garden">
-<div class="card-header"><span class="card-header-num">B5</span><span class="card-header-name">Soft Floral Book</span></div>
-<div class="template-card card-garden" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/B5.png" alt="Soft Floral Book digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#8a9bb5;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap">
-<div class="card-header"><span class="card-header-num">B6</span><span class="card-header-name">Ciel Divin</span></div>
-<div class="template-card " aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/B6.png" alt="Ciel Divin digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#4a7ab5;"></div>
-</div>
-</div>
-</div><!-- end cards-inner -->
-</div>
-</div>
-</div>
-<!-- ══ ROW 2: Classic Invitations ══ -->
-<div class="category-block reveal">
-<div class="category-header">
-<div class="category-title">Classic Invitations <span>Swipe to view ›</span></div>
-<div class="category-arrows">
-<button class="cat-arrow" onclick="nudgeRow('row1', -1)">‹</button>
-<button class="cat-arrow" onclick="nudgeRow('row1', 1)">›</button>
-</div>
-</div>
-<div class="row-edge-arrows">
-<button aria-label="Previous classic invitations" class="edge-arrow left" onclick="nudgeRow('row1', -1)">‹</button>
-<button aria-label="Next classic invitations" class="edge-arrow right" onclick="nudgeRow('row1', 1)">›</button>
-</div>
-<div class="cards-track-wrap">
-<div class="cards-track" id="row1">
-<div class="cards-inner" id="row1-inner" style="--scroll-dur:42s">
-<a class="card-wrap card-terracotta template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_terracotta.html" target="_blank" rel="noopener" aria-label="View Dark Gold Luxury template">
-<div class="card-header">
-<span class="card-header-num">C1</span><span class="card-header-name">Dark Gold Luxury</span>
-</div>
-<div class="template-card card-terracotta">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C1.png" alt="Dark Gold Luxury digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Dark Gold Luxury</div>
-<div class="card-desc">Dark · Gold · Floral · Luxurious</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#c4674a;"></div>
-</div>
-</a>
-<a class="card-wrap card-vintage template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_vintage.html" target="_blank" rel="noopener" aria-label="View Vintage template">
-<div class="card-header">
-<span class="card-header-num">C2</span><span class="card-header-name">Vintage</span>
-</div>
-<div class="template-card card-vintage">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C2.png" alt="Vintage digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Vintage</div>
-<div class="card-desc">Aged parchment · Sepia · Ornate frames</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#c4a456;"></div>
-</div>
-</a>
-<a class="card-wrap card-garden template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_garden.html" target="_blank" rel="noopener" aria-label="View Garden and Floral template">
-<div class="card-header">
-<span class="card-header-num">C3</span><span class="card-header-name">Garden &amp; Floral</span>
-</div>
-<div class="template-card card-garden">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C3.png" alt="Garden and Floral digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Garden &amp; Floral</div>
-<div class="card-desc">Sage green · Botanical · Fresh</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#7a9e7e;"></div>
-</div>
-</a>
-<a class="card-wrap card-soft template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_soft.html" target="_blank" rel="noopener" aria-label="View Soft and Minimal template">
-<div class="card-header">
-<span class="card-header-num">C4</span><span class="card-header-name">Soft &amp; Minimal</span>
-</div>
-<div class="template-card card-soft">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C4.png" alt="Soft and Minimal digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Soft &amp; Minimal</div>
-<div class="card-desc">Blush · Minimal · Pure elegance</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#c9958a;"></div>
-</div>
-</a>
-<a class="card-wrap card-dark template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_dark.html" target="_blank" rel="noopener" aria-label="View Dark and Moody template">
-<div class="card-header">
-<span class="card-header-num">C5</span><span class="card-header-name">Dark &amp; Moody</span>
-</div>
-<div class="template-card card-dark">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C5.png" alt="Dark and Moody digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Dark &amp; Moody</div>
-<div class="card-desc">Deep charcoal · Gold · Dramatic</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#c9a84c;"></div>
-</div>
-</a>
-<a class="card-wrap card-midnight template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_night.html" target="_blank" rel="noopener" aria-label="View Midnight Blue template">
-<div class="card-header">
-<span class="card-header-num">C6</span><span class="card-header-name">Midnight Blue</span>
-</div>
-<div class="template-card card-midnight">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C6.png" alt="Midnight Blue digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Midnight Blue</div>
-<div class="card-desc">Navy · Silver · Twinkling stars</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#8aaa98;"></div>
-</div>
-</a>
-<a class="card-wrap card-classic template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_classic.html" target="_blank" rel="noopener" aria-label="View Classic template">
-<div class="card-header">
-<span class="card-header-num">C7</span><span class="card-header-name">Classic</span>
-</div>
-<div class="template-card card-classic">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C7.png" alt="Classic digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Classic</div>
-<div class="card-desc">Warm paper · Torn edges · Gold accents</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#c9a96e;"></div>
-</div>
-</a>
-<a class="card-wrap card-elvish template-link-card" href="https://www.cardiastudios.com/templates/wedding-invitation_lotr.html" target="_blank" rel="noopener" aria-label="View Elvish Fantasy template">
-<div class="card-header">
-<span class="card-header-num">C8</span><span class="card-header-name">Elvish Fantasy</span>
-</div>
-<div class="template-card card-elvish">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C8.png" alt="Elvish Fantasy digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-overlay">
-<div class="card-name">Elvish Fantasy</div>
-<div class="card-desc">Forest green · Gold · Fireflies · LOTR</div>
-<span class="card-btn">View Template →</span>
-</div>
-<div class="card-strip" style="--accent:#2d6e3a;"></div>
-</div>
-</a>
-<!-- Duplicates for seamless loop -->
-<div aria-hidden="true" class="card-wrap card-terracotta">
-<div class="card-header"><span class="card-header-num">C1</span><span class="card-header-name">Dark Gold Luxury</span></div>
-<div class="template-card card-terracotta" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C1.png" alt="Dark Gold Luxury digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#c4674a;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-vintage">
-<div class="card-header"><span class="card-header-num">C2</span><span class="card-header-name">Vintage</span></div>
-<div class="template-card card-vintage" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C2.png" alt="Vintage digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#c4a456;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-garden">
-<div class="card-header"><span class="card-header-num">C3</span><span class="card-header-name">Garden &amp; Floral</span></div>
-<div class="template-card card-garden" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C3.png" alt="Garden and Floral digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#7a9e7e;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-soft">
-<div class="card-header"><span class="card-header-num">C4</span><span class="card-header-name">Soft &amp; Minimal</span></div>
-<div class="template-card card-soft" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C4.png" alt="Soft and Minimal digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#c9958a;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-dark">
-<div class="card-header"><span class="card-header-num">C5</span><span class="card-header-name">Dark &amp; Moody</span></div>
-<div class="template-card card-dark" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C5.png" alt="Dark and Moody digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#c9a84c;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-midnight">
-<div class="card-header"><span class="card-header-num">C6</span><span class="card-header-name">Midnight Blue</span></div>
-<div class="template-card card-midnight" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C6.png" alt="Midnight Blue digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#8aaa98;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-classic">
-<div class="card-header"><span class="card-header-num">C7</span><span class="card-header-name">Classic</span></div>
-<div class="template-card card-classic" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C7.png" alt="Classic digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#c9a96e;"></div>
-</div>
-</div>
-<div aria-hidden="true" class="card-wrap card-elvish">
-<div class="card-header"><span class="card-header-num">C8</span><span class="card-header-name">Elvish Fantasy</span></div>
-<div class="template-card card-elvish" aria-hidden="true">
-<img class="template-cover-img" src="https://www.cardiastudios.com/AB/C8.png" alt="Elvish Fantasy digital wedding invitation cover preview" loading="lazy" decoding="async"/>
-<div class="card-strip" style="--accent:#2d6e3a;"></div>
-</div>
-</div>
 </div><!-- end cards-inner -->
 </div>
 </div>
@@ -8464,14 +8250,14 @@ document.addEventListener('DOMContentLoaded', function () {
 <h2 class="reveal">How Our Online Wedding Invitations Work</h2>
 <p class="reveal">Choose a design, personalize every detail, then share your digital wedding invitation online</p>
 <div class="steps">
-<div class="step reveal"><div class="step-num">01</div><h3>Choose a design</h3><p>Browse our exclusive templates and pick the one that speaks to your love story. Each design has an ID: A for Best Sellers, B for Book Invitations, and C for Classic Invitations.</p></div>
+<div class="step reveal"><div class="step-num">01</div><h3>Choose a design</h3><p>Browse our exclusive templates and pick the one that speaks to your love story. Each design has an ID: A for Best Sellers and B for Book Invitations.</p></div>
 <div class="step reveal"><div class="step-num">02</div><h3>Send your details</h3><p>Share your template ID, names, date, venue, schedule, and any personal touches you'd like included.</p></div>
 <div class="step reveal"><div class="step-num">03</div><h3>We customize it</h3><p>We adapt the template to your wedding: names, date, venue, schedule, photos, wording, sections, and small design details are adjusted to match your event.</p></div>
 <div class="step reveal"><div class="step-num">04</div><h3>Share with guests</h3><p>Send a single link to all your guests. RSVPs go straight to your inbox automatically. You also receive a Google Sheet that updates in real time whenever a guest confirms or declines attendance.</p></div>
 </div>
 <div class="steps-swiper-wrap" id="howSwiper">
 <div class="steps-swiper-track" id="howTrack">
-<div class="step"><div class="step-num">01</div><h3>Choose a design</h3><p>Browse our exclusive templates and pick the one that speaks to your love story. Each design has an ID: A for Best Sellers, B for Book Invitations, and C for Classic Invitations.</p></div>
+<div class="step"><div class="step-num">01</div><h3>Choose a design</h3><p>Browse our exclusive templates and pick the one that speaks to your love story. Each design has an ID: A for Best Sellers and B for Book Invitations.</p></div>
 <div class="step"><div class="step-num">02</div><h3>Send your details</h3><p>Share your template ID, names, date, venue, schedule, and any personal touches you'd like included.</p></div>
 <div class="step"><div class="step-num">03</div><h3>We customize it</h3><p>We adapt the template to your wedding: names, date, venue, schedule, photos, wording, sections, and small design details are adjusted to match your event.</p></div>
 <div class="step"><div class="step-num">04</div><h3>Share with guests</h3><p>Send a single link to all your guests. RSVPs go straight to your inbox automatically. You also receive a Google Sheet that updates in real time whenever a guest confirms or declines attendance.</p></div>
@@ -8554,58 +8340,53 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="price-card reveal">
 <div class="price-name">Standard</div>
 <div class="price-amount" data-base-price="100"><span class="price-currency">$</span><span class="old-price">100</span><span class="offer-price">80</span></div>
-<div class="price-period">one-time · hosted forever</div>
+<div class="price-period">one-time payment</div>
 <div class="price-desc">The complete digital invitation</div>
 <ul class="price-features">
 <li class="price-feature included"><span>1 template of your choice</span></li>
 <li class="price-feature included"><span>Fully personalized <span class="info-btn">ⓘ<span class="info-tooltip">We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.</span></span></span></li>
 <li class="price-feature included"><span>Unlimited number of invitees</span></li>
 <li class="price-feature included"><span>Location Details &amp; Map</span></li>
-<li class="price-feature included"><span>RSVP form — replies go to your inbox + live Google Sheet tracking</span></li>
-<li class="price-feature included"><span>Up to 3 photos included</span></li>
+<li class="price-feature included"><span>RSVP form replies go to your inbox</span></li>
+<li class="price-feature excluded"><span>RSVP Management-live tracking</span></li>
 <li class="price-feature excluded"><span>Background music</span></li>
 <li class="price-feature excluded"><span>Photo album QR experience</span></li>
-<li class="price-feature excluded"><span>Priority service — ready in up to 2 days</span></li>
-<li class="price-feature included"><span>Ready in up to 7 days</span></li>
-<li class="price-feature included"><span>Hosted forever on our servers</span></li>
+<li class="price-feature excluded"><span>Priority service</span></li>
 </ul>
 </div>
 <div class="price-card reveal">
 <div class="price-name">Premium</div>
 <div class="price-amount" data-base-price="159"><span class="price-currency">$</span><span class="old-price">159</span><span class="offer-price">127</span></div>
-<div class="price-period">one-time · hosted forever</div>
+<div class="price-period">one-time payment</div>
 <div class="price-desc">The full experience</div>
 <ul class="price-features">
 <li class="price-feature included"><span>1 template of your choice</span></li>
 <li class="price-feature included"><span>Fully personalized <span class="info-btn">ⓘ<span class="info-tooltip">We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.</span></span></span></li>
 <li class="price-feature included"><span>Unlimited number of invitees</span></li>
 <li class="price-feature included"><span>Location Details &amp; Map</span></li>
-<li class="price-feature included"><span>RSVP form — replies go to your inbox + live Google Sheet tracking</span></li>
-<li class="price-feature included"><span>Up to 6 photos of your choice included</span></li>
+<li class="price-feature included"><span>RSVP form replies go to your inbox</span></li>
+<li class="price-feature included"><span>RSVP Management-live tracking</span></li>
 <li class="price-feature included"><span>Background music</span></li>
 <li class="price-feature excluded"><span>Photo album QR experience</span></li>
-<li class="price-feature excluded"><span>Priority service — ready in up to 2 days</span></li>
-<li class="price-feature included"><span>Ready in up to 4 days</span></li>
-<li class="price-feature included"><span>Hosted forever on our servers</span></li>
+<li class="price-feature excluded"><span>Priority service</span></li>
 </ul>
 </div>
 <div class="price-card featured reveal">
 <div class="price-badge">Most Popular</div>
 <div class="price-name">Luxury</div>
 <div class="price-amount" data-base-price="189"><span class="price-currency">$</span><span class="old-price">189</span><span class="offer-price">151</span></div>
-<div class="price-period">one-time · hosted forever</div>
+<div class="price-period">one-time payment</div>
 <div class="price-desc">For the perfect wedding</div>
 <ul class="price-features">
 <li class="price-feature included"><span>1 template of your choice</span></li>
 <li class="price-feature included"><span>Fully personalized <span class="info-btn">ⓘ<span class="info-tooltip">We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.</span></span></span></li>
 <li class="price-feature included"><span>Unlimited number of invitees</span></li>
 <li class="price-feature included"><span>Location Details &amp; Map</span></li>
-<li class="price-feature included"><span>RSVP form — replies go to your inbox + live Google Sheet tracking</span></li>
-<li class="price-feature included"><span>Up to 12 photos of your choice included</span></li>
+<li class="price-feature included"><span>RSVP form replies go to your inbox</span></li>
+<li class="price-feature included"><span>RSVP Management-live tracking</span></li>
 <li class="price-feature included"><span>Background music</span></li>
-<li class="price-feature included"><span>Priority service — ready in up to 2 days</span></li>
-<li class="price-feature included"><span>Photo album QR experience included — custom QR card + shared online album for 4 months <span class="info-btn">ⓘ<span class="info-tooltip">We design a printable QR table card with your own QR code, matched to your wedding style and colors. You, the couple, print the cards and place them on the reception tables. Guests simply scan the QR code to upload photos and videos into one shared online album — no app or account needed.</span></span><br/><a class="luxury-demo-link" href="#photo-album-service">See photo album demo below ↓</a></span></li>
-<li class="price-feature included"><span>Hosted forever on our servers</span></li>
+<li class="price-feature included"><span>Photo album QR experience <span class="info-btn" tabindex="0" aria-label="More information">ⓘ<span class="info-tooltip">Included: custom QR card + shared online album for 4 months. We design a printable QR table card with your own QR code, matched to your wedding style and colors. You, the couple, print the cards and place them on the reception tables. Guests simply scan the QR code to upload photos and videos into one shared online album — no app or account needed.<br/><a class="luxury-tooltip-link" href="#photo-album-service">See photo album demo below ↓</a></span></span></span></li>
+<li class="price-feature included"><span>Priority service</span></li>
 </ul>
 </div>
 </div>
@@ -8615,40 +8396,36 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="price-card mobile-price-panel" data-plan-panel="standard">
 <div class="price-name">Standard</div>
 <div class="price-amount" data-base-price="100"></div>
-<div class="price-period">one-time · hosted forever</div>
+<div class="price-period">one-time payment</div>
 <div class="price-desc">The complete digital invitation</div>
 <ul class="price-features">
 <li class="price-feature included"><span>1 template of your choice</span></li>
 <li class="price-feature included"><span>Fully personalized <span class="info-btn">ⓘ<span class="info-tooltip">We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.</span></span></span></li>
 <li class="price-feature included"><span>Unlimited number of invitees</span></li>
 <li class="price-feature included"><span>Location Details &amp; Map</span></li>
-<li class="price-feature included"><span>RSVP form — replies go to your inbox + live Google Sheet tracking</span></li>
-<li class="price-feature included"><span>Up to 3 photos included</span></li>
+<li class="price-feature included"><span>RSVP form replies go to your inbox</span></li>
+<li class="price-feature excluded"><span>RSVP Management-live tracking</span></li>
 <li class="price-feature excluded"><span>Background music</span></li>
 <li class="price-feature excluded"><span>Photo album QR experience</span></li>
-<li class="price-feature excluded"><span>Priority service — ready in up to 2 days</span></li>
-<li class="price-feature included"><span>Ready in up to 7 days</span></li>
-<li class="price-feature included"><span>Hosted forever on our servers</span></li>
+<li class="price-feature excluded"><span>Priority service</span></li>
 </ul>
 </div>
 <button class="mobile-price-tab" data-plan="premium" type="button"><span class="mobile-plan-main"><span class="mobile-plan-icon">◇</span><span class="mobile-plan-copy"><span class="mobile-plan-name">Premium</span><span class="mobile-plan-tag">More features &amp; personalization</span><span class="mobile-plan-short">Advanced options for a more elevated experience.</span></span></span><span class="mobile-plan-plus">+</span></button>
 <div class="price-card mobile-price-panel" data-plan-panel="premium">
 <div class="price-name">Premium</div>
 <div class="price-amount" data-base-price="159"></div>
-<div class="price-period">one-time · hosted forever</div>
+<div class="price-period">one-time payment</div>
 <div class="price-desc">The full experience</div>
 <ul class="price-features">
 <li class="price-feature included"><span>1 template of your choice</span></li>
 <li class="price-feature included"><span>Fully personalized <span class="info-btn">ⓘ<span class="info-tooltip">We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.</span></span></span></li>
 <li class="price-feature included"><span>Unlimited number of invitees</span></li>
 <li class="price-feature included"><span>Location Details &amp; Map</span></li>
-<li class="price-feature included"><span>RSVP form — replies go to your inbox + live Google Sheet tracking</span></li>
-<li class="price-feature included"><span>Up to 6 photos of your choice included</span></li>
+<li class="price-feature included"><span>RSVP form replies go to your inbox</span></li>
+<li class="price-feature included"><span>RSVP Management-live tracking</span></li>
 <li class="price-feature included"><span>Background music</span></li>
 <li class="price-feature excluded"><span>Photo album QR experience</span></li>
-<li class="price-feature excluded"><span>Priority service — ready in up to 2 days</span></li>
-<li class="price-feature included"><span>Ready in up to 4 days</span></li>
-<li class="price-feature included"><span>Hosted forever on our servers</span></li>
+<li class="price-feature excluded"><span>Priority service</span></li>
 </ul>
 </div>
 <button class="mobile-price-tab" data-plan="luxury" type="button"><span class="mobile-plan-main"><span class="mobile-plan-icon">♕</span><span class="mobile-plan-copy"><span class="mobile-plan-name">Luxury</span><span class="mobile-plan-tag">The ultimate experience</span><span class="mobile-plan-short">Our most complete package with all the extras.</span></span></span><span class="mobile-plan-plus">+</span></button>
@@ -8656,19 +8433,18 @@ document.addEventListener('DOMContentLoaded', function () {
 <div class="price-badge">Most Popular</div>
 <div class="price-name">Luxury</div>
 <div class="price-amount" data-base-price="189"></div>
-<div class="price-period">one-time · hosted forever</div>
+<div class="price-period">one-time payment</div>
 <div class="price-desc">For the perfect wedding</div>
 <ul class="price-features">
 <li class="price-feature included"><span>1 template of your choice</span></li>
 <li class="price-feature included"><span>Fully personalized <span class="info-btn">ⓘ<span class="info-tooltip">We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.</span></span></span></li>
 <li class="price-feature included"><span>Unlimited number of invitees</span></li>
 <li class="price-feature included"><span>Location Details &amp; Map</span></li>
-<li class="price-feature included"><span>RSVP form — replies go to your inbox + live Google Sheet tracking</span></li>
-<li class="price-feature included"><span>Up to 12 photos of your choice included</span></li>
+<li class="price-feature included"><span>RSVP form replies go to your inbox</span></li>
+<li class="price-feature included"><span>RSVP Management-live tracking</span></li>
 <li class="price-feature included"><span>Background music</span></li>
-<li class="price-feature included"><span>Priority service — ready in up to 2 days</span></li>
-<li class="price-feature included"><span>Photo album QR experience included — custom QR card + shared online album for 4 months <span class="info-btn">ⓘ<span class="info-tooltip">We design a printable QR table card with your own QR code, matched to your wedding style and colors. You, the couple, print the cards and place them on the reception tables. Guests simply scan the QR code to upload photos and videos into one shared online album — no app or account needed.</span></span><br/><a class="luxury-demo-link" href="#photo-album-service">See photo album demo below ↓</a></span></li>
-<li class="price-feature included"><span>Hosted forever on our servers</span></li>
+<li class="price-feature included"><span>Photo album QR experience <span class="info-btn" tabindex="0" aria-label="More information">ⓘ<span class="info-tooltip">Included: custom QR card + shared online album for 4 months. We design a printable QR table card with your own QR code, matched to your wedding style and colors. You, the couple, print the cards and place them on the reception tables. Guests simply scan the QR code to upload photos and videos into one shared online album — no app or account needed.<br/><a class="luxury-tooltip-link" href="#photo-album-service">See photo album demo below ↓</a></span></span></span></li>
+<li class="price-feature included"><span>Priority service</span></li>
 </ul>
 </div>
 </div>
@@ -8885,9 +8661,6 @@ document.addEventListener('DOMContentLoaded', function () {
         <a class="modern-social-btn instagram" href="https://instagram.com/cardiastudios" target="_blank" rel="noopener" aria-label="Open Cardia Studios on Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r=".7" fill="currentColor" stroke="none"></circle></svg>
         </a>
-        <a class="modern-social-btn whatsapp" href="https://api.whatsapp.com/send?text=Hi%20Cardia%20Studios%2C%20I%20am%20interested%20in%20a%20digital%20wedding%20invitation." target="_blank" rel="noopener" aria-label="Open WhatsApp">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.8a8.3 8.3 0 0 1-12.2 7.3L4 20.4l1.4-4.1A8.3 8.3 0 1 1 20.5 11.8Z"></path><path d="M9.2 8.2c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.3.1.5-.1.7l-.4.5c-.1.2-.2.3 0 .6.4.7 1.1 1.5 1.8 1.9.3.2.5.2.7 0l.6-.7c.2-.2.4-.2.7-.1l1.7.8c.3.1.4.3.4.6 0 .7-.5 1.4-1.1 1.7-.6.3-2.6.4-5.1-1.7-2.5-2.1-3.1-4.3-3-5 .1-.6.5-1.2.9-1.6Z"></path></svg>
-        </a>
         <a class="modern-social-btn email" href="mailto:cardia.studios@gmail.com" aria-label="Email Cardia Studios">
           <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m4 7 8 6 8-6"></path></svg>
         </a>
@@ -8984,26 +8757,66 @@ const CARDIA_TRANSLATIONS = {
     heroTag:'Digital Wedding Invitations with Online RSVP', heroTitle:'Digital Wedding Invitations ', heroEm:'& Online RSVP Websites', heroSub:'Custom online wedding invitations designed for WhatsApp, email, and international guests.', heroCta:'Browse Digital Invitation Templates',
     bestTitle:'Best-Selling Online Wedding Invitation Designs', bestSub:'Our most loved digital wedding invitation designs — chosen by couples around the world', bestBadge:'Best Seller', viewTheme:'View theme',
     collectionTitle:'Digital Wedding Invitation Templates', collectionSub:'Interactive online wedding invitation templates for every celebration style',
-    bookTitle:'Book Invitations', classicTitle:'Classic Invitations', swipe:'Swipe to view ›', templateId:'Template ID: ',
+    bookTitle:'Book Invitations', swipe:'Swipe to view ›', templateId:'Template ID: ',
     howTitle:'How Our Online Wedding Invitations Work', howSub:'Choose a design, personalize every detail, then share your digital wedding invitation online',
     rsvpKicker:'Live RSVP Demo', rsvpTitle:'Online RSVP Demo with Guest Tracking', rsvpIntro:'Guests can open your online wedding invitation, submit their RSVP, and automatically update your connected Google Sheet dashboard with their attendance response.', rsvpCaption:'Try out our RSVP system', rsvpStepTitles:['Create a guest link','Watch the dashboard update'], rsvpStepText:['<ul class="rsvp-demo-list"><li>Create a personalized guest or family link.</li><li>Click the generated link to open the Thomas & Sarah invitation.</li><li>See how it changes with your settings: 1, 2, or any number of guests, pre-filled names, or blank fields.</li><li>Send a test RSVP like a real guest.</li></ul>','<p>After submitting the RSVP, open the Google Sheet dashboard to see how every answer is collected automatically.</p>'], rsvpButtons:['Try link generator','View dashboard'], rsvpNote:'This is a live demo, so test answers may appear in the demo dashboard. For your own wedding, you will also receive an email notification for every RSVP in addition to the dashboard.',
     steps:[
-      ['Choose a design','Browse our exclusive templates and pick the one that speaks to your love story. Each design has an ID: A for Best Sellers, B for Book Invitations, and C for Classic Invitations.'],
+      ['Choose a design','Browse our exclusive templates and pick the one that speaks to your love story. Each design has an ID: A for Best Sellers and B for Book Invitations.'],
       ['Send your details',"Share your template ID, names, date, venue, schedule, and any personal touches you'd like included."],
       ['We customize it','We adapt the template to your wedding: names, date, venue, schedule, photos, wording, sections, and small design details are adjusted to match your event.'],
       ['Share with guests','Send a single link to all your guests. RSVPs go straight to your inbox automatically. You also receive a Google Sheet that updates in real time whenever a guest confirms or declines attendance.']
     ],
     pricingTitle:'Pricing', pricingSub:'', currencyNote:'Choose your currency from the top menu',
-    plans:['Standard','Premium','Luxury'], popular:'Most Popular', oneTime:'one-time · hosted forever',
+    plans:['Standard','Premium','Luxury'], popular:'Most Popular', oneTime:'one-time payment',
     planDesc:['The complete digital invitation','The full experience','For the perfect wedding'],
-    features:{
-      standard:['1 template of your choice','Fully personalized','RSVP form — replies go to your inbox','Up to 3 photos included','Ready in up to 7 days','Hosted forever on our servers'],
-      premium:['1 template of your choice','Fully personalized','RSVP form — replies go to your inbox','Up to 6 photos of your choice included','Background music','Ready in up to 4 days','Hosted forever on our servers'],
-      luxury:['Everything in Premium','Up to 12 photos of your choice included','Priority service - ready in up to 2 days','Photo album QR experience included — custom QR card + shared online album for 4 months','Hosted forever on our servers'],
-      luxuryMobile:['Everything in Premium','Up to 12 photos included','Priority service - ready in up to 2 days','Photo album QR included + shared online album for 4 months','Hosted forever on our servers']
-    },
+    features: {
+      "standard": [
+            "1 template of your choice",
+            "Fully personalized",
+            "Unlimited number of invitees",
+            "Location Details & Map",
+            "RSVP form replies go to your inbox",
+            "RSVP Management-live tracking",
+            "Background music",
+            "Photo album QR experience",
+            "Priority service"
+      ],
+      "premium": [
+            "1 template of your choice",
+            "Fully personalized",
+            "Unlimited number of invitees",
+            "Location Details & Map",
+            "RSVP form replies go to your inbox",
+            "RSVP Management-live tracking",
+            "Background music",
+            "Photo album QR experience",
+            "Priority service"
+      ],
+      "luxury": [
+            "1 template of your choice",
+            "Fully personalized",
+            "Unlimited number of invitees",
+            "Location Details & Map",
+            "RSVP form replies go to your inbox",
+            "RSVP Management-live tracking",
+            "Background music",
+            "Photo album QR experience",
+            "Priority service"
+      ],
+      "luxuryMobile": [
+            "1 template of your choice",
+            "Fully personalized",
+            "Unlimited number of invitees",
+            "Location Details & Map",
+            "RSVP form replies go to your inbox",
+            "RSVP Management-live tracking",
+            "Background music",
+            "Photo album QR experience",
+            "Priority service",
+      ]
+},
     tooltip:'We customize your chosen template with your names, date, venue, schedule and personal details. You can add or remove sections, reorder content, replace any icons with your own icons, and adapt the template to match your event style.',
-    qrTooltip:'We design a printable QR table card with your own QR code, matched to your wedding style and colors. You, the couple, print the cards and place them on the reception tables. Guests simply scan the QR code to upload photos and videos into one shared online album — no app or account needed.',
+    qrTooltip:'Included: custom QR card + shared online album for 4 months. We design a printable QR table card with your own QR code, matched to your wedding style and colors. You, the couple, print the cards and place them on the reception tables. Guests simply scan the QR code to upload photos and videos into one shared online album — no app or account needed.',
     qrDemoLink:'See photo album demo below ↓',
     generator:'',
     paymentHead1:'Lebanon', paymentHead2:'France, EU & Worldwide',
@@ -9018,26 +8831,66 @@ const CARDIA_TRANSLATIONS = {
     heroTag:'Invitations de mariage digitales avec RSVP en ligne', heroTitle:'Invitations de mariage digitales ', heroEm:'& RSVP en ligne', heroSub:'Invitations de mariage en ligne personnalisées, faciles à partager par WhatsApp, email ou QR code.', heroCta:'Voir les modèles digitaux',
     bestTitle:'Nos invitations de mariage en ligne les plus demandées', bestSub:'Nos designs digitaux les plus aimés — choisis par des couples du monde entier', bestBadge:'Meilleure vente', viewTheme:'Voir le modèle',
     collectionTitle:'Modèles d’invitations de mariage digitales', collectionSub:'Des modèles interactifs pour chaque style de célébration',
-    bookTitle:'Invitations livre', classicTitle:'Invitations classiques', swipe:'Faites glisser ›', templateId:'ID du modèle : ',
+    bookTitle:'Invitations livre', swipe:'Faites glisser ›', templateId:'ID du modèle : ',
     howTitle:'Comment fonctionnent nos invitations de mariage en ligne', howSub:'Choisissez un design, personnalisez les détails, puis partagez votre invitation digitale',
     rsvpKicker:'Démo RSVP en direct', rsvpTitle:'Démo RSVP en ligne avec suivi des invités', rsvpIntro:'Les invités ouvrent votre invitation de mariage en ligne, confirment leur présence et mettent automatiquement à jour votre tableau Google Sheet.', rsvpCaption:'Testez notre système RSVP', rsvpStepTitles:['Créer un lien invité','Voir le tableau se mettre à jour'], rsvpStepText:['<ul class="rsvp-demo-list"><li>Créez un lien personnalisé pour un invité ou une famille.</li><li>Cliquez sur le lien généré pour ouvrir l’invitation Thomas & Sarah.</li><li>Voyez comment le RSVP change selon vos réglages : 1, 2 ou autant d’invités que nécessaire, noms préremplis ou champs vides.</li><li>Envoyez un RSVP test comme un vrai invité.</li></ul>','<p>Après l’envoi du RSVP, ouvrez le Google Sheet pour voir comment chaque réponse est collectée automatiquement.</p>'], rsvpButtons:['Tester le générateur','Voir le tableau'], rsvpNote:'Ceci est une démo en direct, les réponses test peuvent apparaître dans le tableau. Pour votre propre mariage, vous recevrez aussi une notification par email pour chaque RSVP, en plus du tableau.',
     steps:[
-      ['Choisissez un design','Parcourez nos modèles exclusifs et choisissez celui qui correspond à votre histoire. Chaque design possède un ID : A pour les meilleures ventes, B pour les invitations livre et C pour les invitations classiques.'],
+      ['Choisissez un design','Parcourez nos modèles exclusifs et choisissez celui qui correspond à votre histoire. Chaque design possède un ID : A pour les meilleures ventes et B pour les invitations livre.'],
       ['Envoyez vos informations','Partagez l’ID du modèle, les noms, la date, le lieu, le programme et les détails personnels à ajouter.'],
       ['Nous personnalisons','Nous adaptons le modèle à votre mariage : noms, date, lieu, programme, photos, textes, sections et petits détails visuels sont ajustés à votre événement.'],
       ['Partagez avec vos invités','Envoyez un seul lien à tous vos invités. Les RSVP arrivent directement dans votre boîte mail.']
     ],
     pricingTitle:'Tarifs', pricingSub:'', currencyNote:'Choisissez votre devise dans le menu du haut',
-    plans:['Standard','Premium','Luxury'], popular:'Le plus populaire', oneTime:'paiement unique · hébergement inclus',
+    plans:['Standard','Premium','Luxury'], popular:'Le plus populaire', oneTime:'paiement unique',
     planDesc:['L’invitation digitale complète','L’expérience complète','Pour un mariage parfait'],
-    features:{
-      standard:['1 modèle au choix','Entièrement personnalisé','Formulaire RSVP — réponses dans votre boîte mail','Jusqu’à 3 photos incluses','Prêt sous 7 jours maximum','Hébergé pour toujours sur nos serveurs'],
-      premium:['1 modèle au choix','Entièrement personnalisé','Formulaire RSVP — réponses dans votre boîte mail','Jusqu’à 6 photos au choix incluses','Musique de fond','Prêt sous 4 jours maximum','Hébergé pour toujours sur nos serveurs'],
-      luxury:['Tout ce qui est inclus dans Premium','Jusqu’à 12 photos au choix incluses','Service prioritaire - prêt sous 2 jours maximum','QR album photo inclus — carte QR personnalisée + album en ligne partagé pendant 4 mois','Hébergé pour toujours sur nos serveurs'],
-      luxuryMobile:['Tout ce qui est inclus dans Premium','Jusqu’à 12 photos incluses','Service prioritaire - prêt sous 2 jours maximum','QR album photo inclus + album en ligne pendant 4 mois','Hébergé pour toujours sur nos serveurs']
-    },
+    features: {
+      "standard": [
+            "1 modèle de votre choix",
+            "Entièrement personnalisé",
+            "Nombre d’invités illimité",
+            "Détails du lieu & carte",
+            "Formulaire RSVP — réponses par email",
+            "Gestion RSVP-live en direct",
+            "Musique de fond",
+            "Expérience QR album photo",
+            "Service prioritaire"
+      ],
+      "premium": [
+            "1 modèle de votre choix",
+            "Entièrement personnalisé",
+            "Nombre d’invités illimité",
+            "Détails du lieu & carte",
+            "Formulaire RSVP — réponses par email",
+            "Gestion RSVP-live en direct",
+            "Musique de fond",
+            "Expérience QR album photo",
+            "Service prioritaire"
+      ],
+      "luxury": [
+            "1 modèle de votre choix",
+            "Entièrement personnalisé",
+            "Nombre d’invités illimité",
+            "Détails du lieu & carte",
+            "Formulaire RSVP — réponses par email",
+            "Gestion RSVP-live en direct",
+            "Musique de fond",
+            "Expérience QR album photo",
+            "Service prioritaire"
+      ],
+      "luxuryMobile": [
+            "1 modèle de votre choix",
+            "Entièrement personnalisé",
+            "Nombre d’invités illimité",
+            "Détails du lieu & carte",
+            "Formulaire RSVP — réponses par email",
+            "Gestion RSVP-live en direct",
+            "Musique de fond",
+            "Expérience QR album photo",
+            "Service prioritaire",
+      ]
+},
     tooltip:'Nous personnalisons le modèle choisi avec vos noms, la date, le lieu et le programme. Vous pouvez ajouter ou supprimer des étapes (cérémonie, cocktail, dîner, soirée, etc.).',
-    qrTooltip:'Nous créons une carte de table QR imprimable avec votre propre QR code, assortie au style et aux couleurs de votre mariage. Le couple imprime les cartes et les place sur les tables de réception. Les invités scannent simplement le QR code pour téléverser leurs photos et vidéos dans un album en ligne partagé — sans application ni compte.',
+    qrTooltip:'Inclus : carte QR personnalisée + album en ligne partagé pendant 4 mois. Nous créons une carte de table QR imprimable avec votre propre QR code, assortie au style et aux couleurs de votre mariage. Le couple imprime les cartes et les place sur les tables de réception. Les invités scannent simplement le QR code pour téléverser leurs photos et vidéos dans un album en ligne partagé — sans application ni compte.',
     qrDemoLink:'Voir la démo de l’album photo plus bas ↓',
     generator:'',
     paymentHead1:'Liban', paymentHead2:'France, UE et monde entier',
@@ -9052,26 +8905,66 @@ const CARDIA_TRANSLATIONS = {
     heroTag:'Invitaciones digitales de boda con RSVP online', heroTitle:'Invitaciones digitales de boda ', heroEm:'& RSVP online', heroSub:'Invitaciones de boda online personalizadas para WhatsApp, email e invitados internacionales.', heroCta:'Ver plantillas digitales',
     bestTitle:'Más vendidos', bestSub:'Nuestros diseños más queridos — elegidos por parejas de todo el mundo', bestBadge:'Más vendido', viewTheme:'Ver plantilla',
     collectionTitle:'Plantillas de invitaciones digitales de boda', collectionSub:'Plantillas interactivas para cada estilo de celebración',
-    bookTitle:'Invitaciones libro', classicTitle:'Invitaciones clásicas', swipe:'Desliza para ver ›', templateId:'ID de plantilla: ',
+    bookTitle:'Invitaciones libro', swipe:'Desliza para ver ›', templateId:'ID de plantilla: ',
     howTitle:'Cómo funciona', howSub:'Simple, rápido, hermoso',
     rsvpKicker:'Demo RSVP en vivo', rsvpTitle:'Mira cómo funciona el sistema RSVP', rsvpIntro:'Los visitantes pueden crear un enlace personalizado para invitados, abrir la invitación generada, enviar un RSVP y ver cómo se actualiza el Google Sheet con la respuesta.', rsvpCaption:'Prueba nuestro sistema RSVP', rsvpStepTitles:['Crear un enlace de invitado','Ver cómo se actualiza el panel'], rsvpStepText:['<ul class="rsvp-demo-list"><li>Crea un enlace personalizado para un invitado o una familia.</li><li>Haz clic en el enlace generado para abrir la invitación Thomas & Sarah.</li><li>Mira cómo cambia con tus ajustes: cualquier número de invitados, nombres prellenados o campos en blanco.</li><li>Envía un RSVP de prueba como un invitado real.</li></ul>','<p>Después de enviar el RSVP, abre el Google Sheet para ver cómo cada respuesta se recoge automáticamente.</p>'], rsvpButtons:['Probar generador','Ver panel'], rsvpNote:'Esta es una demo en vivo, por lo que las respuestas de prueba pueden aparecer en el panel. Para tu propia boda, también recibirás una notificación por email por cada RSVP, además del panel.',
     steps:[
-      ['Elige un diseño','Explora nuestras plantillas exclusivas y elige la que mejor represente tu historia. Cada diseño tiene un ID: A para más vendidos, B para invitaciones libro y C para invitaciones clásicas.'],
+      ['Elige un diseño','Explora nuestras plantillas exclusivas y elige la que mejor represente tu historia. Cada diseño tiene un ID: A para más vendidos y B para invitaciones libro.'],
       ['Envía tus detalles','Comparte el ID de la plantilla, nombres, fecha, lugar, programa y cualquier toque personal que quieras incluir.'],
       ['Lo personalizamos','Adaptamos la plantilla a tu boda: nombres, fecha, lugar, programa, fotos, textos, secciones y pequeños detalles visuales se ajustan a tu evento.'],
       ['Comparte con invitados','Envía un solo enlace a todos tus invitados. Las respuestas RSVP llegan directamente a tu correo.']
     ],
     pricingTitle:'Precios', pricingSub:'', currencyNote:'Elige tu moneda en el menú superior',
-    plans:['Standard','Premium','Luxury'], popular:'Más popular', oneTime:'pago único · alojamiento incluido',
+    plans:['Standard','Premium','Luxury'], popular:'Más popular', oneTime:'pago único',
     planDesc:['La invitación digital completa','La experiencia completa','Para una boda perfecta'],
-    features:{
-      standard:['1 plantilla a elección','Totalmente personalizada','Formulario RSVP — respuestas a tu correo','Hasta 3 fotos incluidas','Listo en hasta 7 días','Alojada para siempre en nuestros servidores'],
-      premium:['1 plantilla a elección','Totalmente personalizada','Formulario RSVP — respuestas a tu correo','Hasta 6 fotos a elección incluidas','Música de fondo','Listo en hasta 4 días','Alojada para siempre en nuestros servidores'],
-      luxury:['Todo lo incluido en Premium','Hasta 12 fotos a elección incluidas','Servicio prioritario - listo en hasta 2 días','Alojada para siempre en nuestros servidores'],
-      luxuryMobile:['Todo lo incluido en Premium','Hasta 12 fotos incluidas','Servicio prioritario - listo en hasta 2 días','Alojada para siempre en nuestros servidores']
-    },
+    features: {
+      "standard": [
+            "1 plantilla a tu elección",
+            "Totalmente personalizado",
+            "Número ilimitado de invitados",
+            "Detalles de ubicación y mapa",
+            "Formulario RSVP respuestas por email",
+            "Gestión RSVP-live en vivo",
+            "Música de fondo",
+            "Experiencia QR de álbum de fotos",
+            "Servicio prioritario"
+      ],
+      "premium": [
+            "1 plantilla a tu elección",
+            "Totalmente personalizado",
+            "Número ilimitado de invitados",
+            "Detalles de ubicación y mapa",
+            "Formulario RSVP respuestas por email",
+            "Gestión RSVP-live en vivo",
+            "Música de fondo",
+            "Experiencia QR de álbum de fotos",
+            "Servicio prioritario"
+      ],
+      "luxury": [
+            "1 plantilla a tu elección",
+            "Totalmente personalizado",
+            "Número ilimitado de invitados",
+            "Detalles de ubicación y mapa",
+            "Formulario RSVP respuestas por email",
+            "Gestión RSVP-live en vivo",
+            "Música de fondo",
+            "Experiencia QR de álbum de fotos",
+            "Servicio prioritario"
+      ],
+      "luxuryMobile": [
+            "1 plantilla a tu elección",
+            "Totalmente personalizado",
+            "Número ilimitado de invitados",
+            "Detalles de ubicación y mapa",
+            "Formulario RSVP respuestas por email",
+            "Gestión RSVP-live en vivo",
+            "Música de fondo",
+            "Experiencia QR de álbum de fotos",
+            "Servicio prioritario",
+      ]
+},
     tooltip:'Personalizamos la plantilla elegida con nombres, fecha, lugar, programa y detalles personales. Puedes añadir o quitar secciones, reorganizar el contenido, reemplazar iconos por los tuyos y adaptar el estilo a tu evento.',
-    qrTooltip:'Diseñamos una tarjeta QR de mesa imprimible con vuestro propio código QR, adaptada al estilo y los colores de vuestra boda. La pareja imprime las tarjetas y las coloca en las mesas de la recepción. Los invitados solo escanean el código para subir fotos y vídeos al álbum online compartido — sin aplicación ni cuenta.',
+    qrTooltip:'Incluye: tarjeta QR personalizada + álbum online compartido durante 4 meses. Diseñamos una tarjeta QR de mesa imprimible con vuestro propio código QR, adaptada al estilo y los colores de vuestra boda. La pareja imprime las tarjetas y las coloca en las mesas de la recepción. Los invitados solo escanean el código para subir fotos y vídeos al álbum online compartido — sin aplicación ni cuenta.',
     qrDemoLink:'Ver la demo del álbum abajo ↓',
     generator:'',
     paymentHead1:'Líbano', paymentHead2:'Francia, UE y todo el mundo',
@@ -9086,26 +8979,66 @@ const CARDIA_TRANSLATIONS = {
     heroTag:'Inviti digitali per matrimonio con RSVP online', heroTitle:'Inviti digitali per matrimonio ', heroEm:'& RSVP online', heroSub:'Inviti di matrimonio online personalizzati, facili da condividere via WhatsApp, email o QR code.', heroCta:'Esplora i modelli digitali',
     bestTitle:'Più venduti', bestSub:'I nostri design più amati — scelti da coppie in tutto il mondo', bestBadge:'Più venduto', viewTheme:'Vedi modello',
     collectionTitle:'Modelli di inviti digitali per matrimonio', collectionSub:'Modelli interattivi per ogni stile di celebrazione',
-    bookTitle:'Inviti libro', classicTitle:'Inviti classici', swipe:'Scorri per vedere ›', templateId:'ID modello: ',
+    bookTitle:'Inviti libro', swipe:'Scorri per vedere ›', templateId:'ID modello: ',
     howTitle:'Come funzionano i nostri inviti di matrimonio online', howSub:'Scegli un design, personalizza i dettagli e condividi il tuo invito digitale',
     rsvpKicker:'Demo RSVP live', rsvpTitle:'Scopri come funziona il sistema RSVP', rsvpIntro:'I visitatori possono creare un link ospite personalizzato, aprire l’invito generato, inviare un RSVP e vedere il Google Sheet aggiornarsi con la risposta.', rsvpCaption:'Prova il nostro sistema RSVP', rsvpStepTitles:['Crea un link ospite','Guarda il pannello aggiornarsi'], rsvpStepText:['<ul class="rsvp-demo-list"><li>Crea un link personalizzato per un ospite o una famiglia.</li><li>Clicca sul link generato per aprire l’invito Thomas & Sarah.</li><li>Guarda come cambia con le tue impostazioni: qualsiasi numero di ospiti, nomi precompilati o campi vuoti.</li><li>Invia un RSVP di prova come un vero ospite.</li></ul>','<p>Dopo aver inviato l’RSVP, apri il Google Sheet per vedere come ogni risposta viene raccolta automaticamente.</p>'], rsvpButtons:['Prova generatore','Vedi pannello'], rsvpNote:'Questa è una demo live, quindi le risposte di prova potrebbero apparire nel pannello. Per il tuo matrimonio, riceverai anche una notifica email per ogni RSVP, oltre al pannello.',
     steps:[
-      ['Scegli un design','Sfoglia i nostri modelli esclusivi e scegli quello che racconta meglio la vostra storia. Ogni design ha un ID: A per i più venduti, B per gli inviti libro e C per gli inviti classici.'],
+      ['Scegli un design','Sfoglia i nostri modelli esclusivi e scegli quello che racconta meglio la vostra storia. Ogni design ha un ID: A per i più venduti e B per gli inviti libro.'],
       ['Invia i dettagli','Condividi l’ID del modello, i nomi, la data, il luogo, il programma e ogni dettaglio personale che vuoi includere.'],
       ['Lo personalizziamo','Adattiamo il modello al vostro matrimonio: nomi, data, luogo, programma, foto, testi, sezioni e piccoli dettagli visivi vengono personalizzati per il vostro evento.'],
       ['Condividi con gli ospiti','Invia un solo link a tutti i tuoi ospiti. Le risposte RSVP arrivano direttamente nella tua email.']
     ],
     pricingTitle:'Prezzi', pricingSub:'', currencyNote:'Scegli la valuta dal menu in alto',
-    plans:['Standard','Premium','Luxury'], popular:'Più popolare', oneTime:'pagamento unico · hosting incluso',
+    plans:['Standard','Premium','Luxury'], popular:'Più popolare', oneTime:'pagamento unico',
     planDesc:['L’invito digitale completo','L’esperienza completa','Per un matrimonio perfetto'],
-    features:{
-      standard:['1 modello a scelta','Completamente personalizzato','Modulo RSVP — risposte nella tua email','Fino a 3 foto incluse','Pronto entro 7 giorni','Ospitato per sempre sui nostri server'],
-      premium:['1 modello a scelta','Completamente personalizzato','Modulo RSVP — risposte nella tua email','Fino a 6 foto a scelta incluse','Musica di sottofondo','Pronto entro 4 giorni','Ospitato per sempre sui nostri server'],
-      luxury:['Tutto ciò che è incluso in Premium','Fino a 12 foto a scelta incluse','Servizio prioritario - pronto entro 2 giorni','Ospitato per sempre sui nostri server'],
-      luxuryMobile:['Tutto ciò che è incluso in Premium','Fino a 12 foto incluse','Servizio prioritario - pronto entro 2 giorni','Ospitato per sempre sui nostri server']
-    },
+    features: {
+      "standard": [
+            "1 modello a tua scelta",
+            "Completamente personalizzato",
+            "Numero illimitato di invitati",
+            "Dettagli della location e mappa",
+            "Modulo RSVP risposte via email",
+            "Gestione RSVP-live in tempo reale",
+            "Musica di sottofondo",
+            "Esperienza QR album fotografico",
+            "Servizio prioritario"
+      ],
+      "premium": [
+            "1 modello a tua scelta",
+            "Completamente personalizzato",
+            "Numero illimitato di invitati",
+            "Dettagli della location e mappa",
+            "Modulo RSVP risposte via email",
+            "Gestione RSVP-live in tempo reale",
+            "Musica di sottofondo",
+            "Esperienza QR album fotografico",
+            "Servizio prioritario"
+      ],
+      "luxury": [
+            "1 modello a tua scelta",
+            "Completamente personalizzato",
+            "Numero illimitato di invitati",
+            "Dettagli della location e mappa",
+            "Modulo RSVP risposte via email",
+            "Gestione RSVP-live in tempo reale",
+            "Musica di sottofondo",
+            "Esperienza QR album fotografico",
+            "Servizio prioritario"
+      ],
+      "luxuryMobile": [
+            "1 modello a tua scelta",
+            "Completamente personalizzato",
+            "Numero illimitato di invitati",
+            "Dettagli della location e mappa",
+            "Modulo RSVP risposte via email",
+            "Gestione RSVP-live in tempo reale",
+            "Musica di sottofondo",
+            "Esperienza QR album fotografico",
+            "Servizio prioritario",
+      ]
+},
     tooltip:'Personalizziamo il modello scelto con nomi, data, luogo, programma e dettagli personali. Puoi aggiungere o rimuovere sezioni, riorganizzare i contenuti, sostituire le icone con le tue e adattare lo stile al tuo evento.',
-    qrTooltip:'Progettiamo una card QR da tavolo stampabile con il vostro QR code, abbinata allo stile e ai colori del matrimonio. La coppia stampa le card e le posiziona sui tavoli del ricevimento. Gli ospiti devono solo scansionare il QR per caricare foto e video nell’album online condiviso — senza app né account.',
+    qrTooltip:'Incluso: card QR personalizzata + album online condiviso per 4 mesi. Progettiamo una card QR da tavolo stampabile con il vostro QR code, abbinata allo stile e ai colori del matrimonio. La coppia stampa le card e le posiziona sui tavoli del ricevimento. Gli ospiti devono solo scansionare il QR per caricare foto e video nell’album online condiviso — senza app né account.',
     qrDemoLink:'Vedi la demo dell’album più sotto ↓',
     generator:'',
     paymentHead1:'Libano', paymentHead2:'Francia, UE e tutto il mondo',
@@ -9120,24 +9053,64 @@ const CARDIA_TRANSLATIONS = {
     heroTag:'Convites digitais de casamento com RSVP online', heroTitle:'Convites digitais de casamento ', heroEm:'& RSVP online', heroSub:'Convites de casamento online personalizados, fáceis de partilhar por WhatsApp, email ou QR code.', heroCta:'Explorar modelos digitais',
     bestTitle:'Mais vendidos', bestSub:'Os nossos designs mais adorados — escolhidos por casais em todo o mundo', bestBadge:'Mais vendido', viewTheme:'Ver modelo',
     collectionTitle:'Modelos de convites digitais de casamento', collectionSub:'Modelos interativos para cada estilo de celebração',
-    bookTitle:'Convites livro', classicTitle:'Convites clássicos', swipe:'Deslize para ver ›', templateId:'ID do modelo: ',
+    bookTitle:'Convites livro', swipe:'Deslize para ver ›', templateId:'ID do modelo: ',
     howTitle:'Como funcionam os nossos convites de casamento online', howSub:'Escolha um design, personalize os detalhes e partilhe o seu convite digital',
     rsvpKicker:'Demo RSVP ao vivo', rsvpTitle:'Veja como funciona o sistema RSVP', rsvpIntro:'Os visitantes podem testar um convite real, criar um link personalizado, enviar um RSVP e ver o Google Sheet atualizar.', rsvpCaption:'Teste o nosso sistema RSVP', rsvpStepTitles:['Criar um link de convidado','Ver o painel atualizar'], rsvpStepText:['<ul class="rsvp-demo-list"><li>Crie um link personalizado para um convidado ou família.</li><li>Clique no link gerado para abrir o convite Thomas & Sarah.</li><li>Veja como o RSVP muda com as suas definições: 1, 2 ou qualquer número de convidados, nomes preenchidos ou campos em branco.</li><li>Envie um RSVP de teste como um convidado real.</li></ul>','<p>Depois de enviar o RSVP, abra o Google Sheet para ver como cada resposta é recolhida automaticamente.</p>'], rsvpButtons:['Testar gerador','Ver painel'], rsvpNote:'Esta é uma demo ao vivo, por isso respostas de teste podem aparecer no painel. Para o seu casamento, também receberá uma notificação por email para cada RSVP, além do painel.',
     steps:[
-      ['Escolha um design','Explore os nossos modelos exclusivos e escolha aquele que melhor conta a vossa história. Cada design tem um ID: A para mais vendidos, B para convites livro e C para convites clássicos.'],
+      ['Escolha um design','Explore os nossos modelos exclusivos e escolha aquele que melhor conta a vossa história. Cada design tem um ID: A para mais vendidos e B para convites livro.'],
       ['Envie os detalhes','Partilhe o ID do modelo, nomes, data, local, programa e qualquer toque pessoal que queira incluir.'],
       ['Nós personalizamos','Adaptamos o modelo ao vosso casamento: nomes, data, local, programa, fotos, textos, secções e pequenos detalhes visuais são ajustados ao vosso evento.'],
       ['Partilhe com os convidados','Envie um único link a todos os seus convidados. As respostas RSVP chegam diretamente ao seu email.']
     ],
     pricingTitle:'Preços', pricingSub:'', currencyNote:'Escolha a sua moeda no menu superior',
-    plans:['Standard','Premium','Luxury'], popular:'Mais popular', oneTime:'pagamento único · alojamento incluído',
+    plans:['Standard','Premium','Luxury'], popular:'Mais popular', oneTime:'pagamento único',
     planDesc:['O convite digital completo','A experiência completa','Para o casamento perfeito'],
-    features:{
-      standard:['1 modelo à sua escolha','Totalmente personalizado','Formulário RSVP — respostas no seu email','Até 3 fotos incluídas','Pronto em até 7 dias','Alojado para sempre nos nossos servidores'],
-      premium:['1 modelo à sua escolha','Totalmente personalizado','Formulário RSVP — respostas no seu email','Até 6 fotos à sua escolha incluídas','Música de fundo','Pronto em até 4 dias','Alojado para sempre nos nossos servidores'],
-      luxury:['Tudo incluído no Premium','Até 12 fotos à sua escolha incluídas','Serviço prioritário - pronto em até 2 dias','Alojado para sempre nos nossos servidores'],
-      luxuryMobile:['Tudo incluído no Premium','Até 12 fotos incluídas','Serviço prioritário - pronto em até 2 dias','QR de álbum incluído + álbum online por 4 meses','Alojado para sempre nos nossos servidores']
-    },
+    features: {
+      "standard": [
+            "1 modelo à sua escolha",
+            "Totalmente personalizado",
+            "Número ilimitado de convidados",
+            "Detalhes do local e mapa",
+            "Formulário RSVP respostas por email",
+            "Gestão RSVP-live  em tempo real",
+            "Música de fundo",
+            "Experiência QR de álbum de fotos",
+            "Serviço prioritário"
+      ],
+      "premium": [
+            "1 modelo à sua escolha",
+            "Totalmente personalizado",
+            "Número ilimitado de convidados",
+            "Detalhes do local e mapa",
+            "Formulário RSVP respostas por email",
+            "Gestão RSVP-live  em tempo real",
+            "Música de fundo",
+            "Experiência QR de álbum de fotos",
+            "Serviço prioritário"
+      ],
+      "luxury": [
+            "1 modelo à sua escolha",
+            "Totalmente personalizado",
+            "Número ilimitado de convidados",
+            "Detalhes do local e mapa",
+            "Formulário RSVP respostas por email",
+            "Gestão RSVP-live  em tempo real",
+            "Música de fundo",
+            "Experiência QR de álbum de fotos",
+            "Serviço prioritário"
+      ],
+      "luxuryMobile": [
+            "1 modelo à sua escolha",
+            "Totalmente personalizado",
+            "Número ilimitado de convidados",
+            "Detalhes do local e mapa",
+            "Formulário RSVP respostas por email",
+            "Gestão RSVP-live  em tempo real",
+            "Música de fundo",
+            "Experiência QR de álbum de fotos",
+            "Serviço prioritário",
+      ]
+},
     tooltip:'Personalizamos o modelo escolhido com nomes, data, local, programa e detalhes pessoais. Pode adicionar ou remover secções, reorganizar o conteúdo, substituir ícones pelos seus e adaptar o estilo ao evento.',
     generator:'',
     paymentHead1:'Líbano', paymentHead2:'França, UE e mundo inteiro',
@@ -9301,7 +9274,7 @@ function setFeatureList(card, items, tooltip, options = {}) {
     }
     if (i === options.qrIndex && options.qrTooltip) {
       const demoLabel = options.qrDemoLabel || 'See photo album demo below ↓';
-      span.innerHTML = featureText + infoIconHTML(options.qrTooltip) + '<br><a class="luxury-demo-link" href="#photo-album-service">' + escapeHTML(demoLabel) + '</a>';
+      span.innerHTML = featureText + ' <span class="info-btn" tabindex="0" aria-label="More information">ⓘ<span class="info-tooltip">' + escapeHTML(options.qrTooltip) + '<br><a class="luxury-tooltip-link" href="#photo-album-service">' + escapeHTML(demoLabel) + '</a></span></span>';
     }
   });
 }
@@ -9329,7 +9302,6 @@ function applyLanguage(lang) {
   setText('.section-header p', t.collectionSub);
   const cats = document.querySelectorAll('.category-title');
   if(cats[0]) cats[0].innerHTML = `${t.bookTitle} <span>${t.swipe}</span>`;
-  if(cats[1]) cats[1].innerHTML = `${t.classicTitle} <span>${t.swipe}</span>`;
   document.querySelectorAll('.card-header-num').forEach(el => {
     if (!el.dataset.rawId) el.dataset.rawId = el.textContent.replace(/^(Template ID: |ID du modèle : |ID de plantilla: |ID modello: |ID do modelo: )/,'').trim();
     el.textContent = t.templateId + el.dataset.rawId;
@@ -9375,11 +9347,11 @@ function applyLanguage(lang) {
   const desktopPriceCards = document.querySelectorAll('.pricing-cards .price-card');
   setFeatureList(desktopPriceCards[0], t.features.standard, t.tooltip, { personalizedIndex: 1 });
   setFeatureList(desktopPriceCards[1], t.features.premium, t.tooltip, { personalizedIndex: 1 });
-  setFeatureList(desktopPriceCards[2], t.features.luxury, null, { qrIndex: 3, qrTooltip: t.qrTooltip, qrDemoLabel: t.qrDemoLink });
+  setFeatureList(desktopPriceCards[2], t.features.luxury, t.tooltip, { personalizedIndex: 1, qrIndex: 7, qrTooltip: t.qrTooltip, qrDemoLabel: t.qrDemoLink });
   const mobilePriceCards = document.querySelectorAll('.pricing-swiper-wrap .price-card');
   setFeatureList(mobilePriceCards[0], t.features.standard, t.tooltip, { personalizedIndex: 1 });
   setFeatureList(mobilePriceCards[1], t.features.premium, t.tooltip, { personalizedIndex: 1 });
-  setFeatureList(mobilePriceCards[2], t.features.luxuryMobile, null, { qrIndex: 3, qrTooltip: t.qrTooltip, qrDemoLabel: t.qrDemoLink });
+  setFeatureList(mobilePriceCards[2], t.features.luxuryMobile, t.tooltip, { personalizedIndex: 1, qrIndex: 7, qrTooltip: t.qrTooltip, qrDemoLabel: t.qrDemoLink });
 
   const paymentHeads = document.querySelectorAll('.payment-region h4');
   if(paymentHeads[0]) paymentHeads[0].lastChild.textContent = ' ' + t.paymentHead1;
@@ -9587,8 +9559,7 @@ function scaleIframes(){
     const previewShiftX = parseFloat(styles.getPropertyValue('--preview-shift-x')) || 0;
     const previewShiftY = parseFloat(styles.getPropertyValue('--preview-shift-y')) || 0;
 
-    /* Book invitations and Classic invitations now have separate CSS controls.
-       Adjust them in the CSS section named PHONE FRAME CONTROLS FOR TEMPLATE ROWS. */
+    /* Book invitations use dedicated CSS controls for the phone-frame preview. */
     let scale;
     if (isBookRow) {
       const coverW = parseFloat(styles.getPropertyValue('--book-cover-w')) || 359;
@@ -9639,7 +9610,6 @@ function nudgeRow(id, dir) {
   if(state) state.nudge(dir);
 }
 
-setupSwipeRow('row1');
 setupSwipeRow('row2');
 
 function setupBestSellersMobileAutoScroll() {
@@ -10813,91 +10783,622 @@ if (document.readyState === 'loading') {
 /* Keeps the pricing check/cross comparison intact after language changes. */
 (function(){
   var PLAN_FEATURES = {
-    en: {
-      standard: [
-        ['1 template of your choice', true],
-        ['Fully personalized', true, 'personalized'],
-        ['Unlimited number of invitees', true],
-        ['Location Details & Map', true],
-        ['RSVP form — replies go to your inbox + live Google Sheet tracking', true],
-        ['Up to 3 photos included', true],
-        ['Background music', false],
-        ['Photo album QR experience', false],
-        ['Priority service — ready in up to 2 days', false],
-        ['Ready in up to 7 days', true],
-        ['Hosted forever on our servers', true]
-      ],
-      premium: [
-        ['1 template of your choice', true],
-        ['Fully personalized', true, 'personalized'],
-        ['Unlimited number of invitees', true],
-        ['Location Details & Map', true],
-        ['RSVP form — replies go to your inbox + live Google Sheet tracking', true],
-        ['Up to 6 photos of your choice included', true],
-        ['Background music', true],
-        ['Photo album QR experience', false],
-        ['Priority service — ready in up to 2 days', false],
-        ['Ready in up to 4 days', true],
-        ['Hosted forever on our servers', true]
-      ],
-      luxury: [
-        ['1 template of your choice', true],
-        ['Fully personalized', true, 'personalized'],
-        ['Unlimited number of invitees', true],
-        ['Location Details & Map', true],
-        ['RSVP form — replies go to your inbox + live Google Sheet tracking', true],
-        ['Up to 12 photos of your choice included', true],
-        ['Background music', true],
-        ['Priority service — ready in up to 2 days', true],
-        ['Photo album QR experience included — custom QR card + shared online album for 4 months', true, 'qr'],
-        ['Hosted forever on our servers', true]
-      ]
+    "en": {
+        "standard": [
+            [
+                "1 template of your choice",
+                true
+            ],
+            [
+                "Fully personalized",
+                true,
+                "personalized"
+            ],
+            [
+                "Unlimited number of invitees",
+                true
+            ],
+            [
+                "Location Details & Map",
+                true
+            ],
+            [
+                "RSVP form replies go to your inbox",
+                true
+            ],
+          
+            [
+                "RSVP Management-live tracking",
+                false
+            ],
+            [
+                "Background music",
+                false
+            ],
+            [
+                "Photo album QR experience",
+                false
+            ],
+            [
+                "Priority service",
+                false
+            ]
+        ],
+        "premium": [
+            [
+                "1 template of your choice",
+                true
+            ],
+            [
+                "Fully personalized",
+                true,
+                "personalized"
+            ],
+            [
+                "Unlimited number of invitees",
+                true
+            ],
+            [
+                "Location Details & Map",
+                true
+            ],
+            [
+                "RSVP form replies go to your inbox",
+                true
+            ],
+           
+            [
+                "RSVP Management-live tracking",
+                true
+            ],
+            [
+                "Background music",
+                true
+            ],
+            [
+                "Photo album QR experience",
+                false
+            ],
+            [
+                "Priority service",
+                false
+            ]
+        ],
+        "luxury": [
+            [
+                "1 template of your choice",
+                true
+            ],
+            [
+                "Fully personalized",
+                true,
+                "personalized"
+            ],
+            [
+                "Unlimited number of invitees",
+                true
+            ],
+            [
+                "Location Details & Map",
+                true
+            ],
+            [
+                "RSVP form replies go to your inbox",
+                true
+            ],
+           
+            [
+                "RSVP Management-live tracking",
+                true
+            ],
+            [
+                "Background music",
+                true
+            ],
+            [
+                "Photo album QR experience",
+                true,
+                "qr"
+            ],
+            [
+                "Priority service",
+                true
+            ]
+        ]
     },
-    fr: {
-      standard: [
-        ['1 modèle de votre choix', true], ['Entièrement personnalisé', true, 'personalized'], ['Nombre d’invités illimité', true], ['Détails du lieu & carte', true], ['Formulaire RSVP — réponses par email + suivi Google Sheet en direct', true], ['Jusqu’à 3 photos incluses', true], ['Musique de fond', false], ['Expérience QR album photo', false], ['Service prioritaire — prêt en 2 jours max', false], ['Prêt en 7 jours max', true], ['Hébergé à vie sur nos serveurs', true]
-      ],
-      premium: [
-        ['1 modèle de votre choix', true], ['Entièrement personnalisé', true, 'personalized'], ['Nombre d’invités illimité', true], ['Détails du lieu & carte', true], ['Formulaire RSVP — réponses par email + suivi Google Sheet en direct', true], ['Jusqu’à 6 photos de votre choix incluses', true], ['Musique de fond', true], ['Expérience QR album photo', false], ['Service prioritaire — prêt en 2 jours max', false], ['Prêt en 4 jours max', true], ['Hébergé à vie sur nos serveurs', true]
-      ],
-      luxury: [
-        ['1 modèle de votre choix', true], ['Entièrement personnalisé', true, 'personalized'], ['Nombre d’invités illimité', true], ['Détails du lieu & carte', true], ['Formulaire RSVP — réponses par email + suivi Google Sheet en direct', true], ['Jusqu’à 12 photos de votre choix incluses', true], ['Musique de fond', true], ['Service prioritaire — prêt en 2 jours max', true], ['Expérience QR album photo incluse — carte QR personnalisée + album partagé pendant 4 mois', true, 'qr'], ['Hébergé à vie sur nos serveurs', true]
-      ]
+    "fr": {
+        "standard": [
+            [
+                "1 modèle de votre choix",
+                true
+            ],
+            [
+                "Entièrement personnalisé",
+                true,
+                "personalized"
+            ],
+            [
+                "Nombre d’invités illimité",
+                true
+            ],
+            [
+                "Détails du lieu & carte",
+                true
+            ],
+            [
+                "Formulaire RSVP — réponses par email",
+                true
+            ],
+           
+            [
+                "Gestion RSVP-live en direct",
+                false
+            ],
+            [
+                "Musique de fond",
+                false
+            ],
+            [
+                "Expérience QR album photo",
+                false
+            ],
+            [
+                "Service prioritaire",
+                false
+            ]
+        ],
+        "premium": [
+            [
+                "1 modèle de votre choix",
+                true
+            ],
+            [
+                "Entièrement personnalisé",
+                true,
+                "personalized"
+            ],
+            [
+                "Nombre d’invités illimité",
+                true
+            ],
+            [
+                "Détails du lieu & carte",
+                true
+            ],
+            [
+                "Formulaire RSVP — réponses par email",
+                true
+            ],
+           
+            [
+                "Gestion RSVP-live en direct",
+                true
+            ],
+            [
+                "Musique de fond",
+                true
+            ],
+            [
+                "Expérience QR album photo",
+                false
+            ],
+            [
+                "Service prioritaire",
+                false
+            ]
+        ],
+        "luxury": [
+            [
+                "1 modèle de votre choix",
+                true
+            ],
+            [
+                "Entièrement personnalisé",
+                true,
+                "personalized"
+            ],
+            [
+                "Nombre d’invités illimité",
+                true
+            ],
+            [
+                "Détails du lieu & carte",
+                true
+            ],
+            [
+                "Formulaire RSVP — réponses par email",
+                true
+            ],
+         
+            [
+                "Gestion RSVP-live en direct",
+                true
+            ],
+            [
+                "Musique de fond",
+                true
+            ],
+            [
+                "Expérience QR album photo",
+                true,
+                "qr"
+            ],
+            [
+                "Service prioritaire",
+                true
+            ]
+        ]
     },
-    es: {
-      standard: [
-        ['1 plantilla a tu elección', true], ['Totalmente personalizado', true, 'personalized'], ['Número ilimitado de invitados', true], ['Detalles de ubicación y mapa', true], ['Formulario RSVP — respuestas por email + seguimiento en Google Sheet en vivo', true], ['Hasta 3 fotos incluidas', true], ['Música de fondo', false], ['Experiencia QR de álbum de fotos', false], ['Servicio prioritario — listo en hasta 2 días', false], ['Listo en hasta 7 días', true], ['Alojado para siempre en nuestros servidores', true]
-      ],
-      premium: [
-        ['1 plantilla a tu elección', true], ['Totalmente personalizado', true, 'personalized'], ['Número ilimitado de invitados', true], ['Detalles de ubicación y mapa', true], ['Formulario RSVP — respuestas por email + seguimiento en Google Sheet en vivo', true], ['Hasta 6 fotos de tu elección incluidas', true], ['Música de fondo', true], ['Experiencia QR de álbum de fotos', false], ['Servicio prioritario — listo en hasta 2 días', false], ['Listo en hasta 4 días', true], ['Alojado para siempre en nuestros servidores', true]
-      ],
-      luxury: [
-        ['1 plantilla a tu elección', true], ['Totalmente personalizado', true, 'personalized'], ['Número ilimitado de invitados', true], ['Detalles de ubicación y mapa', true], ['Formulario RSVP — respuestas por email + seguimiento en Google Sheet en vivo', true], ['Hasta 12 fotos de tu elección incluidas', true], ['Música de fondo', true], ['Servicio prioritario — listo en hasta 2 días', true], ['Experiencia QR de álbum de fotos incluida — tarjeta QR personalizada + álbum compartido durante 4 meses', true, 'qr'], ['Alojado para siempre en nuestros servidores', true]
-      ]
+    "es": {
+        "standard": [
+            [
+                "1 plantilla a tu elección",
+                true
+            ],
+            [
+                "Totalmente personalizado",
+                true,
+                "personalized"
+            ],
+            [
+                "Número ilimitado de invitados",
+                true
+            ],
+            [
+                "Detalles de ubicación y mapa",
+                true
+            ],
+            [
+                "Formulario RSVP respuestas por email",
+                true
+            ],
+           
+            [
+                "Gestión RSVP-live en vivo",
+                false
+            ],
+            [
+                "Música de fondo",
+                false
+            ],
+            [
+                "Experiencia QR de álbum de fotos",
+                false
+            ],
+            [
+                "Servicio prioritario",
+                false
+            ]
+        ],
+        "premium": [
+            [
+                "1 plantilla a tu elección",
+                true
+            ],
+            [
+                "Totalmente personalizado",
+                true,
+                "personalized"
+            ],
+            [
+                "Número ilimitado de invitados",
+                true
+            ],
+            [
+                "Detalles de ubicación y mapa",
+                true
+            ],
+            [
+                "Formulario RSVP respuestas por email",
+                true
+            ],
+            
+            [
+                "Gestión RSVP-live en vivo",
+                true
+            ],
+            [
+                "Música de fondo",
+                true
+            ],
+            [
+                "Experiencia QR de álbum de fotos",
+                false
+            ],
+            [
+                "Servicio prioritario",
+                false
+            ]
+        ],
+        "luxury": [
+            [
+                "1 plantilla a tu elección",
+                true
+            ],
+            [
+                "Totalmente personalizado",
+                true,
+                "personalized"
+            ],
+            [
+                "Número ilimitado de invitados",
+                true
+            ],
+            [
+                "Detalles de ubicación y mapa",
+                true
+            ],
+            [
+                "Formulario RSVP respuestas por email",
+                true
+            ],
+           
+            [
+                "Gestión RSVP-live en vivo",
+                true
+            ],
+            [
+                "Música de fondo",
+                true
+            ],
+            [
+                "Experiencia QR de álbum de fotos",
+                true,
+                "qr"
+            ],
+            [
+                "Servicio prioritario",
+                true
+            ]
+        ]
     },
-    it: {
-      standard: [
-        ['1 modello a tua scelta', true], ['Completamente personalizzato', true, 'personalized'], ['Numero illimitato di invitati', true], ['Dettagli della location e mappa', true], ['Modulo RSVP — risposte via email + Google Sheet aggiornato in tempo reale', true], ['Fino a 3 foto incluse', true], ['Musica di sottofondo', false], ['Esperienza QR album fotografico', false], ['Servizio prioritario — pronto entro 2 giorni', false], ['Pronto entro 7 giorni', true], ['Ospitato per sempre sui nostri server', true]
-      ],
-      premium: [
-        ['1 modello a tua scelta', true], ['Completamente personalizzato', true, 'personalized'], ['Numero illimitato di invitati', true], ['Dettagli della location e mappa', true], ['Modulo RSVP — risposte via email + Google Sheet aggiornato in tempo reale', true], ['Fino a 6 foto a tua scelta incluse', true], ['Musica di sottofondo', true], ['Esperienza QR album fotografico', false], ['Servizio prioritario — pronto entro 2 giorni', false], ['Pronto entro 4 giorni', true], ['Ospitato per sempre sui nostri server', true]
-      ],
-      luxury: [
-        ['1 modello a tua scelta', true], ['Completamente personalizzato', true, 'personalized'], ['Numero illimitato di invitati', true], ['Dettagli della location e mappa', true], ['Modulo RSVP — risposte via email + Google Sheet aggiornato in tempo reale', true], ['Fino a 12 foto a tua scelta incluse', true], ['Musica di sottofondo', true], ['Servizio prioritario — pronto entro 2 giorni', true], ['Esperienza QR album fotografico inclusa — card QR personalizzata + album condiviso per 4 mesi', true, 'qr'], ['Ospitato per sempre sui nostri server', true]
-      ]
+    "it": {
+        "standard": [
+            [
+                "1 modello a tua scelta",
+                true
+            ],
+            [
+                "Completamente personalizzato",
+                true,
+                "personalized"
+            ],
+            [
+                "Numero illimitato di invitati",
+                true
+            ],
+            [
+                "Dettagli della location e mappa",
+                true
+            ],
+            [
+                "Modulo RSVP risposte via email",
+                true
+            ],
+           
+            [
+                "Gestione RSVP-live in tempo reale",
+                false
+            ],
+            [
+                "Musica di sottofondo",
+                false
+            ],
+            [
+                "Esperienza QR album fotografico",
+                false
+            ],
+            [
+                "Servizio prioritario",
+                false
+            ]
+        ],
+        "premium": [
+            [
+                "1 modello a tua scelta",
+                true
+            ],
+            [
+                "Completamente personalizzato",
+                true,
+                "personalized"
+            ],
+            [
+                "Numero illimitato di invitati",
+                true
+            ],
+            [
+                "Dettagli della location e mappa",
+                true
+            ],
+            [
+                "Modulo RSVP risposte via email",
+                true
+            ],
+           
+            [
+                "Gestione RSVP-live in tempo reale",
+                true
+            ],
+            [
+                "Musica di sottofondo",
+                true
+            ],
+            [
+                "Esperienza QR album fotografico",
+                false
+            ],
+            [
+                "Servizio prioritario",
+                false
+            ]
+        ],
+        "luxury": [
+            [
+                "1 modello a tua scelta",
+                true
+            ],
+            [
+                "Completamente personalizzato",
+                true,
+                "personalized"
+            ],
+            [
+                "Numero illimitato di invitati",
+                true
+            ],
+            [
+                "Dettagli della location e mappa",
+                true
+            ],
+            [
+                "Modulo RSVP risposte via email",
+                true
+            ],
+           
+            [
+                "Gestione RSVP-live in tempo reale",
+                true
+            ],
+            [
+                "Musica di sottofondo",
+                true
+            ],
+            [
+                "Esperienza QR album fotografico",
+                true,
+                "qr"
+            ],
+            [
+                "Servizio prioritario",
+                true
+            ]
+        ]
     },
-    pt: {
-      standard: [
-        ['1 modelo à sua escolha', true], ['Totalmente personalizado', true, 'personalized'], ['Número ilimitado de convidados', true], ['Detalhes do local e mapa', true], ['Formulário RSVP — respostas por email + Google Sheet em tempo real', true], ['Até 3 fotos incluídas', true], ['Música de fundo', false], ['Experiência QR de álbum de fotos', false], ['Serviço prioritário — pronto em até 2 dias', false], ['Pronto em até 7 dias', true], ['Hospedado para sempre nos nossos servidores', true]
-      ],
-      premium: [
-        ['1 modelo à sua escolha', true], ['Totalmente personalizado', true, 'personalized'], ['Número ilimitado de convidados', true], ['Detalhes do local e mapa', true], ['Formulário RSVP — respostas por email + Google Sheet em tempo real', true], ['Até 6 fotos à sua escolha incluídas', true], ['Música de fundo', true], ['Experiência QR de álbum de fotos', false], ['Serviço prioritário — pronto em até 2 dias', false], ['Pronto em até 4 dias', true], ['Hospedado para sempre nos nossos servidores', true]
-      ],
-      luxury: [
-        ['1 modelo à sua escolha', true], ['Totalmente personalizado', true, 'personalized'], ['Número ilimitado de convidados', true], ['Detalhes do local e mapa', true], ['Formulário RSVP — respostas por email + Google Sheet em tempo real', true], ['Até 12 fotos à sua escolha incluídas', true], ['Música de fundo', true], ['Serviço prioritário — pronto em até 2 dias', true], ['Experiência QR de álbum de fotos incluída — cartão QR personalizado + álbum partilhado durante 4 meses', true, 'qr'], ['Hospedado para sempre nos nossos servidores', true]
-      ]
+    "pt": {
+        "standard": [
+            [
+                "1 modelo à sua escolha",
+                true
+            ],
+            [
+                "Totalmente personalizado",
+                true,
+                "personalized"
+            ],
+            [
+                "Número ilimitado de convidados",
+                true
+            ],
+            [
+                "Detalhes do local e mapa",
+                true
+            ],
+            [
+                "Formulário RSVP respostas por email",
+                true
+            ],
+           
+            [
+                "Gestão RSVP-live  em tempo real",
+                false
+            ],
+            [
+                "Música de fundo",
+                false
+            ],
+            [
+                "Experiência QR de álbum de fotos",
+                false
+            ],
+            [
+                "Serviço prioritário",
+                false
+            ]
+        ],
+        "premium": [
+            [
+                "1 modelo à sua escolha",
+                true
+            ],
+            [
+                "Totalmente personalizado",
+                true,
+                "personalized"
+            ],
+            [
+                "Número ilimitado de convidados",
+                true
+            ],
+            [
+                "Detalhes do local e mapa",
+                true
+            ],
+            [
+                "Formulário RSVP respostas por email",
+                true
+            ],
+         
+            [
+                "Gestão RSVP-live  em tempo real",
+                true
+            ],
+            [
+                "Música de fundo",
+                true
+            ],
+            [
+                "Experiência QR de álbum de fotos",
+                false
+            ],
+            [
+                "Serviço prioritário",
+                false
+            ]
+        ],
+        "luxury": [
+            [
+                "1 modelo à sua escolha",
+                true
+            ],
+            [
+                "Totalmente personalizado",
+                true,
+                "personalized"
+            ],
+            [
+                "Número ilimitado de convidados",
+                true
+            ],
+            [
+                "Detalhes do local e mapa",
+                true
+            ],
+            [
+                "Formulário RSVP respostas por email",
+                true
+            ],
+          
+            [
+                "Gestão RSVP-live  em tempo real",
+                true
+            ],
+            [
+                "Música de fundo",
+                true
+            ],
+            [
+                "Experiência QR de álbum de fotos",
+                true,
+                "qr"
+            ],
+            [
+                "Serviço prioritário",
+                true
+            ]
+        ]
     }
-  };
+};
 
   function currentLang(){
     var sel = document.getElementById('languageSelect');
@@ -10926,7 +11427,7 @@ if (document.readyState === 'loading') {
     var ul = card.querySelector('.price-features');
     if (!ul) return;
     var translations = mainTranslation(lang);
-    var items = (PLAN_FEATURES[lang] && PLAN_FEATURES[lang][plan]) || PLAN_FEATURES.en[plan];
+    var items = ((PLAN_FEATURES[lang] && PLAN_FEATURES[lang][plan]) || PLAN_FEATURES.en[plan]).slice();
     ul.innerHTML = items.map(function(item){
       var text = item[0];
       var included = item[1] !== false;
@@ -10934,7 +11435,8 @@ if (document.readyState === 'loading') {
       var extra = '';
       if (infoType === 'personalized') extra = infoHTML(translations.tooltip);
       if (infoType === 'qr') {
-        extra = infoHTML(translations.qrTooltip) + '<br><a class="luxury-demo-link" href="#photo-album-service">' + escapeHTML(translations.qrDemoLink || 'See photo album demo below ↓') + '</a>';
+        var demoLabel = translations.qrDemoLink || 'See photo album demo below ↓';
+        extra = ' <span class="info-btn" tabindex="0" aria-label="More information">ⓘ<span class="info-tooltip">' + escapeHTML(translations.qrTooltip || '') + '<br><a class="luxury-tooltip-link" href="#photo-album-service">' + escapeHTML(demoLabel) + '</a></span></span>';
       }
       return '<li class="price-feature ' + (included ? 'included' : 'excluded') + '"><span>' + escapeHTML(text) + extra + '</span></li>';
     }).join('');
@@ -10968,8 +11470,10 @@ if (document.readyState === 'loading') {
 
 
 <script id="cardia-book-classic-best-seller-preview-fix">
-/* Book + Classic preview rows: build the same phone-frame stack used by Best Sellers, while keeping the real template links. */
+/* Book invitation previews: build the same phone-frame stack used by Best Sellers, while keeping the real template links.
+   Book cards use B1-B6.png for the main phone preview and B1_1/B1_2 through B6_1/B6_2 for the two secondary previews. */
 (function(){
+  const ASSET_BASE = 'https://www.cardiastudios.com/AB/';
   const gradients = {
     B1: 'radial-gradient(ellipse at 50% 70%, rgba(138,155,181,.20) 0%, rgba(220,230,240,.10) 70%, transparent 100%)',
     B2: 'radial-gradient(ellipse at 50% 70%, rgba(34,50,86,.22) 0%, rgba(205,215,230,.10) 70%, transparent 100%)',
@@ -11004,11 +11508,18 @@ if (document.readyState === 'loading') {
     const header = card.querySelector('.card-header');
     if (!visual || !cover || !header) return;
 
-    const id = (card.querySelector('.card-header-num')?.textContent || '').trim();
+    const rawIdText = (card.querySelector('.card-header-num')?.textContent || '').trim();
+    const idMatch = rawIdText.match(/[BC]\d+/i);
+    const id = idMatch ? idMatch[0].toUpperCase() : rawIdText;
     const name = (card.querySelector('.card-header-name')?.textContent || cover.alt || 'Invitation preview').trim();
     const desc = (visual.querySelector('.card-desc')?.textContent || (id && id[0] === 'B' ? 'Book-style digital invitation preview' : 'Classic digital invitation preview')).trim();
     const src = cover.getAttribute('src');
     if (!src) return;
+
+    const isBook = /^B[1-6]$/.test(id);
+    const mainSrc = isBook ? ASSET_BASE + id + '.png' : src;
+    const firstPreviewSrc = isBook ? ASSET_BASE + id + '_1.png' : src;
+    const secondPreviewSrc = isBook ? ASSET_BASE + id + '_2.png' : src;
 
     card.dataset.modernPreview = '1';
     card.classList.add('template-modern-card');
@@ -11020,11 +11531,11 @@ if (document.readyState === 'loading') {
 
     const phone = document.createElement('div');
     phone.className = 'bs-phone-frame template-bs-phone-frame';
-    phone.appendChild(makeImg(src, 'bs-png-main template-bs-main', name + ' cover preview'));
+    phone.appendChild(makeImg(mainSrc, 'bs-png-main template-bs-main', name + ' cover preview'));
 
     stack.appendChild(phone);
-    stack.appendChild(makeImg(src, 'bs-png-inner one template-bs-inner', name + ' preview detail'));
-    stack.appendChild(makeImg(src, 'bs-png-inner two template-bs-inner', name + ' preview detail'));
+    stack.appendChild(makeImg(firstPreviewSrc, 'bs-png-inner one template-bs-inner', name + ' first secondary preview'));
+    stack.appendChild(makeImg(secondPreviewSrc, 'bs-png-inner two template-bs-inner', name + ' second secondary preview'));
     visual.appendChild(stack);
 
     if (!header.querySelector('.template-row-desc')) {
@@ -11042,11 +11553,11 @@ if (document.readyState === 'loading') {
     }
 
     const idEl = card.querySelector('.card-header-num');
-    if (idEl && id && !/^Template ID:/i.test(idEl.textContent || '')) idEl.textContent = 'Template ID: ' + id;
+    if (idEl && id && !/^(Template ID:|ID du modèle :|ID de plantilla:|ID modello:|ID do modelo:)/i.test(idEl.textContent || '')) idEl.textContent = 'Template ID: ' + id;
   }
 
   function modernizeTemplateRows(){
-    document.querySelectorAll('#templates #row1 .template-link-card, #templates #row2 .template-link-card').forEach(modernizeCard);
+    document.querySelectorAll('#templates #row2 .template-link-card').forEach(modernizeCard);
   }
 
   if (document.readyState === 'loading') {
