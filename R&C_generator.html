@@ -595,13 +595,11 @@ function renderTable() {
 }
 
 function buildShareMessage(i) {
-  const couple = document.getElementById('coupleNames').value.trim() || 'The Couple';
-  const date = document.getElementById('weddingDate').value.trim();
+  const couple = document.getElementById('coupleNames').value.trim() || 'Raymond & Celia';
+  const date = document.getElementById('weddingDate').value.trim() || '16 July 2026';
   const row = rows[i];
-  const greeting = row.guestNames && row.guestNames.length
-    ? 'Dear ' + formatGuestNames(row.guestNames) + ','
-    : 'Dear Guest,';
-  return `You're Invited!\n\n${greeting}\n\nWe would be honored to celebrate our special day with you.\n\n${date ? 'Wedding Date: ' + date + '\n\n' : ''}Please open your invitation and kindly confirm your attendance:\n\n${row.url}\n\nWe can't wait to celebrate together!\n\nWith love,\n${couple}`;
+
+  return `We would be honored to celebrate our special day with you.\n\nWedding Date: ${date}\n\nKindly check all the details and confirm your presence on our website:\n${row.url}\n\nWe can't wait to celebrate together!\n\nWith love,\n${couple}`;
 }
 
 function copyMessage(i, button) {
