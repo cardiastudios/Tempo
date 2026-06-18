@@ -1285,19 +1285,17 @@
   }
 
   .guest-slot-name-list.scrollable-guest-list {
-    max-height:360px;
-    overflow-y:auto;
+    max-height:none;
+    overflow-y:visible;
     overflow-x:hidden;
-    overscroll-behavior:contain;
-    overscroll-behavior-y:contain;
-    touch-action:pan-y;
+    overscroll-behavior:auto;
+    overscroll-behavior-y:auto;
+    touch-action:auto;
     pointer-events:auto;
-    padding:0 4px 0 0;
+    padding:0;
     margin-right:0;
     box-sizing:border-box;
-    scrollbar-width:thin;
-    scrollbar-color:var(--rsvp-accent-border) transparent;
-    -webkit-overflow-scrolling:touch;
+    scrollbar-width:auto;
   }
 
   .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar{
@@ -1389,10 +1387,10 @@
   .guest-welcome-note { margin:0 0 20px; font-size:16px; line-height:1.5; color:var(--text-soft); transition:color .35s ease; }
   @media(max-width:420px){
     .guest-slot-name-list.scrollable-guest-list{
-      max-height:380px;
-      padding:0 3px 0 0;
+      max-height:none;
+      padding:0;
       margin-right:0;
-      scrollbar-width:thin;
+      scrollbar-width:auto;
     }
     .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar{
       width:4px!important;
@@ -2149,12 +2147,11 @@
     const boxList = document.getElementById('guestSlotNameList');
     if (!boxList) return;
     const manualWrap = document.getElementById('manualGuestListWrap');
-    const shouldScrollGuestList = guestResponses.length >= 3;
-    boxList.classList.toggle('scrollable-guest-list', shouldScrollGuestList);
-    if (manualWrap) manualWrap.classList.toggle('has-scroll', shouldScrollGuestList);
+    boxList.classList.remove('scrollable-guest-list');
+    if (manualWrap) manualWrap.classList.remove('has-scroll');
 
-    boxList.onscroll = updateGuestListScrollbar;
-    boxList.onwheel = shouldScrollGuestList ? handleGuestListWheel : null;
+    boxList.onscroll = null;
+    boxList.onwheel = null;
     boxList.innerHTML = guestResponses.map((guest, index) => {
       const safeName = escapeHTML(guest.name || '');
       const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
