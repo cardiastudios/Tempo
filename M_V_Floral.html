@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title> Maickel &amp; Vanessa — Wedding Invitation | Invitation de mariage </title>
+<title>Maickel &amp; Vanessa — Wedding Invitation | Invitation de mariage</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Great+Vibes&amp;family=Montserrat:wght@200;300;400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
 <style>
     :root{
@@ -1656,7 +1656,7 @@
 </div>
 <button aria-label="Toggle music / Activer la musique" class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 <audio id="bgMusic" loop="" preload="auto">
-<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/John_Legend.mp3" type="audio/mpeg"/>
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-wedding-sentimental-piano-375998.mp3" type="audio/mpeg"/>
 </audio>
 <main class="invite">
 <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
@@ -2030,11 +2030,50 @@
   const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTrMHHBBRQkKO6FtRc6ojtE5QP2uObFYtgpmTzGrWbTvQDAKZPDcsRiTlcAN7euNkD/exec';
 
   /* RSVP link modes:
-     ?limit=2 shows editable Guest 1 / Guest 2 fields.
-     ?guests=Marie|Jean&limit=2 pre-fills and locks the named household.
-     Also supports ?guest=, ?invite= and ?group=.
+     ?limit=2&sig=... shows editable Guest 1 / Guest 2 fields.
+     ?guests=Marie|Jean&limit=2&sig=... pre-fills and locks the named household.
+     The signature protects the link: if someone changes limit=3 to limit=23,
+     the RSVP area is rejected instead of creating extra guest fields.
   */
   const inviteParams = new URLSearchParams(window.location.search);
+  const MAX_RSVP_GUESTS = 20;
+  const INVITE_LINK_SECRET = 'cardia-mv-floral-2026-secure-rsvp-v1-K9p3Qx72';
+
+  function clampGuestLimit(value) {
+    const parsed = parseInt(value, 10);
+    if (!Number.isFinite(parsed) || parsed < 1) return 1;
+    return Math.min(parsed, MAX_RSVP_GUESTS);
+  }
+
+  function normalizeGuestNames(names) {
+    return (Array.isArray(names) ? names : [])
+      .map(name => String(name || '').trim().replace(/\s+/g, ' '))
+      .filter(Boolean);
+  }
+
+  function canonicalInvitePayload(limit, names) {
+    const safeLimit = clampGuestLimit(limit);
+    const safeNames = normalizeGuestNames(names);
+    return 'limit=' + safeLimit + '&guests=' + safeNames.join('|');
+  }
+
+  function inviteHash(input) {
+    const text = INVITE_LINK_SECRET + '::' + input;
+    let h1 = 0x811c9dc5;
+    let h2 = 0x811c9dc5 ^ 0x9e3779b9;
+    for (let i = 0; i < text.length; i++) {
+      const c = text.charCodeAt(i);
+      h1 ^= c;
+      h1 = Math.imul(h1, 0x01000193);
+      h2 ^= c + i;
+      h2 = Math.imul(h2, 0x01000193);
+    }
+    return (h1 >>> 0).toString(36).padStart(7, '0') + (h2 >>> 0).toString(36).padStart(7, '0');
+  }
+
+  function createInviteSignature(limit, names) {
+    return inviteHash(canonicalInvitePayload(limit, names));
+  }
 
   function decodeGuestList(rawValue) {
     if (!rawValue) return [];
@@ -2058,17 +2097,24 @@
     return clean.slice(0, -1).join(', ') + ' & ' + clean[clean.length - 1];
   }
 
-  const namedGuestsFromLink = [
+  const rawNamedGuestsFromLink = [
     ...decodeGuestList(inviteParams.get('invite') || ''),
     ...decodeGuestList(inviteParams.get('group') || ''),
     ...decodeGuestList(inviteParams.get('guests') || ''),
     ...decodeGuestList(inviteParams.get('guest') || '')
   ];
 
-  const uniqueNamedGuestsFromLink = [...new Set(namedGuestsFromLink)];
-  const hasLockedGuestNames = uniqueNamedGuestsFromLink.length > 0;
-  const parsedGuestLimit = parseInt(inviteParams.get('limit') || String(uniqueNamedGuestsFromLink.length || 1), 10);
-  const guestLimit = Number.isFinite(parsedGuestLimit) && parsedGuestLimit > 0 ? parsedGuestLimit : Math.max(uniqueNamedGuestsFromLink.length, 1);
+  const uniqueRawNamedGuestsFromLink = [...new Set(normalizeGuestNames(rawNamedGuestsFromLink))];
+  const hasInviteAccessParams = ['limit', 'guest', 'guests', 'invite', 'group'].some(param => inviteParams.has(param));
+  const requestedGuestLimit = clampGuestLimit(inviteParams.get('limit') || String(uniqueRawNamedGuestsFromLink.length || 1));
+  const suppliedInviteSignature = String(inviteParams.get('sig') || '').trim();
+  const expectedInviteSignature = createInviteSignature(requestedGuestLimit, uniqueRawNamedGuestsFromLink);
+  const hasValidInviteSignature = Boolean(suppliedInviteSignature) && suppliedInviteSignature === expectedInviteSignature;
+  const inviteLinkWasModified = hasInviteAccessParams && !hasValidInviteSignature;
+
+  const uniqueNamedGuestsFromLink = hasValidInviteSignature ? uniqueRawNamedGuestsFromLink.slice(0, MAX_RSVP_GUESTS) : [];
+  const hasLockedGuestNames = hasValidInviteSignature && uniqueNamedGuestsFromLink.length > 0;
+  const guestLimit = hasValidInviteSignature ? requestedGuestLimit : 1;
   const lockedGuestNames = hasLockedGuestNames ? uniqueNamedGuestsFromLink.slice(0, guestLimit) : [];
 
   const invitedGroupForClient = formatGuestNames(lockedGuestNames);
@@ -2092,6 +2138,22 @@
     const guestWelcomeName = document.getElementById('guestWelcomeName');
     const personalGuestNote = document.getElementById('personalGuestNote');
     const manualWrap = document.getElementById('manualGuestListWrap');
+    const sendBtn = document.getElementById('sendBtn');
+
+    if (inviteLinkWasModified) {
+      if (guestWelcomeName) guestWelcomeName.textContent = 'Guest';
+      if (personalGuestNote) {
+        personalGuestNote.textContent = currentLang() === 'fr'
+          ? 'Ce lien d’invitation semble avoir été modifié. Merci d’utiliser le lien original envoyé par les mariés.'
+          : 'This invitation link seems to have been modified. Please use the original link sent by the couple.';
+      }
+      if (manualWrap) manualWrap.style.display = 'none';
+      if (sendBtn) {
+        sendBtn.disabled = true;
+        sendBtn.textContent = currentLang() === 'fr' ? 'Lien invalide' : 'Invalid link';
+      }
+      return;
+    }
 
     if (guestWelcomeName) {
       guestWelcomeName.textContent = hasLockedGuestNames ? invitedGroupForClient : 'Guest';
@@ -2286,6 +2348,16 @@
   }
 
   function submitRSVP() {
+    if (inviteLinkWasModified) {
+      const errName = document.getElementById('errName');
+      if (errName) {
+        errName.textContent = currentLang() === 'fr'
+          ? 'Lien invalide. Merci d’utiliser le lien original envoyé par les mariés.'
+          : 'Invalid link. Please use the original link sent by the couple.';
+        errName.style.display = 'block';
+      }
+      return;
+    }
     const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
     const namedGuestsBeforeSubmit = getNamedGuestResponses();
     if (!namedGuestsBeforeSubmit.length) {
