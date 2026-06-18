@@ -460,8 +460,70 @@
 // ─────────────────────────────────────────────
 //  ★  CHANGE THE BASE URL HERE FOR EACH TEMPLATE
 // ─────────────────────────────────────────────
-const BASE_INVITATION_URL = 'https://cardiastudios.github.io/Tempo/M&V_Floral.html';
+const BASE_INVITATION_URL = 'https://cardiastudios.github.io/Tempo/M_V_Floral.html';
 // ─────────────────────────────────────────────
+
+/*
+  Secure RSVP links
+  -----------------
+  The invitation now accepts the guest limit only when it comes with
+  a matching signature. If someone changes ?limit=3 to ?limit=23,
+  the signature will no longer match and the invitation will reject it.
+
+  Keep INVITE_LINK_SECRET exactly the same in this generator and in
+  M_V_Floral.html.
+*/
+const MAX_INVITED_GUESTS = 20;
+const INVITE_LINK_SECRET = 'cardia-mv-floral-2026-secure-rsvp-v1-K9p3Qx72';
+
+function clampGuestLimit(value) {
+  const parsed = parseInt(value, 10);
+  if (!Number.isFinite(parsed) || parsed < 1) return 1;
+  return Math.min(parsed, MAX_INVITED_GUESTS);
+}
+
+function normalizeGuestNames(names) {
+  return (Array.isArray(names) ? names : [])
+    .map(name => String(name || '').trim().replace(/\s+/g, ' '))
+    .filter(Boolean);
+}
+
+function canonicalInvitePayload(limit, names) {
+  const safeLimit = clampGuestLimit(limit);
+  const safeNames = normalizeGuestNames(names);
+  return 'limit=' + safeLimit + '&guests=' + safeNames.join('|');
+}
+
+function inviteHash(input) {
+  const text = INVITE_LINK_SECRET + '::' + input;
+  let h1 = 0x811c9dc5;
+  let h2 = 0x811c9dc5 ^ 0x9e3779b9;
+  for (let i = 0; i < text.length; i++) {
+    const c = text.charCodeAt(i);
+    h1 ^= c;
+    h1 = Math.imul(h1, 0x01000193);
+    h2 ^= c + i;
+    h2 = Math.imul(h2, 0x01000193);
+  }
+  return (h1 >>> 0).toString(36).padStart(7, '0') + (h2 >>> 0).toString(36).padStart(7, '0');
+}
+
+function createInviteSignature(limit, names) {
+  return inviteHash(canonicalInvitePayload(limit, names));
+}
+
+function signInviteUrl(url, limit, guestNames = []) {
+  const safeLimit = clampGuestLimit(limit);
+  const safeNames = normalizeGuestNames(guestNames);
+  url.searchParams.set('limit', safeLimit);
+  if (safeNames.length) {
+    url.searchParams.set('guests', safeNames.join('|'));
+  } else {
+    url.searchParams.delete('guests');
+  }
+  url.searchParams.set('sig', createInviteSignature(safeLimit, safeNames));
+  return { url, limit: safeLimit, guestNames: safeNames };
+}
 
 let rows = [];
 let activeMode = 'self';
@@ -502,7 +564,7 @@ function makeSafeUrl(base) {
 
 function cleanUrl() {
   const url = makeSafeUrl(BASE_INVITATION_URL);
-  ['guest', 'guests', 'invite', 'group', 'id', 'limit'].forEach(p => url.searchParams.delete(p));
+  ['guest', 'guests', 'invite', 'group', 'id', 'limit', 'sig'].forEach(p => url.searchParams.delete(p));
   return url;
 }
 
@@ -527,11 +589,11 @@ function generateLinks() {
 function buildSlotRows() {
   const max = parseInt(document.getElementById('selfMaxSlots').value, 10);
   if (!Number.isFinite(max) || max < 1) throw new Error('Please enter a valid number of guests (1 or more).');
+  if (max > MAX_INVITED_GUESTS) throw new Error('For safety, this generator allows a maximum of ' + MAX_INVITED_GUESTS + ' guests per invitation link.');
   return Array.from({ length: max }, (_, i) => {
     const limit = i + 1;
-    const url = cleanUrl();
-    url.searchParams.set('limit', limit);
-    return { label: limit + ' guest' + (limit === 1 ? '' : 's'), limit, url: formatGeneratedUrl(url), guestNames: [], mode: 'self' };
+    const signed = signInviteUrl(cleanUrl(), limit, []);
+    return { label: signed.limit + ' guest' + (signed.limit === 1 ? '' : 's'), limit: signed.limit, url: formatGeneratedUrl(signed.url), guestNames: [], mode: 'self' };
   });
 }
 
@@ -541,10 +603,8 @@ function buildNamedRows() {
     .map(parseHouseholdRow)
     .filter(r => r && r.names.length)
     .map(row => {
-      const url = cleanUrl();
-      url.searchParams.set('guests', row.names.join('|'));
-      url.searchParams.set('limit', row.limit);
-      return { label: formatGuestNames(row.names), limit: row.limit, url: formatGeneratedUrl(url), guestNames: row.names, mode: 'named' };
+      const signed = signInviteUrl(cleanUrl(), row.limit, row.names);
+      return { label: formatGuestNames(signed.guestNames), limit: signed.limit, url: formatGeneratedUrl(signed.url), guestNames: signed.guestNames, mode: 'named' };
     });
 }
 
@@ -555,6 +615,8 @@ function parseHouseholdRow(line) {
   const limit = parseInt(limitText, 10);
   if (!Number.isFinite(limit) || limit < 1 || String(limit) !== limitText)
     throw new Error('Each line must end with a number (the guest limit). Example: Marie, Jean, 2');
+  if (limit > MAX_INVITED_GUESTS)
+    throw new Error('For safety, the maximum guest limit per invitation link is ' + MAX_INVITED_GUESTS + '.');
   const names = parts.slice(0, -1);
   if (!names.length)
     throw new Error('Each line needs at least one guest name before the limit number. Example: Sophie, 1');
@@ -595,13 +657,11 @@ function renderTable() {
 }
 
 function buildShareMessage(i) {
-  const couple = document.getElementById('coupleNames').value.trim() || 'The Couple';
-  const date = document.getElementById('weddingDate').value.trim();
+  const couple = document.getElementById('coupleNames').value.trim() || 'Maickel & Vanessa';
+  const date = document.getElementById('weddingDate').value.trim() || '14 August 2026';
   const row = rows[i];
-  const greeting = row.guestNames && row.guestNames.length
-    ? 'Dear ' + formatGuestNames(row.guestNames) + ','
-    : 'Dear Guest,';
-  return `You're Invited!\n\n${greeting}\n\nWe would be honored to celebrate our special day with you.\n\n${date ? 'Wedding Date: ' + date + '\n\n' : ''}Please open your invitation and kindly confirm your attendance:\n\n${row.url}\n\nWe can't wait to celebrate together!\n\nWith love,\n${couple}`;
+
+  return `We would be honored to celebrate our special day with you.\n\nWedding Date: ${date}\n\nKindly check all the details and confirm your presence on our website:\n${row.url}\n\nWe can't wait to celebrate together!\n\nWith love,\n${couple}`;
 }
 
 function copyMessage(i, button) {
