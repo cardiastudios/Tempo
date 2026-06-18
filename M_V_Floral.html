@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
-<title>Maickel &amp; Vanessa — Wedding Invitation | Invitation de mariage</title>
+<title> Maickel &amp; Vanessa — Wedding Invitation | Invitation de mariage </title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Great+Vibes&amp;family=Montserrat:wght@200;300;400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
 <style>
     :root{
@@ -1598,6 +1598,45 @@
       }
     }
 
+
+    /* Scroll hint between page 1 and page 2 */
+    .page-scroll-hint{
+      position:relative;
+      z-index:4;
+      width:max-content;
+      margin:22px auto 0;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:0;
+      color:var(--gold);
+      opacity:.82;
+      pointer-events:none;
+      animation:scrollHintFloat 1.55s ease-in-out infinite;
+    }
+    .page-scroll-hint span{
+      display:block;
+      font-family:'Cormorant Garamond',serif;
+      font-size:34px;
+      line-height:.54;
+      font-weight:400;
+      text-shadow:0 1px 0 rgba(255,255,255,.75);
+    }
+    @keyframes scrollHintFloat{
+      0%,100%{transform:translateY(0);opacity:.62;}
+      50%{transform:translateY(7px);opacity:1;}
+    }
+
+    /* Center Whish Money account details */
+    #gifts .bank-box{
+      text-align:center;
+    }
+    #gifts .bank-name,
+    #gifts .bank-line{
+      text-align:center;
+    }
+
 </style>
 </head>
 <body class="invitation-loading">
@@ -1617,7 +1656,7 @@
 </div>
 <button aria-label="Toggle music / Activer la musique" class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 <audio id="bgMusic" loop="" preload="auto">
-<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-wedding-sentimental-piano-375998.mp3" type="audio/mpeg"/>
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/John_Legend.mp3" type="audio/mpeg"/>
 </audio>
 <main class="invite">
 <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
@@ -1664,6 +1703,7 @@
 <p class="paper-verse"><span class="lang-en">“I have found the one whom my soul loves.”<br/>Solomon 3:4</span><span class="lang-fr">« J’ai trouvé celui que mon âme aime. »<br/>Salomon 3:4</span></p>
 <p class="paper-date"><span class="lang-en">Friday, August 14, 2026 · Ehden, Lebanon</span><span class="lang-fr">vendredi 14 août 2026 · Ehden, Liban</span></p>
 </div>
+<div class="page-scroll-hint" aria-hidden="true"><span>⌄</span><span>⌄</span></div>
 </section>
 <section class="section">
 <div class="reveal paper-sheet">
@@ -1722,40 +1762,19 @@
 </div>
 </section>
 
-<section class="section gallery-section" id="gallery">
-<div class="reveal paper-sheet normal-gallery-card">
-<div class="gallery-content"><h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2><p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
-<div class="album" id="album">
-<div class="album-track" id="albumTrack">
-<div class="album-slide"><img alt="Wedding table" loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Bride bouquet" loading="lazy" src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding couple" loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding dinner" loading="lazy" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding detail" loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding ceremony" loading="lazy" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding flowers" loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding rings" loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding celebration" loading="lazy" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-</div>
-<button aria-label="Previous album slide / Photo précédente" class="album-arrow prev" onclick="albumMove(-1)">‹</button><button aria-label="Next album slide / Photo suivante" class="album-arrow next" onclick="albumMove(1)">›</button>
-</div>
-<div class="album-dots" id="albumDots"></div>
-</div>
-</div>
-</section>
 <section class="section gold" id="gifts">
 <div class="reveal paper-sheet">
 <img alt="Paper-cut wedding cake" class="paper-asset" data-theme-asset="Champagne9.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Champagne9.png"/>
 <h2 class="section-title"><span class="lang-en">Gifts</span><span class="lang-fr">Cadeaux</span></h2>
 <p class="paper-body"><span class="lang-en">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</span><span class="lang-fr">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money.</span></p>
-<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC# xxxxxx</span><span class="lang-fr">Compte n° xxxxxx</span></div></div>
+<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC#  20458017</span><span class="lang-fr">Compte n° 20458017</span></div></div>
 </div>
 </section>
 <section class="section" id="rsvp">
 <div class="reveal paper-sheet">
 <img alt="Paper-cut doves and wedding rings" class="paper-asset" data-theme-asset="Doves4.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Doves4.png"/>
 <h2 class="section-title"><span class="lang-en">RSVP</span><span class="lang-fr">Réponse</span></h2>
-<p class="subtitle"><span class="lang-en">Kindly reply before 1 August 2026</span><span class="lang-fr">Merci de répondre avant le 1er août 2026</span></p>
+<p class="subtitle"><span class="lang-en">Kindly reply before July 15th </span><span class="lang-fr">Merci de répondre avant le 15 Juillet</span></p>
 <div class="card rsvp-box">
 <div class="step-dots single-step-dots" aria-hidden="true">
 <span class="step-dot on" id="dot-1"></span>
@@ -1784,7 +1803,7 @@
 </div>
 </main>
 <script>
-    const CONFIG = {coupleName:'Maickel & Vanessa',weddingDate:'2026-08-14T16:30:00',rsvpDeadline:'2026-08-01',location:'Ehden, Lebanon',church:'Saydet Al Hosn, Ehden',reception:"Splend'or Ehden",rsvpEmail:'dianaaljot@gmail.com'};
+    const CONFIG = {coupleName:'Maickel & Vanessa',weddingDate:'2026-08-14T16:30:00',rsvpDeadline:'2026-08-01',location:'Ehden, Lebanon',church:'Saydet Al Hosn, Ehden',reception:"Splend'or Ehden",rsvpEmail:'david.nemer33@gmail.com'};
 
     const THEMES = ['classic','rose','navy','olive','terracotta'];
     const THEME_ASSET_BASE = 'https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut';
@@ -1991,7 +2010,6 @@
       setTimeout(()=>main.classList.add('visible'),30);
       setTimeout(()=>document.getElementById('countdownSection').scrollIntoView({behavior:'smooth'}),120);
       observeReveals();
-      initAlbum();
     }
 
     function currentLang(){return document.body.classList.contains('fr')?'fr':'en';}
@@ -2008,8 +2026,8 @@
 
     
   const COUPLE_NAME = CONFIG.coupleName || 'Maickel & Vanessa';
-  const CUSTOMER_EMAIL = CONFIG.rsvpEmail || 'dianaaljot@gmail.com ';
-  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzDHaJ28IHbjXSz2G7MDb0Si9mkqbRJOsTPwRZSDiyouMlSoUPJAVK06MxjtQNZ7zWq/exec';
+  const CUSTOMER_EMAIL = CONFIG.rsvpEmail || 'david.nemer33@gmail.com';
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxTrMHHBBRQkKO6FtRc6ojtE5QP2uObFYtgpmTzGrWbTvQDAKZPDcsRiTlcAN7euNkD/exec';
 
   /* RSVP link modes:
      ?limit=2 shows editable Guest 1 / Guest 2 fields.
@@ -2398,9 +2416,11 @@
 
     function initAlbum(){
       if(albumReady) return;
-      albumReady=true;
       const track=document.getElementById('albumTrack');
       const dotsWrap=document.getElementById('albumDots');
+      const album=document.getElementById('album');
+      if(!track || !dotsWrap || !album) return;
+      albumReady=true;
       const slides=track.children.length;
       dotsWrap.innerHTML='';
 
@@ -2412,7 +2432,6 @@
         dotsWrap.appendChild(dot);
       }
 
-      const album=document.getElementById('album');
       let startX=0;
       let startY=0;
 
