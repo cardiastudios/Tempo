@@ -1260,9 +1260,7 @@
     position:relative;
   }
 
-  /* Elegant compact guest-list scrolling.
-     Native mobile scrollbars are inconsistent, so the real scrollbar is hidden
-     and replaced with a thin, theme-colored visual scrollbar inside the guest area. */
+  /* Keep multi-guest RSVP fields stable and readable on mobile. */
   .guest-scroll-hint{display:none!important;}
 
   .guest-slot-name-list {
@@ -1277,76 +1275,51 @@
     --guest-scroll-thumb-height:64px;
     position:relative;
     padding-right:0;
+    width:100%;
+    max-width:100%;
   }
 
   .manual-guest-list-wrap.has-scroll .guest-slot-name-list{
-    margin-top:0;
-    margin-bottom:0;
+    margin-top:18px;
+    margin-bottom:8px;
   }
 
   .guest-slot-name-list.scrollable-guest-list {
-    max-height:250px;
+    max-height:360px;
     overflow-y:auto;
     overflow-x:hidden;
     overscroll-behavior:contain;
     overscroll-behavior-y:contain;
     touch-action:pan-y;
     pointer-events:auto;
-    padding:16px 18px 16px 0;
+    padding:0 4px 0 0;
     margin-right:0;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
+    box-sizing:border-box;
+    scrollbar-width:thin;
+    scrollbar-color:var(--rsvp-accent-border) transparent;
     -webkit-overflow-scrolling:touch;
-    -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-    mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
   }
 
   .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar{
-    width:0!important;
-    height:0!important;
-    display:none!important;
+    width:4px!important;
     background:transparent!important;
   }
 
-  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-track,
-  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-thumb,
-  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-button{
-    display:none!important;
-    width:0!important;
-    height:0!important;
-    background:transparent!important;
+  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-thumb{
+    border-radius:999px;
+    background:var(--rsvp-accent-border)!important;
   }
 
   .manual-guest-list-wrap.has-scroll::before{
-    content:"";
-    position:absolute;
-    right:5px;
-    top:0;
-    bottom:0;
-    width:2px;
-    border-radius:999px;
-    background:color-mix(in srgb,var(--rsvp-accent) 22%,transparent);
-    pointer-events:none;
-    z-index:5;
+    content:none;
   }
 
   .manual-guest-list-wrap.has-scroll::after{
-    content:"";
-    position:absolute;
-    right:4px;
-    top:var(--guest-scroll-thumb-top);
-    width:4px;
-    height:var(--guest-scroll-thumb-height);
-    min-height:38px;
-    border-radius:999px;
-    background:color-mix(in srgb,var(--rsvp-accent) 72%,transparent);
-    box-shadow:0 0 0 1px color-mix(in srgb,#fff 76%,transparent);
-    pointer-events:none;
-    z-index:6;
-    transition:background .35s ease, top .08s linear, height .12s ease;
+    content:none;
   }
   .guest-slot-name-box {
     width:100%;
+    min-width:0;
     border:1.5px solid var(--rsvp-accent-border);
     border-radius:14px;
     padding:14px 14px 12px;
@@ -1416,29 +1389,20 @@
   .guest-welcome-note { margin:0 0 20px; font-size:16px; line-height:1.5; color:var(--text-soft); transition:color .35s ease; }
   @media(max-width:420px){
     .guest-slot-name-list.scrollable-guest-list{
-      max-height:240px;
-      padding:16px 18px 16px 0;
+      max-height:380px;
+      padding:0 3px 0 0;
       margin-right:0;
-      scrollbar-width:none;
-      -ms-overflow-style:none;
-      -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-      mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      scrollbar-width:thin;
     }
     .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar{
-      width:0!important;
-      height:0!important;
-      display:none!important;
+      width:4px!important;
       background:transparent!important;
     }
     .manual-guest-list-wrap.has-scroll::before{
-      right:5px;
-      width:2px;
-      background:color-mix(in srgb,var(--rsvp-accent) 20%,transparent);
+      content:none;
     }
     .manual-guest-list-wrap.has-scroll::after{
-      right:4px;
-      width:4px;
-      background:color-mix(in srgb,var(--rsvp-accent) 72%,transparent);
+      content:none;
     }
     .guest-response-pill{width:100%;min-width:0;}
     .guest-slot-attendance{align-items:stretch;flex-direction:column;}
@@ -2027,7 +1991,7 @@
     
   const COUPLE_NAME = CONFIG.coupleName || 'Maickel & Vanessa';
   const CUSTOMER_EMAIL = CONFIG.rsvpEmail || 'cardia.studios@gmail.com';
-  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyeBdlUWCjR3qMSe5RQ79yyb2njPS9MxSbmeH6dHhEUmiO32cU2W1ayaTw89oDxmJdy/exec';
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzgiNAFVy_YoXhDl_KG_ux1xlEiJb2ZNS-2l84PceSJN8dX7rwi_hFJr8KWhdVgzL9z/exec';
 
   /* RSVP link modes:
      ?limit=2&sig=... shows editable Guest 1 / Guest 2 fields.
