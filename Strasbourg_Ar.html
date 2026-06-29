@@ -4446,6 +4446,15 @@ body::before{
   #p6 .guest-slot-attendance > span{ font-size:3.05cqw !important; }
   #p6 .guest-response-pill{ font-size:2.5cqw !important; min-width:12cqw !important; }
 }
+
+
+/* CARDIA FIX — cards can still scroll vertically, but horizontal gestures are handled by the panorama. */
+#p5 .venice-album,
+#p6 .rsvp-card.venice-rsvp-box,
+#p8 .wedding-list-card,
+#p9 .photo-upload-box{
+  touch-action: pan-y !important;
+}
 </style>
 </head>
 <body class="arabic-mode">
@@ -4911,6 +4920,39 @@ body::before{
     ));
   }
 
+
+  /* CARDIA FIX — allow horizontal panorama drag even when the finger/mouse starts
+     on RSVP, album, wedding list, or photo-upload cards. Vertical movement inside
+     scrollable RSVP areas is still left alone so the guest list can scroll. */
+  const DRAGGABLE_INTERACTIVE_SELECTOR = '.rsvp-card, .wedding-list-card, .photo-upload-box, .venice-album, #manualGuestListWrap, #guestSlotNameList';
+  const VERTICAL_SCROLL_SELECTOR = '.rsvp-card, #manualGuestListWrap, #guestSlotNameList, .photo-upload-box';
+
+  function closestMatch(targetEl, selector) {
+    return targetEl && targetEl.closest ? targetEl.closest(selector) : null;
+  }
+
+  function isDraggableInteractiveZone(targetEl) {
+    return Boolean(closestMatch(targetEl, DRAGGABLE_INTERACTIVE_SELECTOR));
+  }
+
+  function getVerticalScrollable(targetEl) {
+    const candidates = [];
+    let el = closestMatch(targetEl, VERTICAL_SCROLL_SELECTOR);
+    while (el && el !== stage) {
+      candidates.push(el);
+      el = el.parentElement && el.parentElement.closest ? el.parentElement.closest(VERTICAL_SCROLL_SELECTOR) : null;
+    }
+    return candidates.find(node => node.scrollHeight > node.clientHeight + 2) || null;
+  }
+
+  function canUseVerticalScroll(targetEl, deltaY) {
+    const scroller = getVerticalScrollable(targetEl);
+    if (!scroller) return false;
+    const atTop = scroller.scrollTop <= 0;
+    const atBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2;
+    return (deltaY < 0 && !atTop) || (deltaY > 0 && !atBottom);
+  }
+
   const panelW = () => stage.clientWidth;
   const maxOff = () => (PANELS - 1) * panelW();
   const clamp  = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
@@ -4957,13 +4999,21 @@ body::before{
   // WHEEL
   window.addEventListener('wheel', e => {
     if (albumLightboxOpen) return;
-    if (isInteractiveTarget(e.target)) return;
+
+    const overDraggableZone = isDraggableInteractiveZone(e.target);
+    const mostlyHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+
+    /* Keep vertical wheel/trackpad movement available for the RSVP guest list/card.
+       Horizontal wheel/trackpad movement over these cards still moves the panorama. */
+    if (overDraggableZone && !mostlyHorizontal && canUseVerticalScroll(e.target, e.deltaY)) return;
+
+    if (isInteractiveTarget(e.target) && !overDraggableZone) return;
     e.preventDefault();
     if (!invitationOpened) { target = 0; return; }
     hideHint();
-    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    const d = mostlyHorizontal ? e.deltaX : e.deltaY;
     target = clamp(target + d * 1.8, 0, maxOff());
-  }, { passive: false });
+  }, { passive: false, capture: true });
 
   // DRAG
   let dragX = null, dragBase = 0;
@@ -5005,6 +5055,112 @@ body::before{
   }, { passive: true });
   stage.addEventListener('touchend', () => { touchStartedInsideInteractive = false; }, { passive: true });
   stage.addEventListener('touchcancel', () => { touchStartedInsideInteractive = false; }, { passive: true });
+
+  /* CARDIA FIX — capture horizontal drag starting inside interactive cards.
+     The normal handlers above intentionally ignore those cards so buttons/forms work;
+     this extra layer only takes over after a clear left/right gesture. */
+  let cardTouch = null;
+  let cardMouse = null;
+  let suppressCardClick = false;
+
+  stage.addEventListener('touchstart', e => {
+    if (!isDraggableInteractiveZone(e.target) || albumLightboxOpen || !invitationOpened || !e.touches || !e.touches.length) {
+      cardTouch = null;
+      return;
+    }
+    const t = e.touches[0];
+    cardTouch = {
+      x: t.clientX,
+      y: t.clientY,
+      base: target,
+      dragging: false,
+      decidedVertical: false
+    };
+  }, { passive: true, capture: true });
+
+  stage.addEventListener('touchmove', e => {
+    if (!cardTouch || albumLightboxOpen || !invitationOpened || !e.touches || !e.touches.length) return;
+    const t = e.touches[0];
+    const dx = t.clientX - cardTouch.x;
+    const dy = t.clientY - cardTouch.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+
+    if (!cardTouch.dragging) {
+      if (ax < 8 && ay < 8) return;
+      if (ay > ax * 1.08 && canUseVerticalScroll(e.target, dy)) {
+        cardTouch.decidedVertical = true;
+        return;
+      }
+      if (ax <= ay) return;
+      cardTouch.dragging = true;
+      suppressCardClick = true;
+      hideHint();
+    }
+
+    if (cardTouch.dragging) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      target = clamp(cardTouch.base - dx * 1.4, 0, maxOff());
+    }
+  }, { passive: false, capture: true });
+
+  stage.addEventListener('touchend', e => {
+    if (cardTouch && cardTouch.dragging) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      window.setTimeout(() => { suppressCardClick = false; }, 550);
+    }
+    cardTouch = null;
+  }, { passive: false, capture: true });
+
+  stage.addEventListener('touchcancel', () => { cardTouch = null; }, { passive: true, capture: true });
+
+  stage.addEventListener('mousedown', e => {
+    if (!isDraggableInteractiveZone(e.target) || albumLightboxOpen || !invitationOpened) {
+      cardMouse = null;
+      return;
+    }
+    cardMouse = {
+      x: e.clientX,
+      y: e.clientY,
+      base: target,
+      dragging: false
+    };
+  }, true);
+
+  window.addEventListener('mousemove', e => {
+    if (!cardMouse || albumLightboxOpen || !invitationOpened) return;
+    const dx = e.clientX - cardMouse.x;
+    const dy = e.clientY - cardMouse.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+    if (!cardMouse.dragging) {
+      if (ax < 5 && ay < 5) return;
+      if (ax <= ay) return;
+      cardMouse.dragging = true;
+      suppressCardClick = true;
+      hideHint();
+      stage.style.cursor = 'grabbing';
+    }
+    e.preventDefault();
+    target = clamp(cardMouse.base - dx * 1.5, 0, maxOff());
+  }, true);
+
+  window.addEventListener('mouseup', () => {
+    if (cardMouse && cardMouse.dragging) {
+      window.setTimeout(() => { suppressCardClick = false; }, 550);
+    }
+    cardMouse = null;
+    stage.style.cursor = 'ew-resize';
+  }, true);
+
+  stage.addEventListener('click', e => {
+    if (!suppressCardClick) return;
+    e.preventDefault();
+    e.stopPropagation();
+    suppressCardClick = false;
+  }, true);
 
   // KEYBOARD
   window.addEventListener('keydown', e => {
@@ -5196,14 +5352,10 @@ body::before{
     });
   }
 
-  /* Let RSVP and form elements scroll/tap normally without moving the panorama. */
-  document.querySelectorAll('.rsvp-card, .wedding-list-card, .photo-upload-section, .photo-upload-box, #manualGuestListWrap, #guestSlotNameList, button, a, input, select, textarea, label').forEach(el => {
-    ['wheel','mousedown','mousemove','mouseup','click'].forEach(evt => {
-      el.addEventListener(evt, ev => ev.stopPropagation());
-    });
-    ['touchstart','touchmove','touchend','touchcancel'].forEach(evt => {
-      el.addEventListener(evt, ev => ev.stopPropagation(), { passive: true });
-    });
+  /* CARDIA FIX — do not block wheel/touch/mouse drags on whole cards.
+     Only isolate real clicks on controls so buttons/links/inputs still behave normally. */
+  document.querySelectorAll('button, a, input, select, textarea, label').forEach(el => {
+    el.addEventListener('click', ev => ev.stopPropagation());
   });
 
 
