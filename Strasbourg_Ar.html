@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="دعوة زفاف باميلا ورودي — دعوة شتوية أنيقة في ستراسبورغ.">
-<meta property="og:title" content="باميلا ورودي — دعوة زفاف شتوية في ستراسبورغ">
-<meta property="og:description" content="دعوة زفاف باميلا ورودي — دعوة شتوية أنيقة في ستراسبورغ.">
+<meta name="description" content="دعوة زفاف باميلا ورودي.">
+<meta property="og:title" content="باميلا ورودي">
+<meta property="og:description" content="دعوة زفاف باميلا ورودي.">
 <title>باميلا ورودي — دعوة زفاف شتوية في ستراسبورغ</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -2580,267 +2580,269 @@ body::before{
 
 
 
-/* ═════════ PAMELA & RODY CUSTOM TEXT — PANEL 2 ═════════ */
-#p2 .new-parents-copy{
-  top:10.5% !important;
-  bottom:auto !important;
-  width:86% !important;
-  max-height:none !important;
+/* ═════════ SECTION POSITION CONTROLS — EDIT HERE ONLY ═════════
+   This is the only block you need for moving the main sections.
+
+   HOW TO MOVE:
+   - PANEL X values move the whole screen horizontally along the panorama.
+     100cqw = one full phone-screen width.
+     Example: 548cqw → 558cqw moves that section a little to the RIGHT.
+
+   - COPY LEFT values move the content inside its own screen.
+     50% = centered, 47% = left, 53% = right.
+
+   - COPY TOP values move the content vertically inside its own screen.
+     Smaller number = higher, bigger number = lower.
+
+   Main section positions are centralized below.
+   For the parents and verse copy, edit --parents-left / --verse-left.
+*/
+:root{
+  /* Whole-panel horizontal positions */
+  --panel-cover-x:0cqw;
+  --panel-parents-x:150cqw;
+  --panel-verse-x:282cqw;          /* whole verse panel position */
+  --panel-album-x:598cqw;          /* Photo album: bigger = more RIGHT */
+  --panel-wedding-list-x:685cqw;
+  --panel-rsvp-x:805cqw;
+  --panel-closing-x:950cqw;
+
+  /* Road2.png */
+  --road-left:392%;                /* bigger = more RIGHT */
+  --road-top:2.8%;                 /* bigger = lower */
+  --road-width:190%;
+
+  /* Copy/card positions inside each panel */
+  --cover-left:50%;
+  --cover-top:12.2%;
+  --cover-width:90%;
+
+  --parents-left:78%;                /* bigger = more RIGHT, smaller = more LEFT */
+  --parents-top:14.8%;
+  --parents-width:92%;
+
+  --verse-left:52%;                  /* bigger = more RIGHT, smaller = more LEFT */
+  --verse-top:15.2%;
+  --verse-width:82%;
+
+  --album-left:52%;                /* Photo album content: bigger = more RIGHT */
+  --album-top:9.4%;
+  --album-width:78%;
+
+  --wedding-list-left:50%;
+  --wedding-list-top:12.2%;
+  --wedding-list-width:84%;
+
+  --rsvp-left:50%;
+  --rsvp-top:7.2%;
+  --rsvp-width:82%;
+
+  --closing-left:50%;
+  --closing-top:16%;
+  --closing-width:84%;
 }
-#p2 .new-parents-copy .orn{
-  width:52% !important;
-  margin:3.2cqw auto 3.0cqw !important;
+
+/* Apply whole-panel horizontal positions */
+#p1{ left:var(--panel-cover-x) !important; }
+#p2{ left:var(--panel-parents-x) !important; }
+#p3{ left:var(--panel-verse-x) !important; }
+#p5{ left:var(--panel-album-x) !important; }
+#p8{ left:var(--panel-wedding-list-x) !important; }
+#p6{ left:var(--panel-rsvp-x) !important; }
+#p7{ left:var(--panel-closing-x) !important; }
+
+/* Apply copy/card positions */
+#p1 .cover-copy{
+  left:var(--cover-left) !important;
+  top:var(--cover-top) !important;
+  width:var(--cover-width) !important;
+  transform:translateX(-50%) !important;
 }
-#p2 .parents-invite-line{
-  font-family:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif !important;
-  font-size:4.25cqw !important;
-  line-height:1.72 !important;
-  color:#fff !important;
-  font-weight:700 !important;
-  text-shadow:0 2px 13px rgba(255,255,255,.55), 0 8px 22px rgba(74,46,26,.16) !important;
-  opacity:.96 !important;
+#p5 .album-copy{
+  left:var(--album-left) !important;
+  top:var(--album-top) !important;
+  width:var(--album-width) !important;
+  transform:translateX(-50%) !important;
 }
-#p2 .bible-ref{
-  font-family:'Noto Naskh Arabic','Amiri',serif !important;
-  font-size:3.25cqw !important;
-  line-height:1.4 !important;
-  color:rgba(255,255,255,.78) !important;
-  font-weight:700 !important;
-  margin:0 0 2cqw !important;
+#p8 .wedding-list-copy{
+  left:var(--wedding-list-left) !important;
+  top:var(--wedding-list-top) !important;
+  width:var(--wedding-list-width) !important;
+  transform:translateX(-50%) !important;
 }
-#p2 .bible-quote{
-  font-family:'Amiri','Noto Naskh Arabic',serif !important;
-  font-size:3.75cqw !important;
+#p6 .rsvp-copy{
+  left:var(--rsvp-left) !important;
+  top:var(--rsvp-top) !important;
+  width:var(--rsvp-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p7 .closing-copy{
+  left:var(--closing-left) !important;
+  top:var(--closing-top) !important;
+  width:var(--closing-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p1 .l-Road{
+  left:var(--road-left) !important;
+  top:var(--road-top) !important;
+  width:var(--road-width) !important;
+}
+
+/* Road2.png invisible location hotspots.
+   The PNG stays visually untouched; only the "Open location" labels are clickable.
+   To reposition the whole Road2 image later, keep using --road-left / --road-top / --road-width above. */
+#p1 .road-location-layer{
+  position:absolute;
+  left:var(--road-left) !important;
+  top:var(--road-top) !important;
+  width:var(--road-width) !important;
+  aspect-ratio:1672 / 941;
+  z-index:66;
+  pointer-events:none;
+  filter:none !important;
+}
+#p1 .road-location-hit{
+  position:absolute;
+  top:74.8%;
+  height:10.8%;
+  border-radius:999px;
+  pointer-events:auto;
+  cursor:pointer;
+  text-decoration:none;
+  background:rgba(255,255,255,0);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:pan-y;
+}
+#p1 .road-location-hit:focus-visible{
+  outline:2px solid rgba(255,255,255,.88);
+  outline-offset:2px;
+  background:rgba(255,255,255,.08);
+}
+#p1 .road-location-church{ left:9.4%; width:17.5%; }
+#p1 .road-location-reception{ left:30.9%; width:17.5%; }
+#p1 .road-location-dinner{ left:52.5%; width:17.5%; }
+#p1 .road-location-party{ left:73.6%; width:17.5%; }
+
+
+/* Keep these text-size/readability fixes after the position controls */
+#p5 .album-copy .sans,
+.arabic-mode #p5 .album-copy .sans{
+  font-size:3.15cqw !important;
   line-height:1.75 !important;
+  opacity:.88 !important;
+  font-weight:900 !important;
   color:#fff !important;
-  font-style:normal !important;
-  font-weight:700 !important;
-  opacity:.90 !important;
-  margin:0 auto !important;
-  text-shadow:0 2px 12px rgba(255,255,255,.35) !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.14) !important;
 }
+#p7 .closing-copy .sans,
+.arabic-mode #p7 .closing-copy .sans{
+  font-size:3.35cqw !important;
+  line-height:1.65 !important;
+  opacity:.86 !important;
+  font-weight:900 !important;
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.14) !important;
+}
+#p7 .closing-copy .serif,
+.arabic-mode #p7 .closing-copy .serif{
+  font-size:4.45cqw !important;
+  line-height:1.35 !important;
+  opacity:.88 !important;
+  color:#fff !important;
+}
+#p7 .closing-copy .cardia-credit,
+.arabic-mode #p7 .closing-copy .cardia-credit{
+  display:inline-block !important;
+  margin-top:3.2cqw !important;
+  padding:1.35cqw 3.4cqw !important;
+  border-radius:999px !important;
+  background:rgba(255,245,230,.22) !important;
+  border:1px solid rgba(255,255,255,.30) !important;
+  text-decoration:none !important;
+  pointer-events:auto !important;
+}
+#p7 .closing-copy .cardia-credit:hover{
+  background:rgba(255,255,255,.34) !important;
+}
+
 @media (max-width:600px), (pointer:coarse){
-  #p2 .new-parents-copy{
-    top:10.8% !important;
-    bottom:auto !important;
-    width:88% !important;
-    max-height:none !important;
+  :root{
+    --road-top:3.8%;
+
+    --cover-top:12.2%;
+    --cover-width:92%;
+
+    --parents-left:58%;
+    --parents-top:12.2%;
+    --parents-width:94%;
+
+    --verse-left:52%;
+    --verse-top:14.2%;
+    --verse-width:84%;
+
+    --album-left:52.5%;
+    --album-top:9.2%;
+    --album-width:82%;
   }
-  #p2 .parents-invite-line{
-    font-size:4.2cqw !important;
-    line-height:1.72 !important;
-  }
-  #p2 .bible-ref{
-    font-size:3.18cqw !important;
-  }
-  #p2 .bible-quote{
+
+  #p5 .album-copy .sans,
+  .arabic-mode #p5 .album-copy .sans{
     font-size:3.65cqw !important;
-    line-height:1.78 !important;
+    line-height:1.7 !important;
+  }
+  #p7 .closing-copy .sans,
+  .arabic-mode #p7 .closing-copy .sans{
+    font-size:3.75cqw !important;
+    line-height:1.62 !important;
+  }
+  #p7 .closing-copy .serif,
+  .arabic-mode #p7 .closing-copy .serif{
+    font-size:4.9cqw !important;
+  }
+  #p7 .closing-copy .cardia-credit,
+  .arabic-mode #p7 .closing-copy .cardia-credit{
+    margin-top:3.6cqw !important;
+    padding:1.65cqw 3.8cqw !important;
   }
 }
 
 
 
-/* ═════════ PAMELA & RODY UPDATE — PANEL 2 PARENTS + PANEL 3 VERSE ═════════ */
-#p2 .parents-formal-copy{
-  top:11.2% !important;
-  bottom:auto !important;
-  left:50% !important;
-  transform:translateX(-50%) !important;
-  width:88% !important;
-  max-height:none !important;
-  text-align:center !important;
-}
-#p2 .parents-two-columns{
-  direction:ltr !important; /* keeps groom's parents visually on the left, bride's parents visually on the right */
-  display:grid !important;
-  grid-template-columns:1fr auto 1fr !important;
-  align-items:center !important;
-  gap:2.9cqw !important;
-  width:100% !important;
-  margin:0 auto !important;
-}
-#p2 .parents-col{
-  direction:rtl !important;
-  min-height:20cqw !important;
-  padding:4.4cqw 2.6cqw !important;
-  border-radius:5.2cqw !important;
-  background:rgba(255,245,230,.13) !important;
-  border:1px solid rgba(255,255,255,.18) !important;
-  box-shadow:0 14px 32px rgba(0,0,0,.10) !important;
-  backdrop-filter:blur(3px) !important;
-  display:flex !important;
-  flex-direction:column !important;
-  justify-content:center !important;
-  align-items:center !important;
-}
-#p2 .parents-name{
-  font-family:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif !important;
-  font-size:4.65cqw !important;
-  line-height:1.35 !important;
-  color:#fff !important;
-  font-weight:700 !important;
-  text-shadow:0 2px 13px rgba(255,255,255,.52), 0 8px 22px rgba(74,46,26,.16) !important;
-}
-#p2 .parents-role{
-  margin-top:1.8cqw !important;
-  font-family:'Noto Naskh Arabic','Jost',sans-serif !important;
-  font-size:2.25cqw !important;
-  line-height:1.35 !important;
-  color:rgba(255,255,255,.66) !important;
-  font-weight:700 !important;
-  letter-spacing:.02em !important;
-}
-#p2 .parents-symbol{
-  direction:rtl !important;
-  width:7.8cqw !important;
-  height:7.8cqw !important;
-  border-radius:50% !important;
-  display:flex !important;
-  align-items:center !important;
-  justify-content:center !important;
-  color:#fff !important;
-  font-family:'Aref Ruqaa','Amiri',serif !important;
-  font-size:4.2cqw !important;
-  line-height:1 !important;
-  opacity:.92 !important;
-  background:rgba(255,245,230,.14) !important;
-  border:1px solid rgba(255,255,255,.20) !important;
-  box-shadow:0 0 18px rgba(255,255,255,.20) !important;
-  text-shadow:0 0 12px rgba(255,255,255,.55) !important;
-}
-#p2 .parents-formal-copy .orn{
-  width:52% !important;
-  margin:4.0cqw auto 3.2cqw !important;
-}
-#p2 .parents-invitation-phrase{
-  width:92% !important;
-  margin:0 auto !important;
-  font-family:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif !important;
-  font-size:4.55cqw !important;
-  line-height:1.72 !important;
-  color:#fff !important;
-  font-weight:700 !important;
-  text-shadow:0 2px 13px rgba(255,255,255,.48), 0 8px 22px rgba(74,46,26,.16) !important;
-  opacity:.96 !important;
-}
+/* ═════════ CARDIA CLEAN — PANEL 2 PARENTS + PANEL 3 VERSE ═════════
+   Clean, single source of truth for this section.
 
-/* New separate verse panel: uses panel 3, pushed to the right of the parents panel. */
+   To move later:
+   - In "SECTION POSITION CONTROLS" above, edit --parents-left.
+   - Bigger --parents-left = more RIGHT, smaller = more LEFT.
+   - Same idea for --verse-left.
+*/
+#p2 .parents-formal-copy,
 #p3 .verse-copy{
-  top:15.2% !important;
   bottom:auto !important;
-  left:50% !important;
-  transform:translateX(-50%) !important;
-  width:82% !important;
   max-height:none !important;
+  max-width:none !important;
   text-align:center !important;
-}
-#p3 .verse-copy .script{
-  font-size:12.2cqw !important;
-  line-height:.92 !important;
-  color:#fff !important;
-  text-shadow:0 2px 12px rgba(255,255,255,.48) !important;
-}
-#p3 .verse-copy .orn{
-  width:56% !important;
-  margin:3.0cqw auto 3.3cqw !important;
-}
-#p3 .verse-ref{
-  font-family:'Noto Naskh Arabic','Amiri',serif !important;
-  font-size:3.45cqw !important;
-  line-height:1.45 !important;
-  color:rgba(255,255,255,.76) !important;
-  font-weight:700 !important;
-  margin:0 0 2.8cqw !important;
-  text-align:center !important;
-}
-#p3 .verse-text{
-  max-width:72cqw !important;
-  margin:0 auto !important;
-  padding:4.6cqw 5.3cqw !important;
-  border-radius:5.4cqw !important;
-  background:rgba(255,245,230,.13) !important;
-  border:1px solid rgba(255,255,255,.16) !important;
-  box-shadow:0 14px 34px rgba(0,0,0,.12) !important;
-  backdrop-filter:blur(3px) !important;
-  font-family:'Amiri','Noto Naskh Arabic',serif !important;
-  font-size:4.25cqw !important;
-  line-height:1.9 !important;
-  color:#fff !important;
-  font-style:normal !important;
-  font-weight:700 !important;
-  opacity:.92 !important;
-  text-align:center !important;
-  text-shadow:0 2px 12px rgba(255,255,255,.28) !important;
+  pointer-events:auto !important;
 }
 
-@media (max-width:600px), (pointer:coarse){
-  #p2 .parents-formal-copy{
-    top:10.8% !important;
-    width:90% !important;
-  }
-  #p2 .parents-two-columns{
-    gap:2.2cqw !important;
-  }
-  #p2 .parents-col{
-    min-height:21.5cqw !important;
-    padding:4.6cqw 2.2cqw !important;
-  }
-  #p2 .parents-name{
-    font-size:4.45cqw !important;
-    line-height:1.36 !important;
-  }
-  #p2 .parents-role{
-    font-size:2.1cqw !important;
-  }
-  #p2 .parents-symbol{
-    width:7.2cqw !important;
-    height:7.2cqw !important;
-    font-size:3.9cqw !important;
-  }
-  #p2 .parents-formal-copy .orn{
-    margin:4.2cqw auto 3.2cqw !important;
-  }
-  #p2 .parents-invitation-phrase{
-    font-size:4.35cqw !important;
-    line-height:1.68 !important;
-    width:94% !important;
-  }
-  #p3 .verse-copy{
-    top:14.2% !important;
-    width:84% !important;
-  }
-  #p3 .verse-copy .script{
-    font-size:12.6cqw !important;
-  }
-  #p3 .verse-ref{
-    font-size:3.35cqw !important;
-  }
-  #p3 .verse-text{
-    max-width:74cqw !important;
-    padding:4.7cqw 5.2cqw !important;
-    font-size:4.08cqw !important;
-    line-height:1.88 !important;
-  }
-}
-
-
-/* ═════════ PAMELA & RODY — ELEGANT PARENTS + READABILITY FIX ═════════
-   Final override: cleaner formal parents layout, darker frosted-card text,
-   stronger drag hint, and larger Arabic text. */
 #p2 .parents-formal-copy{
-  top:12.8% !important;
-  width:92% !important;
+  left:var(--parents-left) !important;
+  top:var(--parents-top) !important;
+  width:var(--parents-width) !important;
+  transform:translateX(-50%) !important;
 }
+
 #p2 .parents-two-columns{
+  direction:ltr !important;
   display:grid !important;
   grid-template-columns:1fr auto 1fr !important;
-  direction:ltr !important;
   align-items:start !important;
   gap:4.4cqw !important;
+  width:100% !important;
   max-width:88cqw !important;
   margin:0 auto 6.6cqw !important;
 }
+
 #p2 .parents-col{
   direction:rtl !important;
   min-height:auto !important;
@@ -2852,30 +2854,32 @@ body::before{
   backdrop-filter:none !important;
   display:flex !important;
   align-items:center !important;
-  justify-content:flex-start !important;
+  justify-content:center !important;
 }
+
 #p2 .parents-name{
   display:flex !important;
   flex-direction:column !important;
   align-items:center !important;
-  gap:1.15cqw !important;
+  gap:1.7cqw !important;
   font-family:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif !important;
   font-size:5.25cqw !important;
-  line-height:1.08 !important;
-  color:#fff !important;
+  line-height:1.42 !important;
   font-weight:700 !important;
-  word-spacing:.18em !important;
-  letter-spacing:.012em !important;
+  color:#fff !important;
+  letter-spacing:0 !important;
+  word-spacing:.26em !important;
+  text-rendering:geometricPrecision !important;
+  font-feature-settings:"liga" 1, "kern" 1 !important;
   text-shadow:0 2px 12px rgba(255,255,255,.55), 0 8px 22px rgba(0,0,0,.18) !important;
 }
+
 #p2 .parents-name span{
   display:block !important;
   white-space:nowrap !important;
+  padding:.15cqw 0 !important;
 }
-#p2 .parents-role,
-#p2 .parents-formal-copy .orn{
-  display:none !important;
-}
+
 #p2 .parents-symbol{
   width:auto !important;
   height:auto !important;
@@ -2892,20 +2896,102 @@ body::before{
   line-height:1 !important;
   text-shadow:0 2px 14px rgba(255,255,255,.55), 0 6px 18px rgba(0,0,0,.16) !important;
 }
-#p2 .parents-invitation-phrase{
-  width:86% !important;
-  margin:0 auto !important;
-  font-family:'Aref Ruqaa','Amiri','Noto Naskh Arabic',serif !important;
-  font-size:4.95cqw !important;
-  line-height:1.68 !important;
-  color:#fff !important;
-  font-weight:700 !important;
-  word-spacing:.19em !important;
-  letter-spacing:.012em !important;
-  text-shadow:0 2px 13px rgba(255,255,255,.50), 0 9px 24px rgba(0,0,0,.16) !important;
+
+#p2 .parents-role,
+#p2 .parents-formal-copy .orn{
+  display:none !important;
 }
 
-/* More readable frosted cards */
+#p2 .parents-invitation-phrase{
+  width:92% !important;
+  margin:1.2cqw auto 0 !important;
+  font-family:'Noto Naskh Arabic','Amiri','Aref Ruqaa',serif !important;
+  font-size:5.15cqw !important;
+  line-height:2.02 !important;
+  font-weight:700 !important;
+  color:#fff !important;
+  text-align:center !important;
+  letter-spacing:0 !important;
+  word-spacing:.34em !important;
+  text-rendering:geometricPrecision !important;
+  font-feature-settings:"liga" 1, "kern" 1 !important;
+  text-shadow:0 2px 13px rgba(255,255,255,.52), 0 9px 24px rgba(0,0,0,.16) !important;
+}
+
+#p3 .verse-copy{
+  left:var(--verse-left) !important;
+  top:var(--verse-top) !important;
+  width:var(--verse-width) !important;
+  transform:translateX(-50%) !important;
+}
+
+#p3 .verse-copy .script{
+  font-size:12.2cqw !important;
+  line-height:.92 !important;
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.48) !important;
+}
+
+#p3 .verse-copy .orn{
+  width:56% !important;
+  margin:3cqw auto 3.3cqw !important;
+}
+
+#p3 .verse-text{
+  max-width:72cqw !important;
+  margin:0 auto !important;
+  padding:4.6cqw 5.3cqw !important;
+  border-radius:5.4cqw !important;
+  background:rgba(255,245,230,.13) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.12) !important;
+  backdrop-filter:blur(3px) !important;
+  font-family:'Amiri','Noto Naskh Arabic',serif !important;
+  font-size:4.55cqw !important;
+  line-height:1.92 !important;
+  color:#fff !important;
+  font-style:normal !important;
+  font-weight:700 !important;
+  opacity:.92 !important;
+  text-align:center !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.28) !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p2 .parents-two-columns{
+    gap:3.2cqw !important;
+    max-width:91cqw !important;
+    margin-bottom:7.1cqw !important;
+  }
+  #p2 .parents-name{
+    font-size:5.35cqw !important;
+    line-height:1.46 !important;
+    gap:1.95cqw !important;
+    word-spacing:.28em !important;
+  }
+  #p2 .parents-symbol{
+    font-size:7.3cqw !important;
+  }
+  #p2 .parents-invitation-phrase{
+    width:94% !important;
+    margin-top:1.8cqw !important;
+    font-size:5.35cqw !important;
+    line-height:2.08 !important;
+    word-spacing:.36em !important;
+  }
+  #p3 .verse-copy .script{
+    font-size:12.6cqw !important;
+  }
+  #p3 .verse-text{
+    max-width:74cqw !important;
+    padding:4.7cqw 5.2cqw !important;
+    font-size:4.75cqw !important;
+    line-height:1.88 !important;
+  }
+}
+
+
+/* ═════════ CARDIA KEEP — READABILITY + STRONGER DRAG HINT ═════════ */
 .arabic-mode .wedding-list-card,
 .arabic-mode #p6 .venice-rsvp-box{
   background:rgba(255,245,230,.82) !important;
@@ -2990,7 +3076,6 @@ body::before{
   background:#3d2a14 !important;
 }
 
-/* Stronger, larger bottom drag hint */
 #hint{
   opacity:1 !important;
   background:rgba(255,245,230,.84) !important;
@@ -3025,304 +3110,35 @@ body::before{
   letter-spacing:.015em !important;
 }
 
+#p6 .rsvp-copy .script{ font-size:11.6cqw !important; }
+#p6 .rsvp-copy .sans{ font-size:2.65cqw !important; opacity:.78 !important; }
+#p8 .wedding-list-copy .script{ font-size:12.2cqw !important; }
+#p8 .wedding-list-copy .sans{ font-size:2.55cqw !important; opacity:.76 !important; }
+
 @media (max-width:600px), (pointer:coarse){
-  #p2 .parents-formal-copy{
-    top:12.2% !important;
-    width:94% !important;
-  }
-  #p2 .parents-two-columns{
-    gap:3.2cqw !important;
-    max-width:91cqw !important;
-    margin-bottom:7.1cqw !important;
-  }
-  #p2 .parents-name{
-    font-size:5.55cqw !important;
-    line-height:1.08 !important;
-    gap:1.25cqw !important;
-    word-spacing:.18em !important;
-  }
-  #p2 .parents-symbol{
-    font-size:7.3cqw !important;
-  }
-  #p2 .parents-invitation-phrase{
-    width:90% !important;
-    font-size:5.18cqw !important;
-    line-height:1.72 !important;
-    word-spacing:.18em !important;
-  }
-  .arabic-mode .wedding-list-text{
-    font-size:5.1cqw !important;
-  }
+  .arabic-mode .wedding-list-text{ font-size:5.1cqw !important; }
   .arabic-mode .wedding-list-btn,
   .arabic-mode #p6 .btn-soft,
-  .arabic-mode #p6 .btn-solid{
-    font-size:2.45cqw !important;
-  }
+  .arabic-mode #p6 .btn-solid{ font-size:2.45cqw !important; }
   .arabic-mode #p6 .form-label,
-  .arabic-mode #p6 .question{
-    font-size:2.65cqw !important;
-  }
+  .arabic-mode #p6 .question{ font-size:2.65cqw !important; }
   .arabic-mode #p6 .form-field,
-  .arabic-mode #p6 textarea.form-field{
-    font-size:4.7cqw !important;
-  }
-  .arabic-mode #p6 .attend-label{
-    font-size:2.45cqw !important;
-  }
+  .arabic-mode #p6 textarea.form-field{ font-size:4.7cqw !important; }
+  .arabic-mode #p6 .attend-label{ font-size:2.45cqw !important; }
   #hint{
     bottom:calc(6px + env(safe-area-inset-bottom)) !important;
     padding:1.9cqw 3.8cqw !important;
   }
   #hint span,
-  .arabic-mode #hint span{
-    font-size:2.55cqw !important;
-  }
+  .arabic-mode #hint span{ font-size:2.55cqw !important; }
   #hint .arr,
-  .arabic-mode #hint .arr{
-    font-size:3.45cqw !important;
-  }
-  #stage.invitation-locked #hint span:nth-child(2)::after{
-    font-size:2.45cqw !important;
-  }
-}
-
-
-/* ═════════ PAMELA & RODY — FINAL TEXT SIZE BOOST ═════════ */
-#p6 .rsvp-copy .script{
-  font-size:11.6cqw !important;
-}
-#p6 .rsvp-copy .sans{
-  font-size:2.65cqw !important;
-  opacity:.78 !important;
-}
-#p8 .wedding-list-copy .script{
-  font-size:12.2cqw !important;
-}
-#p8 .wedding-list-copy .sans{
-  font-size:2.55cqw !important;
-  opacity:.76 !important;
-}
-#p3 .verse-ref{
-  font-size:3.75cqw !important;
-}
-#p3 .verse-text{
-  font-size:4.55cqw !important;
-  line-height:1.92 !important;
-}
-@media (max-width:600px), (pointer:coarse){
+  .arabic-mode #hint .arr{ font-size:3.45cqw !important; }
+  #stage.invitation-locked #hint span:nth-child(2)::after{ font-size:2.45cqw !important; }
   #p6 .rsvp-copy .script{ font-size:12.1cqw !important; }
   #p6 .rsvp-copy .sans{ font-size:2.85cqw !important; }
   #p8 .wedding-list-copy .script{ font-size:12.9cqw !important; }
   #p8 .wedding-list-copy .sans{ font-size:2.75cqw !important; }
-  #p3 .verse-ref{ font-size:3.85cqw !important; }
-  #p3 .verse-text{ font-size:4.75cqw !important; }
 }
-
-
-
-/* ═════════ SECTION POSITION CONTROLS — EDIT HERE ONLY ═════════
-   This is the only block you need for moving the main sections.
-
-   HOW TO MOVE:
-   - PANEL X values move the whole screen horizontally along the panorama.
-     100cqw = one full phone-screen width.
-     Example: 548cqw → 558cqw moves that section a little to the RIGHT.
-
-   - COPY LEFT values move the content inside its own screen.
-     50% = centered, 47% = left, 53% = right.
-
-   - COPY TOP values move the content vertically inside its own screen.
-     Smaller number = higher, bigger number = lower.
-
-   Requested here:
-   - Photo album pushed a little RIGHT.
-   - Bible verse section pushed a little LEFT.
-   - Main section positions are centralized below.
-*/
-:root{
-  /* Whole-panel horizontal positions */
-  --panel-cover-x:0cqw;
-  --panel-parents-x:150cqw;
-  --panel-verse-x:282cqw;          /* Bible verse: smaller = more LEFT */
-  --panel-album-x:598cqw;          /* Photo album: bigger = more RIGHT */
-  --panel-wedding-list-x:685cqw;
-  --panel-rsvp-x:805cqw;
-  --panel-closing-x:950cqw;
-
-  /* Road2.png */
-  --road-left:392%;                /* bigger = more RIGHT */
-  --road-top:2.8%;                 /* bigger = lower */
-  --road-width:190%;
-
-  /* Copy/card positions inside each panel */
-  --cover-left:50%;
-  --cover-top:12.2%;
-  --cover-width:90%;
-
-  --parents-left:50%;
-  --parents-top:12.8%;
-  --parents-width:92%;
-
-  --verse-left:48%;                /* Bible verse content: smaller = more LEFT */
-  --verse-top:15.2%;
-  --verse-width:82%;
-
-  --album-left:52%;                /* Photo album content: bigger = more RIGHT */
-  --album-top:9.4%;
-  --album-width:78%;
-
-  --wedding-list-left:50%;
-  --wedding-list-top:12.2%;
-  --wedding-list-width:84%;
-
-  --rsvp-left:50%;
-  --rsvp-top:7.2%;
-  --rsvp-width:82%;
-
-  --closing-left:50%;
-  --closing-top:16%;
-  --closing-width:84%;
-}
-
-/* Apply whole-panel horizontal positions */
-#p1{ left:var(--panel-cover-x) !important; }
-#p2{ left:var(--panel-parents-x) !important; }
-#p3{ left:var(--panel-verse-x) !important; }
-#p5{ left:var(--panel-album-x) !important; }
-#p8{ left:var(--panel-wedding-list-x) !important; }
-#p6{ left:var(--panel-rsvp-x) !important; }
-#p7{ left:var(--panel-closing-x) !important; }
-
-/* Apply copy/card positions */
-#p1 .cover-copy{
-  left:var(--cover-left) !important;
-  top:var(--cover-top) !important;
-  width:var(--cover-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p2 .parents-formal-copy{
-  left:var(--parents-left) !important;
-  top:var(--parents-top) !important;
-  width:var(--parents-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p3 .verse-copy{
-  left:var(--verse-left) !important;
-  top:var(--verse-top) !important;
-  width:var(--verse-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p5 .album-copy{
-  left:var(--album-left) !important;
-  top:var(--album-top) !important;
-  width:var(--album-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p8 .wedding-list-copy{
-  left:var(--wedding-list-left) !important;
-  top:var(--wedding-list-top) !important;
-  width:var(--wedding-list-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p6 .rsvp-copy{
-  left:var(--rsvp-left) !important;
-  top:var(--rsvp-top) !important;
-  width:var(--rsvp-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p7 .closing-copy{
-  left:var(--closing-left) !important;
-  top:var(--closing-top) !important;
-  width:var(--closing-width) !important;
-  transform:translateX(-50%) !important;
-}
-#p1 .l-Road{
-  left:var(--road-left) !important;
-  top:var(--road-top) !important;
-  width:var(--road-width) !important;
-}
-
-/* Keep these text-size/readability fixes after the position controls */
-#p5 .album-copy .sans,
-.arabic-mode #p5 .album-copy .sans{
-  font-size:3.15cqw !important;
-  line-height:1.75 !important;
-  opacity:.88 !important;
-  font-weight:900 !important;
-  color:#fff !important;
-  text-shadow:0 2px 12px rgba(0,0,0,.14) !important;
-}
-#p7 .closing-copy .sans,
-.arabic-mode #p7 .closing-copy .sans{
-  font-size:3.35cqw !important;
-  line-height:1.65 !important;
-  opacity:.86 !important;
-  font-weight:900 !important;
-  color:#fff !important;
-  text-shadow:0 2px 12px rgba(0,0,0,.14) !important;
-}
-#p7 .closing-copy .serif,
-.arabic-mode #p7 .closing-copy .serif{
-  font-size:4.45cqw !important;
-  line-height:1.35 !important;
-  opacity:.88 !important;
-  color:#fff !important;
-}
-#p7 .closing-copy .cardia-credit,
-.arabic-mode #p7 .closing-copy .cardia-credit{
-  display:inline-block !important;
-  margin-top:3.2cqw !important;
-  padding:1.35cqw 3.4cqw !important;
-  border-radius:999px !important;
-  background:rgba(255,245,230,.22) !important;
-  border:1px solid rgba(255,255,255,.30) !important;
-  text-decoration:none !important;
-  pointer-events:auto !important;
-}
-#p7 .closing-copy .cardia-credit:hover{
-  background:rgba(255,255,255,.34) !important;
-}
-
-@media (max-width:600px), (pointer:coarse){
-  :root{
-    --road-top:3.8%;
-
-    --cover-top:12.2%;
-    --cover-width:92%;
-
-    --parents-top:12.2%;
-    --parents-width:94%;
-
-    --verse-left:47.5%;
-    --verse-top:14.2%;
-    --verse-width:84%;
-
-    --album-left:52.5%;
-    --album-top:9.2%;
-    --album-width:82%;
-  }
-
-  #p5 .album-copy .sans,
-  .arabic-mode #p5 .album-copy .sans{
-    font-size:3.65cqw !important;
-    line-height:1.7 !important;
-  }
-  #p7 .closing-copy .sans,
-  .arabic-mode #p7 .closing-copy .sans{
-    font-size:3.75cqw !important;
-    line-height:1.62 !important;
-  }
-  #p7 .closing-copy .serif,
-  .arabic-mode #p7 .closing-copy .serif{
-    font-size:4.9cqw !important;
-  }
-  #p7 .closing-copy .cardia-credit,
-  .arabic-mode #p7 .closing-copy .cardia-credit{
-    margin-top:3.6cqw !important;
-    padding:1.65cqw 3.8cqw !important;
-  }
-}
-
 
 
 /* ═════════ CARDIA UPDATE — PAGE.PNG BACKGROUND + CONSISTENT FINAL SECTIONS ═════════
@@ -4455,6 +4271,115 @@ body::before{
 #p9 .photo-upload-box{
   touch-action: pan-y !important;
 }
+
+
+/* ═════════ CARDIA FINAL USER FIX — WEDDING LIST WISH MONEY ═════════
+   Kept from the latest version; parent/verse typography is cleaned separately below. */
+#p8 .wedding-list-card.wedding-list-whish-card{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:28cqw !important;
+  padding:8.2cqw 6.1cqw !important;
+}
+
+#p8 .wedding-list-text.whish-money-line{
+  margin:0 !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  text-align:center !important;
+  font-family:'Cormorant Garamond','Jost',serif !important;
+  font-size:5.05cqw !important;
+  line-height:1.35 !important;
+  font-weight:600 !important;
+  letter-spacing:.035em !important;
+  color:#3d2a14 !important;
+  opacity:1 !important;
+  word-spacing:.08em !important;
+}
+
+#p8 .wedding-list-btn,
+#p8 .wedding-list-note{
+  display:none !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p8 .wedding-list-card.wedding-list-whish-card{
+    min-height:30cqw !important;
+    padding:8.8cqw 6.2cqw !important;
+  }
+  #p8 .wedding-list-text.whish-money-line{
+    font-size:5.45cqw !important;
+  }
+}
+
+
+/* Wedding list: keep the Arabic text, remove only the button, and show the Wish Money line. */
+#p8 .wedding-list-card{
+  display:block !important;
+  align-items:initial !important;
+  justify-content:initial !important;
+  min-height:0 !important;
+  padding:7.3cqw 6.1cqw 6.2cqw !important;
+}
+#p8 .wedding-list-text{
+  margin:0 auto 2.4cqw !important;
+  direction:rtl !important;
+  text-align:center !important;
+  font-family:'Amiri','Noto Naskh Arabic',serif !important;
+  font-size:4.65cqw !important;
+  line-height:1.65 !important;
+  font-weight:700 !important;
+  letter-spacing:0 !important;
+  word-spacing:.14em !important;
+  color:#3d2a14 !important;
+  opacity:.96 !important;
+}
+#p8 .wedding-list-text.wish-money-line,
+#p8 .wedding-list-text.whish-money-line{
+  margin:2.4cqw auto 0 !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  text-align:center !important;
+  font-family:'Cormorant Garamond','Jost',serif !important;
+  font-size:5.05cqw !important;
+  line-height:1.35 !important;
+  font-weight:700 !important;
+  letter-spacing:.035em !important;
+  word-spacing:.08em !important;
+  color:#3d2a14 !important;
+  opacity:1 !important;
+}
+#p8 .wedding-list-btn{
+  display:none !important;
+}
+#p8 .wedding-list-note{
+  display:block !important;
+  margin-top:2.6cqw !important;
+  font-family:'Noto Naskh Arabic','Jost',sans-serif !important;
+  font-size:2.45cqw !important;
+  line-height:1.45 !important;
+  letter-spacing:.02em !important;
+  color:#3d2a14 !important;
+  opacity:.72 !important;
+  text-align:center !important;
+  text-transform:none !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p8 .wedding-list-text{
+    font-size:4.85cqw !important;
+    line-height:1.68 !important;
+  }
+  #p8 .wedding-list-text.wish-money-line,
+  #p8 .wedding-list-text.whish-money-line{
+    font-size:5.35cqw !important;
+  }
+  #p8 .wedding-list-note{
+    font-size:2.75cqw !important;
+  }
+}
+
 </style>
 </head>
 <body class="arabic-mode">
@@ -4469,7 +4394,7 @@ body::before{
   </div>
 </div>
 <audio id="bgMusic" preload="auto" loop>
-  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-romantic-wedding-piano-160698.mp3" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/Indila_Love_Story.mp3" type="audio/mpeg">
 </audio>
 <button id="musicBtn" type="button" aria-label="تشغيل أو إيقاف الموسيقى">♪</button>
 <img id="travelGondola"
@@ -4623,6 +4548,26 @@ body::before{
  <img class="layer l-Road"
          src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png" alt="">
 
+    <div class="road-location-layer" aria-label="روابط مواقع البرنامج">
+      <a class="road-location-hit road-location-church"
+         href="https://maps.app.goo.gl/16AcHzhR46aD9QcH9"
+         target="_blank" rel="noopener"
+         aria-label="Open church location"></a>
+      <a class="road-location-hit road-location-reception"
+         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
+         target="_blank" rel="noopener"
+         aria-label="Open Octagon location for reception drinks"></a>
+      <a class="road-location-hit road-location-dinner"
+         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
+         target="_blank" rel="noopener"
+         aria-label="Open Octagon location for dinner"></a>
+      <a class="road-location-hit road-location-party"
+         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
+         target="_blank" rel="noopener"
+         aria-label="Open Octagon location for celebration"></a>
+    </div>
+
+
 
 
 
@@ -4652,7 +4597,7 @@ body::before{
         <div class="script ampersand" style="display:block;opacity:0.18;color:#fff;">﹠</div>
         <div class="script name">Pamela</div>
         <div class="orn" ><span></span><em>✦</em><span></span></div>
-        <div class="sans families" style="color:var(--deep);opacity:0.6;">بمشاركة عائلتيهما وبكل محبة</div>
+
        <div class="serif date" style="color:#fff;font-weight:800;letter-spacing:0.1em;opacity:0.85;font-size:150px;">٢٦ كانون الأول ٢٠٢٦</div>
         <button id="openInvitationBtn" class="open-invitation-btn" type="button">افتح الدعوة</button>
       </div>
@@ -4663,7 +4608,7 @@ body::before{
        PANEL 2 — Parents Invitation
        Formal two-column parents layout
   ══════════════════════════════════ -->
-  <div class="panel" id="p2" style="left:150cqw;">
+  <div class="panel" id="p2">
 
     <div class="water-shimmer"></div>
 
@@ -4671,7 +4616,7 @@ body::before{
 
 
     <div class="content">
-      <div class="fixed-copy story-copy new-parents-copy parents-formal-copy">
+      <div class="fixed-copy parents-formal-copy">
         <div class="parents-two-columns" aria-label="والدا العروسين">
           <div class="parents-col groom-parents">
             <div class="parents-name"><span>حسيب وزبيدة</span><span>رزق</span></div>
@@ -4689,7 +4634,7 @@ body::before{
        PANEL 3 — Bible Verse
        Separate verse panel
   ══════════════════════════════════ -->
-  <div class="panel" id="p3" style="left:282cqw;">
+  <div class="panel" id="p3">
    
     <div class="water-shimmer"></div>
 
@@ -4753,14 +4698,13 @@ body::before{
       <div class="fixed-copy wedding-list-copy">
         <div class="script">قائمة الهدايا</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans">ملاحظة صغيرة لأحبّتنا</div>
+
 
         <div class="wedding-list-card">
           <p class="wedding-list-text">
-           حضوركم أجمل هدية. لمن يرغب، يمكن المساهمة بلائحة الهدايا عبر حسابنا:
+            حضوركم أجمل هدية. لمن يرغب، يمكن المساهمة بلائحة الهدايا عبر حسابنا:
           </p>
-          <!-- Replace href="#" with the real wedding-list URL when ready. -->
-          <a class="wedding-list-btn" href="#" onclick="event.preventDefault(); event.stopPropagation();">فتح قائمة الهدايا</a>
+          <p class="wedding-list-text wish-money-line" dir="ltr">Wish Money: #xxxxxxx</p>
           <div class="sans wedding-list-note">بكل حب وامتنان</div>
         </div>
       </div>
@@ -4788,7 +4732,7 @@ body::before{
           </div>
 
           <div id="step1" class="rsvp-step guest-welcome-step">
-            <h3 class="guest-welcome-title">أهلاً <span id="guestWelcomeName">ضيفنا العزيز</span></h3>
+            <h3 class="guest-welcome-title"> <span id="guestWelcomeName">ضيفنا العزيز</span></h3>
             <p id="personalGuestNote" class="guest-welcome-note">يرجى كتابة أسماء الضيوف لتأكيد الحضور.</p>
 
             <div id="manualGuestListWrap">
@@ -4836,7 +4780,6 @@ body::before{
       <div class="fixed-copy photo-section-copy">
         <div class="script" style="color:#fff;font-weight:900;">صورتكم للمفاجأة</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans">مفاجأة صغيرة نهار العرس</div>
 
         <div id="photoUploadBox" class="photo-upload-box permanent-photo-upload" aria-live="polite">
 
@@ -4851,7 +4794,7 @@ body::before{
           <label class="photo-upload-drop" for="guestPhotoInput">
             <span class="photo-upload-icon">📸</span>
             <span class="photo-upload-drop-text">اضغطوا لاختيار الصور</span>
-            <span class="photo-upload-hint">يمكنكم اختيار حتى ١٠ صور… والسيلفي مقبول إذا كان عالقلب!</span>
+      
             <input id="guestPhotoInput" type="file" accept="image/jpeg,image/png,image/webp,image/*" multiple onchange="handleGuestPhotoChoice(event)">
           </label>
           <div class="photo-preview-wrap photo-preview-grid" id="photoPreviewWrap" aria-live="polite"></div>
@@ -4924,7 +4867,7 @@ body::before{
   /* CARDIA FIX — allow horizontal panorama drag even when the finger/mouse starts
      on RSVP, album, wedding list, or photo-upload cards. Vertical movement inside
      scrollable RSVP areas is still left alone so the guest list can scroll. */
-  const DRAGGABLE_INTERACTIVE_SELECTOR = '.rsvp-card, .wedding-list-card, .photo-upload-box, .venice-album, #manualGuestListWrap, #guestSlotNameList';
+  const DRAGGABLE_INTERACTIVE_SELECTOR = '.rsvp-card, .wedding-list-card, .photo-upload-box, .venice-album, .road-location-layer, #manualGuestListWrap, #guestSlotNameList';
   const VERTICAL_SCROLL_SELECTOR = '.rsvp-card, #manualGuestListWrap, #guestSlotNameList, .photo-upload-box';
 
   function closestMatch(targetEl, selector) {
