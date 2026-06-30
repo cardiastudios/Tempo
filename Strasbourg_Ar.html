@@ -4380,6 +4380,173 @@ body::before{
   }
 }
 
+
+
+/* ═════════ CARDIA SURGICAL UPDATE — ONE PHOTO SLOT PER GUEST ═════════
+   The photo panel now mirrors the RSVP guest limit/list and allows one image per guest. */
+#p9 .photo-upload-text{
+  margin-bottom:2.2cqw !important;
+}
+#p9 .photo-upload-name-label,
+#p9 .photo-upload-name-input,
+#p9 .photo-upload-drop,
+#p9 #photoPreviewWrap{
+  display:none !important;
+}
+#p9 .photo-upload-guest-list{
+  width:100% !important;
+  max-height:61cqw !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+  padding:1.2cqw 1.1cqw !important;
+  margin:1.2cqw auto 0 !important;
+  border-radius:3.8cqw !important;
+  background:rgba(255,255,255,.34) !important;
+  border:1px solid rgba(61,42,20,.14) !important;
+}
+#p9 .photo-upload-guest-list::-webkit-scrollbar{
+  width:4px !important;
+}
+#p9 .photo-upload-guest-list::-webkit-scrollbar-thumb{
+  background:rgba(61,42,20,.24) !important;
+  border-radius:999px !important;
+}
+#p9 .photo-guest-slot{
+  display:grid !important;
+  grid-template-columns:1fr 22cqw !important;
+  gap:2cqw !important;
+  align-items:center !important;
+  padding:2.3cqw !important;
+  margin-bottom:1.7cqw !important;
+  border-radius:3.6cqw !important;
+  background:rgba(255,255,255,.55) !important;
+  border:1px solid rgba(61,42,20,.16) !important;
+  box-shadow:0 8px 18px rgba(61,42,20,.06) !important;
+}
+#p9 .photo-guest-slot:last-child{
+  margin-bottom:0 !important;
+}
+#p9 .photo-guest-main{
+  min-width:0 !important;
+  text-align:right !important;
+}
+#p9 .photo-guest-label{
+  display:block !important;
+  margin:0 0 .8cqw !important;
+  font-family:'Aref Ruqaa','Amiri',serif !important;
+  font-size:3.6cqw !important;
+  line-height:1.25 !important;
+  font-weight:700 !important;
+  color:#3d2a14 !important;
+}
+#p9 .photo-guest-name-input{
+  display:block !important;
+  width:100% !important;
+  padding:1.4cqw 0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-bottom:1.5px solid rgba(61,42,20,.28) !important;
+  outline:none !important;
+  font-family:'Noto Naskh Arabic','Amiri',serif !important;
+  font-size:3.15cqw !important;
+  line-height:1.25 !important;
+  text-align:right !important;
+  color:#3d2a14 !important;
+}
+#p9 .photo-guest-name-input[readonly]{
+  opacity:.82 !important;
+}
+#p9 .photo-guest-name-input::placeholder{
+  color:rgba(61,42,20,.42) !important;
+}
+#p9 .photo-guest-mini-status{
+  min-height:1.3em !important;
+  margin-top:.9cqw !important;
+  font-family:'Noto Naskh Arabic','Amiri',serif !important;
+  font-size:2.35cqw !important;
+  line-height:1.25 !important;
+  color:rgba(61,42,20,.62) !important;
+}
+#p9 .photo-guest-mini-status.is-error{ color:#8b2f23 !important; opacity:1 !important; }
+#p9 .photo-guest-mini-status.is-success{ color:#2f6b45 !important; opacity:1 !important; font-weight:700 !important; }
+#p9 .photo-guest-photo-control{
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:22cqw !important;
+  height:22cqw !important;
+  border-radius:3.2cqw !important;
+  overflow:hidden !important;
+  cursor:pointer !important;
+  background:rgba(255,255,255,.74) !important;
+  border:1px dashed rgba(61,42,20,.36) !important;
+}
+#p9 .photo-guest-photo-control input{
+  display:none !important;
+}
+#p9 .photo-guest-empty{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:.7cqw !important;
+  width:100% !important;
+  height:100% !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.05cqw !important;
+  line-height:1.1 !important;
+  letter-spacing:.06em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  color:#3d2a14 !important;
+  text-align:center !important;
+}
+#p9 .photo-guest-empty span:first-child{
+  font-size:5.2cqw !important;
+  line-height:1 !important;
+}
+#p9 .photo-guest-preview{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+#p9 .photo-guest-sent-badge{
+  position:absolute !important;
+  inset:auto .9cqw .9cqw .9cqw !important;
+  padding:.8cqw 1cqw !important;
+  border-radius:999px !important;
+  background:rgba(47,107,69,.88) !important;
+  color:#fff !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:1.7cqw !important;
+  line-height:1 !important;
+  letter-spacing:.08em !important;
+  font-weight:800 !important;
+  text-align:center !important;
+}
+#p9 .photo-upload-summary{
+  margin:1.5cqw 0 0 !important;
+  font-family:'Noto Naskh Arabic','Amiri',serif !important;
+  font-size:2.55cqw !important;
+  line-height:1.35 !important;
+  color:rgba(61,42,20,.72) !important;
+}
+#p9 .photo-upload-btn{
+  margin-top:2.2cqw !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p9 .photo-upload-guest-list{ max-height:64cqw !important; }
+  #p9 .photo-guest-slot{ grid-template-columns:1fr 24cqw !important; }
+  #p9 .photo-guest-photo-control{ width:24cqw !important; height:24cqw !important; }
+  #p9 .photo-guest-label{ font-size:3.85cqw !important; }
+  #p9 .photo-guest-name-input{ font-size:3.35cqw !important; }
+  #p9 .photo-guest-mini-status{ font-size:2.55cqw !important; }
+  #p9 .photo-upload-summary{ font-size:2.8cqw !important; }
+}
+
 </style>
 </head>
 <body class="arabic-mode">
@@ -4784,21 +4951,13 @@ body::before{
         <div id="photoUploadBox" class="photo-upload-box permanent-photo-upload" aria-live="polite">
 
           <p class="photo-upload-text">
-   إختاروا أحلى صورة إلكم حلوة، أو فيها ابتسامة بتشبهكم يمكن تلاقوها بانتظاركم كمفاجأة صغيرة نهار العرس<br>
-         🤍
+            لكل ضيف صورة واحدة فقط. اختاروا أحلى صورة إلكن، يمكن تلاقوها بانتظاركن كمفاجأة صغيرة نهار العرس<br>
+            🤍
           </p>
 
-          <label class="photo-upload-name-label" for="photoGuestName">اسمكم</label>
-          <input id="photoGuestName" class="photo-upload-name-input" type="text" placeholder="اكتبوا الاسم الكامل" autocomplete="name">
-
-          <label class="photo-upload-drop" for="guestPhotoInput">
-            <span class="photo-upload-icon">📸</span>
-            <span class="photo-upload-drop-text">اضغطوا لاختيار الصور</span>
-      
-            <input id="guestPhotoInput" type="file" accept="image/jpeg,image/png,image/webp,image/*" multiple onchange="handleGuestPhotoChoice(event)">
-          </label>
-          <div class="photo-preview-wrap photo-preview-grid" id="photoPreviewWrap" aria-live="polite"></div>
-          <button class="photo-upload-btn" id="photoUploadBtn" type="button" onclick="uploadGuestPhoto()" disabled>إرسال الصور</button>
+          <div id="photoUploadGuestList" class="photo-upload-guest-list" aria-label="قائمة صور الضيوف"></div>
+          <p id="photoUploadSummary" class="photo-upload-summary">اختاروا صورة واحدة لكل ضيف.</p>
+          <button class="photo-upload-btn" id="photoUploadBtn" type="button" onclick="uploadGuestPhoto()" disabled>إرسال الصور المختارة</button>
           <p class="photo-upload-status" id="photoUploadStatus"></p>
         </div>
       </div>
@@ -5610,6 +5769,7 @@ body::before{
     const errName = document.getElementById('errName');
     if (errName) errName.style.display = 'none';
     updateGuestTotal();
+    if (typeof renderPhotoUploadSlots === 'function') renderPhotoUploadSlots();
   }
 
   function setGuestResponse(index, value) {
@@ -5617,6 +5777,7 @@ body::before{
     guestResponses[index].attending = value;
     guestResponses[index].manualAttendance = true;
     updateGuestTotal();
+    if (typeof renderPhotoUploadSlots === 'function') renderPhotoUploadSlots();
   }
 
   function updateGuestTotal() {
@@ -5746,15 +5907,16 @@ body::before{
 
   applyGuestParams();
 
-  /* GUEST PHOTO UPLOAD → GOOGLE DRIVE — wedding magnet souvenir */
-  const PHOTO_UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzsBpBMOCZvsF_yBrJNN5hctXegIf52pkG8QHZ95lElzoz-PSF3rUzzy7nfMICBUVZp/exec';
+  /* GUEST PHOTO UPLOAD → GOOGLE DRIVE — one photo per guest */
+  const PHOTO_UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyaYiBmAYOVWpNixBaQFO1wGtxmJt4_0_sLdFfNwCuAJWJjvYyTTfSVTc_BzWkuLEA/exec';
   const PHOTO_UPLOAD_MAX_MB = 8;
   const PHOTO_UPLOAD_MAX_BYTES = PHOTO_UPLOAD_MAX_MB * 1024 * 1024;
   const PHOTO_UPLOAD_MAX_DIMENSION = 1800;
   const PHOTO_UPLOAD_JPEG_QUALITY = 0.88;
 
-  let selectedGuestPhotos = [];
-  let photoUploadAlreadySent = false;
+  let selectedGuestPhotos = {};
+  let photoUploadSentSlots = {};
+  let photoUploadDraftNames = Array.from({ length: guestLimit }, (_, index) => lockedGuestNames[index] || '');
 
   function setPhotoUploadStatus(message, state) {
     const status = document.getElementById('photoUploadStatus');
@@ -5764,31 +5926,118 @@ body::before{
     if (state) status.classList.add(state);
   }
 
-  function resetPhotoUploadUI() {
-    selectedGuestPhotos = [];
-    photoUploadAlreadySent = false;
-    const input = document.getElementById('guestPhotoInput');
-    const previewWrap = document.getElementById('photoPreviewWrap');
+  function setPhotoSlotStatus(index, message, state) {
+    const status = document.getElementById('photoSlotStatus' + index);
+    if (!status) return;
+    status.textContent = message || '';
+    status.classList.remove('is-error', 'is-success');
+    if (state) status.classList.add(state);
+  }
+
+  function getPhotoGuestName(index) {
+    const fromRSVP = guestResponses[index] && guestResponses[index].name ? guestResponses[index].name.trim() : '';
+    const fromDraft = photoUploadDraftNames[index] ? photoUploadDraftNames[index].trim() : '';
+    const fromLocked = lockedGuestNames[index] ? lockedGuestNames[index].trim() : '';
+    return fromRSVP || fromDraft || fromLocked || '';
+  }
+
+  function getPhotoGuestAttendance(index) {
+    if (guestResponses[index] && guestResponses[index].name && guestResponses[index].name.trim()) {
+      return guestResponses[index].attending || 'Yes';
+    }
+    return currentRSVPGuestName ? (currentRSVPAttending ? 'Yes' : 'No') : 'Not submitted';
+  }
+
+  function getPhotoUploadGuests() {
+    const totalSlots = Math.max(1, guestLimit || lockedGuestNames.length || guestResponses.length || 1);
+    return Array.from({ length: totalSlots }, (_, index) => {
+      const name = getPhotoGuestName(index);
+      const locked = Boolean(lockedGuestNames[index]);
+      return {
+        index,
+        slot: 'Guest ' + (index + 1),
+        displayLabel: name || ('الضيف ' + (index + 1)),
+        name,
+        locked,
+        attending: getPhotoGuestAttendance(index)
+      };
+    });
+  }
+
+  function updatePhotoUploadButtonState() {
     const btn = document.getElementById('photoUploadBtn');
-    if (input) input.value = '';
-    if (previewWrap) {
-      previewWrap.innerHTML = '';
-      previewWrap.style.display = 'none';
-    }
+    const summary = document.getElementById('photoUploadSummary');
+    const guests = getPhotoUploadGuests();
+    const selectedCount = Object.keys(selectedGuestPhotos).filter((key) => selectedGuestPhotos[key] && !photoUploadSentSlots[key]).length;
+    const sentCount = Object.keys(photoUploadSentSlots).filter((key) => photoUploadSentSlots[key]).length;
+
     if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'إرسال الصور';
+      btn.disabled = selectedCount === 0;
+      btn.textContent = selectedCount > 0 ? ('إرسال ' + selectedCount + ' ' + (selectedCount === 1 ? 'صورة' : 'صور')) : 'إرسال الصور المختارة';
     }
+
+    if (summary) {
+      summary.textContent = guests.length === 1
+        ? 'يمكن لهذا الضيف رفع صورة واحدة فقط.'
+        : 'تم تجهيز ' + selectedCount + ' من ' + guests.length + ' صور. صورة واحدة لكل ضيف.' + (sentCount ? ' تم إرسال ' + sentCount + '.' : '');
+    }
+  }
+
+  function renderPhotoUploadSlots() {
+    const list = document.getElementById('photoUploadGuestList');
+    if (!list) return;
+
+    const guests = getPhotoUploadGuests();
+    list.innerHTML = guests.map((guest) => {
+      const photo = selectedGuestPhotos[guest.index];
+      const sent = Boolean(photoUploadSentSlots[guest.index]);
+      const inputId = 'guestPhotoInput' + guest.index;
+      const readonlyAttr = guest.locked ? ' readonly aria-readonly="true"' : '';
+      const safeName = escapeHTML(guest.name || '');
+      const safeLabel = escapeHTML(guest.displayLabel);
+      const previewHTML = photo && photo.dataUrl
+        ? '<img class="photo-guest-preview" src="' + photo.dataUrl + '" alt="معاينة صورة ' + safeLabel + '">' + (sent ? '<span class="photo-guest-sent-badge">تم الإرسال</span>' : '')
+        : '<span class="photo-guest-empty"><span>📸</span><span>صورة واحدة</span></span>';
+      const statusText = sent ? 'تم إرسال صورة هذا الضيف ✓' : (photo ? 'الصورة جاهزة للإرسال' : 'لم يتم اختيار صورة بعد');
+      const statusClass = sent ? ' is-success' : '';
+
+      return `
+        <div class="photo-guest-slot" data-photo-slot="${guest.index}">
+          <div class="photo-guest-main">
+            <label class="photo-guest-label" for="photoGuestName${guest.index}">${safeLabel}</label>
+            <input id="photoGuestName${guest.index}" class="photo-guest-name-input" type="text" value="${safeName}" placeholder="اسم الضيف" autocomplete="name"${readonlyAttr} oninput="updatePhotoGuestName(${guest.index}, this.value)">
+            <div id="photoSlotStatus${guest.index}" class="photo-guest-mini-status${statusClass}">${statusText}</div>
+          </div>
+          <label class="photo-guest-photo-control" for="${inputId}">
+            ${previewHTML}
+            <input id="${inputId}" type="file" accept="image/jpeg,image/png,image/webp,image/*" onchange="handleGuestPhotoChoice(${guest.index}, event)" ${sent ? 'disabled' : ''}>
+          </label>
+        </div>`;
+    }).join('');
+
+    updatePhotoUploadButtonState();
+  }
+
+  function updatePhotoGuestName(index, value) {
+    photoUploadDraftNames[index] = String(value || '').trim();
+    setPhotoSlotStatus(index, selectedGuestPhotos[index] ? 'الصورة جاهزة للإرسال' : 'لم يتم اختيار صورة بعد', '');
+    updatePhotoUploadButtonState();
+  }
+
+  function resetPhotoUploadUI() {
+    selectedGuestPhotos = {};
+    photoUploadSentSlots = {};
+    photoUploadDraftNames = Array.from({ length: guestLimit }, (_, index) => lockedGuestNames[index] || '');
+    renderPhotoUploadSlots();
     setPhotoUploadStatus('', '');
   }
 
   function showPhotoUploadBoxForGuest(name, yes) {
     currentRSVPGuestName = name || 'ضيف';
     currentRSVPAttending = !!yes;
-    const photoNameInput = document.getElementById('photoGuestName');
-    if (photoNameInput && name && !photoNameInput.value.trim()) photoNameInput.value = name;
     const box = document.getElementById('photoUploadBox');
     if (box) box.style.display = 'block';
+    renderPhotoUploadSlots();
   }
 
   function sanitizeClientFileName(name) {
@@ -5801,10 +6050,10 @@ body::before{
   function compressGuestImage(file, index) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
-      reader.onerror = () => reject(new Error('تعذر قراءة الصورة رقم ' + index + '.'));
+      reader.onerror = () => reject(new Error('تعذر قراءة الصورة.'));
       reader.onload = () => {
         const img = new Image();
-        img.onerror = () => reject(new Error('يرجى اختيار صور بصيغة JPG أو PNG أو WEBP.'));
+        img.onerror = () => reject(new Error('يرجى اختيار صورة بصيغة JPG أو PNG أو WEBP.'));
         img.onload = () => {
           const scale = Math.min(1, PHOTO_UPLOAD_MAX_DIMENSION / Math.max(img.width, img.height));
           const canvas = document.createElement('canvas');
@@ -5814,7 +6063,7 @@ body::before{
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
           const dataUrl = canvas.toDataURL('image/jpeg', PHOTO_UPLOAD_JPEG_QUALITY);
           const base64 = dataUrl.split(',')[1] || '';
-          const cleanName = sanitizeClientFileName((file.name || ('photo_' + index)).replace(/\.[^.]+$/, '') + '.jpg');
+          const cleanName = sanitizeClientFileName((file.name || ('guest_' + index + '_photo')).replace(/\.[^.]+$/, '') + '.jpg');
           resolve({
             base64,
             mimeType: 'image/jpeg',
@@ -5830,83 +6079,39 @@ body::before{
     });
   }
 
-  function renderPhotoPreviewGrid() {
-    const previewWrap = document.getElementById('photoPreviewWrap');
-    if (!previewWrap) return;
-    if (!selectedGuestPhotos.length) {
-      previewWrap.innerHTML = '';
-      previewWrap.style.display = 'none';
+  async function handleGuestPhotoChoice(index, event) {
+    const files = event && event.target && event.target.files ? Array.from(event.target.files) : [];
+    const file = files[0];
+    delete selectedGuestPhotos[index];
+    delete photoUploadSentSlots[index];
+
+    if (!file) {
+      renderPhotoUploadSlots();
       return;
     }
-    const list = document.createElement('div');
-    list.className = 'photo-preview-list';
-    selectedGuestPhotos.forEach((photo, i) => {
-      const item = document.createElement('div');
-      item.className = 'photo-preview-item';
-      const img = document.createElement('img');
-      img.src = photo.dataUrl;
-      img.alt = 'معاينة الصورة ' + (i + 1);
-      item.appendChild(img);
-      list.appendChild(item);
-    });
-    const count = document.createElement('div');
-    count.className = 'photo-preview-count';
-    count.textContent = 'تم اختيار ' + selectedGuestPhotos.length + ' من 10 صور';
-    previewWrap.innerHTML = '';
-    previewWrap.appendChild(list);
-    previewWrap.appendChild(count);
-    previewWrap.style.display = 'block';
-  }
 
-  async function handleGuestPhotoChoice(event) {
-    const files = event && event.target && event.target.files ? Array.from(event.target.files) : [];
-    const btn = document.getElementById('photoUploadBtn');
-    selectedGuestPhotos = [];
-    photoUploadAlreadySent = false;
-    if (btn) {
-      btn.disabled = true;
-      btn.textContent = 'إرسال الصور';
-    }
-    renderPhotoPreviewGrid();
-
-    if (!files.length) return;
-
-    const chosen = files.slice(0, 10);
-    if (files.length > 10) {
-      setPhotoUploadStatus('يمكن رفع 10 صور كحد أقصى. اخترنا أول 10 صور فقط.', 'is-error');
-    } else {
-      setPhotoUploadStatus('جارٍ تجهيز الصور…', '');
+    if (!file.type || !file.type.startsWith('image/')) {
+      setPhotoSlotStatus(index, 'يرجى اختيار صورة فقط.', 'is-error');
+      updatePhotoUploadButtonState();
+      return;
     }
 
-    for (let i = 0; i < chosen.length; i++) {
-      const file = chosen[i];
-      if (!file.type || !file.type.startsWith('image/')) {
-        setPhotoUploadStatus('يرجى اختيار صور فقط.', 'is-error');
-        selectedGuestPhotos = [];
-        renderPhotoPreviewGrid();
-        return;
-      }
-      if (file.size > PHOTO_UPLOAD_MAX_BYTES) {
-        setPhotoUploadStatus('إحدى الصور كبيرة جدًا. الحد الأقصى ' + PHOTO_UPLOAD_MAX_MB + 'MB لكل صورة.', 'is-error');
-        selectedGuestPhotos = [];
-        renderPhotoPreviewGrid();
-        return;
-      }
+    if (file.size > PHOTO_UPLOAD_MAX_BYTES) {
+      setPhotoSlotStatus(index, 'الصورة كبيرة جدًا. الحد الأقصى ' + PHOTO_UPLOAD_MAX_MB + 'MB.', 'is-error');
+      updatePhotoUploadButtonState();
+      return;
     }
 
     try {
-      for (let i = 0; i < chosen.length; i++) {
-        setPhotoUploadStatus('جارٍ تجهيز الصورة ' + (i + 1) + ' من ' + chosen.length + '…', '');
-        const prepared = await compressGuestImage(chosen[i], i + 1);
-        selectedGuestPhotos.push(prepared);
-        renderPhotoPreviewGrid();
-      }
-      if (btn) btn.disabled = false;
-      setPhotoUploadStatus('الصور جاهزة للإرسال 🤍', '');
+      setPhotoSlotStatus(index, 'جارٍ تجهيز الصورة…', '');
+      const prepared = await compressGuestImage(file, index + 1);
+      selectedGuestPhotos[index] = prepared;
+      renderPhotoUploadSlots();
+      setPhotoUploadStatus('الصورة جاهزة. يمكنكم اختيار صور لباقي الضيوف ثم الإرسال.', '');
     } catch (err) {
-      selectedGuestPhotos = [];
-      renderPhotoPreviewGrid();
-      setPhotoUploadStatus(err && err.message ? err.message : 'تعذر تجهيز الصور. جرّبوا صورًا أخرى.', 'is-error');
+      delete selectedGuestPhotos[index];
+      renderPhotoUploadSlots();
+      setPhotoSlotStatus(index, err && err.message ? err.message : 'تعذر تجهيز الصورة. جرّبوا صورة أخرى.', 'is-error');
     }
   }
 
@@ -5943,32 +6148,34 @@ body::before{
   }
 
   async function uploadGuestPhoto() {
-    const btn = document.getElementById('photoUploadBtn');
-    if (!selectedGuestPhotos.length) {
-      setPhotoUploadStatus('اختاروا صورة واحدة على الأقل.', 'is-error');
-      return;
-    }
     if (!PHOTO_UPLOAD_SCRIPT_URL || PHOTO_UPLOAD_SCRIPT_URL.includes('PASTE_YOUR_PHOTO_UPLOAD_WEB_APP_URL_HERE')) {
       setPhotoUploadStatus('يجب إضافة رابط Google Apps Script الخاص برفع الصور داخل الكود.', 'is-error');
       return;
     }
-    if (photoUploadAlreadySent) return;
 
-    const photoNameInput = document.getElementById('photoGuestName');
-    const photoGuestName = (photoNameInput && photoNameInput.value.trim()) ||
-      currentRSVPGuestName ||
-      '';
+    const entries = Object.keys(selectedGuestPhotos)
+      .map((key) => Number(key))
+      .filter((index) => selectedGuestPhotos[index] && !photoUploadSentSlots[index])
+      .sort((a, b) => a - b);
 
-    if (!photoGuestName) {
-      setPhotoUploadStatus('يرجى كتابة الاسم قبل إرسال الصور.', 'is-error');
-      if (photoNameInput) photoNameInput.focus();
+    if (!entries.length) {
+      setPhotoUploadStatus('اختاروا صورة واحدة على الأقل.', 'is-error');
       return;
     }
 
-    const selectedAttend = document.querySelector('input[name="attend"]:checked');
-    const attendanceForPhoto = currentRSVPGuestName
-      ? (currentRSVPAttending ? 'Yes' : 'No')
-      : (selectedAttend ? (selectedAttend.value === 'yes' ? 'Yes' : 'No') : 'Not submitted');
+    for (const index of entries) {
+      const input = document.getElementById('photoGuestName' + index);
+      const name = ((input && input.value.trim()) || getPhotoGuestName(index)).trim();
+      if (!name) {
+        setPhotoUploadStatus('يرجى كتابة اسم الضيف قبل إرسال صورته.', 'is-error');
+        setPhotoSlotStatus(index, 'اكتبوا الاسم أولًا.', 'is-error');
+        if (input) input.focus();
+        return;
+      }
+      photoUploadDraftNames[index] = name;
+    }
+
+    const btn = document.getElementById('photoUploadBtn');
 
     try {
       if (btn) {
@@ -5976,38 +6183,52 @@ body::before{
         btn.textContent = 'جارٍ رفع الصور…';
       }
 
-      for (let i = 0; i < selectedGuestPhotos.length; i++) {
-        const photo = selectedGuestPhotos[i];
-        setPhotoUploadStatus('جارٍ رفع الصورة ' + (i + 1) + ' من ' + selectedGuestPhotos.length + '…', '');
+      for (let i = 0; i < entries.length; i++) {
+        const index = entries[i];
+        const photo = selectedGuestPhotos[index];
+        const guestName = getPhotoGuestName(index) || photoUploadDraftNames[index] || ('Guest ' + (index + 1));
+        const attending = getPhotoGuestAttendance(index);
+
+        setPhotoUploadStatus('جارٍ رفع صورة ' + guestName + ' (' + (i + 1) + ' من ' + entries.length + ')…', '');
+        setPhotoSlotStatus(index, 'جارٍ رفع الصورة…', '');
+
         const payload = {
           event: COUPLE_NAME,
-          guest_name: photoGuestName,
-          attending: attendanceForPhoto,
-          guest_count: attendanceForPhoto === 'Yes' ? (guestCount || 1) : 0,
+          guest_name: guestName,
+          guest_slot: 'Guest ' + (index + 1),
+          invite_group: formatGuestNames(getPhotoUploadGuests().map((guest) => guest.name).filter(Boolean)),
+          attending,
+          guest_count: attending === 'Yes' ? 1 : 0,
           page_url: window.location.href,
-          file_name: photo.fileName || ('guest-photo-' + (i + 1) + '.jpg'),
+          file_name: photo.fileName || ('guest-' + (index + 1) + '-photo.jpg'),
           original_file_name: photo.originalName || '',
           mime_type: photo.mimeType || 'image/jpeg',
           base64: photo.base64,
-          file_index: i + 1,
-          total_files: selectedGuestPhotos.length,
+          file_index: 1,
+          total_files: 1,
           uploaded_at: new Date().toISOString()
         };
-        await postPhotoUploadToGoogleDrive(payload, i + 1);
+
+        await postPhotoUploadToGoogleDrive(payload, index + 1);
+        photoUploadSentSlots[index] = true;
+        setPhotoSlotStatus(index, 'تم إرسال صورة هذا الضيف ✓', 'is-success');
       }
 
-      photoUploadAlreadySent = true;
-      if (btn) btn.textContent = 'تم إرسال الصور ✓';
-      setPhotoUploadStatus('وصلتنا صوركم! حضّروا حالكم للمفاجأة نهار العرس 🤍', 'is-success');
+      renderPhotoUploadSlots();
+      setPhotoUploadStatus('وصلتنا الصور المختارة! حضّروا حالكم للمفاجأة نهار العرس 🤍', 'is-success');
     } catch (err) {
       if (btn) {
         btn.disabled = false;
-        btn.textContent = 'إرسال الصور';
+        btn.textContent = 'إرسال الصور المختارة';
       }
       setPhotoUploadStatus('تعذر رفع الصور. جرّبوا مرة أخرى.', 'is-error');
     }
   }
 
+  renderPhotoUploadSlots();
+  window.handleGuestPhotoChoice = handleGuestPhotoChoice;
+  window.updatePhotoGuestName = updatePhotoGuestName;
+  window.uploadGuestPhoto = uploadGuestPhoto;
 
   /* Single-name RSVP workflow removed: Strasbourg now uses the Ralph_Roussana multi-guest RSVP. */
 
