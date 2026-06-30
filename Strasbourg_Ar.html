@@ -2638,7 +2638,7 @@ body::before{
   --rsvp-width:82%;
   
 
-  --closing-left:15%;
+  --closing-left:55%;
   --closing-top:16%;
   --closing-width:84%;
 }
@@ -5511,10 +5511,13 @@ body::before{
 
 
 
-  /* INITIAL ASSET LOADER — preload images before the invitation can be opened */
+  /* INITIAL ASSET LOADER — preload every PNG/image + music file before the loader disappears */
   const assetLoader = document.getElementById('assetLoader');
   const loaderBar = document.getElementById('loaderBar');
   const loaderPercent = document.getElementById('loaderPercent');
+  const REQUIRED_ASSET_RE = /\.(png|jpe?g|gif|webp|svg|mp3|m4a|ogg|wav)(\?|#|$)/i;
+  const IMAGE_ASSET_RE = /\.(png|jpe?g|gif|webp|svg)(\?|#|$)/i;
+  const AUDIO_ASSET_RE = /\.(mp3|m4a|ogg|wav)(\?|#|$)/i;
 
   function markLoaderProgress(done, total) {
     const pct = total ? Math.round((done / total) * 100) : 100;
@@ -5522,86 +5525,154 @@ body::before{
     if (loaderPercent) loaderPercent.textContent = pct + '%';
   }
 
+  function cleanAssetUrl(url) {
+    if (!url) return '';
+    let cleaned = String(url).trim().replace(/^['"]|['"]$/g, '');
+    if (!cleaned || cleaned.startsWith('data:') || cleaned.startsWith('blob:')) return '';
+    try { cleaned = new URL(cleaned, document.baseURI).href; } catch (_) {}
+    return cleaned;
+  }
+
+  function addAssetUrl(urls, url) {
+    const cleaned = cleanAssetUrl(url);
+    if (cleaned && REQUIRED_ASSET_RE.test(cleaned)) urls.add(cleaned);
+  }
+
   function collectAssetUrls() {
     const urls = new Set();
-    document.querySelectorAll('img[src]').forEach(img => {
-      const src = img.getAttribute('src');
-      if (src) urls.add(src);
-      const full = img.getAttribute('data-full');
-      if (full) urls.add(full);
-      if (img.closest && img.closest('#veniceAlbum')) {
-        const fullSize = src
-          .replace(/([?&])w=\d+/i, '$1w=1800')
-          .replace(/([?&])q=\d+/i, '$1q=90');
-        if (fullSize) urls.add(fullSize);
-      }
+
+    /* All visible/hidden image tags, including full-size album versions. */
+    document.querySelectorAll('img').forEach(img => {
+      addAssetUrl(urls, img.getAttribute('src'));
+      addAssetUrl(urls, img.currentSrc);
+      addAssetUrl(urls, img.getAttribute('data-full'));
+      addAssetUrl(urls, img.getAttribute('data-src'));
+      addAssetUrl(urls, img.getAttribute('poster'));
     });
-    document.querySelectorAll('source[src]').forEach(source => {
-      const src = source.getAttribute('src');
-      if (src) urls.add(src);
+
+    /* Audio/video sources. This includes the wedding music MP3. */
+    document.querySelectorAll('audio, video, source').forEach(media => {
+      addAssetUrl(urls, media.getAttribute('src'));
+      addAssetUrl(urls, media.currentSrc);
+      addAssetUrl(urls, media.getAttribute('poster'));
     });
-    const inlineCss = Array.from(document.querySelectorAll('style'))
+
+    /* PNG/background assets referenced in CSS url(...), including Page.png. */
+    const cssText = Array.from(document.querySelectorAll('style'))
       .map(style => style.textContent || '')
       .join('\n');
-    const urlMatches = inlineCss.matchAll(/url\(["']?([^"')]+)["']?\)/g);
-    for (const match of urlMatches) {
-      if (match[1] && !match[1].startsWith('data:')) urls.add(match[1]);
+    for (const match of cssText.matchAll(/url\(([^)]+)\)/g)) {
+      addAssetUrl(urls, match[1]);
     }
+
     return Array.from(urls);
   }
 
-  function preloadOneAsset(url) {
-    return new Promise(resolve => {
-      if (!url) return resolve();
-      if (/\.(png|jpe?g|gif|webp|svg)(\?|#|$)/i.test(url) || /images\.unsplash\.com/i.test(url)) {
-        const img = new Image();
-        img.onload = img.onerror = resolve;
-        img.src = url;
-        return;
-      }
-      if (/\.(mp3|m4a|ogg|wav)(\?|#|$)/i.test(url)) {
-        const audio = new Audio();
-        let settled = false;
-        const finish = () => {
-          if (settled) return;
-          settled = true;
-          resolve();
-        };
-        audio.preload = 'auto';
-        audio.oncanplaythrough = finish;
-        audio.onerror = finish;
-        audio.src = url;
-        audio.load();
-        setTimeout(finish, 3500);
-        return;
-      }
-      resolve();
+  function injectPreloadHint(url) {
+    if (!url || !document.head) return;
+    const alreadyAdded = Array.from(document.head.querySelectorAll('link[data-cardia-preload]'))
+      .some(link => link.href === url);
+    if (alreadyAdded) return;
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = url;
+    link.dataset.cardiaPreload = url;
+    if (IMAGE_ASSET_RE.test(url)) link.as = 'image';
+    else if (AUDIO_ASSET_RE.test(url)) link.as = 'audio';
+    else return;
+    try { link.crossOrigin = 'anonymous'; } catch (_) {}
+    document.head.appendChild(link);
+  }
+
+  function fetchAssetCompletely(url) {
+    if (!window.fetch) return Promise.reject(new Error('fetch unavailable'));
+    return fetch(url, { cache: 'force-cache', credentials: 'omit' }).then(response => {
+      if (!response.ok && response.type !== 'opaque') throw new Error('asset fetch failed: ' + response.status);
+      return response.blob();
     });
+  }
+
+  function loadImageAsset(url) {
+    return fetchAssetCompletely(url).catch(() => new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = async () => {
+        try {
+          if (img.decode) await img.decode();
+        } catch (_) {}
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = url;
+    }));
+  }
+
+  function loadAudioAsset(url) {
+    /* Fetching the blob/array fully is the most reliable way to make sure the MP3 is cached
+       before the loader closes. The <audio> fallback is kept for browsers that block fetch. */
+    return fetchAssetCompletely(url).catch(() => new Promise((resolve, reject) => {
+      const audio = new Audio();
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        resolve();
+      };
+      const fail = () => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        reject(new Error('audio preload failed'));
+      };
+      const cleanup = () => {
+        audio.removeEventListener('canplaythrough', finish);
+        audio.removeEventListener('loadeddata', finish);
+        audio.removeEventListener('error', fail);
+      };
+      audio.preload = 'auto';
+      audio.addEventListener('canplaythrough', finish, { once: true });
+      audio.addEventListener('loadeddata', finish, { once: true });
+      audio.addEventListener('error', fail, { once: true });
+      audio.src = url;
+      audio.load();
+    }));
+  }
+
+  function preloadOneAsset(url) {
+    injectPreloadHint(url);
+    if (IMAGE_ASSET_RE.test(url)) return loadImageAsset(url);
+    if (AUDIO_ASSET_RE.test(url)) return loadAudioAsset(url);
+    return Promise.resolve();
   }
 
   async function preloadInvitationAssets() {
     if (!stage) return;
     stage.classList.add('assets-loading');
+
     const urls = collectAssetUrls();
     const total = Math.max(1, urls.length);
     let done = 0;
     markLoaderProgress(done, total);
 
     await Promise.all(urls.map(url =>
-      preloadOneAsset(url).finally(() => {
+      preloadOneAsset(url).catch(err => {
+        console.warn('Cardia preload skipped unavailable asset:', url, err);
+      }).finally(() => {
         done += 1;
         markLoaderProgress(done, total);
       })
     ));
 
     markLoaderProgress(total, total);
-    setTimeout(() => {
-      if (assetLoader) assetLoader.classList.add('is-hidden');
-      stage.classList.remove('assets-loading');
-    }, 250);
+    if (assetLoader) assetLoader.classList.add('is-hidden');
+    stage.classList.remove('assets-loading');
   }
 
-  preloadInvitationAssets();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadInvitationAssets, { once: true });
+  } else {
+    preloadInvitationAssets();
+  }
 
 
   /* RSVP → GOOGLE SHEETS — Ralph_Roussana multi-guest workflow */
