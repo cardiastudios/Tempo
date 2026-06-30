@@ -4547,6 +4547,41 @@ body::before{
   #p9 .photo-upload-summary{ font-size:2.8cqw !important; }
 }
 
+
+
+/* ═════════ CARDIA SURGICAL FIX — RSVP RADIO CLICK SCROLL JUMP ═════════
+   On mobile, selecting Yes/No on the lower guests could make the internal
+   guest list jump so only the last guest stayed visible. Keep hidden radios
+   anchored inside their own pill and keep the list scroll position stable. */
+#p6 .guest-response-options label{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#p6 .guest-response-options input[type="radio"]{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:1px !important;
+  height:1px !important;
+  margin:0 !important;
+  padding:0 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  clip:rect(0 0 0 0) !important;
+  clip-path:inset(50%) !important;
+  overflow:hidden !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+}
+#p6 .guest-slot-name-list{
+  align-content:start !important;
+  scroll-behavior:auto !important;
+}
+
 </style>
 </head>
 <body class="arabic-mode">
@@ -4793,7 +4828,19 @@ body::before{
             <div class="parents-name"><span>خليل وأودفيك</span><span>عودة</span></div>
           </div>
         </div>
-        <div class="parents-invitation-phrase">يدعوانكم بفرح<br>للاحتفال بزواج أبنائهم</div>
+        <div class="parents-invitation-phrase">يتشرفون بدعوتكم<br>للاحتفال بزواج أبنائهم</div>
+        
+         <div class="parents-two-columns" aria-label="والدا العروسين">
+          <div class="parents-col groom-parents">
+            <div class="parents-name"><span>Rody</span></div>
+          </div>
+          <div class="parents-symbol" aria-hidden="true">&amp;</div>
+          <div class="parents-col bride-parents">
+            <div class="parents-name"><span>Pamela</span></div>
+          </div>
+        </div>
+        
+        
       </div>
     </div>
   </div>
@@ -5773,11 +5820,21 @@ body::before{
   }
 
   function setGuestResponse(index, value) {
+    const list = document.getElementById('guestSlotNameList');
+    const keepScrollTop = list ? list.scrollTop : 0;
+
     if (!guestResponses[index]) return;
     guestResponses[index].attending = value;
     guestResponses[index].manualAttendance = true;
     updateGuestTotal();
     if (typeof renderPhotoUploadSlots === 'function') renderPhotoUploadSlots();
+
+    /* Mobile browsers sometimes auto-scroll a focused hidden radio input.
+       Restore the RSVP guest list exactly where the user was. */
+    requestAnimationFrame(() => {
+      if (list) list.scrollTop = keepScrollTop;
+      updateGuestListScrollUI();
+    });
   }
 
   function updateGuestTotal() {
