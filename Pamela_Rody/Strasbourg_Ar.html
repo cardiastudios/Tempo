@@ -650,6 +650,25 @@ top: 70%; left: 90%;
   filter: brightness(0) invert(1);
 }
 
+
+
+.l-Stars {
+  left: 18%;
+  top: 5%;
+  width: 120% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+
+  transform-origin: center top;
+
+  filter: brightness(0) invert(1);
+}
+
+
+
+
+
   .l-Plane {
   left: 288%;
   top: -1%;
@@ -2138,6 +2157,11 @@ body::before{
   left:380% !important;
   width:190% !important;
 }
+#p1 .l-Stars{
+  left:18% !important;
+  width:120% !important;
+}
+
 
 #p8 .wedding-list-copy{
   left:50% !important;
@@ -2687,6 +2711,17 @@ body::before{
   top:var(--road-top) !important;
   width:var(--road-width) !important;
 }
+
+#p1 .l-Stars{
+  left:var(--road-left) !important;
+  top:var(--road-top) !important;
+  width:var(--road-width) !important;
+}
+
+
+
+
+
 
 /* Road2.png invisible location hotspots.
    The PNG stays visually untouched; only the "Open location" labels are clickable.
@@ -4763,6 +4798,233 @@ body::before{
   }
 }
 
+
+
+/* ═════════ CARDIA FINAL UPDATE — ELEGANT PARENTS + READABLE PHOTO PANEL ═════════
+   1) Parent section is narrower and more formal.
+   2) Rody & Pamela are pushed further down.
+   3) Guest photo panel is slightly larger with older-reader-friendly text. */
+:root{
+  --parents-left:80%;
+  --parents-top:13.2%;
+  --parents-width:82%;
+}
+
+#p2 .parents-formal-copy{
+  left:var(--parents-left) !important;
+  top:var(--parents-top) !important;
+  width:var(--parents-width) !important;
+  transform:translateX(-50%) !important;
+}
+
+#p2 .parents-two-columns:first-of-type{
+  max-width:78cqw !important;
+  gap:3.2cqw !important;
+  margin:0 auto 6.2cqw !important;
+}
+
+#p2 .parents-two-columns:first-of-type .parents-name{
+  font-size:5.05cqw !important;
+  line-height:1.46 !important;
+  gap:1.45cqw !important;
+  font-weight:500 !important;
+}
+
+#p2 .parents-two-columns:first-of-type .parents-symbol{
+  font-size:6.8cqw !important;
+  margin-top:.15cqw !important;
+  opacity:.84 !important;
+}
+
+#p2 .parents-invitation-phrase{
+  width:74cqw !important;
+  max-width:100% !important;
+  margin:0 auto !important;
+  font-size:4.95cqw !important;
+  line-height:1.78 !important;
+}
+
+#p2 .parents-two-columns:last-of-type{
+  max-width:54cqw !important;
+  gap:4.6cqw !important;
+  margin:7.4cqw auto 0 !important;
+  align-items:center !important;
+}
+
+#p2 .parents-two-columns:last-of-type .parents-name{
+  font-size:5.35cqw !important;
+  line-height:1.22 !important;
+  gap:0 !important;
+  font-weight:500 !important;
+}
+
+#p2 .parents-two-columns:last-of-type .parents-symbol{
+  font-size:7.15cqw !important;
+  margin-top:-.15cqw !important;
+  opacity:.88 !important;
+}
+
+/* Photo surprise panel: slightly bigger card + clearer text */
+#p9 .photo-section-copy{
+  top:7.2% !important;
+  width:84% !important;
+}
+
+#p9 .photo-secret-title{
+  font-size:10.2cqw !important;
+  line-height:.9 !important;
+}
+
+#p9 .photo-section-copy .orn{
+  margin:2.6cqw auto 3cqw !important;
+}
+
+#p9 .photo-upload-box{
+  max-width:70cqw !important;
+  margin:2.9cqw auto 0 !important;
+  padding:5cqw 5cqw 4.6cqw !important;
+  border-radius:5.7cqw !important;
+}
+
+#p9 .photo-upload-text{
+  font-size:3.45cqw !important;
+  line-height:1.55 !important;
+  margin:0 auto 2.4cqw !important;
+  font-weight:500 !important;
+  opacity:.94 !important;
+}
+
+#p9 .photo-upload-guest-list{
+  padding:1.75cqw !important;
+  margin-top:1.1cqw !important;
+  border-radius:3.7cqw !important;
+}
+
+#p9 .photo-guest-slot.simple-photo-slot{
+  padding:2.35cqw !important;
+  gap:1.15cqw !important;
+  border-radius:3.5cqw !important;
+}
+
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-photo-control{
+  width:34cqw !important;
+  height:25.5cqw !important;
+  max-width:150px !important;
+  max-height:114px !important;
+  border-radius:3.5cqw !important;
+}
+
+#p9 .photo-guest-empty{
+  font-size:2.35cqw !important;
+  line-height:1.15 !important;
+  gap:.55cqw !important;
+}
+
+#p9 .photo-guest-empty span:first-child{
+  font-size:5.25cqw !important;
+}
+
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-mini-status{
+  font-size:2.75cqw !important;
+  line-height:1.32 !important;
+}
+
+#p9 .photo-upload-summary{
+  margin-top:1.65cqw !important;
+  font-size:2.8cqw !important;
+  line-height:1.35 !important;
+}
+
+#p9 .photo-upload-btn{
+  margin-top:1.9cqw !important;
+  padding:2.35cqw 2.8cqw !important;
+  font-size:2.35cqw !important;
+  letter-spacing:.13em !important;
+}
+
+#p9 .photo-upload-status{
+  margin-top:1.4cqw !important;
+  font-size:2.85cqw !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  :root{
+    --parents-left:50%;
+    --parents-top:13.4%;
+    --parents-width:84%;
+  }
+
+  #p2 .parents-two-columns:first-of-type{
+    max-width:80cqw !important;
+    gap:2.9cqw !important;
+    margin-bottom:6.5cqw !important;
+  }
+
+  #p2 .parents-two-columns:first-of-type .parents-name{
+    font-size:5.12cqw !important;
+    line-height:1.5 !important;
+    gap:1.55cqw !important;
+  }
+
+  #p2 .parents-invitation-phrase{
+    width:75cqw !important;
+    font-size:5.05cqw !important;
+    line-height:1.82 !important;
+  }
+
+  #p2 .parents-two-columns:last-of-type{
+    max-width:55cqw !important;
+    gap:4.7cqw !important;
+    margin-top:8.2cqw !important;
+  }
+
+  #p2 .parents-two-columns:last-of-type .parents-name{
+    font-size:5.45cqw !important;
+  }
+
+  #p9 .photo-section-copy{
+    top:6.9% !important;
+    width:84% !important;
+  }
+
+  #p9 .photo-secret-title{
+    font-size:10.35cqw !important;
+  }
+
+  #p9 .photo-upload-box{
+    max-width:72cqw !important;
+    padding:5.25cqw 5.1cqw 4.9cqw !important;
+  }
+
+  #p9 .photo-upload-text{
+    font-size:3.65cqw !important;
+    line-height:1.58 !important;
+    margin-bottom:2.55cqw !important;
+  }
+
+  #p9 .photo-guest-slot.simple-photo-slot .photo-guest-photo-control{
+    width:35cqw !important;
+    height:26cqw !important;
+  }
+
+  #p9 .photo-guest-empty{
+    font-size:2.5cqw !important;
+  }
+
+  #p9 .photo-guest-slot.simple-photo-slot .photo-guest-mini-status{
+    font-size:2.9cqw !important;
+  }
+
+  #p9 .photo-upload-summary{
+    font-size:2.95cqw !important;
+  }
+
+  #p9 .photo-upload-btn{
+    font-size:2.5cqw !important;
+    padding:2.55cqw 3cqw !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4884,27 +5146,10 @@ body::before{
        
 
        
+   
        
        
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
-       
+  
        
        
        
@@ -4930,6 +5175,10 @@ body::before{
 
  <img class="layer l-Road"
          src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png" alt="">
+
+
+
+
 
     <div class="road-location-layer" aria-label="Programme location links">
       <a class="road-location-hit road-location-church"
@@ -4995,35 +5244,13 @@ body::before{
 
     <div class="water-shimmer"></div>
 
+    
+       
+       <img class="layer l-Stars"
+         src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars.png" alt="">
 
 
-
-    <div class="content">
-      <div class="fixed-copy parents-formal-copy">
-        <div class="parents-two-columns" aria-label="Parents of the bride and groom">
-          <div class="parents-col groom-parents">
-            <div class="parents-name"><span>Hasib and Zoubaida</span><span>Rizk</span></div>
-          </div>
-          <div class="parents-symbol" aria-hidden="true">&amp;</div>
-          <div class="parents-col bride-parents">
-            <div class="parents-name"><span>Khalil and Odfic</span><span>Aoude</span></div>
-          </div>
-        </div>
-        <div class="parents-invitation-phrase">Request the honor of your presence<br>to celebrate the wedding of their children</div>
-        
-         <div class="parents-two-columns" aria-label="Parents of the bride and groom">
-          <div class="parents-col groom-parents">
-            <div class="parents-name"><span>Rody</span></div>
-          </div>
-          <div class="parents-symbol" aria-hidden="true">&amp;</div>
-          <div class="parents-col bride-parents">
-            <div class="parents-name"><span>Pamela</span></div>
-          </div>
-        </div>
-        
-        
-      </div>
-    </div>
+    
   </div>
   <!-- ══════════════════════════════════
        PANEL 3 — Bible Verse
@@ -5179,8 +5406,7 @@ body::before{
         <div id="photoUploadBox" class="photo-upload-box permanent-photo-upload" aria-live="polite">
 
           <p class="photo-upload-text">
-           
-            Pick the photo that says “this is so us” <br> for a surprise 🎁 on the wedding day 🤍
+            Pick/take a photo that says “this is so us” <br> for a surprise 🎁 on the wedding day 💙
           </p>
 
           <div id="photoUploadGuestList" class="photo-upload-guest-list" aria-label="Invitation photo"></div>
