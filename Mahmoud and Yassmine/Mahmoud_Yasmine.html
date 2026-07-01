@@ -49,7 +49,7 @@
     .hero-small::before,.hero-small::after{content:"";width:34px;height:1px;background:linear-gradient(to right, transparent, rgba(255,255,255,.82));}
     .hero-small::after{background:linear-gradient(to left, transparent, rgba(255,255,255,.82));}
     .hero-name{font-family:'Great Vibes',cursive;font-size:72px;margin-top:24px;line-height:.92;font-weight:400;text-shadow:0 8px 30px rgba(0,0,0,.22);}
-    .hero-and{font-family:'Cormorant Garamond',serif;font-size:31px;color:rgba(163,128,79,.82);margin:4px 0;text-shadow:0 4px 16px rgba(0,0,0,.18);}
+    .hero-and{font-family:'Cormorant Garamond',serif;font-size:31px;color:#a85f45;margin:4px 0;text-shadow:0 4px 16px rgba(0,0,0,.18);}
     .hero-spacer{display:none;}
     .hero-date{display:inline-flex;align-items:center;justify-content:center;gap:13px;max-width:100%;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;line-height:1.4;text-shadow:0 5px 18px rgba(0,0,0,.28);white-space:nowrap;}
     .hero-date::before,.hero-date::after{content:"";width:28px;height:1px;background:linear-gradient(to right, transparent, rgba(255,255,255,.78));}
@@ -155,7 +155,11 @@
     .lang-fr{display:none;}body.fr .lang-en{display:none;}body.fr .lang-fr{display:inline;}body.fr .block.lang-fr{display:block;}body.fr .block.lang-en{display:none;}
 
     @media(max-width:420px){
-      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}.hero-bottom{left:20px;right:20px;bottom:158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:24px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
+      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}
+      .hero-bottom{left:20px;right:20px;bottom:158px;}
+      .hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}
+      .hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}
+      .hero-name{font-size:62px;margin-top:24px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
     }
 
     .paper-cut-invite{background:linear-gradient(to bottom,var(--bg-soft),var(--bg));}
@@ -169,9 +173,9 @@
     .paper-frame-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.68;z-index:1;filter:none;transition:filter .45s ease, opacity .45s ease;}
     .paper-doves{width:122px;margin:0 auto 26px;opacity:.95;}
     .paper-kicker{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;}
-    .paper-names{font-family:'Great Vibes',cursive;color:#4e2931;font-size:74px;line-height:.92;font-weight:400;text-shadow:0 2px 0 rgba(255,255,255,.7);}
+    .paper-names{font-family:'Great Vibes',cursive;color:#a85f45;font-size:74px;line-height:.92;font-weight:400;text-shadow:0 2px 0 rgba(255,255,255,.7);}
     .paper-amp{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:25px;margin:12px 0;}
-    .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:19px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
+    .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:12px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
     .paper-date{margin-top:28px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-soft);font-weight:600;line-height:1.6;}
     .paper-countdown{margin-top:34px;width:100%;}
     .paper-cut-invite .countdown{margin-top:24px;}
@@ -207,7 +211,13 @@
     .paper-cut-invite input,.paper-cut-invite textarea{background:rgba(255,255,255,.78);}
     .paper-cut-invite .footer{background:linear-gradient(to bottom,var(--bg-soft),var(--bg));}
     @media(max-width:420px){
-      .paper-cut-invite .section{padding:52px 16px;}.paper-sheet{padding:48px 20px;border-radius:15px;}.paper-sheet.hero-paper{min-height:700px;padding:70px 19px 52px;}.paper-names{font-size:62px;}.paper-kicker{font-size:10px;letter-spacing:.25em;}.paper-date{font-size:10px;letter-spacing:.18em;}.paper-body{font-size:20px;}.paper-cut-invite .count-item{min-width:64px;padding:0 6px;}.paper-asset.large{width:240px;}.paper-time-row{grid-template-columns:72px 1fr;gap:11px;}.paper-cut-invite .album-slide img{height:250px;}
+      .paper-cut-invite .section{padding:52px 16px;}
+      .paper-sheet{padding:48px 20px;border-radius:15px;}
+      .paper-sheet.hero-paper{min-height:700px;padding:70px 19px 52px;}
+      .paper-names{font-size:62px;}.paper-kicker{font-size:10px;letter-spacing:.25em;}
+      .paper-date{font-size:10px;letter-spacing:.18em;}.paper-body{font-size:20px;}
+      .paper-cut-invite .count-item{min-width:64px;padding:0 6px;}.paper-asset.large{width:240px;}
+      .paper-time-row{grid-template-columns:72px 1fr;gap:11px;}.paper-cut-invite .album-slide img{height:250px;}
     }
 
     :root,
@@ -295,9 +305,9 @@
       --gold:#a85f45;
       --gold-soft:#d49a7e;
       --gold-pale:#edd0bf;
-      --text:#654438;
-      --text-soft:#967363;
-      --muted:#c1a395;
+      --text:#a85f45;
+      --text-soft:#a85f45;
+      --muted:#a85f45;
       --border:rgba(168,95,69,.24);
       --shadow:0 18px 45px rgba(120,65,45,.11);
       --gold-gradient:radial-gradient(circle at center, #d49a7e 0%, #bd775d 55%, #a85f45 100%);
@@ -363,6 +373,10 @@
     .theme-dot[data-theme="navy"]{background:#24364f;}
     .theme-dot[data-theme="olive"]{background:#7a8f7b;}
     .theme-dot[data-theme="terracotta"]{background:#a85f45;}
+
+    /* Theme locked for client: hide palette controls completely. */
+    .theme-switch{display:none!important;}
+
 
     .paper-gallery-frame{
       position:relative;
@@ -1259,9 +1273,7 @@
     position:relative;
   }
 
-  /* Elegant compact guest-list scrolling.
-     Native mobile scrollbars are inconsistent, so the real scrollbar is hidden
-     and replaced with a thin, theme-colored visual scrollbar inside the guest area. */
+  /* Keep multi-guest RSVP fields stable and readable on mobile. */
   .guest-scroll-hint{display:none!important;}
 
   .guest-slot-name-list {
@@ -1276,76 +1288,49 @@
     --guest-scroll-thumb-height:64px;
     position:relative;
     padding-right:0;
+    width:100%;
+    max-width:100%;
   }
 
   .manual-guest-list-wrap.has-scroll .guest-slot-name-list{
-    margin-top:0;
-    margin-bottom:0;
+    margin-top:18px;
+    margin-bottom:8px;
   }
 
   .guest-slot-name-list.scrollable-guest-list {
-    max-height:250px;
-    overflow-y:auto;
+    max-height:none;
+    overflow-y:visible;
     overflow-x:hidden;
-    overscroll-behavior:contain;
-    overscroll-behavior-y:contain;
-    touch-action:pan-y;
+    overscroll-behavior:auto;
+    overscroll-behavior-y:auto;
+    touch-action:auto;
     pointer-events:auto;
-    padding:16px 18px 16px 0;
+    padding:0;
     margin-right:0;
-    scrollbar-width:none;
-    -ms-overflow-style:none;
-    -webkit-overflow-scrolling:touch;
-    -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-    mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+    box-sizing:border-box;
+    scrollbar-width:auto;
   }
 
   .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar{
-    width:0!important;
-    height:0!important;
-    display:none!important;
+    width:4px!important;
     background:transparent!important;
   }
 
-  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-track,
-  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-thumb,
-  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-button{
-    display:none!important;
-    width:0!important;
-    height:0!important;
-    background:transparent!important;
+  .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-thumb{
+    border-radius:999px;
+    background:var(--rsvp-accent-border)!important;
   }
 
   .manual-guest-list-wrap.has-scroll::before{
-    content:"";
-    position:absolute;
-    right:5px;
-    top:0;
-    bottom:0;
-    width:2px;
-    border-radius:999px;
-    background:color-mix(in srgb,var(--rsvp-accent) 22%,transparent);
-    pointer-events:none;
-    z-index:5;
+    content:none;
   }
 
   .manual-guest-list-wrap.has-scroll::after{
-    content:"";
-    position:absolute;
-    right:4px;
-    top:var(--guest-scroll-thumb-top);
-    width:4px;
-    height:var(--guest-scroll-thumb-height);
-    min-height:38px;
-    border-radius:999px;
-    background:color-mix(in srgb,var(--rsvp-accent) 72%,transparent);
-    box-shadow:0 0 0 1px color-mix(in srgb,#fff 76%,transparent);
-    pointer-events:none;
-    z-index:6;
-    transition:background .35s ease, top .08s linear, height .12s ease;
+    content:none;
   }
   .guest-slot-name-box {
     width:100%;
+    min-width:0;
     border:1.5px solid var(--rsvp-accent-border);
     border-radius:14px;
     padding:14px 14px 12px;
@@ -1415,29 +1400,20 @@
   .guest-welcome-note { margin:0 0 20px; font-size:16px; line-height:1.5; color:var(--text-soft); transition:color .35s ease; }
   @media(max-width:420px){
     .guest-slot-name-list.scrollable-guest-list{
-      max-height:240px;
-      padding:16px 18px 16px 0;
+      max-height:none;
+      padding:0;
       margin-right:0;
-      scrollbar-width:none;
-      -ms-overflow-style:none;
-      -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
-      mask-image:linear-gradient(to bottom, transparent 0, #000 12px, #000 calc(100% - 12px), transparent 100%);
+      scrollbar-width:auto;
     }
     .guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar{
-      width:0!important;
-      height:0!important;
-      display:none!important;
+      width:4px!important;
       background:transparent!important;
     }
     .manual-guest-list-wrap.has-scroll::before{
-      right:5px;
-      width:2px;
-      background:color-mix(in srgb,var(--rsvp-accent) 20%,transparent);
+      content:none;
     }
     .manual-guest-list-wrap.has-scroll::after{
-      right:4px;
-      width:4px;
-      background:color-mix(in srgb,var(--rsvp-accent) 72%,transparent);
+      content:none;
     }
     .guest-response-pill{width:100%;min-width:0;}
     .guest-slot-attendance{align-items:stretch;flex-direction:column;}
@@ -1463,7 +1439,7 @@
     #rsvp .step-dot.on{background:var(--rsvp-accent);}
     #rsvp .guest-welcome-title{margin:8px 0 16px;font-family:'Cormorant Garamond',serif;font-size:30px;line-height:1.15;font-weight:500;text-align:left;}
     #rsvp .manual-guest-list-wrap{display:block;}
-    #rsvp .error-msg{display:none;margin:12px 0 0;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.08em;color:#9b3f35;text-align:left;}
+    #rsvp .error-msg{display:none;margin:12px 0 0;font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.08em;color:#a85f45;text-align:left;}
     #rsvp .wish-message-label{display:block;margin:22px 0 0;font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;text-align:left;}
     #rsvp #guestMsg{
       margin-top:10px;
@@ -1573,100 +1549,175 @@
     /* ── Save the Date calendar ── */
     .save-date-card{
       max-width:480px;
-      padding:52px 26px 44px;
+      padding:52px 28px 44px;
       background:var(--paper-card-bg);
       border-radius:20px;
       box-shadow:var(--shadow), inset 0 0 0 1px var(--border);
+      text-align:center;
     }
-    .save-date-live{
-      margin:28px auto 26px;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      flex-wrap:wrap;
-      gap:9px;
-      font-family:'Cormorant Garamond',serif;
-      font-size:18px;
-      line-height:1.5;
-      color:var(--text);
+    .save-date-card .paper-kicker{
+      margin-bottom:10px;
+      letter-spacing:.34em;
     }
-    .save-date-live .save-value{
-      color:#a85f45;
-      font-weight:700;
+    .save-date-card .section-title{
+      font-size:56px;
+      color:var(--gold);
+      margin-bottom:20px;
+    }
+    .save-date-card .subtitle{
+      margin-top:0;
+      margin-bottom:0;
+      font-size:24px;
+      letter-spacing:.26em;
+      color:var(--text-soft);
     }
     .calendar-card{
-      max-width:480px;
-      margin:0 auto;
-      padding:22px 18px 20px;
-      border-radius:18px;
-      background:rgba(255,255,255,.72);
-      border:1px solid var(--border);
-      box-shadow:0 14px 32px rgba(120,65,45,.08);
+      max-width:430px;
+      margin:24px auto 0;
+      padding:0;
+      border-radius:0;
+      background:transparent;
+      border:0;
+      box-shadow:none;
     }
     .calendar-month{
       font-family:'Cormorant Garamond',serif;
-      font-size:28px;
-      letter-spacing:.08em;
+      font-size:22px;
+      letter-spacing:.24em;
       text-transform:uppercase;
       color:var(--gold);
-      margin-bottom:18px;
+      margin-bottom:20px;
       font-weight:600;
     }
     .calendar-grid{
       display:grid;
       grid-template-columns:repeat(7,1fr);
-      gap:7px;
+      gap:10px 5px;
       align-items:center;
+      padding:22px 0 20px;
+      border-top:1px dashed color-mix(in srgb,var(--gold) 46%,transparent);
+      border-bottom:1px dashed color-mix(in srgb,var(--gold) 46%,transparent);
     }
     .calendar-day,
     .calendar-date{
-      min-height:36px;
+      min-height:32px;
       display:flex;
       align-items:center;
       justify-content:center;
-      font-family:'Montserrat',sans-serif;
     }
     .calendar-day{
-      font-size:9px;
-      letter-spacing:.13em;
-      color:var(--text-soft);
+      font-family:'Cormorant Garamond',serif;
+      font-size:15px;
+      letter-spacing:.02em;
+      color:var(--text);
       font-weight:600;
+      text-transform:capitalize;
     }
     .calendar-date{
       position:relative;
-      border-radius:12px;
-      font-size:13px;
-      color:var(--text);
-      background:rgba(255,255,255,.48);
-      font-weight:400;
+      border-radius:0;
+      font-family:'Cormorant Garamond',serif;
+      font-size:18px;
+      line-height:1;
+      color:var(--text-soft);
+      background:transparent;
+      font-weight:500;
+      box-shadow:none;
     }
     .calendar-date.empty{
       background:transparent;
+      visibility:hidden;
     }
     .calendar-date.date-heart{
-      color:#a85f45;
-      font-weight:600;
-      background:color-mix(in srgb,#a85f45 7%,#fff);
-      overflow:hidden;
+      color:var(--text-soft);
+      font-weight:500;
+      background:transparent !important;
+      overflow:visible;
+      box-shadow:none !important;
+    }
+    .calendar-date.date-heart .calendar-date-number{
+      position:relative;
+      z-index:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      height:100%;
+      color:var(--text-soft);
+      background:transparent !important;
+      box-shadow:none !important;
     }
     .calendar-date.date-heart .calendar-heart-icon{
       position:absolute;
       left:50%;
-      top:50%;
-      width:42px;
-      height:42px;
+      top:60%;
       transform:translate(-50%,-50%);
+      z-index:2;
+      display:block;
+      width:48px;
+      height:48px;
       object-fit:contain;
       pointer-events:none;
       opacity:1;
+      filter:none !important;
+      box-shadow:none !important;
+      background:transparent !important;
     }
-    .calendar-date.date-heart span{
-      position:relative;
-      z-index:2;
+    .save-date-live{
+      margin:28px auto 0;
+      max-width:350px;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+      align-items:end;
+      color:var(--text);
     }
+    .save-count-item{
+      text-align:center;
+      padding:0 12px;
+      border-right:1px solid color-mix(in srgb,var(--gold) 32%,transparent);
+    }
+    .save-count-item:last-child{
+      border-right:0;
+    }
+    .save-date-live .save-value{
+      display:block;
+      font-family:'Great Vibes',cursive;
+      font-size:38px;
+      line-height:1;
+      color:var(--gold);
+      font-weight:400;
+    }
+    .save-label{
+      display:block;
+      margin-top:9px;
+      font-family:'Montserrat',sans-serif;
+      font-size:8px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--text);
+      font-weight:700;
+    }
+    @media(max-width:420px){
+      .save-date-card{padding:46px 18px 38px;}
+      .save-date-card .section-title{font-size:50px;}
+      .save-date-card .subtitle{font-size:20px;letter-spacing:.2em;}
+      .calendar-card{max-width:390px;margin-top:22px;}
+      .calendar-month{font-size:19px;letter-spacing:.18em;margin-bottom:18px;}
+      .calendar-grid{gap:8px 3px;padding:20px 0 18px;}
+      .calendar-day{font-size:13px;}
+      .calendar-date{min-height:30px;font-size:16px;}
+      .calendar-date.date-heart .calendar-heart-icon{width:43px;height:43px;}
+      .save-date-live{max-width:322px;margin-top:24px;}
+      .save-count-item{padding:0 8px;}
+      .save-date-live .save-value{font-size:34px;}
+      .save-label{font-size:7px;letter-spacing:.17em;}
+      .paper-verse[lang="ar"]{font-size:12px;line-height:2;}
+    }
+
     .paper-verse[lang="ar"]{
       font-style:normal;
-      font-size:20px;
+      font-size:12px;
       line-height:2;
       max-width:360px;
     }
@@ -1690,15 +1741,360 @@
       box-shadow:0 12px 28px rgba(120,65,45,.16);
       border:1px solid color-mix(in srgb,var(--gold) 72%,#fff);
     }
+
+
+    /* ===================== Day Programme — elegant paper-sheet layout ===================== */
+    #programme .day-programme-sheet{
+      max-width:464px;
+      padding:58px 28px 56px;
+      background:var(--paper-card-bg) !important;
+      background-image:none !important;
+      border:1px solid rgba(255,255,255,.92);
+      border-radius:18px;
+      box-shadow:var(--shadow), inset 0 0 0 1px var(--border);
+    }
+
+    #programme .day-programme-sheet::before{
+      content:"" !important;
+      position:absolute;
+      inset:8px;
+      border:1px solid var(--border);
+      border-radius:13px;
+      pointer-events:none;
+      display:block !important;
+    }
+
+    #programme .day-programme-sheet::after{
+      content:"" !important;
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 50% 5%,rgba(255,255,255,.82),transparent 40%),
+                 linear-gradient(135deg,color-mix(in srgb,var(--gold) 8%,transparent),transparent 35%,color-mix(in srgb,var(--gold) 9%,transparent));
+      pointer-events:none;
+      display:block !important;
+    }
+
+    .day-programme-dress{
+      width:min(92%, 382px);
+      margin:0 auto 24px;
+      filter:none !important;
+    }
+
+    #programme .day-programme-title{
+      margin:0;
+      font-family:'Great Vibes',cursive;
+      font-size:42px;
+      line-height:1.02;
+      font-weight:400;
+      color:#a85f45;
+    }
+
+    #programme .day-programme-date{
+      margin:16px 0 0;
+      font-family:'Cormorant Garamond',serif;
+      font-size:13px;
+      letter-spacing:.30em;
+      text-transform:uppercase;
+      color:#a85f45;
+      font-weight:500;
+    }
+
+    .day-programme-timeline{
+      width:100%;
+      margin:42px auto 0;
+      text-align:left;
+    }
+
+    .day-programme-row{
+      display:grid;
+      grid-template-columns:88px 1fr;
+      gap:14px;
+      align-items:center;
+      min-height:62px;
+      padding:0 0 2px;
+      border-bottom:1px solid rgba(101,68,56,.22);
+    }
+
+    .day-programme-row:last-child{
+      border-bottom:0;
+    }
+
+    .day-programme-time{
+      font-family:'Cormorant Garamond',serif;
+      font-size:16px;
+      line-height:1;
+      letter-spacing:.04em;
+      color:#a85f45;
+      font-weight:500;
+      white-space:nowrap;
+    }
+
+    .day-programme-label{
+      font-family:'Montserrat',sans-serif;
+      font-size:11px;
+      line-height:1.2;
+      letter-spacing:.24em;
+      text-transform:uppercase;
+      color:#a85f45;
+      font-weight:500;
+    }
+
     @media(max-width:420px){
-      .save-date-card{padding:46px 18px 38px;}
-      .save-date-live{font-size:16px;gap:7px;}
-      .calendar-card{padding:20px 12px 18px;}
-      .calendar-grid{gap:5px;}
-      .calendar-day{font-size:8px;letter-spacing:.08em;}
-      .calendar-date{min-height:34px;font-size:12px;}
-      .calendar-date.date-heart .calendar-heart-icon{width:39px;height:39px;}
-      .paper-verse[lang="ar"]{font-size:18px;line-height:2;}
+      #programme .day-programme-sheet{
+        padding:38px 28px 50px;
+        border-radius:18px;
+      }
+
+      .day-programme-dress{
+        width:94%;
+        margin-bottom:22px;
+      }
+
+      #programme .day-programme-title{
+        font-size:40px;
+      }
+
+      #programme .day-programme-date{
+        font-size:12px;
+        letter-spacing:.24em;
+      }
+
+      .day-programme-timeline{
+        margin-top:36px;
+      }
+
+      .day-programme-row{
+        grid-template-columns:76px 1fr;
+        gap:12px;
+        min-height:60px;
+      }
+
+      .day-programme-time{
+        font-size:15px;
+      }
+
+      .day-programme-label{
+        font-size:10px;
+        letter-spacing:.20em;
+      }
+    }
+
+
+    /* ===================== Client refinements — envelope, family hosts, venue artwork ===================== */
+    .hero-top{
+      top:96px;
+    }
+
+    .hero-name{
+      font-size:52px;
+      margin-top:18px;
+      line-height:.94;
+    }
+
+    .hero-and{
+      font-size:28px;
+      margin:5px 0;
+    }
+
+    .family-names-grid{
+      width:100%;
+      max-width:386px;
+      margin:28px auto 24px;
+      display:grid;
+      grid-template-columns:1fr auto 1fr;
+      column-gap:18px;
+      align-items:center;
+    }
+
+    .family-name{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height:72px;
+      padding:4px 2px;
+      font-family:'Great Vibes',cursive;
+      font-size:30px;
+      line-height:1.05;
+      font-weight:400;
+      letter-spacing:.01em;
+      color:#a85f45;
+      text-align:center;
+      text-shadow:0 1px 0 rgba(255,255,255,.68);
+    }
+
+    .family-amp{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-width:34px;
+      font-family:'Cormorant Garamond',serif;
+      font-size:31px;
+      line-height:1;
+      font-style:italic;
+      color:#a85f45;
+      opacity:.88;
+      transform:translateY(-2px);
+    }
+
+    .family-invite-text{
+      max-width:390px;
+      margin-top:18px;
+      font-size:23px;
+      line-height:1.55;
+    }
+
+    #venue .paper-sheet{
+      padding-top:42px;
+    }
+
+    #venue .paper-asset.large{
+      width:calc(100% + 46px);
+      max-width:none;
+      margin:-12px -23px 22px;
+    }
+
+    @media(max-width:420px){
+      .hero-top{
+        top:82px;
+      }
+
+      .hero-name{
+        font-size:40px;
+        margin-top:16px;
+      }
+
+      .hero-and{
+        font-size:25px;
+        margin:4px 0;
+      }
+
+      .family-names-grid{
+        max-width:340px;
+        margin-top:24px;
+        margin-bottom:20px;
+        column-gap:10px;
+      }
+
+      .family-name{
+        min-height:64px;
+        padding:2px 0;
+        font-size:26px;
+        line-height:1.04;
+      }
+
+      .family-amp{
+        min-width:24px;
+        font-size:28px;
+      }
+
+      .family-invite-text{
+        margin-top:18px;
+        font-size:21px;
+      }
+
+      #venue .paper-sheet{
+        padding-top:36px;
+      }
+
+      #venue .paper-asset.large{
+        width:calc(100% + 32px);
+        margin:-8px -16px 20px;
+      }
+    }
+
+
+    /* Client color lock: keep invitation text consistently terracotta. */
+    body[data-theme="terracotta"] .paper-cut-invite :is(
+      .paper-kicker,.paper-names,.paper-amp,.paper-verse,.paper-date,.paper-body,
+      .script-title,.section-title,.upper-title,.subtitle,.body-text,
+      .paper-time,.paper-label,.venue-name,.venue-meta,.venue-address,
+      .bank-name,.bank-line,.question,.radio-line,.guest-welcome-note,.guest-total-line,
+      .day-programme-title,.day-programme-date,.day-programme-time,.day-programme-label,
+      .footer .names,.footer .subtitle,.count-label,.save-label,.calendar-day,.calendar-date,.save-value
+    ){
+      color:#a85f45 !important;
+    }
+
+
+
+    /* ===================== Family section vertical centering refinement ===================== */
+    .family-host-section{
+      padding-top:52px !important;
+      padding-bottom:52px !important;
+    }
+
+    .family-host-sheet{
+      min-height:640px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding-top:44px !important;
+      padding-bottom:58px !important;
+    }
+
+    .family-host-sheet .family-rings{
+      width:170px;
+      max-width:58%;
+      margin:-36px auto 24px;
+      transform:translateY(-14px);
+    }
+
+    .family-host-sheet .paper-kicker,
+    .family-host-sheet .paper-divider,
+    .family-host-sheet .family-names-grid,
+    .family-host-sheet .family-invite-text{
+      transform:translateY(-18px);
+    }
+
+    .family-host-sheet .paper-divider{
+      margin-top:24px;
+      margin-bottom:20px;
+    }
+
+    .family-host-sheet .family-names-grid{
+      margin-top:18px;
+      margin-bottom:18px;
+    }
+
+    .family-host-sheet .family-invite-text{
+      margin-top:12px;
+    }
+
+    @media(max-width:420px){
+      .family-host-section{
+        padding-top:46px !important;
+        padding-bottom:46px !important;
+      }
+
+      .family-host-sheet{
+        min-height:600px;
+        padding-top:36px !important;
+        padding-bottom:52px !important;
+      }
+
+      .family-host-sheet .family-rings{
+        width:152px;
+        max-width:60%;
+        margin:-32px auto 22px;
+        transform:translateY(-12px);
+      }
+
+      .family-host-sheet .paper-kicker,
+      .family-host-sheet .paper-divider,
+      .family-host-sheet .family-names-grid,
+      .family-host-sheet .family-invite-text{
+        transform:translateY(-16px);
+      }
+
+      .family-host-sheet .paper-divider{
+        margin-top:20px;
+        margin-bottom:18px;
+      }
+
+      .family-host-sheet .family-names-grid{
+        margin-top:14px;
+        margin-bottom:16px;
+      }
     }
 
 </style>
@@ -1720,13 +2116,13 @@
 </div>
 <button aria-label="Toggle music / Activer la musique" class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 <audio id="bgMusic" loop="" preload="auto">
-<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-wedding-sentimental-piano-375998.mp3" type="audio/mpeg"/>
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/You%20are%20the%20only%20one.mp3" type="audio/mpeg"/>
 </audio>
 <main class="invite">
 <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
 <section class="hero-cover" id="heroCover" onclick="openInvitation()">
-<video id="envelopeVideo" muted="" playsinline="" poster="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Paper%20cut/Envelope2.png" preload="auto">
-<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper cut/Vidu_Floral2.mp4" type="video/mp4"/>
+<video id="envelopeVideo" muted="" playsinline="" poster="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Paper%20cut/Envelope_M_Y3.png" preload="auto">
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/M_Y5b.mp4" type="video/mp4"/>
 </video>
 <div class="hero-content">
 <div class="hero-top">
@@ -1749,71 +2145,69 @@
 <button aria-label="Olive green palette" class="theme-dot" data-theme="olive" onclick="setTheme('olive')" type="button"></button>
 <button aria-label="Terracotta palette" class="theme-dot active" data-theme="terracotta" onclick="setTheme('terracotta')" type="button"></button>
 </div>
+
+<!-- Page 1:  -->
 <section class="section" id="countdownSection">
 <div class="reveal paper-sheet hero-paper">
 <img alt="" aria-hidden="true" class="paper-frame-bg" data-theme-filter-asset="Pages3.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Pages3.png"/>
-<div class="paper-countdown">
-<div class="countdown">
-<div class="count-item"><div class="count-num" id="cdDays">--</div><div class="count-label"><span class="lang-en">Days</span><span class="lang-fr">Jours</span></div></div>
-<div class="count-item"><div class="count-num" id="cdHours">--</div><div class="count-label"><span class="lang-en">Hours</span><span class="lang-fr">Heures</span></div></div>
-<div class="count-item"><div class="count-num" id="cdMinutes">--</div><div class="count-label"><span class="lang-en">Minutes</span><span class="lang-fr">Minutes</span></div></div>
-<div class="count-item"><div class="count-num" id="cdSeconds">--</div><div class="count-label"><span class="lang-en">Seconds</span><span class="lang-fr">Secondes</span></div></div>
-</div>
-</div>
 <p class="paper-kicker"><span class="lang-en">Wedding Invitation</span><span class="lang-fr">Invitation de mariage</span></p>
 <h2 class="paper-names">Mahmoud</h2>
 <div class="paper-amp">&amp;</div>
 <h2 class="paper-names">Yasmine</h2>
 <p class="paper-verse" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br/>﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾<br/>صدق الله العظيم</p>
-<p class="paper-date"><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></p>
+
 </div>
 </section>
 
 <section class="section" id="saveDateCalendar">
 <div class="reveal paper-sheet save-date-card">
-<h2 class="section-title"><span class="lang-en">Save the Date</span><span class="lang-fr">Retenez la date</span></h2>
-<p class="subtitle"><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></p>
-<div class="save-date-live" aria-label="Live wedding countdown">
-<span><span class="save-value" id="saveCdDays">--</span> <span class="lang-en">Days</span><span class="lang-fr">Jours</span></span>
-<span aria-hidden="true">·</span>
-<span><span class="save-value" id="saveCdHours">--</span> <span class="lang-en">Hours</span><span class="lang-fr">Heures</span></span>
-<span aria-hidden="true">·</span>
-<span><span class="save-value" id="saveCdMinutes">--</span> <span class="lang-en">Minutes</span><span class="lang-fr">Minutes</span></span>
-<span aria-hidden="true">·</span>
-<span><span class="save-value" id="saveCdSeconds">--</span> <span class="lang-en">Seconds</span><span class="lang-fr">Secondes</span></span>
-</div>
+<p class="paper-kicker"><span class="lang-en">Save the Date</span><span class="lang-fr">Retenez la date</span></p>
+<h2 class="section-title"><span class="lang-en">Wedding Day</span><span class="lang-fr">Jour du mariage</span></h2>
+
 <div class="calendar-card" aria-label="September 2026 calendar with 26 September highlighted">
-<div class="calendar-month">September 2026</div>
+<div class="calendar-month"><span class="lang-en">September 2026</span><span class="lang-fr">Septembre 2026</span></div>
 <div class="calendar-grid">
 <div class="calendar-day">MON</div><div class="calendar-day">TUE</div><div class="calendar-day">WED</div><div class="calendar-day">THU</div><div class="calendar-day">FRI</div><div class="calendar-day">SAT</div><div class="calendar-day">SUN</div>
 <div class="calendar-date empty" aria-hidden="true"></div><div class="calendar-date">1</div><div class="calendar-date">2</div><div class="calendar-date">3</div><div class="calendar-date">4</div><div class="calendar-date">5</div><div class="calendar-date">6</div>
 <div class="calendar-date">7</div><div class="calendar-date">8</div><div class="calendar-date">9</div><div class="calendar-date">10</div><div class="calendar-date">11</div><div class="calendar-date">12</div><div class="calendar-date">13</div>
 <div class="calendar-date">14</div><div class="calendar-date">15</div><div class="calendar-date">16</div><div class="calendar-date">17</div><div class="calendar-date">18</div><div class="calendar-date">19</div><div class="calendar-date">20</div>
-<div class="calendar-date">21</div><div class="calendar-date">22</div><div class="calendar-date">23</div><div class="calendar-date">24</div><div class="calendar-date">25</div><div class="calendar-date date-heart" aria-label="Wedding date, 26 September 2026"><img alt="" aria-hidden="true" class="calendar-heart-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Day%20and%20night/Heart_M_Y.png"/><span>26</span></div><div class="calendar-date">27</div>
+<div class="calendar-date">21</div><div class="calendar-date">22</div><div class="calendar-date">23</div><div class="calendar-date">24</div><div class="calendar-date">25</div><div class="calendar-date date-heart" aria-label="Wedding date, 26 September 2026"><span class="calendar-date-number">26</span><img alt="Wedding date" class="calendar-heart-icon" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Day%20and%20night/Heart_M_Y.png"/></div><div class="calendar-date">27</div>
 <div class="calendar-date">28</div><div class="calendar-date">29</div><div class="calendar-date">30</div><div class="calendar-date empty" aria-hidden="true"></div><div class="calendar-date empty" aria-hidden="true"></div><div class="calendar-date empty" aria-hidden="true"></div><div class="calendar-date empty" aria-hidden="true"></div>
 </div>
 </div>
+<div class="save-date-live" aria-label="Live wedding countdown">
+<div class="save-count-item"><span class="save-value" id="saveCdDays">--</span><span class="save-label"><span class="lang-en">Days</span><span class="lang-fr">Jours</span></span></div>
+<div class="save-count-item"><span class="save-value" id="saveCdHours">--</span><span class="save-label"><span class="lang-en">Hours</span><span class="lang-fr">Heures</span></span></div>
+<div class="save-count-item"><span class="save-value" id="saveCdMinutes">--</span><span class="save-label"><span class="lang-en">Min</span><span class="lang-fr">Min</span></span></div>
+<div class="save-count-item"><span class="save-value" id="saveCdSeconds">--</span><span class="save-label"><span class="lang-en">Sec</span><span class="lang-fr">Sec</span></span></div>
+</div>
 </div>
 </section>
-<section class="section">
-<div class="reveal paper-sheet">
-<img alt="Paper-cut wedding rings" class="paper-asset" data-theme-filter-asset="Rings2.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Rings2.png"/>
+<section class="section family-host-section">
+<div class="reveal paper-sheet family-host-sheet">
+<img alt="Paper-cut wedding rings" class="paper-asset family-rings" data-theme-filter-asset="Rings2.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Rings2.png"/>
 <p class="paper-kicker"><span class="lang-en">Together with their families</span><span class="lang-fr">Avec leurs familles</span></p>
 <div class="paper-divider">✦</div>
-<p class="paper-body"><span class="lang-en">Mr. Khaled Abou Okdeh and Mr. Bassam Mohaydali joyfully invite you to celebrate the wedding of their children Mahmoud and Yasmine.</span><span class="lang-fr">M. Khaled Abou Okdeh et M. Bassam Mohaydali vous invitent chaleureusement à célébrer le mariage de leurs enfants Mahmoud et Yasmine.</span></p>
+<div class="family-names-grid" aria-label="Family hosts">
+<div class="family-name"><span class="lang-en">Mr. Khaled<br/>Abou Okdeh</span><span class="lang-fr">M. Khaled<br/>Abou Okdeh</span></div>
+<div class="family-amp" aria-hidden="true">&amp;</div>
+<div class="family-name"><span class="lang-en">Mr. Bassam<br/>Mohaydali</span><span class="lang-fr">M. Bassam<br/>Mohaydali</span></div>
+</div>
+<p class="paper-body family-invite-text"><span class="lang-en">Joyfully invite you to celebrate the wedding of their children Mahmoud and Yasmine.</span><span class="lang-fr">Vous invitent chaleureusement à célébrer le mariage de leurs enfants Mahmoud et Yasmine.</span></p>
 </div>
 </section>
 
-<!-- ===================== REORDERED: 1. DAY PROGRAMME ===================== -->
+<!-- ===================== REORDERED: 2. DAY PROGRAMME ===================== -->
 <section class="section" id="programme">
-<div class="reveal paper-sheet">
-<img alt="Paper-cut champagne bucket" class="paper-asset" data-theme-asset="Cake5.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/5_%23a85f45/Cake5.png"/>
-<h2 class="section-title"><span class="lang-en">Day Program</span><span class="lang-fr">Programme de la journée</span></h2>
-<p class="subtitle"><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></p>
-<div class="paper-timeline">
-<div class="paper-time-row"><div class="paper-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="paper-label"><span class="lang-en">Event 1</span><span class="lang-fr">Event 1</span></div></div>
-<div class="paper-time-row"><div class="paper-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="paper-label"><span class="lang-en">Event 2</span><span class="lang-fr">Event 2</span></div></div>
-<div class="paper-time-row"><div class="paper-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="paper-label"><span class="lang-en">Event 3</span><span class="lang-fr">Event 3</span></div></div>
+<div class="reveal paper-sheet day-programme-sheet">
+<img alt="Wedding guests illustration" class="day-programme-dress" data-no-theme="true" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Day%20and%20night/dress.png"/>
+<h2 class="day-programme-title"><span class="lang-en">Day Programme</span><span class="lang-fr">Programme du jour</span></h2>
+<p class="day-programme-date"><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></p>
+<div class="day-programme-timeline">
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Ceremony</span><span class="lang-fr">Cérémonie</span></div></div>
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Cocktails</span><span class="lang-fr">Cocktail</span></div></div>
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Dinner</span><span class="lang-fr">Dîner</span></div></div>
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Dancing</span><span class="lang-fr">Danse</span></div></div>
 </div>
 </div>
 </section>
@@ -1821,12 +2215,9 @@
 <!-- ===================== REORDERED: 3. RECEPTION (VENUE) ===================== -->
 <section class="section gold" id="venue">
 <div class="reveal paper-sheet">
-<img alt="Paper-cut vintage wedding car" class="paper-asset large" data-theme-asset="car3.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/5_%23a85f45/car3.png"/>
+<img alt="Wedding venue illustration" class="paper-asset large" data-no-theme="true" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/Venue2.png"/>
 <div class="paper-card">
-<h3 class="venue-name">
-<span class="lang-en">The Reception</span>
-<span class="lang-fr">La réception</span>
-</h3>
+
 <h3 class="venue-name">
 <span class="lang-en">Where we celebrate</span>
 <span class="lang-fr">Lieu de célébration</span>
@@ -1891,7 +2282,6 @@
 <button class="send-btn rsvp-main-btn" id="sendBtn" type="button" onclick="submitRSVP()"><span class="lang-en">Send RSVP ✦</span><span class="lang-fr">Envoyer la réponse ✦</span></button>
 </div>
 <div id="stepOk" style="display:none;text-align:center;padding:28px 0;">
-<div style="font-size:46px;margin-bottom:12px;">✨</div>
 <h3 style="font-family:'Great Vibes',cursive;font-size:52px;color:var(--gold);margin-bottom:12px;"><span class="lang-en">Thank you!</span><span class="lang-fr">Merci !</span></h3>
 <p id="okMsg" style="font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;color:var(--text);"></p>
 </div>
@@ -1957,8 +2347,8 @@
 
     setTheme(localStorage.getItem('paperCutInvitationTheme') || 'terracotta');
 
-    const PRELOAD_THEME_ASSETS = ['Angel.png','Doves4.png','Cake5.png','Champagne9.png','car3.png'];
-    const PRELOAD_FIXED_ASSETS = ['Pages3.png','Rings2.png','Envelope2.png'];
+    const PRELOAD_THEME_ASSETS = ['Angel.png','Doves4.png','Cake5.png','Champagne9.png'];
+    const PRELOAD_FIXED_ASSETS = ['Pages3.png','Rings2.png'];
 
     function updateLoaderProgress(percent){
       const bar=document.getElementById('loaderBar');
@@ -1997,7 +2387,7 @@
       });
     }
 
-    function preloadVideoAsset(url, timeoutMs=12000){
+    function preloadVideoAsset(url, timeoutMs=16000){
       return new Promise(resolve=>{
         if(!url){ resolve(); return; }
         const video=document.createElement('video');
@@ -2020,40 +2410,96 @@
       });
     }
 
+    function preloadAudioAsset(url, timeoutMs=16000){
+      return new Promise(resolve=>{
+        if(!url){ resolve(); return; }
+        const audio=document.createElement('audio');
+        let settled=false;
+        const done=()=>{
+          if(settled) return;
+          settled=true;
+          try{ audio.pause(); audio.removeAttribute('src'); audio.load(); }catch(e){}
+          resolve();
+        };
+        const timer=setTimeout(done,timeoutMs);
+        audio.preload='auto';
+        audio.oncanplaythrough=()=>{ clearTimeout(timer); done(); };
+        audio.onloadeddata=()=>{ clearTimeout(timer); done(); };
+        audio.onerror=()=>{ clearTimeout(timer); done(); };
+        audio.src=url;
+        try{ audio.load(); }catch(e){ clearTimeout(timer); done(); }
+      });
+    }
+
+    function normalizeAssetUrl(rawUrl){
+      if(!rawUrl) return '';
+      try{
+        return new URL(rawUrl, window.location.href).href;
+      }catch(e){
+        return rawUrl;
+      }
+    }
+
+    function collectSourceSetUrls(srcset){
+      if(!srcset) return [];
+      return srcset.split(',').map(part=>part.trim().split(/\s+/)[0]).filter(Boolean);
+    }
+
+    function forceDomMediaPreload(){
+      document.querySelectorAll('audio,video').forEach(media=>{
+        try{
+          media.preload='auto';
+          media.load();
+        }catch(e){}
+      });
+    }
+
     function collectInvitationPreloadAssets(){
       const imageUrls=new Set();
       const videoUrls=new Set();
+      const audioUrls=new Set();
 
       document.querySelectorAll('img[src]').forEach(img=>{
         const src=img.getAttribute('src');
-        if(src && /\.png(?:[?#]|$)/i.test(src)) imageUrls.add(new URL(src, window.location.href).href);
+        if(src && /\.(png)(?:[?#]|$)/i.test(src)) imageUrls.add(normalizeAssetUrl(src));
+      });
+      document.querySelectorAll('img[srcset], source[srcset]').forEach(el=>{
+        collectSourceSetUrls(el.getAttribute('srcset')).forEach(src=>{
+          if(/\.(png)(?:[?#]|$)/i.test(src)) imageUrls.add(normalizeAssetUrl(src));
+        });
       });
       document.querySelectorAll('video[poster]').forEach(video=>{
         const poster=video.getAttribute('poster');
-        if(poster && /\.png(?:[?#]|$)/i.test(poster)) imageUrls.add(new URL(poster, window.location.href).href);
+        if(poster && /\.(png)(?:[?#]|$)/i.test(poster)) imageUrls.add(normalizeAssetUrl(poster));
       });
       document.querySelectorAll('video source[src]').forEach(source=>{
-        videoUrls.add(new URL(source.getAttribute('src'), window.location.href).href);
+        videoUrls.add(normalizeAssetUrl(source.getAttribute('src')));
       });
-      document.querySelectorAll('video[src]').forEach(video=>videoUrls.add(video.src));
+      document.querySelectorAll('video[src]').forEach(video=>videoUrls.add(normalizeAssetUrl(video.getAttribute('src') || video.src)));
+      document.querySelectorAll('audio source[src]').forEach(source=>{
+        audioUrls.add(normalizeAssetUrl(source.getAttribute('src')));
+      });
+      document.querySelectorAll('audio[src]').forEach(audio=>audioUrls.add(normalizeAssetUrl(audio.getAttribute('src') || audio.src)));
 
       PRELOAD_FIXED_ASSETS.forEach(fileName=>imageUrls.add(fixedPaperCutAssetUrl(fileName)));
       ['terracotta'].forEach(theme=>{
         PRELOAD_THEME_ASSETS.forEach(fileName=>imageUrls.add(themedAssetUrl(theme,fileName)));
       });
 
-      return {imageUrls:[...imageUrls], videoUrls:[...videoUrls]};
+      return {imageUrls:[...imageUrls], videoUrls:[...videoUrls], audioUrls:[...audioUrls]};
     }
 
     function startInvitationPreloader(){
       const loader=document.getElementById('invitationLoader');
       if(!loader){ document.body.classList.remove('invitation-loading'); return; }
       updateLoaderProgress(3);
+      forceDomMediaPreload();
 
-      const {imageUrls, videoUrls}=collectInvitationPreloadAssets();
+      const {imageUrls, videoUrls, audioUrls}=collectInvitationPreloadAssets();
       const jobs=[
         ...imageUrls.map(url=>({type:'image', promise:preloadImageAsset(url)})),
-        ...videoUrls.map(url=>({type:'video', promise:preloadVideoAsset(url)}))
+        ...videoUrls.map(url=>({type:'video', promise:preloadVideoAsset(url)})),
+        ...audioUrls.map(url=>({type:'audio', promise:preloadAudioAsset(url)}))
       ];
 
       if(!jobs.length){ markInvitationAssetsReady(); return; }
@@ -2067,9 +2513,7 @@
         });
       });
 
-      const allAssetsLoaded=Promise.allSettled(jobs.map(job=>job.promise));
-      const safetyTimeout=new Promise(resolve=>setTimeout(resolve,18000));
-      Promise.race([allAssetsLoaded,safetyTimeout]).then(markInvitationAssetsReady);
+      Promise.allSettled(jobs.map(job=>job.promise)).then(markInvitationAssetsReady);
     }
 
     startInvitationPreloader();
@@ -2150,7 +2594,7 @@
     
   const COUPLE_NAME = CONFIG.coupleName || 'Mahmoud & Yasmine';
   const CUSTOMER_EMAIL = CONFIG.rsvpEmail || 'cardiastudios@gmail.com';
-  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzJmJqBu9U9t6lKlbBMCvHtkXNBo6026SirsYWAhVMo_H5l9gRhoBmXipvAvI47c5v4lw/exec';
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyB_hT4irfrPkv53tihZwLgNxfAtxGIE5kRomsX9raNNq_NVQFbegMNOEsqObsFzvywEA/exec';
 
   /* RSVP link modes:
      ?limit=2 shows editable Guest 1 / Guest 2 fields.
@@ -2246,12 +2690,11 @@
     const boxList = document.getElementById('guestSlotNameList');
     if (!boxList) return;
     const manualWrap = document.getElementById('manualGuestListWrap');
-    const shouldScrollGuestList = guestResponses.length >= 3;
-    boxList.classList.toggle('scrollable-guest-list', shouldScrollGuestList);
-    if (manualWrap) manualWrap.classList.toggle('has-scroll', shouldScrollGuestList);
+    boxList.classList.remove('scrollable-guest-list');
+    if (manualWrap) manualWrap.classList.remove('has-scroll');
 
-    boxList.onscroll = updateGuestListScrollbar;
-    boxList.onwheel = shouldScrollGuestList ? handleGuestListWheel : null;
+    boxList.onscroll = null;
+    boxList.onwheel = null;
     boxList.innerHTML = guestResponses.map((guest, index) => {
       const safeName = escapeHTML(guest.name || '');
       const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
