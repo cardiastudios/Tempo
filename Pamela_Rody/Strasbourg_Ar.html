@@ -5025,6 +5025,20 @@ body::before{
   }
 }
 
+
+
+/* ═════════ CARDIA FIX — REMOVE INACTIVE LEFT RSVP SCROLL INDICATOR ═════════
+   The real working scrollbar stays on the right side of the guest list.
+   The old decorative/custom left rail is removed so there is only one visible scroll. */
+#p6 .guest-list-scroll-rail,
+#p6 .guest-list-scroll-thumb{
+  display:none !important;
+}
+#p6 .guest-slot-name-list{
+  padding:0 1.8cqw 1.2cqw 0 !important;
+  scrollbar-gutter:stable !important;
+}
+
 </style>
 </head>
 <body>
@@ -5355,11 +5369,10 @@ body::before{
 
           <div id="step1" class="rsvp-step guest-welcome-step">
             <h3 class="guest-welcome-title"> <span id="guestWelcomeName">Dear Guest</span></h3>
-            <p id="personalGuestNote" class="guest-welcome-note">Please enter the guest names to confirm attendance.</p>
+     
 
             <div id="manualGuestListWrap">
               <div id="guestSlotNameList" class="guest-slot-name-list" aria-label="Guest RSVP list"></div>
-              <div class="guest-list-scroll-rail" aria-hidden="true"><span id="guestListScrollThumb" class="guest-list-scroll-thumb"></span></div>
               <div class="guest-list-bottom-fade" aria-hidden="true"></div>
               <div class="guest-list-scroll-cue" aria-hidden="true">Scroll down ↓</div>
             </div>
