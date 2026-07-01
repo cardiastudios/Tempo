@@ -173,6 +173,7 @@
     .paper-frame-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.68;z-index:1;filter:none;transition:filter .45s ease, opacity .45s ease;}
     .paper-doves{width:122px;margin:0 auto 26px;opacity:.95;}
     .paper-kicker{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:18px;}
+    .paper-kicker2{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:122px;}
     .paper-names{font-family:'Great Vibes',cursive;color:#a85f45;font-size:74px;line-height:.92;font-weight:400;text-shadow:0 2px 0 rgba(255,255,255,.7);}
     .paper-amp{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:25px;margin:12px 0;}
     .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:12px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
@@ -1712,12 +1713,12 @@
       .save-count-item{padding:0 8px;}
       .save-date-live .save-value{font-size:34px;}
       .save-label{font-size:7px;letter-spacing:.17em;}
-      .paper-verse[lang="ar"]{font-size:12px;line-height:2;}
+      .paper-verse[lang="ar"]{font-size:16px;line-height:2;}
     }
 
     .paper-verse[lang="ar"]{
       font-style:normal;
-      font-size:12px;
+      font-size:16px;
       line-height:2;
       max-width:360px;
     }
@@ -2097,6 +2098,83 @@
       }
     }
 
+
+
+    /* === Page 1 surgical update: title, names and Qur'an verse === */
+    #countdownSection .hero-paper{
+      justify-content:center !important;
+      padding-top:66px !important;
+      padding-bottom:56px !important;
+    }
+
+    #countdownSection .paper-kicker2{
+      margin-bottom:76px !important;
+      transform:translateY(-40px);
+    }
+
+    #countdownSection .paper-names,
+    #countdownSection .paper-amp{
+      transform:translateY(-20px);
+    }
+
+    #countdownSection .paper-verse[lang="ar"]{
+      width:100% !important;
+      max-width:400px !important;
+      margin:10px auto 0 !important;
+      font-size:16px !important;
+      line-height:1.72 !important;
+      letter-spacing:0 !important;
+      font-style:normal !important;
+      transform:translateY(-14px);
+    }
+
+    #countdownSection .paper-verse .verse-basmala,
+    #countdownSection .paper-verse .verse-main,
+    #countdownSection .paper-verse .verse-closing{
+      display:block;
+    }
+
+    #countdownSection .paper-verse .verse-main{
+      margin:4px auto;
+    }
+
+    #countdownSection .paper-verse .verse-line{
+      display:block;
+      white-space:nowrap;
+      text-align:center;
+    }
+
+    @media(max-width:420px){
+      #countdownSection .hero-paper{
+        padding-top:64px !important;
+        padding-bottom:50px !important;
+      }
+
+      #countdownSection .paper-kicker2{
+        margin-bottom:66px !important;
+        transform:translateY(-34px);
+      }
+
+      #countdownSection .paper-names,
+      #countdownSection .paper-amp{
+        transform:translateY(-18px);
+      }
+
+      #countdownSection .paper-verse[lang="ar"]{
+        max-width:352px !important;
+        margin-top:8px !important;
+        font-size:16px !important;
+        line-height:1.68 !important;
+        transform:translateY(-12px);
+      }
+    }
+
+    @media(max-width:360px){
+      #countdownSection .paper-verse[lang="ar"]{
+        font-size:16px !important;
+      }
+    }
+
 </style>
 </head>
 <body class="invitation-loading" data-theme="terracotta">
@@ -2150,11 +2228,18 @@
 <section class="section" id="countdownSection">
 <div class="reveal paper-sheet hero-paper">
 <img alt="" aria-hidden="true" class="paper-frame-bg" data-theme-filter-asset="Pages3.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Pages3.png"/>
-<p class="paper-kicker"><span class="lang-en">Wedding Invitation</span><span class="lang-fr">Invitation de mariage</span></p>
+<p class="paper-kicker2"><span class="lang-en">Wedding Invitation</span><span class="lang-fr">Invitation de mariage</span></p>
 <h2 class="paper-names">Mahmoud</h2>
 <div class="paper-amp">&amp;</div>
 <h2 class="paper-names">Yasmine</h2>
-<p class="paper-verse" dir="rtl" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br/>﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ﴾<br/>صدق الله العظيم</p>
+<p class="paper-verse" dir="rtl" lang="ar">
+<span class="verse-basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
+<span class="verse-main">
+<span class="verse-line">﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</span>
+<span class="verse-line">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْ مٍ يَتَفَكَّرُونَ﴾</span>
+</span>
+<span class="verse-closing">صدق الله العظيم</span>
+</p>
 
 </div>
 </section>
