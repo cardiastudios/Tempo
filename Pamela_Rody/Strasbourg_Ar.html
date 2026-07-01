@@ -1,14 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="description" content="دعوة زفاف شتوية أنيقة في ستراسبورغ.">
-<meta property="og:title" content="دعوة زفاف شتوية في ستراسبورغ">
-<meta property="og:description" content="دعوة زفاف شتوية أنيقة في ستراسبورغ.">
-<title>توماس وسارة — دعوة زفاف شتوية في ستراسبورغ</title>
+<meta name="description" content="Pamela & Rody's wedding invitation.">
+<meta property="og:title" content="Pamela & Rody">
+<meta property="og:description" content="Pamela & Rody's wedding invitation.">
+<title>Pamela & Rody — Winter Wedding Invitation in Strasbourg</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -101,7 +100,8 @@ body {
 
 
 /* Sea sits at bottom ~45% height */
-#bg-sky2 {
+#bg-sky-base,
+#bg-sky-aurora-left {
   position: absolute;
   top: 0%; left: 0%;
   width: 50%; height: 65%;
@@ -638,7 +638,7 @@ top: 70%; left: 90%;
 
 
 .l-Road {
-  left: 260%;
+  left: 380%;
   top: -3%;
   width: 190% !important;
   max-width: none !important;
@@ -1621,7 +1621,7 @@ html, body{
   font-size:0 !important;
 }
 #stage.invitation-locked #hint span:nth-child(2)::after{
-  content:'افتح الدعوة للاستكشاف';
+  content:'Open the invitation to explore';
   font-size:8px !important;
   letter-spacing:.28em !important;
 }
@@ -2135,7 +2135,7 @@ body::before{
 
 /* Road2.png moved farther right so it no longer crowds the story page. */
 #p1 .l-Road{
-  left:260% !important;
+  left:380% !important;
   width:190% !important;
 }
 
@@ -2269,7 +2269,7 @@ body::before{
 }
 .loader-script{
   font-family:'Great Vibes', cursive !important;
-  font-size:12cqw !important;
+  font-size:7cqw !important;
   line-height:.9 !important;
   text-shadow:0 2px 12px rgba(255,255,255,.55) !important;
 }
@@ -2496,7 +2496,7 @@ body::before{
 .arabic-mode textarea,
 .arabic-mode button,
 .arabic-mode select{
-  font-family:'Noto Naskh Arabic','Amiri','Jost',sans-serif !important;
+  font-family:'Jost',sans-serif !important;
 }
 .arabic-mode .fixed-copy,
 .arabic-mode .rsvp-card,
@@ -2509,14 +2509,14 @@ body::before{
 }
 .arabic-mode .script,
 .arabic-mode .loader-script{
-  font-family:'Aref Ruqaa','Amiri',serif !important;
+  font-family:'Cormorant Garamond',serif !important;
   font-weight:700 !important;
   letter-spacing:0 !important;
 }
 .arabic-mode .serif,
 .arabic-mode .wedding-list-text,
 .arabic-mode .programme-label{
-  font-family:'Amiri','Noto Naskh Arabic',serif !important;
+  font-family:'Cormorant Garamond',serif !important;
   letter-spacing:0 !important;
 }
 .arabic-mode .sans,
@@ -2531,7 +2531,7 @@ body::before{
 .arabic-mode .loader-sub,
 .arabic-mode .loader-percent,
 .arabic-mode #hint span{
-  font-family:'Noto Naskh Arabic','Jost',sans-serif !important;
+  font-family:'Jost',sans-serif !important;
   letter-spacing:.03em !important;
   text-transform:none !important;
 }
@@ -2547,7 +2547,7 @@ body::before{
 .arabic-mode textarea.form-field{
   direction:rtl !important;
   text-align:right !important;
-  font-family:'Amiri','Noto Naskh Arabic',serif !important;
+  font-family:'Cormorant Garamond',serif !important;
 }
 .arabic-mode .btn-grid{
   direction:rtl !important;
@@ -2577,30 +2577,2216 @@ body::before{
   direction:rtl !important;
 }
 
+
+
+/* ═════════ SECTION POSITION CONTROLS — EDIT HERE ONLY ═════════
+   This is the only block you need for moving the main sections.
+
+   HOW TO MOVE:
+   - PANEL X values move the whole screen horizontally along the panorama.
+     100cqw = one full phone-screen width.
+     Example: 548cqw → 558cqw moves that section a little to the RIGHT.
+
+   - COPY LEFT values move the content inside its own screen.
+     50% = centered, 47% = left, 53% = right.
+
+   - COPY TOP values move the content vertically inside its own screen.
+     Smaller number = higher, bigger number = lower.
+
+   Main section positions are centralized below.
+   For the parents and verse copy, edit --parents-left / --verse-left.
+*/
+:root{
+  /* Whole-panel horizontal positions */
+  --panel-cover-x:0cqw;
+  --panel-parents-x:150cqw;
+  --panel-verse-x:282cqw;          /* whole verse panel position */
+  --panel-album-x:598cqw;          /* Photo album: bigger = more RIGHT */
+  --panel-wedding-list-x:685cqw;
+  --panel-rsvp-x:805cqw;
+  --panel-closing-x:950cqw;
+
+  /* Road2.png */
+  --road-left:392%;                /* bigger = more RIGHT */
+  --road-top:2.8%;                 /* bigger = lower */
+  --road-width:190%;
+
+  /* Copy/card positions inside each panel */
+  --cover-left:50%;
+  --cover-top:12.2%;
+  --cover-width:90%;
+
+  --parents-left:78%;                /* bigger = more RIGHT, smaller = more LEFT */
+  --parents-top:14.8%;
+  --parents-width:92%;
+
+  --verse-left:52%;                  /* bigger = more RIGHT, smaller = more LEFT */
+  --verse-top:15.2%;
+  --verse-width:82%;
+
+  --album-left:52%;                /* Photo album content: bigger = more RIGHT */
+  --album-top:9.4%;
+  --album-width:78%;
+
+  --wedding-list-left:85%;
+  --wedding-list-top:12.2%;
+  --wedding-list-width:84%;
+
+  --rsvp-left:90%;
+  --rsvp-top:7.2%;
+  --rsvp-width:82%;
+  
+
+  --closing-left:55%;
+  --closing-top:16%;
+  --closing-width:84%;
+}
+
+/* Apply whole-panel horizontal positions */
+#p1{ left:var(--panel-cover-x) !important; }
+#p2{ left:var(--panel-parents-x) !important; }
+#p3{ left:var(--panel-verse-x) !important; }
+#p5{ left:var(--panel-album-x) !important; }
+#p8{ left:var(--panel-wedding-list-x) !important; }
+#p6{ left:var(--panel-rsvp-x) !important; }
+#p7{ left:var(--panel-closing-x) !important; }
+
+/* Apply copy/card positions */
+#p1 .cover-copy{
+  left:var(--cover-left) !important;
+  top:var(--cover-top) !important;
+  width:var(--cover-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p5 .album-copy{
+  left:var(--album-left) !important;
+  top:var(--album-top) !important;
+  width:var(--album-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p8 .wedding-list-copy{
+  left:var(--wedding-list-left) !important;
+  top:var(--wedding-list-top) !important;
+  width:var(--wedding-list-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p6 .rsvp-copy{
+  left:var(--rsvp-left) !important;
+  top:var(--rsvp-top) !important;
+  width:var(--rsvp-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p7 .closing-copy{
+  left:var(--closing-left) !important;
+  top:var(--closing-top) !important;
+  width:var(--closing-width) !important;
+  transform:translateX(-50%) !important;
+}
+#p1 .l-Road{
+  left:var(--road-left) !important;
+  top:var(--road-top) !important;
+  width:var(--road-width) !important;
+}
+
+/* Road2.png invisible location hotspots.
+   The PNG stays visually untouched; only the "Open location" labels are clickable.
+   To reposition the whole Road2 image later, keep using --road-left / --road-top / --road-width above. */
+#p1 .road-location-layer{
+  position:absolute;
+  left:var(--road-left) !important;
+  top:var(--road-top) !important;
+  width:var(--road-width) !important;
+  aspect-ratio:1672 / 941;
+  z-index:66;
+  pointer-events:none;
+  filter:none !important;
+}
+#p1 .road-location-hit{
+  position:absolute;
+  top:74.8%;
+  height:10.8%;
+  border-radius:999px;
+  pointer-events:auto;
+  cursor:pointer;
+  text-decoration:none;
+  background:rgba(255,255,255,0);
+  -webkit-tap-highlight-color:transparent;
+  touch-action:pan-y;
+}
+#p1 .road-location-hit:focus-visible{
+  outline:2px solid rgba(255,255,255,.88);
+  outline-offset:2px;
+  background:rgba(255,255,255,.08);
+}
+#p1 .road-location-church{ left:9.4%; width:17.5%; }
+#p1 .road-location-reception{ left:30.9%; width:17.5%; }
+#p1 .road-location-dinner{ left:52.5%; width:17.5%; }
+#p1 .road-location-party{ left:73.6%; width:17.5%; }
+
+
+/* Keep these text-size/readability fixes after the position controls */
+#p5 .album-copy .sans,
+.arabic-mode #p5 .album-copy .sans{
+  font-size:3.15cqw !important;
+  line-height:1.75 !important;
+  opacity:.88 !important;
+  font-weight:900 !important;
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.14) !important;
+}
+#p7 .closing-copy .sans,
+.arabic-mode #p7 .closing-copy .sans{
+  font-size:3.35cqw !important;
+  line-height:1.65 !important;
+  opacity:.86 !important;
+  font-weight:900 !important;
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(0,0,0,.14) !important;
+}
+#p7 .closing-copy .serif,
+.arabic-mode #p7 .closing-copy .serif{
+  font-size:4.45cqw !important;
+  line-height:1.35 !important;
+  opacity:.88 !important;
+  color:#fff !important;
+}
+#p7 .closing-copy .cardia-credit,
+.arabic-mode #p7 .closing-copy .cardia-credit{
+  display:inline-block !important;
+  margin-top:3.2cqw !important;
+  padding:1.35cqw 3.4cqw !important;
+  border-radius:999px !important;
+  background:rgba(255,245,230,.22) !important;
+  border:1px solid rgba(255,255,255,.30) !important;
+  text-decoration:none !important;
+  pointer-events:auto !important;
+}
+#p7 .closing-copy .cardia-credit:hover{
+  background:rgba(255,255,255,.34) !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  :root{
+    --road-top:3.8%;
+
+    --cover-top:12.2%;
+    --cover-width:92%;
+
+    --parents-left:58%;
+    --parents-top:12.2%;
+    --parents-width:94%;
+
+    --verse-left:52%;
+    --verse-top:14.2%;
+    --verse-width:84%;
+
+    --album-left:52.5%;
+    --album-top:9.2%;
+    --album-width:82%;
+  }
+
+  #p5 .album-copy .sans,
+  .arabic-mode #p5 .album-copy .sans{
+    font-size:3.65cqw !important;
+    line-height:1.7 !important;
+  }
+  #p7 .closing-copy .sans,
+  .arabic-mode #p7 .closing-copy .sans{
+    font-size:3.75cqw !important;
+    line-height:1.62 !important;
+  }
+  #p7 .closing-copy .serif,
+  .arabic-mode #p7 .closing-copy .serif{
+    font-size:4.9cqw !important;
+  }
+  #p7 .closing-copy .cardia-credit,
+  .arabic-mode #p7 .closing-copy .cardia-credit{
+    margin-top:3.6cqw !important;
+    padding:1.65cqw 3.8cqw !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA CLEAN — PANEL 2 PARENTS + PANEL 3 VERSE ═════════
+   Clean, single source of truth for this section.
+
+   To move later:
+   - In "SECTION POSITION CONTROLS" above, edit --parents-left.
+   - Bigger --parents-left = more RIGHT, smaller = more LEFT.
+   - Same idea for --verse-left.
+*/
+#p2 .parents-formal-copy,
+#p3 .verse-copy{
+  bottom:auto !important;
+  max-height:none !important;
+  max-width:none !important;
+  text-align:center !important;
+  pointer-events:auto !important;
+}
+
+#p2 .parents-formal-copy{
+  left:var(--parents-left) !important;
+  top:var(--parents-top) !important;
+  width:var(--parents-width) !important;
+  transform:translateX(-50%) !important;
+}
+
+#p2 .parents-two-columns{
+  direction:ltr !important;
+  display:grid !important;
+  grid-template-columns:1fr auto 1fr !important;
+  align-items:start !important;
+  gap:4.4cqw !important;
+  width:100% !important;
+  max-width:88cqw !important;
+  margin:0 auto 6.6cqw !important;
+}
+
+#p2 .parents-col{
+  direction:ltr !important;
+  min-height:auto !important;
+  padding:0 !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+
+#p2 .parents-name{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  gap:1.7cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:5.25cqw !important;
+  line-height:1.42 !important;
+  font-weight:500 !important;
+  font-style:italic !important;
+  color:#fff !important;
+  letter-spacing:.01em !important;
+  word-spacing:normal !important;
+  text-rendering:geometricPrecision !important;
+  font-feature-settings:"liga" 1, "kern" 1 !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.55), 0 8px 22px rgba(0,0,0,.18) !important;
+}
+
+#p2 .parents-name span{
+  display:block !important;
+  white-space:nowrap !important;
+  padding:.15cqw 0 !important;
+}
+
+#p2 .parents-symbol{
+  width:auto !important;
+  height:auto !important;
+  margin-top:.3cqw !important;
+  border:0 !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  color:#fff !important;
+  opacity:.88 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:7.1cqw !important;
+  font-weight:300 !important;
+  line-height:1 !important;
+  text-shadow:0 2px 14px rgba(255,255,255,.55), 0 6px 18px rgba(0,0,0,.16) !important;
+}
+
+#p2 .parents-role,
+#p2 .parents-formal-copy .orn{
+  display:none !important;
+}
+
+#p2 .parents-invitation-phrase{
+  width:92% !important;
+  margin:1.2cqw auto 0 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:5.15cqw !important;
+  line-height:1.75 !important;
+  font-weight:500 !important;
+  font-style:italic !important;
+  color:#fff !important;
+  text-align:center !important;
+  letter-spacing:.01em !important;
+  word-spacing:normal !important;
+  text-rendering:geometricPrecision !important;
+  font-feature-settings:"liga" 1, "kern" 1 !important;
+  text-shadow:0 2px 13px rgba(255,255,255,.52), 0 9px 24px rgba(0,0,0,.16) !important;
+}
+
+#p3 .verse-copy{
+  left:var(--verse-left) !important;
+  top:var(--verse-top) !important;
+  width:var(--verse-width) !important;
+  transform:translateX(-50%) !important;
+}
+
+#p3 .verse-copy .script{
+  font-size:12.2cqw !important;
+  line-height:.92 !important;
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.48) !important;
+}
+
+#p3 .verse-copy .orn{
+  width:56% !important;
+  margin:3cqw auto 3.3cqw !important;
+}
+
+#p3 .verse-text{
+  max-width:72cqw !important;
+  margin:0 auto !important;
+  padding:4.6cqw 5.3cqw !important;
+  border-radius:5.4cqw !important;
+  background:rgba(255,245,230,.13) !important;
+  border:1px solid rgba(255,255,255,.16) !important;
+  box-shadow:0 14px 34px rgba(0,0,0,.12) !important;
+  backdrop-filter:blur(3px) !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:4.55cqw !important;
+  line-height:1.85 !important;
+  color:#fff !important;
+  font-style:italic !important;
+  font-weight:500 !important;
+  opacity:.92 !important;
+  text-align:center !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.28) !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p2 .parents-two-columns{
+    gap:3.2cqw !important;
+    max-width:91cqw !important;
+    margin-bottom:7.1cqw !important;
+  }
+  #p2 .parents-name{
+    font-size:5.35cqw !important;
+    line-height:1.5 !important;
+    gap:1.95cqw !important;
+    word-spacing:normal !important;
+  }
+  #p2 .parents-symbol{
+    font-size:7.3cqw !important;
+  }
+  #p2 .parents-invitation-phrase{
+    width:94% !important;
+    margin-top:1.8cqw !important;
+    font-size:5.35cqw !important;
+    line-height:1.8 !important;
+    word-spacing:normal !important;
+  }
+  #p3 .verse-copy .script{
+    font-size:12.6cqw !important;
+  }
+  #p3 .verse-text{
+    max-width:74cqw !important;
+    padding:4.7cqw 5.2cqw !important;
+    font-size:4.75cqw !important;
+    line-height:1.88 !important;
+  }
+}
+
+
+/* ═════════ CARDIA KEEP — READABILITY + STRONGER DRAG HINT ═════════ */
+.arabic-mode .wedding-list-card,
+.arabic-mode #p6 .venice-rsvp-box{
+  background:rgba(255,245,230,.82) !important;
+  border-color:rgba(61,42,20,.24) !important;
+}
+.arabic-mode .wedding-list-card,
+.arabic-mode .wedding-list-card *,
+.arabic-mode #p6 .venice-rsvp-box,
+.arabic-mode #p6 .venice-rsvp-box *{
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+}
+.arabic-mode .wedding-list-text{
+  font-size:4.85cqw !important;
+  line-height:1.62 !important;
+  opacity:1 !important;
+  word-spacing:.12em !important;
+}
+.arabic-mode .wedding-list-btn,
+.arabic-mode #p6 .btn-soft,
+.arabic-mode #p6 .btn-solid{
+  background:rgba(255,255,255,.58) !important;
+  border:1px solid rgba(61,42,20,.34) !important;
+  color:#3d2a14 !important;
+  font-size:2.25cqw !important;
+  font-weight:700 !important;
+}
+.arabic-mode .wedding-list-note{
+  color:#3d2a14 !important;
+  opacity:.78 !important;
+  font-size:2.05cqw !important;
+}
+.arabic-mode #p6 .form-label,
+.arabic-mode #p6 .question{
+  color:#3d2a14 !important;
+  font-size:2.35cqw !important;
+  line-height:1.5 !important;
+  font-weight:800 !important;
+  opacity:.94 !important;
+}
+.arabic-mode #p6 .form-field,
+.arabic-mode #p6 textarea.form-field{
+  color:#3d2a14 !important;
+  border-bottom-color:rgba(61,42,20,.38) !important;
+  font-size:4.35cqw !important;
+  line-height:1.45 !important;
+}
+.arabic-mode #p6 .form-field::placeholder,
+.arabic-mode #p6 textarea.form-field::placeholder{
+  color:rgba(61,42,20,.58) !important;
+  opacity:1 !important;
+}
+.arabic-mode #p6 .attend-box{
+  background:rgba(255,255,255,.56) !important;
+  border-color:rgba(61,42,20,.26) !important;
+  color:#3d2a14 !important;
+  min-height:48px !important;
+}
+.arabic-mode #p6 .attend-opt input:checked + .attend-box{
+  background:rgba(61,42,20,.13) !important;
+  border-color:rgba(61,42,20,.45) !important;
+  color:#3d2a14 !important;
+}
+.arabic-mode #p6 .attend-label{
+  color:#3d2a14 !important;
+  font-size:2.2cqw !important;
+  font-weight:800 !important;
+}
+.arabic-mode #p6 .guest-num,
+.arabic-mode #p6 .count-btn,
+.arabic-mode #p6 .error-msg{
+  color:#3d2a14 !important;
+}
+.arabic-mode #p6 .count-btn{
+  border-color:rgba(61,42,20,.35) !important;
+  background:rgba(255,255,255,.68) !important;
+}
+.arabic-mode #p6 .step-dot{
+  background:rgba(61,42,20,.25) !important;
+}
+.arabic-mode #p6 .step-dot.on{
+  background:#3d2a14 !important;
+}
+
+#hint{
+  opacity:1 !important;
+  background:rgba(255,245,230,.84) !important;
+  border-color:rgba(61,42,20,.28) !important;
+  box-shadow:0 12px 28px rgba(0,0,0,.18) !important;
+  padding:1.7cqw 3.4cqw !important;
+}
+#hint span,
+.arabic-mode #hint span{
+  color:#3d2a14 !important;
+  opacity:1 !important;
+  font-size:2.35cqw !important;
+  line-height:1.2 !important;
+  font-weight:800 !important;
+  letter-spacing:.015em !important;
+  text-shadow:none !important;
+}
+#hint .arr,
+.arabic-mode #hint .arr{
+  color:#3d2a14 !important;
+  opacity:.95 !important;
+  font-size:3.15cqw !important;
+}
+#stage.invitation-locked #hint{
+  opacity:1 !important;
+}
+#stage.invitation-locked #hint span:nth-child(2)::after{
+  color:#3d2a14 !important;
+  opacity:1 !important;
+  font-size:2.25cqw !important;
+  font-weight:800 !important;
+  letter-spacing:.015em !important;
+}
+
+#p6 .rsvp-copy .script{ font-size:11.6cqw !important; }
+#p6 .rsvp-copy .sans{ font-size:2.65cqw !important; opacity:.78 !important; }
+#p8 .wedding-list-copy .script{ font-size:12.2cqw !important; }
+#p8 .wedding-list-copy .sans{ font-size:2.55cqw !important; opacity:.76 !important; }
+
+@media (max-width:600px), (pointer:coarse){
+  .arabic-mode .wedding-list-text{ font-size:5.1cqw !important; }
+  .arabic-mode .wedding-list-btn,
+  .arabic-mode #p6 .btn-soft,
+  .arabic-mode #p6 .btn-solid{ font-size:2.45cqw !important; }
+  .arabic-mode #p6 .form-label,
+  .arabic-mode #p6 .question{ font-size:2.65cqw !important; }
+  .arabic-mode #p6 .form-field,
+  .arabic-mode #p6 textarea.form-field{ font-size:4.7cqw !important; }
+  .arabic-mode #p6 .attend-label{ font-size:2.45cqw !important; }
+  #hint{
+    bottom:calc(6px + env(safe-area-inset-bottom)) !important;
+    padding:1.9cqw 3.8cqw !important;
+  }
+  #hint span,
+  .arabic-mode #hint span{ font-size:2.55cqw !important; }
+  #hint .arr,
+  .arabic-mode #hint .arr{ font-size:3.45cqw !important; }
+  #stage.invitation-locked #hint span:nth-child(2)::after{ font-size:2.45cqw !important; }
+  #p6 .rsvp-copy .script{ font-size:12.1cqw !important; }
+  #p6 .rsvp-copy .sans{ font-size:2.85cqw !important; }
+  #p8 .wedding-list-copy .script{ font-size:12.9cqw !important; }
+  #p8 .wedding-list-copy .sans{ font-size:2.75cqw !important; }
+}
+
+
+/* ═════════ CARDIA UPDATE — PAGE.PNG BACKGROUND + CONSISTENT FINAL SECTIONS ═════════
+   Wedding list and RSVP now use Pamela/Rody Page.png as an elegant paper background.
+   From the photo album to the closing page, titles start at the same visual height
+   and use one consistent title size. */
+:root{
+  --final-section-top:9.4%;
+  --final-section-title-size:11.6cqw;
+  --paper-page-bg:url('https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Page.png');
+
+  --album-top:var(--final-section-top);
+  --wedding-list-top:var(--final-section-top);
+  --rsvp-top:var(--final-section-top);
+  --closing-top:var(--final-section-top);
+}
+
+#p5 .album-copy,
+#p8 .wedding-list-copy,
+#p6 .rsvp-copy,
+#p7 .closing-copy{
+  top:var(--final-section-top) !important;
+}
+
+#p5 .album-copy .script,
+#p8 .wedding-list-copy .script,
+#p6 .rsvp-copy .script,
+#p7 .closing-copy .script{
+  font-size:var(--final-section-title-size) !important;
+  line-height:.96 !important;
+}
+
+#p8::before,
+#p6::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  z-index:22;
+  pointer-events:none;
+  background-image:var(--paper-page-bg);
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:drop-shadow(0 18px 36px rgba(34,64,92,.18));
+}
+
+#p8 .water-shimmer,
+#p6 .water-shimmer{
+  display:none !important;
+}
+
+#p8 .content,
+#p6 .content{
+  z-index:60 !important;
+}
+
+/* Paper-page typography: dark, elegant, and readable on the white watercolor center. */
+#p8 .wedding-list-copy .script,
+#p6 .rsvp-copy .script{
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+  font-weight:900 !important;
+}
+
+#p8 .wedding-list-copy .sans,
+#p6 .rsvp-copy .sans{
+  color:#3d2a14 !important;
+  opacity:.72 !important;
+  text-shadow:none !important;
+  font-size:2.65cqw !important;
+  line-height:1.55 !important;
+}
+
+#p8 .orn span,
+#p6 .orn span{
+  background:rgba(61,42,20,.34) !important;
+  opacity:1 !important;
+}
+#p8 .orn em,
+#p6 .orn em{
+  color:#3d2a14 !important;
+  opacity:.72 !important;
+}
+
+#p8 .wedding-list-card,
+#p6 .venice-rsvp-box{
+  background:rgba(255,255,255,.54) !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  box-shadow:0 14px 38px rgba(47,80,110,.14) !important;
+  backdrop-filter:blur(3px) !important;
+}
+
+#p8 .wedding-list-card,
+#p8 .wedding-list-card *,
+#p6 .venice-rsvp-box,
+#p6 .venice-rsvp-box *{
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+}
+
+#p8 .wedding-list-card{
+  margin-top:3.2cqw !important;
+  max-width:64cqw !important;
+  padding:5cqw 5.4cqw !important;
+}
+#p8 .wedding-list-text{
+  font-size:4.75cqw !important;
+  line-height:1.58 !important;
+  opacity:.95 !important;
+}
+#p8 .wedding-list-btn,
+#p6 .btn-soft,
+#p6 .btn-solid{
+  background:rgba(255,255,255,.66) !important;
+  border-color:rgba(61,42,20,.30) !important;
+  color:#3d2a14 !important;
+}
+
+#p6 .venice-rsvp-box{
+  margin-top:2.8cqw !important;
+  max-width:64cqw !important;
+  padding:3.9cqw 5.2cqw !important;
+}
+#p6 .form-label,
+#p6 .question{
+  color:#3d2a14 !important;
+}
+#p6 .form-field,
+#p6 textarea.form-field{
+  border-bottom-color:rgba(61,42,20,.36) !important;
+  color:#3d2a14 !important;
+}
+#p6 .form-field:focus,
+#p6 textarea.form-field:focus{
+  border-bottom-color:rgba(61,42,20,.72) !important;
+}
+#p6 .attend-box{
+  background:rgba(255,255,255,.62) !important;
+  border-color:rgba(61,42,20,.22) !important;
+}
+#p6 .attend-opt input:checked + .attend-box{
+  background:rgba(61,42,20,.10) !important;
+  border-color:rgba(61,42,20,.45) !important;
+}
+
+/* Keep the closing page aligned with the same title height without squeezing the text. */
+#p7 .closing-copy .sans{
+  margin-bottom:2.2cqw !important;
+}
+#p7 .closing-copy .script{
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.45) !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  :root{
+    --final-section-top:9.2%;
+    --final-section-title-size:12.1cqw;
+    --album-top:var(--final-section-top);
+    --wedding-list-top:var(--final-section-top);
+    --rsvp-top:var(--final-section-top);
+    --closing-top:var(--final-section-top);
+  }
+  #p5 .album-copy,
+  #p8 .wedding-list-copy,
+  #p6 .rsvp-copy,
+  #p7 .closing-copy{
+    top:var(--final-section-top) !important;
+  }
+  #p8 .wedding-list-copy,
+  #p6 .rsvp-copy{
+    width:84% !important;
+  }
+  #p8 .wedding-list-card,
+  #p6 .venice-rsvp-box{
+    max-width:68cqw !important;
+  }
+  #p8 .wedding-list-copy .sans,
+  #p6 .rsvp-copy .sans{
+    font-size:2.85cqw !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA FIX — PAGE.PNG ONLY INSIDE TEXT CONTAINERS ═════════
+   Page.png is now used as the background of the written content cards only,
+   not as a full-section/page background. Final section heights and title sizes
+   remain consistent from Photo Album to Closing. */
+#p8::before,
+#p6::before{
+  display:none !important;
+  content:none !important;
+  background:none !important;
+}
+
+#p8 .water-shimmer,
+#p6 .water-shimmer{
+  display:block !important;
+}
+
+/* Keep the section titles outside the paper card, matching the album/closing pages. */
+#p8 .wedding-list-copy .script,
+#p6 .rsvp-copy .script{
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.46), 0 8px 26px rgba(38,67,91,.18) !important;
+  font-weight:900 !important;
+}
+
+#p8 .wedding-list-copy .sans,
+#p6 .rsvp-copy .sans{
+  color:#fff !important;
+  opacity:.58 !important;
+  text-shadow:0 2px 10px rgba(28,53,75,.16) !important;
+}
+
+#p8 .orn span,
+#p6 .orn span{
+  background:rgba(255,255,255,.62) !important;
+  opacity:1 !important;
+}
+#p8 .orn em,
+#p6 .orn em{
+  color:#fff !important;
+  opacity:.72 !important;
+}
+
+/* Paper background only on the actual text/form containers. */
+#p8 .wedding-list-card,
+#p6 .venice-rsvp-box{
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.04)),
+    var(--paper-page-bg) !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  box-shadow:0 18px 45px rgba(45,76,105,.18), inset 0 0 0 1px rgba(255,255,255,.44) !important;
+  backdrop-filter:none !important;
+}
+
+#p8 .wedding-list-card{
+  border-radius:6.2cqw !important;
+  margin-top:3.4cqw !important;
+  max-width:68cqw !important;
+  padding:7.3cqw 6.1cqw 6.2cqw !important;
+}
+
+#p6 .venice-rsvp-box{
+  border-radius:5.8cqw !important;
+  margin-top:3.2cqw !important;
+  max-width:68cqw !important;
+  padding:5.2cqw 5.4cqw !important;
+}
+
+/* Everything written on the Page.png containers stays dark and readable. */
+#p8 .wedding-list-card,
+#p8 .wedding-list-card *,
+#p6 .venice-rsvp-box,
+#p6 .venice-rsvp-box *{
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+}
+
+#p8 .wedding-list-text{
+  font-size:4.8cqw !important;
+  line-height:1.65 !important;
+  opacity:.96 !important;
+}
+
+#p8 .wedding-list-btn,
+#p6 .btn-soft,
+#p6 .btn-solid,
+#p6 .count-btn{
+  background:rgba(255,255,255,.66) !important;
+  border-color:rgba(61,42,20,.28) !important;
+  color:#3d2a14 !important;
+  box-shadow:0 8px 22px rgba(61,42,20,.08) !important;
+}
+
+#p8 .wedding-list-btn:hover,
+#p6 .btn-soft:hover,
+#p6 .btn-solid:hover{
+  background:rgba(255,255,255,.84) !important;
+  color:#3d2a14 !important;
+}
+
+#p6 .form-label,
+#p6 .question,
+#p6 .guest-num{
+  color:#3d2a14 !important;
+}
+
+#p6 .form-field,
+#p6 textarea.form-field{
+  border-bottom-color:rgba(61,42,20,.34) !important;
+  color:#3d2a14 !important;
+}
+#p6 .form-field::placeholder,
+#p6 textarea.form-field::placeholder{
+  color:rgba(61,42,20,.42) !important;
+}
+#p6 .form-field:focus,
+#p6 textarea.form-field:focus{
+  border-bottom-color:rgba(61,42,20,.72) !important;
+}
+
+#p6 .step-dot{
+  background:rgba(61,42,20,.26) !important;
+}
+#p6 .step-dot.on{
+  background:#3d2a14 !important;
+}
+#p6 .attend-box{
+  background:rgba(255,255,255,.58) !important;
+  border-color:rgba(61,42,20,.22) !important;
+}
+#p6 .attend-opt input:checked + .attend-box{
+  background:rgba(61,42,20,.10) !important;
+  border-color:rgba(61,42,20,.45) !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p8 .wedding-list-card,
+  #p6 .venice-rsvp-box{
+    max-width:72cqw !important;
+  }
+  #p8 .wedding-list-card{
+    padding:7.7cqw 6.1cqw 6.5cqw !important;
+  }
+  #p6 .venice-rsvp-box{
+    padding:5.3cqw 5.4cqw !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA FINAL FIX — RSVP USES PAGE.PNG AS ITS OWN TEXT CONTAINER ═════════
+   The RSVP form now uses the same Page.png paper container treatment as the
+   Wedding List card. The image is not used as the whole section background. */
+#p6 .rsvp-card.venice-rsvp-box{
+  width:100% !important;
+  max-width:68cqw !important;
+  margin:3.4cqw auto 0 !important;
+  padding:7.3cqw 6.1cqw 6.2cqw !important;
+  border-radius:6.2cqw !important;
+  background-color:transparent !important;
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.04)),
+    var(--paper-page-bg) !important;
+  background-size:100% 100% !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  box-shadow:0 18px 45px rgba(45,76,105,.18), inset 0 0 0 1px rgba(255,255,255,.44) !important;
+  backdrop-filter:none !important;
+}
+
+/* RSVP inner elements stay clean and readable on the paper card. */
+#p6 .rsvp-card.venice-rsvp-box,
+#p6 .rsvp-card.venice-rsvp-box *{
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .form-label,
+#p6 .rsvp-card.venice-rsvp-box .question,
+#p6 .rsvp-card.venice-rsvp-box .guest-num{
+  color:#3d2a14 !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .form-field,
+#p6 .rsvp-card.venice-rsvp-box textarea.form-field{
+  color:#3d2a14 !important;
+  border-bottom-color:rgba(61,42,20,.34) !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .form-field::placeholder,
+#p6 .rsvp-card.venice-rsvp-box textarea.form-field::placeholder{
+  color:rgba(61,42,20,.42) !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .form-field:focus,
+#p6 .rsvp-card.venice-rsvp-box textarea.form-field:focus{
+  border-bottom-color:rgba(61,42,20,.72) !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .btn-soft,
+#p6 .rsvp-card.venice-rsvp-box .btn-solid,
+#p6 .rsvp-card.venice-rsvp-box .count-btn,
+#p6 .rsvp-card.venice-rsvp-box .attend-box{
+  background:rgba(255,255,255,.66) !important;
+  border-color:rgba(61,42,20,.28) !important;
+  color:#3d2a14 !important;
+  box-shadow:0 8px 22px rgba(61,42,20,.08) !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .step-dot{
+  background:rgba(61,42,20,.26) !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .step-dot.on{
+  background:#3d2a14 !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .attend-opt input:checked + .attend-box{
+  background:rgba(61,42,20,.10) !important;
+  border-color:rgba(61,42,20,.45) !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p6 .rsvp-card.venice-rsvp-box{
+    max-width:72cqw !important;
+    padding:7.7cqw 6.1cqw 6.5cqw !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA ADD-ON — RSVP PHOTO UPLOAD FOR WEDDING MAGNET SOUVENIR ═════════ */
+#p6 .photo-upload-box{
+  display:block;
+  margin:3.2cqw auto 0 !important;
+  padding:3.8cqw 3.8cqw 3.4cqw !important;
+  border-radius:4.8cqw !important;
+  background:rgba(255,255,255,.58) !important;
+  border:1px solid rgba(61,42,20,.20) !important;
+  box-shadow:0 10px 28px rgba(61,42,20,.08) !important;
+  text-align:center !important;
+}
+#p6 .photo-upload-title{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:4.25cqw !important;
+  line-height:1.25 !important;
+  color:#3d2a14 !important;
+  font-weight:600 !important;
+  margin-bottom:1.2cqw !important;
+}
+#p6 .photo-upload-text{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.05cqw !important;
+  line-height:1.65 !important;
+  color:#3d2a14 !important;
+  opacity:.88 !important;
+  margin:0 auto 2.4cqw !important;
+}
+#p6 .photo-upload-drop{
+  display:block !important;
+  width:100% !important;
+  padding:3.3cqw 3cqw !important;
+  border-radius:3.8cqw !important;
+  border:1px dashed rgba(61,42,20,.34) !important;
+  background:rgba(255,255,255,.54) !important;
+  cursor:pointer !important;
+  transition:transform .2s ease, background .2s ease, border-color .2s ease !important;
+}
+#p6 .photo-upload-drop:hover{
+  transform:translateY(-1px) !important;
+  background:rgba(255,255,255,.74) !important;
+  border-color:rgba(61,42,20,.52) !important;
+}
+#p6 .photo-upload-drop input{
+  display:none !important;
+}
+#p6 .photo-upload-icon{
+  display:block !important;
+  font-size:5.6cqw !important;
+  line-height:1 !important;
+  margin-bottom:1.2cqw !important;
+}
+#p6 .photo-upload-drop-text{
+  display:block !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.25cqw !important;
+  line-height:1.35 !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  color:#3d2a14 !important;
+}
+#p6 .photo-upload-hint{
+  display:block !important;
+  margin-top:.9cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.55cqw !important;
+  line-height:1.35 !important;
+  color:rgba(61,42,20,.62) !important;
+}
+#p6 .photo-preview-wrap{
+  display:none;
+  margin:2.6cqw auto 0 !important;
+  width:34cqw !important;
+  height:34cqw !important;
+  border-radius:4.4cqw !important;
+  overflow:hidden !important;
+  border:1px solid rgba(61,42,20,.20) !important;
+  background:rgba(255,255,255,.45) !important;
+  box-shadow:0 10px 24px rgba(61,42,20,.10) !important;
+}
+#p6 .photo-preview-wrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+#p6 .photo-upload-btn{
+  margin-top:2.8cqw !important;
+  width:100% !important;
+  border-radius:999px !important;
+  padding:2.4cqw 3cqw !important;
+  cursor:pointer !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.2cqw !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  background:rgba(61,42,20,.12) !important;
+  border:1px solid rgba(61,42,20,.30) !important;
+  color:#3d2a14 !important;
+  box-shadow:0 8px 22px rgba(61,42,20,.08) !important;
+}
+#p6 .photo-upload-btn:disabled{
+  opacity:.58 !important;
+  cursor:default !important;
+}
+#p6 .photo-upload-status{
+  min-height:1.4em !important;
+  margin-top:1.8cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.65cqw !important;
+  line-height:1.35 !important;
+  color:#3d2a14 !important;
+  opacity:.82 !important;
+}
+#p6 .photo-upload-status.is-error{
+  color:#8b2f23 !important;
+  opacity:1 !important;
+}
+#p6 .photo-upload-status.is-success{
+  color:#2f6b45 !important;
+  opacity:1 !important;
+  font-weight:700 !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p6 .photo-upload-box{
+    margin-top:3.5cqw !important;
+    padding:4.1cqw 4cqw 3.7cqw !important;
+  }
+  #p6 .photo-upload-title{ font-size:4.7cqw !important; }
+  #p6 .photo-upload-text{ font-size:3.35cqw !important; }
+  #p6 .photo-upload-drop-text{ font-size:2.45cqw !important; }
+  #p6 .photo-upload-hint{ font-size:2.8cqw !important; }
+  #p6 .photo-upload-btn{ font-size:2.45cqw !important; }
+  #p6 .photo-upload-status{ font-size:2.9cqw !important; }
+}
+
+
+/* Keep the RSVP thank-you + photo uploader usable on small phones. */
+#p6 .rsvp-card.venice-rsvp-box{
+  max-height:116cqw !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+  touch-action:pan-y !important;
+  scrollbar-width:thin !important;
+}
+#p6 .rsvp-card.venice-rsvp-box::-webkit-scrollbar{
+  width:4px !important;
+}
+#p6 .rsvp-card.venice-rsvp-box::-webkit-scrollbar-thumb{
+  background:rgba(61,42,20,.22) !important;
+  border-radius:999px !important;
+}
+
+
+
+/* ═════════ CARDIA UPDATE — PHOTO UPLOAD AS ITS OWN SECTION AFTER RSVP ═════════
+   The guest photo uploader is now a permanent standalone panel after RSVP.
+   The closing panel moves one screen farther right. */
+#panorama{
+  width:1200% !important;
+}
+.panel{
+  width:100cqw !important;
+}
+:root{
+  --panel-photo-upload-x:950cqw;
+  --panel-closing-x:1100cqw;
+}
+#p9{ left:var(--panel-photo-upload-x) !important; }
+#p7{ left:var(--panel-closing-x) !important; }
+
+#p9 .photo-section-copy{
+  left:50% !important;
+  top:9.4% !important;
+  transform:translateX(-50%) !important;
+  width:84% !important;
+  text-align:center !important;
+}
+#p9 .photo-section-copy .script{
+  font-size:11.6cqw !important;
+  line-height:.96 !important;
+  color:#fff !important;
+  text-shadow:0 2px 12px rgba(255,255,255,.46), 0 8px 26px rgba(38,67,91,.18) !important;
+}
+#p9 .photo-section-copy .sans{
+  font-size:2.65cqw !important;
+  line-height:1.55 !important;
+  letter-spacing:.24em !important;
+  color:#fff !important;
+  opacity:.58 !important;
+  text-shadow:0 2px 10px rgba(28,53,75,.16) !important;
+}
+#p9 .orn span{
+  background:rgba(255,255,255,.62) !important;
+  opacity:1 !important;
+}
+#p9 .orn em{
+  color:#fff !important;
+  opacity:.72 !important;
+}
+
+#p9 .photo-upload-box{
+  display:block !important;
+  width:100% !important;
+  max-width:68cqw !important;
+  margin:3.4cqw auto 0 !important;
+  padding:6.6cqw 6.1cqw 5.5cqw !important;
+  border-radius:6.2cqw !important;
+  background-color:transparent !important;
+  background-image:
+    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.04)),
+    var(--paper-page-bg) !important;
+  background-size:100% 100% !important;
+  background-position:center center !important;
+  background-repeat:no-repeat !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  box-shadow:0 18px 45px rgba(45,76,105,.18), inset 0 0 0 1px rgba(255,255,255,.44) !important;
+  text-align:center !important;
+  pointer-events:auto !important;
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+}
+#p9 .photo-upload-box,
+#p9 .photo-upload-box *{
+  color:#3d2a14 !important;
+  text-shadow:none !important;
+}
+#p9 .photo-upload-title{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:4.65cqw !important;
+  line-height:1.25 !important;
+  font-weight:600 !important;
+  margin-bottom:1.4cqw !important;
+}
+#p9 .photo-upload-text{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.25cqw !important;
+  line-height:1.62 !important;
+  opacity:.9 !important;
+  margin:0 auto 2.8cqw !important;
+}
+#p9 .photo-upload-name-label{
+  display:block !important;
+  margin:0 0 1cqw !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.05cqw !important;
+  line-height:1.3 !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  text-align:left !important;
+}
+#p9 .photo-upload-name-input{
+  display:block !important;
+  width:100% !important;
+  margin:0 0 2.6cqw !important;
+  padding:2.2cqw 0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-bottom:1.5px solid rgba(61,42,20,.34) !important;
+  outline:none !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.35cqw !important;
+  line-height:1.3 !important;
+  text-align:left !important;
+}
+#p9 .photo-upload-name-input::placeholder{
+  color:rgba(61,42,20,.42) !important;
+}
+#p9 .photo-upload-name-input:focus{
+  border-bottom-color:rgba(61,42,20,.72) !important;
+}
+#p9 .photo-upload-drop{
+  display:block !important;
+  width:100% !important;
+  padding:3.3cqw 3cqw !important;
+  border-radius:3.8cqw !important;
+  border:1px dashed rgba(61,42,20,.34) !important;
+  background:rgba(255,255,255,.54) !important;
+  cursor:pointer !important;
+  transition:transform .2s ease, background .2s ease, border-color .2s ease !important;
+}
+#p9 .photo-upload-drop:hover{
+  transform:translateY(-1px) !important;
+  background:rgba(255,255,255,.74) !important;
+  border-color:rgba(61,42,20,.52) !important;
+}
+#p9 .photo-upload-drop input{
+  display:none !important;
+}
+#p9 .photo-upload-icon{
+  display:block !important;
+  font-size:5.6cqw !important;
+  line-height:1 !important;
+  margin-bottom:1.2cqw !important;
+}
+#p9 .photo-upload-drop-text{
+  display:block !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.25cqw !important;
+  line-height:1.35 !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+}
+#p9 .photo-upload-hint{
+  display:block !important;
+  margin-top:.9cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.55cqw !important;
+  line-height:1.35 !important;
+  color:rgba(61,42,20,.62) !important;
+}
+#p9 .photo-preview-wrap{
+  display:none;
+  margin:2.6cqw auto 0 !important;
+  width:34cqw !important;
+  height:34cqw !important;
+  border-radius:4.4cqw !important;
+  overflow:hidden !important;
+  border:1px solid rgba(61,42,20,.20) !important;
+  background:rgba(255,255,255,.45) !important;
+  box-shadow:0 10px 24px rgba(61,42,20,.10) !important;
+}
+#p9 .photo-preview-wrap img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+#p9 .photo-upload-btn{
+  margin-top:2.8cqw !important;
+  width:100% !important;
+  border-radius:999px !important;
+  padding:2.4cqw 3cqw !important;
+  cursor:pointer !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.2cqw !important;
+  letter-spacing:.12em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  background:rgba(255,255,255,.66) !important;
+  border:1px solid rgba(61,42,20,.30) !important;
+  box-shadow:0 8px 22px rgba(61,42,20,.08) !important;
+}
+#p9 .photo-upload-btn:disabled{
+  opacity:.58 !important;
+  cursor:default !important;
+}
+#p9 .photo-upload-status{
+  min-height:1.4em !important;
+  margin-top:1.8cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.65cqw !important;
+  line-height:1.35 !important;
+  color:#3d2a14 !important;
+  opacity:.82 !important;
+}
+#p9 .photo-upload-status.is-error{
+  color:#8b2f23 !important;
+  opacity:1 !important;
+}
+#p9 .photo-upload-status.is-success{
+  color:#2f6b45 !important;
+  opacity:1 !important;
+  font-weight:700 !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  :root{
+    --panel-photo-upload-x:950cqw;
+    --panel-closing-x:1100cqw;
+  }
+  #p9{ left:var(--panel-photo-upload-x) !important; }
+  #p7{ left:var(--panel-closing-x) !important; }
+  #p9 .photo-section-copy{
+    top:9.2% !important;
+    width:86% !important;
+  }
+  #p9 .photo-section-copy .script{
+    font-size:12.1cqw !important;
+  }
+  #p9 .photo-section-copy .sans{
+    font-size:2.85cqw !important;
+  }
+  #p9 .photo-upload-box{
+    max-width:72cqw !important;
+    padding:6.8cqw 6.1cqw 5.7cqw !important;
+  }
+  #p9 .photo-upload-title{ font-size:4.9cqw !important; }
+  #p9 .photo-upload-text{ font-size:3.4cqw !important; }
+  #p9 .photo-upload-name-label{ font-size:2.2cqw !important; }
+  #p9 .photo-upload-name-input{ font-size:3.55cqw !important; }
+  #p9 .photo-upload-drop-text{ font-size:2.45cqw !important; }
+  #p9 .photo-upload-hint{ font-size:2.8cqw !important; }
+  #p9 .photo-upload-btn{ font-size:2.45cqw !important; }
+  #p9 .photo-upload-status{ font-size:2.9cqw !important; }
+}
+
+
+
+/* ═════════ CARDIA FIX — MULTIPLE PHOTO UPLOAD PREVIEW GRID ═════════ */
+#p9 .photo-preview-grid{
+  display:none;
+  margin:2.4cqw auto 0 !important;
+  width:100% !important;
+  height:auto !important;
+  max-height:28cqw !important;
+  overflow-y:auto !important;
+  border-radius:3.8cqw !important;
+  padding:1.6cqw !important;
+  background:rgba(255,255,255,.38) !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  box-shadow:0 10px 24px rgba(61,42,20,.08) !important;
+}
+#p9 .photo-preview-list{
+  display:grid !important;
+  grid-template-columns:repeat(5, 1fr) !important;
+  gap:1.15cqw !important;
+}
+#p9 .photo-preview-item{
+  position:relative !important;
+  aspect-ratio:1/1 !important;
+  overflow:hidden !important;
+  border-radius:2cqw !important;
+  background:rgba(255,255,255,.55) !important;
+  border:1px solid rgba(61,42,20,.16) !important;
+}
+#p9 .photo-preview-item img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+#p9 .photo-preview-count{
+  margin-top:1.3cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.45cqw !important;
+  line-height:1.35 !important;
+  color:rgba(61,42,20,.72) !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p9 .photo-preview-grid{ max-height:31cqw !important; }
+  #p9 .photo-preview-list{ grid-template-columns:repeat(5, 1fr) !important; }
+}
+
+
+
+/* ═════════ CARDIA UPDATE — RALPH/ROUSSANA STYLE MULTI-GUEST RSVP ═════════
+   Same RSVP behaviour as Ralph_Roussana: URL guest limit, locked prefilled guests,
+   per-guest Yes/No, internally scrollable guest list and sheet-only submission. */
+#p6 .rsvp-card.venice-rsvp-box{
+  max-height:116cqw !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+  touch-action:pan-y !important;
+  direction:ltr !important;
+}
+#p6 .rsvp-card.venice-rsvp-box::-webkit-scrollbar{ width:4px !important; }
+#p6 .rsvp-card.venice-rsvp-box::-webkit-scrollbar-thumb{
+  background:rgba(61,42,20,.24) !important;
+  border-radius:999px !important;
+}
+#p6 .guest-welcome-title{
+  margin:0 0 1.6cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:4.9cqw !important;
+  line-height:1.18 !important;
+  font-weight:600 !important;
+  color:#3d2a14 !important;
+  text-align:center !important;
+}
+#p6 .guest-welcome-note{
+  margin:0 auto 2.2cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.15cqw !important;
+  line-height:1.45 !important;
+  color:rgba(61,42,20,.82) !important;
+  text-align:center !important;
+}
+#p6 #manualGuestListWrap{
+  position:relative !important;
+  margin:2.2cqw auto 0 !important;
+  padding:0 !important;
+}
+#p6 .guest-slot-name-list{
+  display:grid !important;
+  gap:2.5cqw !important;
+  max-height:56cqw !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+  touch-action:pan-y !important;
+  padding:0 0 1.2cqw 1.8cqw !important;
+  scrollbar-width:thin !important;
+  scrollbar-color:rgba(61,42,20,.38) rgba(61,42,20,.08) !important;
+}
+#p6 .guest-slot-name-list::-webkit-scrollbar{ width:4px !important; }
+#p6 .guest-slot-name-list::-webkit-scrollbar-track{
+  background:rgba(61,42,20,.08) !important;
+  border-radius:999px !important;
+}
+#p6 .guest-slot-name-list::-webkit-scrollbar-thumb{
+  background:rgba(61,42,20,.38) !important;
+  border-radius:999px !important;
+}
+#p6 .guest-list-scroll-rail{
+  position:absolute !important;
+  left:-1.1cqw !important;
+  top:0 !important;
+  width:.75cqw !important;
+  height:100% !important;
+  border-radius:999px !important;
+  background:rgba(61,42,20,.10) !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+#p6 #manualGuestListWrap.is-scrollable .guest-list-scroll-rail{ opacity:1 !important; }
+#p6 .guest-list-scroll-thumb{
+  position:absolute !important;
+  left:0 !important;
+  top:0 !important;
+  width:100% !important;
+  min-height:18% !important;
+  border-radius:999px !important;
+  background:rgba(61,42,20,.42) !important;
+}
+#p6 .guest-list-bottom-fade{
+  position:absolute !important;
+  left:0 !important;
+  right:0 !important;
+  bottom:0 !important;
+  height:7cqw !important;
+  pointer-events:none !important;
+  opacity:0 !important;
+  background:linear-gradient(180deg, rgba(255,255,255,0), rgba(246,238,222,.92)) !important;
+  border-radius:0 0 4cqw 4cqw !important;
+}
+#p6 #manualGuestListWrap.is-scrollable:not(.at-bottom) .guest-list-bottom-fade{ opacity:1 !important; }
+#p6 .guest-list-scroll-cue{
+  position:absolute !important;
+  left:50% !important;
+  bottom:1.4cqw !important;
+  transform:translateX(-50%) !important;
+  z-index:3 !important;
+  padding:.8cqw 2.2cqw !important;
+  border-radius:999px !important;
+  background:rgba(255,255,255,.74) !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  color:#3d2a14 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.55cqw !important;
+  line-height:1 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  box-shadow:0 6px 18px rgba(61,42,20,.08) !important;
+  animation:guestScrollNudge 1.25s ease-in-out infinite;
+}
+#p6 #manualGuestListWrap.is-scrollable:not(.at-bottom) .guest-list-scroll-cue{ opacity:.96 !important; }
+@keyframes guestScrollNudge{
+  0%,100%{ transform:translateX(-50%) translateY(0); }
+  50%{ transform:translateX(-50%) translateY(3px); }
+}
+#p6 .guest-slot-name-box{
+  padding:2.8cqw 2.8cqw 2.6cqw !important;
+  border-radius:4.2cqw !important;
+  background:rgba(255,255,255,.62) !important;
+  border:1px solid rgba(61,42,20,.18) !important;
+  box-shadow:0 8px 20px rgba(61,42,20,.07) !important;
+}
+#p6 .guest-slot-name-box.locked{
+  background:rgba(255,255,255,.75) !important;
+  border-color:rgba(61,42,20,.26) !important;
+}
+#p6 .guest-slot-name-label{
+  display:block !important;
+  margin:0 0 1.2cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.05cqw !important;
+  line-height:1.25 !important;
+  font-weight:600 !important;
+  color:#3d2a14 !important;
+  text-align:left !important;
+  letter-spacing:.02em !important;
+  text-transform:none !important;
+}
+#p6 .guest-slot-name-box > input{
+  width:100% !important;
+  border:none !important;
+  border-bottom:1.5px solid rgba(61,42,20,.32) !important;
+  border-radius:0 !important;
+  background:transparent !important;
+  padding:1.5cqw 0 !important;
+  margin:0 !important;
+  outline:none !important;
+  color:#3d2a14 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.45cqw !important;
+  line-height:1.25 !important;
+  letter-spacing:0 !important;
+  text-align:left !important;
+}
+#p6 .guest-slot-name-box > input::placeholder{ color:rgba(61,42,20,.42) !important; }
+#p6 .guest-slot-name-box > input[readonly]{ opacity:.86 !important; }
+#p6 .guest-slot-attendance{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+  gap:2.2cqw !important;
+  margin-top:2.1cqw !important;
+}
+#p6 .guest-slot-attendance > span{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.9cqw !important;
+  line-height:1.2 !important;
+  color:rgba(61,42,20,.82) !important;
+  white-space:nowrap !important;
+}
+#p6 .guest-response-options{
+  display:flex !important;
+  align-items:center !important;
+  gap:1.4cqw !important;
+  direction:ltr !important;
+}
+#p6 .guest-response-options input{
+  position:absolute !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+}
+#p6 .guest-response-pill{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-width:11cqw !important;
+  min-height:6.5cqw !important;
+  border-radius:999px !important;
+  border:1px solid rgba(61,42,20,.25) !important;
+  background:rgba(255,255,255,.66) !important;
+  color:#3d2a14 !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.35cqw !important;
+  letter-spacing:.08em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  cursor:pointer !important;
+  box-shadow:0 6px 16px rgba(61,42,20,.07) !important;
+}
+#p6 .guest-response-options input:checked + .guest-response-pill{
+  background:rgba(61,42,20,.12) !important;
+  border-color:rgba(61,42,20,.50) !important;
+}
+#p6 .guest-total-line{
+  margin:2.4cqw auto 0 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3cqw !important;
+  line-height:1.35 !important;
+  color:#3d2a14 !important;
+  text-align:center !important;
+}
+#p6 .guest-total-line strong{
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:4.1cqw !important;
+  color:#3d2a14 !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .error-msg{
+  display:none;
+  margin:1.7cqw 0 0 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.75cqw !important;
+  line-height:1.35 !important;
+  color:#8b2f23 !important;
+  text-align:center !important;
+  letter-spacing:0 !important;
+  text-transform:none !important;
+}
+#p6 .rsvp-card.venice-rsvp-box .form-label{
+  display:block !important;
+  margin:1.8cqw 0 1.6cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.05cqw !important;
+  line-height:1.35 !important;
+  font-weight:600 !important;
+  color:#3d2a14 !important;
+  text-align:left !important;
+  letter-spacing:.02em !important;
+  text-transform:none !important;
+}
+#p6 .rsvp-card.venice-rsvp-box textarea.form-field{
+  min-height:22cqw !important;
+  border:1px solid rgba(61,42,20,.24) !important;
+  border-radius:3.6cqw !important;
+  padding:3cqw !important;
+  resize:none !important;
+  background:rgba(255,255,255,.58) !important;
+  color:#3d2a14 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.25cqw !important;
+  line-height:1.5 !important;
+  text-align:left !important;
+}
+#p6 .rsvp-card.venice-rsvp-box textarea.form-field:focus{
+  border-color:rgba(61,42,20,.58) !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p6 .guest-slot-name-list{ max-height:59cqw !important; }
+  #p6 .guest-welcome-title{ font-size:5.25cqw !important; }
+  #p6 .guest-welcome-note{ font-size:3.35cqw !important; }
+  #p6 .guest-slot-name-label{ font-size:3.25cqw !important; }
+  #p6 .guest-slot-name-box > input{ font-size:3.65cqw !important; }
+  #p6 .guest-slot-attendance > span{ font-size:3.05cqw !important; }
+  #p6 .guest-response-pill{ font-size:2.5cqw !important; min-width:12cqw !important; }
+}
+
+
+/* CARDIA FIX — cards can still scroll vertically, but horizontal gestures are handled by the panorama. */
+#p5 .venice-album,
+#p6 .rsvp-card.venice-rsvp-box,
+#p8 .wedding-list-card,
+#p9 .photo-upload-box{
+  touch-action: pan-y !important;
+}
+
+
+/* ═════════ CARDIA FINAL USER FIX — WEDDING LIST WISH MONEY ═════════
+   Kept from the latest version; parent/verse typography is cleaned separately below. */
+#p8 .wedding-list-card.wedding-list-whish-card{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:28cqw !important;
+  padding:8.2cqw 6.1cqw !important;
+}
+
+#p8 .wedding-list-text.whish-money-line{
+  margin:0 !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  text-align:center !important;
+  font-family:'Cormorant Garamond','Jost',serif !important;
+  font-size:5.05cqw !important;
+  line-height:1.35 !important;
+  font-weight:600 !important;
+  letter-spacing:.035em !important;
+  color:#3d2a14 !important;
+  opacity:1 !important;
+  word-spacing:normal !important;
+}
+
+#p8 .wedding-list-btn,
+#p8 .wedding-list-note{
+  display:none !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p8 .wedding-list-card.wedding-list-whish-card{
+    min-height:30cqw !important;
+    padding:8.8cqw 6.2cqw !important;
+  }
+  #p8 .wedding-list-text.whish-money-line{
+    font-size:5.45cqw !important;
+  }
+}
+
+
+/* Wedding list: keep the Arabic text, remove only the button, and show the Wish Money line. */
+#p8 .wedding-list-card{
+  display:block !important;
+  align-items:initial !important;
+  justify-content:initial !important;
+  min-height:0 !important;
+  padding:7.3cqw 6.1cqw 6.2cqw !important;
+}
+#p8 .wedding-list-text{
+  margin:0 auto 2.4cqw !important;
+  direction:ltr !important;
+  text-align:center !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:4.65cqw !important;
+  line-height:1.65 !important;
+  font-weight:500 !important;
+  font-style:italic !important;
+  letter-spacing:.01em !important;
+  word-spacing:normal !important;
+  color:#3d2a14 !important;
+  opacity:.96 !important;
+}
+#p8 .wedding-list-text.wish-money-line,
+#p8 .wedding-list-text.whish-money-line{
+  margin:2.4cqw auto 0 !important;
+  direction:ltr !important;
+  unicode-bidi:isolate !important;
+  text-align:center !important;
+  font-family:'Cormorant Garamond','Jost',serif !important;
+  font-size:5.05cqw !important;
+  line-height:1.35 !important;
+  font-weight:600 !important;
+  letter-spacing:.035em !important;
+  word-spacing:normal !important;
+  color:#3d2a14 !important;
+  opacity:1 !important;
+}
+#p8 .wedding-list-btn{
+  display:none !important;
+}
+#p8 .wedding-list-note{
+  display:block !important;
+  margin-top:2.6cqw !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.45cqw !important;
+  line-height:1.45 !important;
+  letter-spacing:.02em !important;
+  color:#3d2a14 !important;
+  opacity:.72 !important;
+  text-align:center !important;
+  text-transform:none !important;
+}
+
+@media (max-width:600px), (pointer:coarse){
+  #p8 .wedding-list-text{
+    font-size:4.85cqw !important;
+    line-height:1.68 !important;
+  }
+  #p8 .wedding-list-text.wish-money-line,
+  #p8 .wedding-list-text.whish-money-line{
+    font-size:5.35cqw !important;
+  }
+  #p8 .wedding-list-note{
+    font-size:2.75cqw !important;
+  }
+}
+
+
+
+/* ═════════ CARDIA SURGICAL UPDATE — ONE PHOTO SLOT PER INVITATION ═════════
+   The photo panel now shows one shared image slot for the whole invitation, no matter how many guests are on the link. */
+#p9 .photo-upload-text{
+  margin-bottom:2.2cqw !important;
+}
+#p9 .photo-upload-name-label,
+#p9 .photo-upload-name-input,
+#p9 .photo-upload-drop,
+#p9 #photoPreviewWrap{
+  display:none !important;
+}
+#p9 .photo-upload-guest-list{
+  width:100% !important;
+  max-height:61cqw !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+  padding:1.2cqw 1.1cqw !important;
+  margin:1.2cqw auto 0 !important;
+  border-radius:3.8cqw !important;
+  background:rgba(255,255,255,.34) !important;
+  border:1px solid rgba(61,42,20,.14) !important;
+}
+#p9 .photo-upload-guest-list::-webkit-scrollbar{
+  width:4px !important;
+}
+#p9 .photo-upload-guest-list::-webkit-scrollbar-thumb{
+  background:rgba(61,42,20,.24) !important;
+  border-radius:999px !important;
+}
+#p9 .photo-guest-slot{
+  display:grid !important;
+  grid-template-columns:1fr 22cqw !important;
+  gap:2cqw !important;
+  align-items:center !important;
+  padding:2.3cqw !important;
+  margin-bottom:1.7cqw !important;
+  border-radius:3.6cqw !important;
+  background:rgba(255,255,255,.55) !important;
+  border:1px solid rgba(61,42,20,.16) !important;
+  box-shadow:0 8px 18px rgba(61,42,20,.06) !important;
+}
+#p9 .photo-guest-slot:last-child{
+  margin-bottom:0 !important;
+}
+#p9 .photo-guest-main{
+  min-width:0 !important;
+  text-align:left !important;
+}
+#p9 .photo-guest-label{
+  display:block !important;
+  margin:0 0 .8cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.6cqw !important;
+  line-height:1.25 !important;
+  font-weight:600 !important;
+  color:#3d2a14 !important;
+}
+#p9 .photo-guest-name-input{
+  display:block !important;
+  width:100% !important;
+  padding:1.4cqw 0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  border-bottom:1.5px solid rgba(61,42,20,.28) !important;
+  outline:none !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:3.15cqw !important;
+  line-height:1.25 !important;
+  text-align:left !important;
+  color:#3d2a14 !important;
+}
+#p9 .photo-guest-name-input[readonly]{
+  opacity:.82 !important;
+}
+#p9 .photo-guest-name-input::placeholder{
+  color:rgba(61,42,20,.42) !important;
+}
+#p9 .photo-guest-mini-status{
+  min-height:1.3em !important;
+  margin-top:.9cqw !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.35cqw !important;
+  line-height:1.25 !important;
+  color:rgba(61,42,20,.62) !important;
+}
+#p9 .photo-guest-mini-status.is-error{ color:#8b2f23 !important; opacity:1 !important; }
+#p9 .photo-guest-mini-status.is-success{ color:#2f6b45 !important; opacity:1 !important; font-weight:700 !important; }
+#p9 .photo-guest-photo-control{
+  position:relative !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:22cqw !important;
+  height:22cqw !important;
+  border-radius:3.2cqw !important;
+  overflow:hidden !important;
+  cursor:pointer !important;
+  background:rgba(255,255,255,.74) !important;
+  border:1px dashed rgba(61,42,20,.36) !important;
+}
+#p9 .photo-guest-photo-control input{
+  display:none !important;
+}
+#p9 .photo-guest-empty{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:.7cqw !important;
+  width:100% !important;
+  height:100% !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:2.05cqw !important;
+  line-height:1.1 !important;
+  letter-spacing:.06em !important;
+  text-transform:uppercase !important;
+  font-weight:800 !important;
+  color:#3d2a14 !important;
+  text-align:center !important;
+}
+#p9 .photo-guest-empty span:first-child{
+  font-size:5.2cqw !important;
+  line-height:1 !important;
+}
+#p9 .photo-guest-preview{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  display:block !important;
+}
+#p9 .photo-guest-sent-badge{
+  position:absolute !important;
+  inset:auto .9cqw .9cqw .9cqw !important;
+  padding:.8cqw 1cqw !important;
+  border-radius:999px !important;
+  background:rgba(47,107,69,.88) !important;
+  color:#fff !important;
+  font-family:'Jost',sans-serif !important;
+  font-size:1.7cqw !important;
+  line-height:1 !important;
+  letter-spacing:.08em !important;
+  font-weight:800 !important;
+  text-align:center !important;
+}
+#p9 .photo-upload-summary{
+  margin:1.5cqw 0 0 !important;
+  font-family:'Cormorant Garamond',serif !important;
+  font-size:2.55cqw !important;
+  line-height:1.35 !important;
+  color:rgba(61,42,20,.72) !important;
+}
+#p9 .photo-upload-btn{
+  margin-top:2.2cqw !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p9 .photo-upload-guest-list{ max-height:64cqw !important; }
+  #p9 .photo-guest-slot{ grid-template-columns:1fr 24cqw !important; }
+  #p9 .photo-guest-photo-control{ width:24cqw !important; height:24cqw !important; }
+  #p9 .photo-guest-label{ font-size:3.85cqw !important; }
+  #p9 .photo-guest-name-input{ font-size:3.35cqw !important; }
+  #p9 .photo-guest-mini-status{ font-size:2.55cqw !important; }
+  #p9 .photo-upload-summary{ font-size:2.8cqw !important; }
+}
+
+
+
+/* ═════════ CARDIA SURGICAL FIX — RSVP RADIO CLICK SCROLL JUMP ═════════
+   On mobile, selecting Yes/No on the lower guests could make the internal
+   guest list jump so only the last guest stayed visible. Keep hidden radios
+   anchored inside their own pill and keep the list scroll position stable. */
+#p6 .guest-response-options label{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#p6 .guest-response-options input[type="radio"]{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  width:1px !important;
+  height:1px !important;
+  margin:0 !important;
+  padding:0 !important;
+  opacity:0 !important;
+  pointer-events:none !important;
+  clip:rect(0 0 0 0) !important;
+  clip-path:inset(50%) !important;
+  overflow:hidden !important;
+  appearance:none !important;
+  -webkit-appearance:none !important;
+}
+#p6 .guest-slot-name-list{
+  align-content:start !important;
+  scroll-behavior:auto !important;
+}
+
+/* ═════════ CARDIA UPDATE — ONE PHOTO PER INVITATION VISUAL OVERRIDE ═════════ */
+#p9 .photo-upload-guest-list{
+  max-height:none !important;
+  overflow:visible !important;
+}
+#p9 .photo-guest-slot{
+  margin-bottom:0 !important;
+  grid-template-columns:1fr 24cqw !important;
+}
+#p9 .photo-guest-photo-control{
+  width:24cqw !important;
+  height:24cqw !important;
+}
+#p9 .photo-upload-summary{
+  font-style:italic !important;
+}
+#p9 .photo-upload-btn{
+  margin-top:2cqw !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p9 .photo-guest-slot{ grid-template-columns:1fr 25cqw !important; }
+  #p9 .photo-guest-photo-control{ width:25cqw !important; height:25cqw !important; }
+}
+
+
+/* ═════════ CARDIA FIX — SIMPLE ONE-PHOTO PANEL ═════════
+   Removes the visible invitation name/title field and keeps only one clean upload tile. */
+#p9 .photo-secret-title{
+  font-size:9.8cqw !important;
+  line-height:.88 !important;
+  white-space:normal !important;
+  max-width:92% !important;
+  margin:0 auto !important;
+  text-align:center !important;
+}
+#p9 .photo-upload-text{
+  margin-bottom:2.8cqw !important;
+}
+#p9 .photo-upload-guest-list{
+  padding:2.2cqw !important;
+  margin-top:1.5cqw !important;
+  background:rgba(255,255,255,.30) !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:1.4cqw !important;
+  padding:3cqw !important;
+  margin:0 !important;
+  grid-template-columns:none !important;
+  text-align:center !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-main,
+#p9 .photo-guest-label,
+#p9 .photo-guest-name-input{
+  display:none !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-photo-control{
+  width:38cqw !important;
+  height:30cqw !important;
+  max-width:170px !important;
+  max-height:135px !important;
+  border-radius:4cqw !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-mini-status{
+  min-height:auto !important;
+  margin:0 !important;
+  font-size:2.6cqw !important;
+  text-align:center !important;
+}
+#p9 .photo-guest-empty{
+  font-size:2.15cqw !important;
+}
+#p9 .photo-guest-empty span:first-child{
+  font-size:5.6cqw !important;
+}
+#p9 .photo-upload-summary{
+  margin-top:1.8cqw !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p9 .photo-secret-title{
+    font-size:10.1cqw !important;
+  }
+  #p9 .photo-guest-slot.simple-photo-slot .photo-guest-photo-control{
+    width:40cqw !important;
+    height:31cqw !important;
+  }
+  #p9 .photo-guest-slot.simple-photo-slot .photo-guest-mini-status{
+    font-size:2.85cqw !important;
+  }
+}
+
+
+/* ═════════ CARDIA FINAL TWEAK — SMALLER PHOTO UPLOAD SECTION ═════════
+   Keeps the one-photo-per-invitation behavior, but makes Panel 9 cleaner:
+   smaller paper card, smaller photo tile, tighter spacing. */
+#p9 .photo-section-copy{
+  top:7.8% !important;
+  width:82% !important;
+}
+#p9 .photo-upload-box{
+  max-width:62cqw !important;
+  margin:2.6cqw auto 0 !important;
+  padding:4.2cqw 4.4cqw 4cqw !important;
+  border-radius:5.2cqw !important;
+}
+#p9 .photo-upload-text{
+  font-size:2.85cqw !important;
+  line-height:1.48 !important;
+  margin:0 auto 1.8cqw !important;
+}
+#p9 .photo-upload-guest-list{
+  padding:1.35cqw !important;
+  margin-top:.8cqw !important;
+  border-radius:3.4cqw !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot{
+  padding:1.9cqw !important;
+  gap:.9cqw !important;
+  border-radius:3.2cqw !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-photo-control{
+  width:30cqw !important;
+  height:22cqw !important;
+  max-width:132px !important;
+  max-height:98px !important;
+  border-radius:3.2cqw !important;
+}
+#p9 .photo-guest-empty{
+  font-size:1.95cqw !important;
+  gap:.45cqw !important;
+}
+#p9 .photo-guest-empty span:first-child{
+  font-size:4.7cqw !important;
+}
+#p9 .photo-guest-slot.simple-photo-slot .photo-guest-mini-status{
+  font-size:2.25cqw !important;
+}
+#p9 .photo-upload-summary{
+  margin-top:1.35cqw !important;
+  font-size:2.25cqw !important;
+}
+#p9 .photo-upload-btn{
+  margin-top:1.6cqw !important;
+  padding:2cqw 2.6cqw !important;
+  font-size:2.05cqw !important;
+}
+#p9 .photo-upload-status{
+  margin-top:1.2cqw !important;
+  font-size:2.35cqw !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  #p9 .photo-section-copy{
+    top:7.4% !important;
+    width:82% !important;
+  }
+  #p9 .photo-upload-box{
+    max-width:64cqw !important;
+    padding:4.3cqw 4.4cqw 4.1cqw !important;
+  }
+  #p9 .photo-upload-text{
+    font-size:2.95cqw !important;
+    line-height:1.5 !important;
+  }
+  #p9 .photo-guest-slot.simple-photo-slot .photo-guest-photo-control{
+    width:31cqw !important;
+    height:22.5cqw !important;
+  }
+  #p9 .photo-guest-slot.simple-photo-slot .photo-guest-mini-status{
+    font-size:2.4cqw !important;
+  }
+  #p9 .photo-upload-summary{
+    font-size:2.4cqw !important;
+  }
+}
+
 </style>
 </head>
-<body class="arabic-mode">
+<body>
 
 <div id="stage" class="invitation-locked assets-loading">
 <div id="assetLoader" class="asset-loader" role="status" aria-live="polite">
   <div class="loader-card">
-    <div class="loader-script">ستراسبورغ</div>
-    <div class="loader-sub">يتم تحميل الدعوة الشتوية</div>
+    <p class="loader-script">Rody & Pamela</p>
+    <div class="loader-sub">Loading</div>
     <div class="loader-bar"><span id="loaderBar"></span></div>
     <div class="loader-percent" id="loaderPercent">0%</div>
   </div>
 </div>
 <audio id="bgMusic" preload="auto" loop>
-  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/paulyudin-romantic-wedding-piano-160698.mp3" type="audio/mpeg">
+  <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/Indila_Love_Story.mp3" type="audio/mpeg">
 </audio>
-<button id="musicBtn" type="button" aria-label="تشغيل أو إيقاف الموسيقى">♪</button>
+<button id="musicBtn" type="button" aria-label="Play or pause music">♪</button>
 <img id="travelGondola"
      src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Gondola3.png"
      alt="">
 <div id="progress"></div>
 <div id="hint">
   <span class="arr l">←</span>
-  <span>حرّك يمينًا أو يسارًا للاستكشاف</span>
+  <span>Swipe left or right to explore</span>
   <span class="arr">→</span>
 </div>
 
@@ -2627,12 +4813,12 @@ body::before{
 
        
        
-         <img id="bg-sky2"
+         <img id="bg-sky-base"
        src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky4.png"
        alt="">
        
        
-       <img id="bg-sky2"
+       <img id="bg-sky-aurora-left"
        src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky_aurora.png"
        alt="">  
        
@@ -2649,11 +4835,6 @@ body::before{
        alt="">
 
   <img id="bg-sea1"
-       src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
-       alt="">
-
-
-<img id="bg-sea1"
        src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png"
        alt="">
        
@@ -2748,7 +4929,27 @@ body::before{
 
 
  <img class="layer l-Road"
-         src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Venice/Road2.png" alt="">
+         src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png" alt="">
+
+    <div class="road-location-layer" aria-label="Programme location links">
+      <a class="road-location-hit road-location-church"
+         href="https://maps.app.goo.gl/16AcHzhR46aD9QcH9"
+         target="_blank" rel="noopener"
+         aria-label="Open church location"></a>
+      <a class="road-location-hit road-location-reception"
+         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
+         target="_blank" rel="noopener"
+         aria-label="Open Octagon location for reception drinks"></a>
+      <a class="road-location-hit road-location-dinner"
+         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
+         target="_blank" rel="noopener"
+         aria-label="Open Octagon location for dinner"></a>
+      <a class="road-location-hit road-location-party"
+         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
+         target="_blank" rel="noopener"
+         aria-label="Open Octagon location for celebration"></a>
+    </div>
+
 
 
 
@@ -2775,22 +4976,22 @@ body::before{
     <div class="content">
       <div class="fixed-copy cover-copy">
 
-        <div class="script name">توماس</div>
+        <div class="script name">Rody</div>
         <div class="script ampersand" style="display:block;opacity:0.18;color:#fff;">﹠</div>
-        <div class="script name">سارة</div>
+        <div class="script name">Pamela</div>
         <div class="orn" ><span></span><em>✦</em><span></span></div>
-        <div class="sans families" style="color:var(--deep);opacity:0.6;">بمشاركة عائلتيهما وبكل محبة</div>
-       <div class="serif date" style="color:#fff;font-weight:800;letter-spacing:0.1em;opacity:0.85;font-size:150px;"> ١٤ آب ٢٠٢٧ · إهدن، لبنان</div>
-        <button id="openInvitationBtn" class="open-invitation-btn" type="button">افتح الدعوة</button>
+
+       <div class="serif date" style="color:#fff;font-weight:800;letter-spacing:0.1em;opacity:0.85;font-size:150px;">December 26, 2026</div>
+        <button id="openInvitationBtn" class="open-invitation-btn" type="button">Open the Invitation</button>
       </div>
     </div>
   </div>
 
   <!-- ══════════════════════════════════
-       PANEL 2 — Our Story
-       Buildings: 3.png (left), 4.png (right)
+       PANEL 2 — Parents Invitation
+       Formal two-column parents layout
   ══════════════════════════════════ -->
-  <div class="panel" id="p2" style="left:150cqw;">
+  <div class="panel" id="p2">
 
     <div class="water-shimmer"></div>
 
@@ -2798,32 +4999,49 @@ body::before{
 
 
     <div class="content">
-      <div class="fixed-copy story-copy">
-        <div class="script" style="color:#fff;">قصتنا</div>
-        <div class="orn"><span></span><em>✦</em><span></span></div>
-        <p class="serif" style="color:#fff;font-style:italic;opacity:0.86;font-weight:800;">
-          روحان جمعتهما الأقدار<br>
-          تحت ثلج ستراسبورغ الهادئ،<br>
-          فاختارتا أن تسيرا معًا<br>
-          حبًّا… إلى الأبد.
-        </p>
+      <div class="fixed-copy parents-formal-copy">
+        <div class="parents-two-columns" aria-label="Parents of the bride and groom">
+          <div class="parents-col groom-parents">
+            <div class="parents-name"><span>Hasib and Zoubaida</span><span>Rizk</span></div>
+          </div>
+          <div class="parents-symbol" aria-hidden="true">&amp;</div>
+          <div class="parents-col bride-parents">
+            <div class="parents-name"><span>Khalil and Odfic</span><span>Aoude</span></div>
+          </div>
+        </div>
+        <div class="parents-invitation-phrase">Request the honor of your presence<br>to celebrate the wedding of their children</div>
+        
+         <div class="parents-two-columns" aria-label="Parents of the bride and groom">
+          <div class="parents-col groom-parents">
+            <div class="parents-name"><span>Rody</span></div>
+          </div>
+          <div class="parents-symbol" aria-hidden="true">&amp;</div>
+          <div class="parents-col bride-parents">
+            <div class="parents-name"><span>Pamela</span></div>
+          </div>
+        </div>
+        
+        
       </div>
     </div>
   </div>
   <!-- ══════════════════════════════════
-       PANEL 3 — Program
-       Full celebration timeline
+       PANEL 3 — Bible Verse
+       Separate verse panel
   ══════════════════════════════════ -->
-  <div class="panel" id="p3" style="left:320cqw;">
+  <div class="panel" id="p3">
    
     <div class="water-shimmer"></div>
 
     <div class="content">
-      <div class="fixed-copy programme-copy">
-        <div class="script" style="color:#fff;">البرنامج</div>
+      <div class="fixed-copy verse-copy">
+        <div class="script" style="color:#fff;">Matthew 19:6</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-      
-
+    
+        <p class="verse-text">
+          "So they are no longer two, but one flesh.<br>
+          Therefore what God has joined together, let no one separate."
+        </p>
       </div>
     </div>
   </div>
@@ -2838,27 +5056,27 @@ body::before{
        PANEL 5 — Photo Album
        Buildings: 13.png (left), 14.png (right)
   ══════════════════════════════════ -->
-  <div class="panel" id="p5" style="left:515cqw;">
+  <div class="panel" id="p5" style="left:558cqw;">
 
     <div class="water-shimmer"></div>
 
     <div class="content">
       <div class="fixed-copy album-copy">
-        <div class="script" style="color:#fff;">ألبوم الصور</div>
+        <div class="script" style="color:#fff;">Photo Album</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans" style="color:#fff;opacity:.52;font-weight:800;">اضغط أدناه لمشاهدة الصور بالحجم الكامل</div>
+        <div class="sans" style="color:#fff;opacity:.52;font-weight:800;">Tap below to view the photos full-size</div>
 
-        <div class="venice-album locked" id="veniceAlbum" aria-label="معاينة ألبوم الصور">
+        <div class="venice-album locked" id="veniceAlbum" aria-label="Photo album preview">
           <div class="venice-album-track" id="veniceAlbumTrack">
-            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="صورة العروسين ١"></div>
-            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="صورة العروسين ٢"></div>
-            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="صورة العروسين ٣"></div>
+            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Photo of the couple 1"></div>
+            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Photo of the couple 2"></div>
+            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Photo of the couple 3"></div>
           </div>
-          <button class="venice-album-arrow prev" type="button" aria-label="الصورة السابقة">‹</button>
-          <button class="venice-album-arrow next" type="button" aria-label="الصورة التالية">›</button>
+          <button class="venice-album-arrow prev" type="button" aria-label="Previous photo">‹</button>
+          <button class="venice-album-arrow next" type="button" aria-label="Next photo">›</button>
         </div>
         <div class="venice-album-counter" id="veniceAlbumCounter">1 / 3</div>
-        <button class="open-album-btn" id="openAlbumBtn" type="button">فتح ألبوم الصور</button>
+        <button class="open-album-btn" id="openAlbumBtn" type="button">Open Photo Album</button>
       </div>
     </div>
   </div>
@@ -2873,18 +5091,16 @@ body::before{
 
     <div class="content">
       <div class="fixed-copy wedding-list-copy">
-        <div class="script">قائمة الهدايا</div>
+        <div class="script">Gift List</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans">ملاحظة صغيرة لأحبّتنا</div>
+
 
         <div class="wedding-list-card">
           <p class="wedding-list-text">
-            حضوركم هو أجمل هدية. ولمن يرغب بالمساهمة،
-            يمكن مشاركة رابط قائمة الهدايا هنا.
+            Your presence is the greatest gift. For those who wish to contribute, you may do so via our account:
           </p>
-          <!-- Replace href="#" with the real wedding-list URL when ready. -->
-          <a class="wedding-list-btn" href="#" onclick="event.preventDefault(); event.stopPropagation();">فتح قائمة الهدايا</a>
-          <div class="sans wedding-list-note">بكل حب وامتنان</div>
+          <p class="wedding-list-text wish-money-line" dir="ltr">Wish Money: #xxxxxxx</p>
+
         </div>
       </div>
     </div>
@@ -2900,58 +5116,77 @@ body::before{
 
     <div class="content">
       <div class="fixed-copy rsvp-copy">
-        <div class="script" style="color:#fff;font-weight:900;">تأكيد الحضور</div>
+        <div class="script" style="color:#fff;font-weight:900;">RSVP</div>
         <div class="orn" style="margin:4px auto 0;"><span></span><em>✦</em><span></span></div>
-        <div class="sans" style="color:#fff;opacity:0.5;margin-bottom:4px;">نرجو الرد قبل ١ آب ٢٠٢٧</div>
-        <div class="rsvp-card venice-rsvp-box">
-          <div class="step-dots">
+        <div class="sans" style="color:#fff;opacity:0.5;margin-bottom:4px;">Kindly confirm your attendance</div>
+
+        <div class="rsvp-card venice-rsvp-box" id="rsvp" aria-label="RSVP form">
+          <div class="step-dots" aria-hidden="true">
             <span class="step-dot on" id="dot-1"></span>
             <span class="step-dot" id="dot-2"></span>
-            <span class="step-dot" id="dot-3"></span>
           </div>
 
-          <div id="step1" class="rsvp-step">
-            <label class="form-label" for="guestName">الاسم الكامل</label>
-            <input id="guestName" class="form-field" type="text" placeholder="اكتب اسمك الكامل" autocomplete="name" />
-            <p class="error-msg" id="errName">يرجى إدخال الاسم.</p>
-            <button class="btn-solid rsvp-main-btn" type="button" onclick="goStep(1,2)">متابعة</button>
+          <div id="step1" class="rsvp-step guest-welcome-step">
+            <h3 class="guest-welcome-title"> <span id="guestWelcomeName">Dear Guest</span></h3>
+            <p id="personalGuestNote" class="guest-welcome-note">Please enter the guest names to confirm attendance.</p>
+
+            <div id="manualGuestListWrap">
+              <div id="guestSlotNameList" class="guest-slot-name-list" aria-label="Guest RSVP list"></div>
+              <div class="guest-list-scroll-rail" aria-hidden="true"><span id="guestListScrollThumb" class="guest-list-scroll-thumb"></span></div>
+              <div class="guest-list-bottom-fade" aria-hidden="true"></div>
+              <div class="guest-list-scroll-cue" aria-hidden="true">Scroll down ↓</div>
+            </div>
+
+            <p class="guest-total-line">Number of attending guests: <strong id="attendingGuestCount">0</strong></p>
+            <p class="error-msg" id="errName" style="display:none;">Please enter at least one guest name.</p>
+
+            <button class="btn-solid rsvp-main-btn" id="continueToMessageBtn" type="button">Continue →</button>
           </div>
 
           <div id="step2" class="rsvp-step" style="display:none;">
-            <p class="question">هل ستحضرون؟</p>
-            <div class="attend-grid">
-              <label class="attend-opt"><input type="radio" name="attend" value="yes" /><span class="attend-box"><span class="attend-label">نقبل الدعوة بفرح</span></span></label>
-              <label class="attend-opt"><input type="radio" name="attend" value="no" /><span class="attend-box"><span class="attend-label">نعتذر بمحبة</span></span></label>
-            </div>
-            <div id="guestCountWrap" style="display:none; margin-bottom:10px;">
-              <label class="form-label guest-label">عدد الضيوف</label>
-              <div class="count-row">
-                <button class="count-btn" type="button" onclick="changeCount(-1)">−</button>
-                <span class="guest-num" id="guestCount">1</span>
-                <button class="count-btn" type="button" onclick="changeCount(1)">+</button>
-              </div>
-            </div>
-            <p class="error-msg" id="errAttend">يرجى اختيار أحد الخيارات.</p>
-            <div class="btn-grid">
-              <button class="btn-soft" type="button" onclick="goStep(2,1)">رجوع</button>
-              <button class="btn-solid" type="button" onclick="goStep(2,3)">متابعة</button>
-            </div>
-          </div>
+            <label class="form-label" for="guestMsg">Leave a loving message <span style="font-weight:400;letter-spacing:.04em;text-transform:none;">(optional)</span></label>
+            <textarea id="guestMsg" class="form-field" rows="4" placeholder="Share a lovely wish for Pamela and Rody…"></textarea>
 
-          <div id="step3" class="rsvp-step" style="display:none;">
-            <label class="form-label" for="guestMsg" >اترك رسالة محبة <span style="font-weight:400;">(اختياري)</span></label>
-            <textarea id="guestMsg" class="form-field" rows="4" placeholder="شارك أمنية جميلة لتوماس وسارة…"></textarea>
             <div class="btn-grid">
-              <button class="btn-soft" type="button" onclick="goStep(3,2)">رجوع</button>
-              <button class="btn-solid" id="sendBtn" type="button" onclick="submitRSVP()">إرسال ✦</button>
+              <button class="btn-soft" id="backToGuestsBtn" type="button">Back</button>
+              <button class="btn-solid" id="sendBtn" type="button">Send ✦</button>
             </div>
           </div>
 
           <div id="stepOk" style="display:none; text-align:center; padding:18px 0;">
             <div style="font-size:38px; margin-bottom:8px;">✨</div>
-            <h3 style="font-family:'Great Vibes',cursive; font-size:44px; color:#373222; margin-bottom:10px;">شكرًا لكم!</h3>
-            <p id="okMsg" style="font-family:'Cormorant Garamond',serif; font-size:16px; line-height:1.55; color:#373222;"></p>
+            <h3 style="font-family:'Cormorant Garamond',serif; font-size:34px; color:#3d2a14; margin-bottom:10px;">Thank You!</h3>
+            <p id="okMsg" style="font-family:'Jost',sans-serif; font-size:16px; line-height:1.55; color:#3d2a14;"></p>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════
+       PANEL 9 — Guest Photo Upload
+       Separate section after RSVP for the magnet souvenir surprise
+  ══════════════════════════════════ -->
+  <div class="panel" id="p9" style="left:950cqw;">
+
+    <div class="water-shimmer"></div>
+
+    <div class="content">
+      <div class="fixed-copy photo-section-copy">
+        <div class="script photo-secret-title" style="color:#fff;font-weight:900;">A Secret for the<br>Big Day</div>
+        <div class="orn"><span></span><em>✦</em><span></span></div>
+
+        <div id="photoUploadBox" class="photo-upload-box permanent-photo-upload" aria-live="polite">
+
+          <p class="photo-upload-text">
+           
+            Pick the photo that says “this is so us” <br> for a surprise 🎁 on the wedding day 🤍
+          </p>
+
+          <div id="photoUploadGuestList" class="photo-upload-guest-list" aria-label="Invitation photo"></div>
+          <p id="photoUploadSummary" class="photo-upload-summary">One photo per invitation — choose wisely 😉</p>
+          <button class="photo-upload-btn" id="photoUploadBtn" type="button" onclick="uploadGuestPhoto()" disabled>Send Our Photo</button>
+          <p class="photo-upload-status" id="photoUploadStatus"></p>
         </div>
       </div>
     </div>
@@ -2961,7 +5196,7 @@ body::before{
        PANEL 7 — Closing
        Buildings: 18.png (left), 19.png (right)
   ══════════════════════════════════ -->
-  <div class="panel" id="p7" style="left:950cqw;">
+  <div class="panel" id="p7" style="left:1100cqw;">
 
     <div class="water-shimmer"></div>
 
@@ -2969,12 +5204,12 @@ body::before{
 
     <div class="content">
       <div class="fixed-copy closing-copy">
-        <div class="sans" style="color:#fff;opacity:0.52;margin-bottom:14px;font-weight:800;">ننتظر أن نحتفل معكم بكل حب</div>
-        <div class="script" style="color:#fff;">توماس وسارة</div>
+        <div class="serif" style="color:#fff;opacity:0.52;margin-bottom:14px;font-weight:500;font-style:italic;">We can't wait to celebrate with you, with all our love</div>
+        <div class="script" style="color:#fff;">Rody & Pamela </div>
         <div style="font-size:30px;margin:14px 0;color:#fff;">♥</div>
-        <div class="serif" style="color:#fff;letter-spacing:0.12em;font-style:italic;opacity:0.78;">١٤ آب ٢٠٢٧ · إهدن، لبنان</div>
+        <div class="serif" style="color:#fff;letter-spacing:0.12em;font-style:italic;opacity:0.78;">December 26, 2026</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <div class="sans" style="color:#fff;opacity:0.42;margin-top:12px;font-weight:800;">صُمّمت بحب · Cardia Studios</div>
+        <a class="serif" href="https://www.instagram.com/cardiastudios/?hl=en" target="_blank" rel="noopener noreferrer" style="color:#fff;opacity:0.78;font-style:italic;margin-top:12px;font-weight:800;text-decoration:none;display:inline-block;">Powered by @cardiastudios</a>
       </div>
     </div>
   </div>
@@ -2983,10 +5218,10 @@ body::before{
 
 <div id="albumLightbox" class="album-lightbox" aria-hidden="true">
   <div class="album-lightbox-inner">
-    <button class="album-lightbox-close" id="albumLightboxClose" type="button" aria-label="إغلاق ألبوم الصور">×</button>
-    <button class="album-lightbox-arrow prev" id="albumLightboxPrev" type="button" aria-label="الصورة السابقة">‹</button>
-    <img id="albumLightboxImage" class="album-lightbox-img" src="" alt="صورة من الألبوم بالحجم الكامل">
-    <button class="album-lightbox-arrow next" id="albumLightboxNext" type="button" aria-label="الصورة التالية">›</button>
+    <button class="album-lightbox-close" id="albumLightboxClose" type="button" aria-label="Close photo album">×</button>
+    <button class="album-lightbox-arrow prev" id="albumLightboxPrev" type="button" aria-label="Previous photo">‹</button>
+    <img id="albumLightboxImage" class="album-lightbox-img" src="" alt="Full-size album photo">
+    <button class="album-lightbox-arrow next" id="albumLightboxNext" type="button" aria-label="Next photo">›</button>
     <div class="album-lightbox-counter" id="albumLightboxCounter">1 / 3</div>
   </div>
 </div>
@@ -2998,13 +5233,55 @@ body::before{
   const hint     = document.getElementById('hint');
   const stage    = document.getElementById('stage');
   const travelGondola = document.getElementById('travelGondola');
-  const PANELS   = 10.5;
+  const PANELS   = 12;
 
   let offset = 0;
   let target = 0;
   let lastOffset = 0;
   let boatDir = 1;
   let invitationOpened = false;
+
+  let pointerStartedInsideInteractive = false;
+  let touchStartedInsideInteractive = false;
+
+  function isInteractiveTarget(targetEl) {
+    return Boolean(targetEl && targetEl.closest && targetEl.closest(
+      'button, a, input, select, textarea, label, .rsvp-card, .wedding-list-card, .photo-upload-section, .photo-upload-box, #manualGuestListWrap, #guestSlotNameList, .album-lightbox, .venice-album'
+    ));
+  }
+
+
+  /* CARDIA FIX — allow horizontal panorama drag even when the finger/mouse starts
+     on RSVP, album, wedding list, or photo-upload cards. Vertical movement inside
+     scrollable RSVP areas is still left alone so the guest list can scroll. */
+  const DRAGGABLE_INTERACTIVE_SELECTOR = '.rsvp-card, .wedding-list-card, .photo-upload-box, .venice-album, .road-location-layer, #manualGuestListWrap, #guestSlotNameList';
+  const VERTICAL_SCROLL_SELECTOR = '.rsvp-card, #manualGuestListWrap, #guestSlotNameList, .photo-upload-box';
+
+  function closestMatch(targetEl, selector) {
+    return targetEl && targetEl.closest ? targetEl.closest(selector) : null;
+  }
+
+  function isDraggableInteractiveZone(targetEl) {
+    return Boolean(closestMatch(targetEl, DRAGGABLE_INTERACTIVE_SELECTOR));
+  }
+
+  function getVerticalScrollable(targetEl) {
+    const candidates = [];
+    let el = closestMatch(targetEl, VERTICAL_SCROLL_SELECTOR);
+    while (el && el !== stage) {
+      candidates.push(el);
+      el = el.parentElement && el.parentElement.closest ? el.parentElement.closest(VERTICAL_SCROLL_SELECTOR) : null;
+    }
+    return candidates.find(node => node.scrollHeight > node.clientHeight + 2) || null;
+  }
+
+  function canUseVerticalScroll(targetEl, deltaY) {
+    const scroller = getVerticalScrollable(targetEl);
+    if (!scroller) return false;
+    const atTop = scroller.scrollTop <= 0;
+    const atBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 2;
+    return (deltaY < 0 && !atTop) || (deltaY > 0 && !atBottom);
+  }
 
   const panelW = () => stage.clientWidth;
   const maxOff = () => (PANELS - 1) * panelW();
@@ -3051,17 +5328,28 @@ body::before{
 
   // WHEEL
   window.addEventListener('wheel', e => {
-    e.preventDefault();
     if (albumLightboxOpen) return;
+
+    const overDraggableZone = isDraggableInteractiveZone(e.target);
+    const mostlyHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+
+    /* Keep vertical wheel/trackpad movement available for the RSVP guest list/card.
+       Horizontal wheel/trackpad movement over these cards still moves the panorama. */
+    if (overDraggableZone && !mostlyHorizontal && canUseVerticalScroll(e.target, e.deltaY)) return;
+
+    if (isInteractiveTarget(e.target) && !overDraggableZone) return;
+    e.preventDefault();
     if (!invitationOpened) { target = 0; return; }
     hideHint();
-    const d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+    const d = mostlyHorizontal ? e.deltaX : e.deltaY;
     target = clamp(target + d * 1.8, 0, maxOff());
-  }, { passive: false });
+  }, { passive: false, capture: true });
 
   // DRAG
   let dragX = null, dragBase = 0;
   stage.addEventListener('mousedown', e => {
+    pointerStartedInsideInteractive = isInteractiveTarget(e.target);
+    if (pointerStartedInsideInteractive) { dragX = null; return; }
     if (albumLightboxOpen) { dragX = null; return; }
     if (!invitationOpened) { dragX = null; target = 0; return; }
     dragX = e.clientX;
@@ -3070,16 +5358,19 @@ body::before{
     hideHint();
   });
   window.addEventListener('mousemove', e => {
+    if (pointerStartedInsideInteractive) return;
     if (albumLightboxOpen) { dragX = null; return; }
     if (!invitationOpened) { target = 0; dragX = null; return; }
     if (dragX === null) return;
     target = clamp(dragBase + (dragX - e.clientX) * 1.5, 0, maxOff());
   });
-  window.addEventListener('mouseup',   () => { dragX = null; stage.style.cursor = 'ew-resize'; });
+  window.addEventListener('mouseup',   () => { dragX = null; pointerStartedInsideInteractive = false; stage.style.cursor = 'ew-resize'; });
 
   // TOUCH
   let touchX = 0, touchBase = 0;
   stage.addEventListener('touchstart', e => {
+    touchStartedInsideInteractive = isInteractiveTarget(e.target);
+    if (touchStartedInsideInteractive) return;
     if (albumLightboxOpen) return;
     if (!invitationOpened) { target = 0; return; }
     touchX = e.touches[0].clientX;
@@ -3087,10 +5378,119 @@ body::before{
     hideHint();
   }, { passive: true });
   stage.addEventListener('touchmove',  e => {
+    if (touchStartedInsideInteractive) return;
     if (albumLightboxOpen) return;
     if (!invitationOpened) { target = 0; return; }
     target = clamp(touchBase + (touchX - e.touches[0].clientX) * 1.4, 0, maxOff());
   }, { passive: true });
+  stage.addEventListener('touchend', () => { touchStartedInsideInteractive = false; }, { passive: true });
+  stage.addEventListener('touchcancel', () => { touchStartedInsideInteractive = false; }, { passive: true });
+
+  /* CARDIA FIX — capture horizontal drag starting inside interactive cards.
+     The normal handlers above intentionally ignore those cards so buttons/forms work;
+     this extra layer only takes over after a clear left/right gesture. */
+  let cardTouch = null;
+  let cardMouse = null;
+  let suppressCardClick = false;
+
+  stage.addEventListener('touchstart', e => {
+    if (!isDraggableInteractiveZone(e.target) || albumLightboxOpen || !invitationOpened || !e.touches || !e.touches.length) {
+      cardTouch = null;
+      return;
+    }
+    const t = e.touches[0];
+    cardTouch = {
+      x: t.clientX,
+      y: t.clientY,
+      base: target,
+      dragging: false,
+      decidedVertical: false
+    };
+  }, { passive: true, capture: true });
+
+  stage.addEventListener('touchmove', e => {
+    if (!cardTouch || albumLightboxOpen || !invitationOpened || !e.touches || !e.touches.length) return;
+    const t = e.touches[0];
+    const dx = t.clientX - cardTouch.x;
+    const dy = t.clientY - cardTouch.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+
+    if (!cardTouch.dragging) {
+      if (ax < 8 && ay < 8) return;
+      if (ay > ax * 1.08 && canUseVerticalScroll(e.target, dy)) {
+        cardTouch.decidedVertical = true;
+        return;
+      }
+      if (ax <= ay) return;
+      cardTouch.dragging = true;
+      suppressCardClick = true;
+      hideHint();
+    }
+
+    if (cardTouch.dragging) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      target = clamp(cardTouch.base - dx * 1.4, 0, maxOff());
+    }
+  }, { passive: false, capture: true });
+
+  stage.addEventListener('touchend', e => {
+    if (cardTouch && cardTouch.dragging) {
+      if (e.cancelable) e.preventDefault();
+      e.stopPropagation();
+      window.setTimeout(() => { suppressCardClick = false; }, 550);
+    }
+    cardTouch = null;
+  }, { passive: false, capture: true });
+
+  stage.addEventListener('touchcancel', () => { cardTouch = null; }, { passive: true, capture: true });
+
+  stage.addEventListener('mousedown', e => {
+    if (!isDraggableInteractiveZone(e.target) || albumLightboxOpen || !invitationOpened) {
+      cardMouse = null;
+      return;
+    }
+    cardMouse = {
+      x: e.clientX,
+      y: e.clientY,
+      base: target,
+      dragging: false
+    };
+  }, true);
+
+  window.addEventListener('mousemove', e => {
+    if (!cardMouse || albumLightboxOpen || !invitationOpened) return;
+    const dx = e.clientX - cardMouse.x;
+    const dy = e.clientY - cardMouse.y;
+    const ax = Math.abs(dx);
+    const ay = Math.abs(dy);
+    if (!cardMouse.dragging) {
+      if (ax < 5 && ay < 5) return;
+      if (ax <= ay) return;
+      cardMouse.dragging = true;
+      suppressCardClick = true;
+      hideHint();
+      stage.style.cursor = 'grabbing';
+    }
+    e.preventDefault();
+    target = clamp(cardMouse.base - dx * 1.5, 0, maxOff());
+  }, true);
+
+  window.addEventListener('mouseup', () => {
+    if (cardMouse && cardMouse.dragging) {
+      window.setTimeout(() => { suppressCardClick = false; }, 550);
+    }
+    cardMouse = null;
+    stage.style.cursor = 'ew-resize';
+  }, true);
+
+  stage.addEventListener('click', e => {
+    if (!suppressCardClick) return;
+    e.preventDefault();
+    e.stopPropagation();
+    suppressCardClick = false;
+  }, true);
 
   // KEYBOARD
   window.addEventListener('keydown', e => {
@@ -3151,7 +5551,7 @@ body::before{
     if (!albumLightboxImage || !veniceAlbumTotal) return;
     const img = albumSlides[veniceAlbumIndex];
     albumLightboxImage.src = getFullAlbumSrc(img);
-    albumLightboxImage.alt = img.alt || `صورة من الألبوم ${veniceAlbumIndex + 1}`;
+    albumLightboxImage.alt = img.alt || `Album photo ${veniceAlbumIndex + 1}`;
     if (albumLightboxCounter) albumLightboxCounter.textContent = `${veniceAlbumIndex + 1} / ${veniceAlbumTotal}`;
   }
 
@@ -3240,7 +5640,7 @@ body::before{
     if (!musicBtn) return;
     musicBtn.textContent = isPlaying ? 'Ⅱ' : '♪';
     musicBtn.classList.toggle('music-on', isPlaying);
-    musicBtn.setAttribute('aria-label', isPlaying ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى');
+    musicBtn.setAttribute('aria-label', isPlaying ? 'Pause music' : 'Play music');
   }
 
   function startInvitationMusic(){
@@ -3282,12 +5682,22 @@ body::before{
     });
   }
 
+  /* CARDIA FIX — do not block wheel/touch/mouse drags on whole cards.
+     Only isolate real clicks on controls so buttons/links/inputs still behave normally. */
+  document.querySelectorAll('button, a, input, select, textarea, label').forEach(el => {
+    el.addEventListener('click', ev => ev.stopPropagation());
+  });
 
 
-  /* INITIAL ASSET LOADER — preload images before the invitation can be opened */
+
+
+  /* INITIAL ASSET LOADER — preload every PNG/image + music file before the loader disappears */
   const assetLoader = document.getElementById('assetLoader');
   const loaderBar = document.getElementById('loaderBar');
   const loaderPercent = document.getElementById('loaderPercent');
+  const REQUIRED_ASSET_RE = /\.(png|jpe?g|gif|webp|svg|mp3|m4a|ogg|wav)(\?|#|$)/i;
+  const IMAGE_ASSET_RE = /\.(png|jpe?g|gif|webp|svg)(\?|#|$)/i;
+  const AUDIO_ASSET_RE = /\.(mp3|m4a|ogg|wav)(\?|#|$)/i;
 
   function markLoaderProgress(done, total) {
     const pct = total ? Math.round((done / total) * 100) : 100;
@@ -3295,196 +5705,898 @@ body::before{
     if (loaderPercent) loaderPercent.textContent = pct + '%';
   }
 
+  function cleanAssetUrl(url) {
+    if (!url) return '';
+    let cleaned = String(url).trim().replace(/^['"]|['"]$/g, '');
+    if (!cleaned || cleaned.startsWith('data:') || cleaned.startsWith('blob:')) return '';
+    try { cleaned = new URL(cleaned, document.baseURI).href; } catch (_) {}
+    return cleaned;
+  }
+
+  function addAssetUrl(urls, url) {
+    const cleaned = cleanAssetUrl(url);
+    if (cleaned && REQUIRED_ASSET_RE.test(cleaned)) urls.add(cleaned);
+  }
+
   function collectAssetUrls() {
     const urls = new Set();
-    document.querySelectorAll('img[src]').forEach(img => {
-      const src = img.getAttribute('src');
-      if (src) urls.add(src);
-      const full = img.getAttribute('data-full');
-      if (full) urls.add(full);
-      if (img.closest && img.closest('#veniceAlbum')) {
-        const fullSize = src
-          .replace(/([?&])w=\d+/i, '$1w=1800')
-          .replace(/([?&])q=\d+/i, '$1q=90');
-        if (fullSize) urls.add(fullSize);
-      }
+
+    /* All visible/hidden image tags, including full-size album versions. */
+    document.querySelectorAll('img').forEach(img => {
+      addAssetUrl(urls, img.getAttribute('src'));
+      addAssetUrl(urls, img.currentSrc);
+      addAssetUrl(urls, img.getAttribute('data-full'));
+      addAssetUrl(urls, img.getAttribute('data-src'));
+      addAssetUrl(urls, img.getAttribute('poster'));
     });
-    document.querySelectorAll('source[src]').forEach(source => {
-      const src = source.getAttribute('src');
-      if (src) urls.add(src);
+
+    /* Audio/video sources. This includes the wedding music MP3. */
+    document.querySelectorAll('audio, video, source').forEach(media => {
+      addAssetUrl(urls, media.getAttribute('src'));
+      addAssetUrl(urls, media.currentSrc);
+      addAssetUrl(urls, media.getAttribute('poster'));
     });
-    const inlineCss = Array.from(document.querySelectorAll('style'))
+
+    /* PNG/background assets referenced in CSS url(...), including Page.png. */
+    const cssText = Array.from(document.querySelectorAll('style'))
       .map(style => style.textContent || '')
       .join('\n');
-    const urlMatches = inlineCss.matchAll(/url\(["']?([^"')]+)["']?\)/g);
-    for (const match of urlMatches) {
-      if (match[1] && !match[1].startsWith('data:')) urls.add(match[1]);
+    for (const match of cssText.matchAll(/url\(([^)]+)\)/g)) {
+      addAssetUrl(urls, match[1]);
     }
+
     return Array.from(urls);
   }
 
-  function preloadOneAsset(url) {
-    return new Promise(resolve => {
-      if (!url) return resolve();
-      if (/\.(png|jpe?g|gif|webp|svg)(\?|#|$)/i.test(url) || /images\.unsplash\.com/i.test(url)) {
-        const img = new Image();
-        img.onload = img.onerror = resolve;
-        img.src = url;
-        return;
-      }
-      if (/\.(mp3|m4a|ogg|wav)(\?|#|$)/i.test(url)) {
-        const audio = new Audio();
-        let settled = false;
-        const finish = () => {
-          if (settled) return;
-          settled = true;
-          resolve();
-        };
-        audio.preload = 'auto';
-        audio.oncanplaythrough = finish;
-        audio.onerror = finish;
-        audio.src = url;
-        audio.load();
-        setTimeout(finish, 3500);
-        return;
-      }
-      resolve();
+  function injectPreloadHint(url) {
+    if (!url || !document.head) return;
+    const alreadyAdded = Array.from(document.head.querySelectorAll('link[data-cardia-preload]'))
+      .some(link => link.href === url);
+    if (alreadyAdded) return;
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.href = url;
+    link.dataset.cardiaPreload = url;
+    if (IMAGE_ASSET_RE.test(url)) link.as = 'image';
+    else if (AUDIO_ASSET_RE.test(url)) link.as = 'audio';
+    else return;
+    try { link.crossOrigin = 'anonymous'; } catch (_) {}
+    document.head.appendChild(link);
+  }
+
+  function fetchAssetCompletely(url) {
+    if (!window.fetch) return Promise.reject(new Error('fetch unavailable'));
+    return fetch(url, { cache: 'force-cache', credentials: 'omit' }).then(response => {
+      if (!response.ok && response.type !== 'opaque') throw new Error('asset fetch failed: ' + response.status);
+      return response.blob();
     });
+  }
+
+  function loadImageAsset(url) {
+    return fetchAssetCompletely(url).catch(() => new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = async () => {
+        try {
+          if (img.decode) await img.decode();
+        } catch (_) {}
+        resolve();
+      };
+      img.onerror = reject;
+      img.src = url;
+    }));
+  }
+
+  function loadAudioAsset(url) {
+    /* Fetching the blob/array fully is the most reliable way to make sure the MP3 is cached
+       before the loader closes. The <audio> fallback is kept for browsers that block fetch. */
+    return fetchAssetCompletely(url).catch(() => new Promise((resolve, reject) => {
+      const audio = new Audio();
+      let settled = false;
+      const finish = () => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        resolve();
+      };
+      const fail = () => {
+        if (settled) return;
+        settled = true;
+        cleanup();
+        reject(new Error('audio preload failed'));
+      };
+      const cleanup = () => {
+        audio.removeEventListener('canplaythrough', finish);
+        audio.removeEventListener('loadeddata', finish);
+        audio.removeEventListener('error', fail);
+      };
+      audio.preload = 'auto';
+      audio.addEventListener('canplaythrough', finish, { once: true });
+      audio.addEventListener('loadeddata', finish, { once: true });
+      audio.addEventListener('error', fail, { once: true });
+      audio.src = url;
+      audio.load();
+    }));
+  }
+
+  function preloadOneAsset(url) {
+    injectPreloadHint(url);
+    if (IMAGE_ASSET_RE.test(url)) return loadImageAsset(url);
+    if (AUDIO_ASSET_RE.test(url)) return loadAudioAsset(url);
+    return Promise.resolve();
   }
 
   async function preloadInvitationAssets() {
     if (!stage) return;
     stage.classList.add('assets-loading');
+
     const urls = collectAssetUrls();
     const total = Math.max(1, urls.length);
     let done = 0;
     markLoaderProgress(done, total);
 
     await Promise.all(urls.map(url =>
-      preloadOneAsset(url).finally(() => {
+      preloadOneAsset(url).catch(err => {
+        console.warn('Cardia preload skipped unavailable asset:', url, err);
+      }).finally(() => {
         done += 1;
         markLoaderProgress(done, total);
       })
     ));
 
     markLoaderProgress(total, total);
-    setTimeout(() => {
-      if (assetLoader) assetLoader.classList.add('is-hidden');
-      stage.classList.remove('assets-loading');
-    }, 250);
+    if (assetLoader) assetLoader.classList.add('is-hidden');
+    stage.classList.remove('assets-loading');
   }
 
-  preloadInvitationAssets();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', preloadInvitationAssets, { once: true });
+  } else {
+    preloadInvitationAssets();
+  }
 
 
-  /* RSVP → GOOGLE SHEETS — copied from Pale_blue_env workflow */
+  /* RSVP → GOOGLE SHEETS — Ralph_Roussana multi-guest workflow */
+  const COUPLE_NAME = 'Pamela & Rody';
+
+  /* Same RSVP Apps Script used in Ralph_Roussana. Replace this URL later if you deploy
+     another web app, or keep it and only change the Sheet ID inside the Apps Script. */
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVcQcyGaVkADHgYMclMkcGr_iOrOq0BEjKsh5K65m46_h31BibnzhmQoI6yUzdiltDkg/exec';
+
   let guestCount = 1;
-
-  document.querySelectorAll('input[name="attend"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      const wrap = document.getElementById('guestCountWrap');
-      const err = document.getElementById('errAttend');
-      if (wrap) wrap.style.display = radio.value === 'yes' ? 'block' : 'none';
-      if (err) err.style.display = 'none';
-    });
-  });
-
-  function changeCount(delta) {
-    guestCount = Math.max(1, Math.min(10, guestCount + delta));
-    const count = document.getElementById('guestCount');
-    if (count) count.textContent = guestCount;
-  }
-
-  function goStep(from, to) {
-    if (from === 1) {
-      const name = document.getElementById('guestName').value.trim();
-      if (!name) { document.getElementById('errName').style.display = 'block'; return; }
-      document.getElementById('errName').style.display = 'none';
-    }
-    if (from === 2 && to === 3) {
-      const attend = document.querySelector('input[name="attend"]:checked');
-      if (!attend) { document.getElementById('errAttend').style.display = 'block'; return; }
-      document.getElementById('errAttend').style.display = 'none';
-      if (attend.value === 'no') { submitRSVP(); return; }
-    }
-    const fromStep = document.getElementById('step' + from);
-    const toStep = document.getElementById('step' + to);
-    if (fromStep) fromStep.style.display = 'none';
-    if (toStep) toStep.style.display = 'block';
-    [1,2,3].forEach(i => {
-      const dot = document.getElementById('dot-' + i);
-      if (dot) dot.classList.toggle('on', i <= to);
-    });
-  }
-
-  const COUPLE_NAME = 'توماس وسارة';
-  const CUSTOMER_EMAIL = 'cardiastudios@gmail.com';
-  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxv1f-qT9HxN6ntkScO8sV3TBoo40Ay6NKWjBdLw0Hl1RW2oaszAL1dN41NIaBgcCW9/exec';
-
-  function showRSVPThankYou(name, yes) {
-    ['step1','step2','step3'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-    const dots = document.querySelector('#p6 .step-dots');
-    if (dots) dots.style.display = 'none';
-    const ok = document.getElementById('stepOk');
-    if (ok) ok.style.display = 'block';
-    const okMsg = document.getElementById('okMsg');
-    if (okMsg) {
-      okMsg.innerHTML = yes
-        ? "نحن بانتظار الاحتفال معكم، <strong>" + name + "</strong>!<br />نراكم في ١٤ آب."
-        : "سنفتقدكم، <strong>" + name + "</strong>.<br />شكرًا لإعلامنا.";
-    }
-  }
+  let currentRSVPGuestName = '';
+  let currentRSVPAttending = false;
 
   function postRSVPToGoogleSheet(payload) {
+    if (!RSVP_SCRIPT_URL) return;
+
     const iframeName = 'rsvpGoogleSheetFrame';
     let iframe = document.getElementById(iframeName);
     if (!iframe) {
       iframe = document.createElement('iframe');
-      iframe.name = iframeName;
-      iframe.id = iframeName;
+      iframe.name = iframe.id = iframeName;
       iframe.style.display = 'none';
       document.body.appendChild(iframe);
     }
+
     const form = document.createElement('form');
     form.method = 'POST';
     form.action = RSVP_SCRIPT_URL;
     form.target = iframeName;
     form.style.display = 'none';
+
     Object.entries(payload).forEach(([key, value]) => {
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = key;
-      input.value = value;
+      input.value = value == null ? '' : String(value);
       form.appendChild(input);
     });
+
     document.body.appendChild(form);
     form.submit();
-    setTimeout(() => form.remove(), 1500);
+    window.setTimeout(() => form.remove(), 1500);
+  }
+
+  function decodeGuestList(raw) {
+    if (!raw) return [];
+    return String(raw)
+      .replace(/\+/g, ' ')
+      .split(/\||,|\n|;/)
+      .map((name) => name.trim())
+      .filter((name) => name && !/^\d+$/.test(name));
+  }
+
+  function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, (char) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#039;'
+    }[char]));
+  }
+
+  function uniqueNames(names) {
+    const seen = new Set();
+    return names.filter((name) => {
+      const key = name.trim().toLowerCase();
+      if (!key || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
+  }
+
+  function formatGuestNames(names) {
+    const clean = names.map((name) => String(name || '').trim()).filter(Boolean);
+    if (!clean.length) return 'Guest';
+    if (clean.length === 1) return clean[0];
+    if (clean.length === 2) return `${clean[0]} and ${clean[1]}`;
+    return `${clean.slice(0, -1).join(', ')} and ${clean[clean.length - 1]}`;
+  }
+
+  const inviteParams = new URLSearchParams(window.location.search);
+  const rawGuestParam = inviteParams.get('guests') || '';
+  const numericGuestParam = /^\d+$/.test(rawGuestParam.trim()) ? rawGuestParam.trim() : '';
+  const namedGuests = uniqueNames([
+    ...decodeGuestList(rawGuestParam),
+    ...decodeGuestList(inviteParams.get('guest') || ''),
+    ...decodeGuestList(inviteParams.get('invite') || ''),
+    ...decodeGuestList(inviteParams.get('group') || ''),
+    ...decodeGuestList(inviteParams.get('name') || ''),
+    ...decodeGuestList(inviteParams.get('to') || '')
+  ]);
+
+  const requestedLimit = parseInt(
+    inviteParams.get('limit') ||
+    numericGuestParam ||
+    inviteParams.get('guestCount') ||
+    inviteParams.get('count') ||
+    String(namedGuests.length || 1),
+    10
+  );
+  const guestLimit = clamp(Number.isFinite(requestedLimit) && requestedLimit > 0 ? requestedLimit : Math.max(namedGuests.length, 1), 1, 20);
+  const hasLockedGuestNames = namedGuests.length > 0;
+  const lockedGuestNames = namedGuests.slice(0, guestLimit);
+  const invitedGroupForClient = formatGuestNames(lockedGuestNames);
+
+  let guestResponses = Array.from({ length: guestLimit }, (_, index) => {
+    const name = lockedGuestNames[index] || '';
+    return {
+      slot: `Guest ${index + 1}`,
+      name,
+      attending: 'Yes',
+      manualAttendance: false,
+      locked: Boolean(name)
+    };
+  });
+
+  function applyGuestParams() {
+    const welcomeEl = document.getElementById('guestWelcomeName');
+    const noteEl = document.getElementById('personalGuestNote');
+
+    if (welcomeEl) welcomeEl.textContent = hasLockedGuestNames ? invitedGroupForClient : 'Dear Guest';
+    if (noteEl) {
+      noteEl.textContent = hasLockedGuestNames
+        ? 'Please confirm who will be attending from this invitation.'
+        : (guestLimit === 1 ? 'Please enter your name to confirm attendance.' : 'Please enter the guest names to confirm attendance.');
+    }
+
+    renderGuestNameBoxes();
+    updateGuestTotal();
+  }
+
+  function renderGuestNameBoxes() {
+    const boxList = document.getElementById('guestSlotNameList');
+    if (!boxList) return;
+
+    boxList.innerHTML = guestResponses.map((guest, index) => {
+      const safeName = escapeHTML(guest.name || '');
+      const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
+      const noChecked = guest.attending === 'No' ? ' checked' : '';
+      const lockedClass = guest.locked ? ' locked' : '';
+      const readonlyAttr = guest.locked ? ' readonly aria-readonly="true"' : '';
+      const inputHandler = guest.locked ? '' : ` oninput="setGuestName(${index}, this.value)"`;
+      const labelText = guest.locked ? escapeHTML(guest.name) : `Guest ${index + 1}`;
+
+      return `
+        <div class="guest-slot-name-box${lockedClass}">
+          <label class="guest-slot-name-label" for="guestSlotInput${index}">${labelText}</label>
+          <input id="guestSlotInput${index}" type="text" value="${safeName}" placeholder="Enter name"${readonlyAttr}${inputHandler}>
+          <div class="guest-slot-attendance" aria-label="Guest ${index + 1} attendance">
+            <span>Attending?</span>
+            <div class="guest-response-options">
+              <label><input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')"><span class="guest-response-pill">Yes</span></label>
+              <label><input type="radio" name="guestAttend${index}" value="No"${noChecked} onchange="setGuestResponse(${index}, 'No')"><span class="guest-response-pill">No</span></label>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+    requestAnimationFrame(updateGuestListScrollUI);
+  }
+
+  function updateGuestListScrollUI() {
+    const list = document.getElementById('guestSlotNameList');
+    const listWrap = document.getElementById('manualGuestListWrap');
+    const thumb = document.getElementById('guestListScrollThumb');
+
+    if (!list || !listWrap) return;
+
+    const scrollable = list.scrollHeight > list.clientHeight + 2;
+    listWrap.classList.toggle('is-scrollable', scrollable);
+    listWrap.classList.toggle('not-scrollable', !scrollable);
+
+    if (!scrollable) {
+      listWrap.classList.remove('at-top', 'at-bottom');
+      if (thumb) {
+        thumb.style.height = '100%';
+        thumb.style.top = '0%';
+      }
+      return;
+    }
+
+    const max = Math.max(1, list.scrollHeight - list.clientHeight);
+    const progress = clamp(list.scrollTop / max, 0, 1);
+    const thumbHeight = clamp((list.clientHeight / list.scrollHeight) * 100, 20, 72);
+    const thumbTop = (100 - thumbHeight) * progress;
+
+    listWrap.classList.toggle('at-top', list.scrollTop <= 2);
+    listWrap.classList.toggle('at-bottom', list.scrollTop >= max - 2);
+
+    if (thumb) {
+      thumb.style.height = `${thumbHeight.toFixed(2)}%`;
+      thumb.style.top = `${thumbTop.toFixed(2)}%`;
+    }
+  }
+
+  function setGuestName(index, value) {
+    if (!guestResponses[index] || guestResponses[index].locked) return;
+
+    const hadName = Boolean(guestResponses[index].name && guestResponses[index].name.trim());
+    guestResponses[index].name = value.trim();
+
+    if (!hadName && guestResponses[index].name && !guestResponses[index].manualAttendance) {
+      guestResponses[index].attending = 'Yes';
+      renderGuestNameBoxes();
+      const input = document.getElementById(`guestSlotInput${index}`);
+      if (input) {
+        input.focus();
+        input.setSelectionRange(input.value.length, input.value.length);
+      }
+    }
+
+    const errName = document.getElementById('errName');
+    if (errName) errName.style.display = 'none';
+    updateGuestTotal();
+    if (typeof renderPhotoUploadSlots === 'function') renderPhotoUploadSlots();
+  }
+
+  function setGuestResponse(index, value) {
+    const list = document.getElementById('guestSlotNameList');
+    const keepScrollTop = list ? list.scrollTop : 0;
+
+    if (!guestResponses[index]) return;
+    guestResponses[index].attending = value;
+    guestResponses[index].manualAttendance = true;
+    updateGuestTotal();
+    if (typeof renderPhotoUploadSlots === 'function') renderPhotoUploadSlots();
+
+    /* Mobile browsers sometimes auto-scroll a focused hidden radio input.
+       Restore the RSVP guest list exactly where the user was. */
+    requestAnimationFrame(() => {
+      if (list) list.scrollTop = keepScrollTop;
+      updateGuestListScrollUI();
+    });
+  }
+
+  function updateGuestTotal() {
+    const total = guestResponses.filter((guest) => guest.name && guest.name.trim() && guest.attending === 'Yes').length;
+    guestCount = total;
+    const countEl = document.getElementById('attendingGuestCount');
+    if (countEl) countEl.textContent = total;
+  }
+
+  function goRSVPStep(toStep) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const dot1 = document.getElementById('dot-1');
+    const dot2 = document.getElementById('dot-2');
+
+    if (toStep === 2) {
+      const named = guestResponses.filter((guest) => guest.name && guest.name.trim());
+      if (!named.length) {
+        const errName = document.getElementById('errName');
+        if (errName) errName.style.display = 'block';
+        return;
+      }
+
+      guestResponses.forEach((guest) => {
+        if (!guest.name || !guest.name.trim()) guest.attending = 'No';
+        if (guest.name && guest.name.trim() && !guest.attending) guest.attending = 'Yes';
+      });
+
+      const errName = document.getElementById('errName');
+      if (errName) errName.style.display = 'none';
+      updateGuestTotal();
+    }
+
+    if (step1) step1.style.display = toStep === 1 ? 'block' : 'none';
+    if (step2) step2.style.display = toStep === 2 ? 'block' : 'none';
+    if (dot1) dot1.classList.toggle('on', toStep >= 1);
+    if (dot2) dot2.classList.toggle('on', toStep >= 2);
+
+    requestAnimationFrame(updateGuestListScrollUI);
+  }
+
+  function showRSVPThankYou(groupName, attendingCount) {
+    ['step1', 'step2'].forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+
+    const dots = document.querySelector('#p6 .step-dots');
+    if (dots) dots.style.display = 'none';
+
+    const ok = document.getElementById('stepOk');
+    if (ok) ok.style.display = 'block';
+
+    const okMsg = document.getElementById('okMsg');
+    if (okMsg) {
+      okMsg.innerHTML = `Thank you, <strong>${escapeHTML(groupName)}</strong>!<br>We've received your confirmation for ${attendingCount} ${attendingCount === 1 ? 'guest' : 'guests'}.`;
+    }
+
+    showPhotoUploadBoxForGuest(groupName, attendingCount > 0);
   }
 
   function submitRSVP() {
-    const name = document.getElementById('guestName').value.trim() || 'ضيف';
-    const attend = document.querySelector('input[name="attend"]:checked');
-    const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
-    const yes = attend && attend.value === 'yes';
-    const sendBtn = document.getElementById('sendBtn');
-    if (sendBtn) { sendBtn.textContent = 'جارٍ الإرسال...'; sendBtn.disabled = true; }
-    const payload = {
+    guestResponses.forEach((guest) => {
+      if (!guest.name || !guest.name.trim()) guest.attending = 'No';
+    });
+
+    const attendingCount = guestResponses.filter((guest) => guest.name && guest.name.trim() && guest.attending === 'Yes').length;
+    const submittedNames = guestResponses.map((guest) => guest.name.trim()).filter(Boolean);
+    const groupName = formatGuestNames(submittedNames);
+    const responseLines = guestResponses
+      .filter((guest) => guest.name && guest.name.trim())
+      .map((guest) => `${guest.slot} - ${guest.name}: ${guest.attending}`)
+      .join('\n');
+    const messageEl = document.getElementById('guestMsg');
+    const message = messageEl ? messageEl.value.trim() : '';
+    const sendButton = document.getElementById('sendBtn');
+
+    if (sendButton) {
+      sendButton.textContent = 'Sending...';
+      sendButton.disabled = true;
+    }
+
+    const attendingGuests = guestResponses
+      .filter((guest) => guest.name && guest.name.trim() && guest.attending === 'Yes')
+      .map((guest) => guest.name.trim());
+    const notAttendingGuests = guestResponses
+      .filter((guest) => guest.name && guest.name.trim() && guest.attending === 'No')
+      .map((guest) => guest.name.trim());
+
+    guestCount = attendingCount;
+    currentRSVPGuestName = groupName;
+    currentRSVPAttending = attendingCount > 0;
+
+    postRSVPToGoogleSheet({
+      guest_name: groupName,
+      guest_count: attendingCount,
+      attending_guests: attendingGuests.join(', '),
+      not_attending_guests: notAttendingGuests.join(', '),
+      individual_responses: responseLines,
+      message,
       event: COUPLE_NAME,
-      customer_email: CUSTOMER_EMAIL,
-      guest_name: name,
-      attending: yes ? 'Yes' : 'No',
-      guest_count: yes ? guestCount : 0,
-      message: msg || '',
       page_url: window.location.href,
       submitted_at: new Date().toISOString()
-    };
-    postRSVPToGoogleSheet(payload);
-    setTimeout(() => {
-      if (sendBtn) { sendBtn.textContent = 'تم الإرسال ✓'; sendBtn.disabled = true; }
-      showRSVPThankYou(name, yes);
-    }, 650);
+    });
+
+    window.setTimeout(() => {
+      if (sendButton) {
+        sendButton.textContent = 'Sent ✓';
+        sendButton.disabled = true;
+      }
+      showRSVPThankYou(groupName, attendingCount);
+    }, 700);
   }
+
+  const continueToMessageBtn = document.getElementById('continueToMessageBtn');
+  const backToGuestsBtn = document.getElementById('backToGuestsBtn');
+  const sendBtn = document.getElementById('sendBtn');
+  if (continueToMessageBtn) continueToMessageBtn.addEventListener('click', () => goRSVPStep(2));
+  if (backToGuestsBtn) backToGuestsBtn.addEventListener('click', () => goRSVPStep(1));
+  if (sendBtn) sendBtn.addEventListener('click', submitRSVP);
+
+  const guestSlotNameListEl = document.getElementById('guestSlotNameList');
+  if (guestSlotNameListEl) {
+    guestSlotNameListEl.addEventListener('scroll', updateGuestListScrollUI, { passive: true });
+    guestSlotNameListEl.addEventListener('touchstart', updateGuestListScrollUI, { passive: true });
+  }
+
+  applyGuestParams();
+
+  /* GUEST PHOTO UPLOAD → GOOGLE DRIVE — one photo per invitation */
+  const PHOTO_UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyaYiBmAYOVWpNixBaQFO1wGtxmJt4_0_sLdFfNwCuAJWJjvYyTTfSVTc_BzWkuLEA/exec';
+  const PHOTO_UPLOAD_MAX_MB = 8;
+  const PHOTO_UPLOAD_MAX_BYTES = PHOTO_UPLOAD_MAX_MB * 1024 * 1024;
+  const PHOTO_UPLOAD_MAX_DIMENSION = 1800;
+  const PHOTO_UPLOAD_JPEG_QUALITY = 0.88;
+
+  let selectedInvitationPhoto = null;
+  let photoUploadSentInvitation = false;
+  let photoUploadDraftInvitationName = '';
+
+  function setPhotoUploadStatus(message, state) {
+    const status = document.getElementById('photoUploadStatus');
+    if (!status) return;
+    status.textContent = message || '';
+    status.classList.remove('is-error', 'is-success');
+    if (state) status.classList.add(state);
+  }
+
+  function setPhotoSlotStatus(index, message, state) {
+    const status = document.getElementById('photoSlotStatus' + index);
+    if (!status) return;
+    status.textContent = message || '';
+    status.classList.remove('is-error', 'is-success');
+    if (state) status.classList.add(state);
+  }
+
+  function getPhotoInvitationNames() {
+    const rsvpNames = guestResponses
+      .map((guest) => guest && guest.name ? guest.name.trim() : '')
+      .filter(Boolean);
+
+    if (rsvpNames.length) return rsvpNames;
+
+    const lockedNames = lockedGuestNames
+      .map((name) => String(name || '').trim())
+      .filter(Boolean);
+
+    return lockedNames;
+  }
+
+  function getDefaultPhotoInvitationName() {
+    const names = getPhotoInvitationNames();
+    if (names.length) return formatGuestNames(names);
+    if (currentRSVPGuestName && currentRSVPGuestName.trim()) return currentRSVPGuestName.trim();
+    return photoUploadDraftInvitationName || '';
+  }
+
+  function getPhotoGuestName(index) {
+    return getDefaultPhotoInvitationName();
+  }
+
+  function getPhotoGuestAttendance(index) {
+    const namedGuests = guestResponses.filter((guest) => guest && guest.name && guest.name.trim());
+    if (namedGuests.length) {
+      const attendingCount = namedGuests.filter((guest) => guest.attending === 'Yes').length;
+      if (attendingCount > 0) return 'Yes';
+      return 'No';
+    }
+    return currentRSVPGuestName ? (currentRSVPAttending ? 'Yes' : 'No') : 'Not submitted';
+  }
+
+  function getPhotoInvitationKey() {
+    const params = new URLSearchParams(window.location.search || '');
+    const lockedNames = lockedGuestNames
+      .map((name) => String(name || '').trim())
+      .filter(Boolean);
+
+    let identity = '';
+    if (lockedNames.length) {
+      identity = lockedNames.map((name) => name.toLowerCase()).join('|');
+    } else {
+      const queryEntries = Array.from(params.entries())
+        .map(([key, value]) => [String(key || '').toLowerCase(), String(value || '')])
+        .filter(([key]) => key !== 'cache' && key !== 't' && key !== '_')
+        .sort((a, b) => (a[0] + '=' + a[1]).localeCompare(b[0] + '=' + b[1]));
+
+      identity = queryEntries.map(([key, value]) => key + '=' + value).join('&');
+    }
+
+    const path = [
+      window.location.origin || '',
+      window.location.pathname || ''
+    ].join('');
+
+    return [COUPLE_NAME, path, identity || getDefaultPhotoInvitationName() || 'generic-invitation']
+      .map((part) => String(part || '').trim())
+      .filter(Boolean)
+      .join(' | ');
+  }
+
+  function getPhotoUploadGuests() {
+    const invitationName = getDefaultPhotoInvitationName();
+    return [{
+      index: 0,
+      slot: 'Invitation',
+      displayLabel: '',
+      name: invitationName,
+      locked: Boolean(hasLockedGuestNames && invitationName),
+      attending: getPhotoGuestAttendance(0)
+    }];
+  }
+
+  function updatePhotoUploadButtonState() {
+    const btn = document.getElementById('photoUploadBtn');
+    const summary = document.getElementById('photoUploadSummary');
+    const hasReadyPhoto = Boolean(selectedInvitationPhoto && !photoUploadSentInvitation);
+
+    if (btn) {
+      btn.disabled = !hasReadyPhoto || photoUploadSentInvitation;
+      btn.textContent = hasReadyPhoto ? 'Send Our Photo' : (photoUploadSentInvitation ? 'Photo Sent ✓' : 'Send Our Photo');
+    }
+
+    if (summary) {
+      if (photoUploadSentInvitation) {
+        summary.textContent = 'Your invitation photo was sent ✓';
+      } else if (hasReadyPhoto) {
+        summary.textContent = '1 photo ready. This invitation can send one photo only.';
+      } else {
+        summary.textContent = 'One photo per invitation — choose wisely 😉';
+      }
+    }
+  }
+
+  function renderPhotoUploadSlots() {
+    const list = document.getElementById('photoUploadGuestList');
+    if (!list) return;
+
+    const invitationName = getDefaultPhotoInvitationName();
+    if (invitationName && (!photoUploadDraftInvitationName || hasLockedGuestNames)) {
+      photoUploadDraftInvitationName = invitationName;
+    }
+
+    const safeName = escapeHTML(photoUploadDraftInvitationName || invitationName || '');
+    const inputId = 'guestPhotoInput0';
+    const sent = Boolean(photoUploadSentInvitation);
+    const readonlyAttr = hasLockedGuestNames && (photoUploadDraftInvitationName || invitationName) ? ' readonly aria-readonly="true"' : '';
+
+    const previewHTML = selectedInvitationPhoto && selectedInvitationPhoto.dataUrl
+      ? '<img class="photo-guest-preview" src="' + selectedInvitationPhoto.dataUrl + '" alt="Preview invitation photo">' + (sent ? '<span class="photo-guest-sent-badge">Sent</span>' : '')
+      : '<span class="photo-guest-empty"><span>📸</span><span>Choose photo</span></span>';
+
+    const statusText = sent
+      ? 'Your invitation photo was sent ✓'
+      : (selectedInvitationPhoto ? 'Photo ready to send' : 'No photo selected yet');
+
+    const statusClass = sent ? ' is-success' : '';
+
+    list.innerHTML = `
+      <div class="photo-guest-slot simple-photo-slot" data-photo-slot="0">
+        <label class="photo-guest-photo-control" for="${inputId}" aria-label="Choose one photo">
+          ${previewHTML}
+          <input id="${inputId}" type="file" accept="image/jpeg,image/png,image/webp,image/*" onchange="handleGuestPhotoChoice(0, event)" ${sent ? 'disabled' : ''}>
+        </label>
+        <div id="photoSlotStatus0" class="photo-guest-mini-status${statusClass}">${statusText}</div>
+      </div>`;
+
+    updatePhotoUploadButtonState();
+  }
+
+  function updatePhotoGuestName(index, value) {
+    photoUploadDraftInvitationName = String(value || '').trim();
+    setPhotoSlotStatus(0, selectedInvitationPhoto ? 'Photo ready to send' : 'No photo selected yet', '');
+    updatePhotoUploadButtonState();
+  }
+
+  function resetPhotoUploadUI() {
+    selectedInvitationPhoto = null;
+    photoUploadSentInvitation = false;
+    photoUploadDraftInvitationName = getDefaultPhotoInvitationName();
+    renderPhotoUploadSlots();
+    setPhotoUploadStatus('', '');
+  }
+
+  function showPhotoUploadBoxForGuest(name, yes) {
+    currentRSVPGuestName = name || 'Guest';
+    currentRSVPAttending = !!yes;
+    photoUploadDraftInvitationName = getDefaultPhotoInvitationName() || photoUploadDraftInvitationName;
+    const box = document.getElementById('photoUploadBox');
+    if (box) box.style.display = 'block';
+    renderPhotoUploadSlots();
+  }
+
+  function sanitizeClientFileName(name) {
+    return String(name || 'invitation-photo.jpg')
+      .replace(/[\\/:*?"<>|]+/g, '_')
+      .replace(/\s+/g, '_')
+      .slice(0, 90);
+  }
+
+  function compressGuestImage(file, index) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('Could not read the photo.'));
+      reader.onload = () => {
+        const img = new Image();
+        img.onerror = () => reject(new Error('Please choose a JPG, PNG, or WEBP photo.'));
+        img.onload = () => {
+          const scale = Math.min(1, PHOTO_UPLOAD_MAX_DIMENSION / Math.max(img.width, img.height));
+          const canvas = document.createElement('canvas');
+          canvas.width = Math.max(1, Math.round(img.width * scale));
+          canvas.height = Math.max(1, Math.round(img.height * scale));
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          const dataUrl = canvas.toDataURL('image/jpeg', PHOTO_UPLOAD_JPEG_QUALITY);
+          const base64 = dataUrl.split(',')[1] || '';
+          const cleanName = sanitizeClientFileName((file.name || 'invitation_photo').replace(/\.[^.]+$/, '') + '.jpg');
+          resolve({
+            base64,
+            mimeType: 'image/jpeg',
+            fileName: cleanName,
+            dataUrl,
+            originalName: sanitizeClientFileName(file.name || cleanName),
+            index: 0
+          });
+        };
+        img.src = reader.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  async function handleGuestPhotoChoice(index, event) {
+    const files = event && event.target && event.target.files ? Array.from(event.target.files) : [];
+    const file = files[0];
+
+    if (photoUploadSentInvitation) {
+      setPhotoUploadStatus('A photo has already been sent for this invitation.', 'is-error');
+      renderPhotoUploadSlots();
+      return;
+    }
+
+    selectedInvitationPhoto = null;
+
+    if (!file) {
+      renderPhotoUploadSlots();
+      return;
+    }
+
+    if (!file.type || !file.type.startsWith('image/')) {
+      setPhotoSlotStatus(0, 'Please choose an image file only.', 'is-error');
+      updatePhotoUploadButtonState();
+      return;
+    }
+
+    if (file.size > PHOTO_UPLOAD_MAX_BYTES) {
+      setPhotoSlotStatus(0, 'Photo is too large. Maximum ' + PHOTO_UPLOAD_MAX_MB + 'MB.', 'is-error');
+      updatePhotoUploadButtonState();
+      return;
+    }
+
+    try {
+      setPhotoSlotStatus(0, 'Preparing photo…', '');
+      const prepared = await compressGuestImage(file, 1);
+      selectedInvitationPhoto = prepared;
+      renderPhotoUploadSlots();
+      setPhotoUploadStatus('Photo ready. One perfect pick is all we need for the surprise 🤍', '');
+    } catch (err) {
+      selectedInvitationPhoto = null;
+      renderPhotoUploadSlots();
+      setPhotoSlotStatus(0, err && err.message ? err.message : 'Could not prepare the photo. Try another one.', 'is-error');
+    }
+  }
+
+  function postPhotoUploadToGoogleDrive(payload, frameSuffix) {
+    return new Promise((resolve) => {
+      const iframeName = 'photoUploadGoogleDriveFrame_' + String(frameSuffix || Date.now()).replace(/\W+/g, '_');
+      const iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.id = iframeName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = PHOTO_UPLOAD_SCRIPT_URL;
+      form.target = iframeName;
+      form.style.display = 'none';
+      Object.entries(payload).forEach(([key, value]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = key;
+        input.value = value == null ? '' : String(value);
+        form.appendChild(input);
+      });
+      document.body.appendChild(form);
+      form.submit();
+
+      setTimeout(() => {
+        form.remove();
+        iframe.remove();
+        resolve(true);
+      }, 2600);
+    });
+  }
+
+  async function uploadGuestPhoto() {
+    if (!PHOTO_UPLOAD_SCRIPT_URL || PHOTO_UPLOAD_SCRIPT_URL.includes('PASTE_YOUR_PHOTO_UPLOAD_WEB_APP_URL_HERE')) {
+      setPhotoUploadStatus('You need to add the Google Apps Script link for photo uploads inside the code.', 'is-error');
+      return;
+    }
+
+    if (photoUploadSentInvitation) {
+      setPhotoUploadStatus('A photo has already been sent for this invitation.', 'is-success');
+      return;
+    }
+
+    if (!selectedInvitationPhoto) {
+      setPhotoUploadStatus('Please choose one photo first.', 'is-error');
+      return;
+    }
+
+    const input = document.getElementById('photoGuestName0');
+    const invitationName = ((input && input.value.trim()) || getDefaultPhotoInvitationName()).trim();
+
+    if (!invitationName) {
+      setPhotoUploadStatus('Please write the name on this invitation before sending the photo.', 'is-error');
+      setPhotoSlotStatus(0, 'Enter the invitation name first.', 'is-error');
+      if (input) input.focus();
+      return;
+    }
+
+    photoUploadDraftInvitationName = invitationName;
+
+    const btn = document.getElementById('photoUploadBtn');
+
+    try {
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Uploading photo…';
+      }
+
+      const allInvitationNames = getPhotoInvitationNames();
+      const inviteGroup = allInvitationNames.length ? formatGuestNames(allInvitationNames) : invitationName;
+      const namedGuests = guestResponses.filter((guest) => guest && guest.name && guest.name.trim());
+      const attendingGuests = namedGuests.filter((guest) => guest.attending === 'Yes');
+      const attending = namedGuests.length ? (attendingGuests.length > 0 ? 'Yes' : 'No') : getPhotoGuestAttendance(0);
+
+      setPhotoUploadStatus('Uploading your invitation photo…', '');
+      setPhotoSlotStatus(0, 'Uploading photo…', '');
+
+      const payload = {
+        event: COUPLE_NAME,
+        invitation_key: getPhotoInvitationKey(),
+        invitation_name: invitationName,
+        guest_name: invitationName,
+        guest_slot: 'Invitation',
+        invite_group: inviteGroup,
+        attending,
+        guest_count: namedGuests.length ? attendingGuests.length : (guestLimit || 1),
+        page_url: window.location.href,
+        file_name: selectedInvitationPhoto.fileName || 'invitation-photo.jpg',
+        original_file_name: selectedInvitationPhoto.originalName || '',
+        mime_type: selectedInvitationPhoto.mimeType || 'image/jpeg',
+        base64: selectedInvitationPhoto.base64,
+        file_index: 1,
+        total_files: 1,
+        uploaded_at: new Date().toISOString()
+      };
+
+      await postPhotoUploadToGoogleDrive(payload, 'invitation');
+      photoUploadSentInvitation = true;
+      setPhotoSlotStatus(0, 'Your invitation photo was sent ✓', 'is-success');
+      renderPhotoUploadSlots();
+      setPhotoUploadStatus('Your photo has arrived! Get ready for the surprise on the wedding day 🤍', 'is-success');
+    } catch (err) {
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = 'Send Our Photo';
+      }
+      setPhotoUploadStatus('Could not upload the photo. Please try again.', 'is-error');
+    }
+  }
+
+  photoUploadDraftInvitationName = getDefaultPhotoInvitationName();
+  renderPhotoUploadSlots();
+  window.handleGuestPhotoChoice = handleGuestPhotoChoice;
+  window.updatePhotoGuestName = updatePhotoGuestName;
+  window.uploadGuestPhoto = uploadGuestPhoto;
+
+  /* Single-name RSVP workflow removed: Strasbourg now uses the Ralph_Roussana multi-guest RSVP. */
 
   window.addEventListener('resize', () => {
     target = clamp(target, 0, maxOff());
