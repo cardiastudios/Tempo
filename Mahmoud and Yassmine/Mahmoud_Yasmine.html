@@ -4,6 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no"/>
 <title>Mahmoud &amp; Yasmine — Paper Cut Modern Wedding Invitation | Invitation de mariage papier découpé</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Great+Vibes&amp;family=Montserrat:wght@200;300;400;500;600&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&amp;display=swap" rel="stylesheet"/>
 <style>
@@ -176,7 +177,7 @@
     .paper-kicker2{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:122px;}
     .paper-names{font-family:'Great Vibes',cursive;color:#a85f45;font-size:74px;line-height:.92;font-weight:400;text-shadow:0 2px 0 rgba(255,255,255,.7);}
     .paper-amp{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:25px;margin:12px 0;}
-    .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:12px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
+    .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:16px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
     .paper-date{margin-top:28px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-soft);font-weight:600;line-height:1.6;}
     .paper-countdown{margin-top:34px;width:100%;}
     .paper-cut-invite .countdown{margin-top:24px;}
@@ -2175,6 +2176,83 @@
       }
     }
 
+
+    /* ===================== Client refinements — gifts + RSVP deadline ===================== */
+    .gift-hands-asset{
+      width:218px;
+      max-width:68%;
+      margin:0 auto 18px;
+      opacity:.98;
+      filter:none !important;
+    }
+
+    .bank-line,
+    .bank-line *,
+    .bank-line a,
+    .bank-line a:link,
+    .bank-line a:visited,
+    a[x-apple-data-detectors],
+    a[x-apple-data-detectors] *,
+    .no-auto-link,
+    .account-number{
+      color:#a85f45 !important;
+      -webkit-text-fill-color:#a85f45 !important;
+      text-decoration:none !important;
+      border-bottom:0 !important;
+      box-shadow:none !important;
+      font-family:'Cormorant Garamond',serif !important;
+    }
+
+    .bank-line a,
+    a[x-apple-data-detectors]{
+      pointer-events:none !important;
+      cursor:default !important;
+    }
+
+    .account-number{
+      white-space:nowrap;
+      letter-spacing:.03em;
+      font-variant-numeric:lining-nums tabular-nums;
+      font-feature-settings:"lnum" 1,"tnum" 1;
+    }
+
+    #rsvp .rsvp-deadline{
+      width:100%;
+      max-width:100%;
+      margin-top:0 !important;
+      margin-bottom:28px !important;
+      white-space:nowrap;
+      overflow:visible;
+      font-family:'Montserrat',sans-serif;
+      font-size:clamp(10px, 2.85vw, 13px);
+      line-height:1.45;
+      letter-spacing:.135em;
+      font-weight:500;
+      text-align:center;
+    }
+
+    #rsvp .rsvp-deadline .rsvp-number{
+      font-family:'Montserrat',sans-serif;
+      font-weight:700;
+      letter-spacing:.025em;
+      font-variant-numeric:lining-nums tabular-nums;
+      font-feature-settings:"lnum" 1,"tnum" 1;
+    }
+
+    @media(max-width:420px){
+      .gift-hands-asset{
+        width:164px;
+        max-width:70%;
+        margin-bottom:16px;
+      }
+
+      #rsvp .rsvp-deadline{
+        font-size:clamp(9px, 2.72vw, 11.5px);
+        letter-spacing:.115em;
+        margin-bottom:26px !important;
+      }
+    }
+
 </style>
 </head>
 <body class="invitation-loading" data-theme="terracotta">
@@ -2199,7 +2277,7 @@
 <main class="invite">
 <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
 <section class="hero-cover" id="heroCover" onclick="openInvitation()">
-<video id="envelopeVideo" muted="" playsinline="" poster="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Paper%20cut/Envelope_M_Y3.png" preload="auto">
+<video id="envelopeVideo" muted="" playsinline="" poster="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Paper%20cut/Envelope_M_Y5.png" preload="auto">
 <source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/M_Y5b.mp4" type="video/mp4"/>
 </video>
 <div class="hero-content">
@@ -2307,7 +2385,7 @@
 <span class="lang-en">Where we celebrate</span>
 <span class="lang-fr">Lieu de célébration</span>
 </h3>
-<h3 class="venue-name">Château De Mer – Damour</h3>
+<h3 class="venue-name">Château De Mer</h3>
 <div class="thin-line"></div>
 <div class="venue-meta"><span><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></span><span><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></span></div>
 <p class="venue-address">Château De Mer<br/><span class="lang-en">Damour, Lebanon</span><span class="lang-fr">Damour, Liban</span></p>
@@ -2339,17 +2417,17 @@
 </section>
 <section class="section gold" id="gifts">
 <div class="reveal paper-sheet">
-<img alt="Paper-cut wedding cake" class="paper-asset" data-theme-asset="Champagne9.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/5_%23a85f45/Champagne9.png"/>
+<img alt="Wedding gift hands illustration" class="paper-asset gift-hands-asset" data-no-theme="true" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/Hands.png"/>
 <h2 class="section-title"><span class="lang-en">Gifts</span><span class="lang-fr">Cadeaux</span></h2>
 <p class="paper-body"><span class="lang-en">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</span><span class="lang-fr">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money.</span></p>
-<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC# 21019786-03</span><span class="lang-fr">ACC# 21019786-03</span></div></div>
+<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en no-auto-link" x-apple-data-detectors="false">ACC# <span class="account-number">21019786&#8209;03</span></span><span class="lang-fr no-auto-link" x-apple-data-detectors="false">ACC# <span class="account-number">21019786&#8209;03</span></span></div></div>
 </div>
 </section>
 <section class="section" id="rsvp">
 <div class="reveal paper-sheet">
 <img alt="Paper-cut doves and wedding rings" class="paper-asset" data-theme-asset="Doves4.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/5_%23a85f45/Doves4.png"/>
 <h2 class="section-title"><span class="lang-en">RSVP</span><span class="lang-fr">Réponse</span></h2>
-<p class="subtitle"><span class="lang-en">Kindly reply before 1 August 2026</span><span class="lang-fr">Merci de répondre avant le 1er août 2026</span></p>
+<p class="subtitle rsvp-deadline"><span class="lang-en">Kindly reply before <span class="rsvp-number">1</span> August <span class="rsvp-number">2026</span></span><span class="lang-fr">Merci de répondre avant le <span class="rsvp-number">1er</span> août <span class="rsvp-number">2026</span></span></p>
 <div class="card rsvp-box">
 <div class="step-dots single-step-dots" aria-hidden="true">
 <span class="step-dot on" id="dot-1"></span>
@@ -2432,7 +2510,7 @@
 
     setTheme(localStorage.getItem('paperCutInvitationTheme') || 'terracotta');
 
-    const PRELOAD_THEME_ASSETS = ['Angel.png','Doves4.png','Cake5.png','Champagne9.png'];
+    const PRELOAD_THEME_ASSETS = ['Angel.png','Doves4.png','Cake5.png'];
     const PRELOAD_FIXED_ASSETS = ['Pages3.png','Rings2.png'];
 
     function updateLoaderProgress(percent){
