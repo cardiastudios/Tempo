@@ -5039,6 +5039,29 @@ body::before{
   scrollbar-gutter:stable !important;
 }
 
+
+
+/* ═════════ USER FIX — CLOSING CREDIT LINK + SLIGHT LEFT SHIFT ═════════ */
+:root{
+  --closing-left:50%;
+}
+#p7 .closing-copy{
+  left:var(--closing-left) !important;
+}
+#p7 .closing-copy .cardia-credit{
+  text-decoration:none !important;
+  pointer-events:auto !important;
+}
+#p7 .closing-copy .cardia-handle{
+  text-decoration:underline !important;
+  text-underline-offset:.18em !important;
+  text-decoration-thickness:1px !important;
+}
+@media (max-width:600px), (pointer:coarse){
+  :root{ --closing-left:50%; }
+  #p7 .closing-copy{ left:var(--closing-left) !important; }
+}
+
 </style>
 </head>
 <body>
@@ -5448,7 +5471,7 @@ body::before{
         <div style="font-size:30px;margin:14px 0;color:#fff;">♥</div>
         <div class="serif" style="color:#fff;letter-spacing:0.12em;font-style:italic;opacity:0.78;">December 26, 2026</div>
         <div class="orn"><span></span><em>✦</em><span></span></div>
-        <a class="serif" href="https://www.instagram.com/cardiastudios/?hl=en" target="_blank" rel="noopener noreferrer" style="color:#fff;opacity:0.78;font-style:italic;margin-top:12px;font-weight:800;text-decoration:none;display:inline-block;">Powered by @cardiastudios</a>
+        <a class="serif cardia-credit" href="https://www.instagram.com/cardiastudios/?hl=en" target="_blank" rel="noopener noreferrer" style="color:#fff;opacity:0.78;font-style:italic;margin-top:12px;font-weight:800;text-decoration:none;display:inline-block;">Powered by <span class="cardia-handle">@cardiastudios</span></a>
       </div>
     </div>
   </div>
