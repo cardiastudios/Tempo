@@ -262,15 +262,6 @@
     .event-detail{font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.55;color:var(--text);}
     .event-place{font-family:'EB Garamond',serif;font-style:italic;color:var(--text-soft);margin-top:10px;font-size:18px;}
 
-    .album{margin-top:34px;position:relative;overflow:hidden;border-radius:22px;touch-action:pan-y;width:calc(100% + 36px);margin-left:-18px;margin-right:-18px;}
-    .album-track{display:flex;transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform;}
-    .album-slide{min-width:100%;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0;}
-    .album-slide img{width:100%;height:410px;object-fit:cover;border-radius:12px;box-shadow:0 8px 20px rgba(100,50,70,.10);}
-    .album-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid rgba(160,88,120,.28);background:rgba(255,255,255,.86);color:var(--gold);font-size:26px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(0,0,0,.10);}
-    .album-arrow.prev{left:8px;}.album-arrow.next{right:8px;}
-    .album-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
-    .album-dot{width:8px;height:8px;border-radius:50%;background:rgba(160,88,120,.25);border:0;cursor:pointer;}.album-dot.active{background:var(--gold);}
-
     .gift-card{max-width:430px;margin:0 auto;}
     .bank-box{text-align:left;background:#fdf5f7;border-radius:12px;padding:22px;margin-top:18px;border:1px solid rgba(160,88,120,.13);}
     .bank-name{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:10px;}
@@ -551,61 +542,160 @@
     .location-btn span{font-size:14px;line-height:1;}
 
     @media(max-width:420px){
-      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}.hero-bottom{left:20px;right:20px;bottom:158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:8px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}.album-slide img{height:340px;}
+      .hero-content{padding:0 20px;}.hero-top{top:62px;left:20px;right:20px;}.hero-bottom{left:20px;right:20px;bottom:158px;}.hero-small{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-small::before,.hero-small::after{width:22px;flex:0 0 22px;}.hero-name{font-size:62px;margin-top:8px;}.hero-and{font-size:29px;margin:3px 0;}.hero-date{font-size:11px;letter-spacing:.2em;gap:9px;white-space:normal;}.hero-date::before,.hero-date::after{width:22px;flex:0 0 22px;}.count-item{min-width:70px;padding:0 8px;}.count-num{font-size:30px;}.count-label{font-size:8px;letter-spacing:.18em;}.section{padding:68px 22px;}.script-title{font-size:42px;}.section-title{font-size:44px;}.body-text{font-size:21px;}.icon{width:135px;}.icon.small{width:110px;}
     }
   
-
-/* ===== FULLSCREEN SINGLE PHOTO ALBUM ===== */
-.album{
-  margin-top:30px;
-  width:100% !important;
-  margin-left:0 !important;
-  margin-right:0 !important;
-  border-radius:28px !important;
-  overflow:hidden !important;
-  background:#fff;
-  box-shadow:0 14px 34px rgba(0,0,0,.12);
-}
-
-.album-track{
-  display:flex;
-  height:100%;
-}
-
-.album-slide{
-  min-width:100% !important;
-  display:block !important;
-  padding:0 !important;
-}
-
-.album-slide img{
-  width:100% !important;
-  height:650px !important;
-  object-fit:cover !important;
-  object-position:center !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-}
-
-/* remove 3-column grid */
-.album-slide{
-  grid-template-columns:none !important;
-  gap:0 !important;
-}
-
-@media(max-width:420px){
-  .album-slide img{
-    height:600px !important;
-  }
-}
-
-
 
 @media(max-width:420px){
   .parents-grid{grid-template-columns:1fr;gap:14px;}
   .parents-amp{padding-top:0;font-size:36px;}
   .parent-names{font-size:24px;}
   .prog-place{font-size:16px;}
+}
+
+
+
+
+
+/* ===== PHOTO ALBUM PREVIEW + FULLSCREEN SLIDER ===== */
+.album-preview{
+  position:relative;
+  margin:32px auto 0;
+  width:100%;
+  overflow:hidden;
+  border-radius:28px;
+  background:#fff;
+  box-shadow:0 14px 34px rgba(0,0,0,.12);
+}
+.album-preview-img{
+  width:100%;
+  height:650px;
+  object-fit:cover;
+  object-position:center;
+  border-radius:28px;
+}
+.album-preview::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:38%;
+  background:linear-gradient(to top, rgba(0,0,0,.32), rgba(0,0,0,0));
+  pointer-events:none;
+}
+.album-open-btn{
+  position:absolute;
+  left:50%;
+  bottom:28px;
+  z-index:3;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  white-space:nowrap;
+  transform:translateX(-50%);
+  padding:14px 28px;
+  border:1px solid rgba(255,255,255,.72);
+  border-radius:999px;
+  background:rgba(255,255,255,.92);
+  color:var(--gold);
+  font-family:'Montserrat',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.20em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:0 12px 28px rgba(0,0,0,.22);
+  backdrop-filter:blur(9px);
+}
+.album-open-btn:active{transform:translateX(-50%) translateY(1px);}
+.photo-album-modal{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:78px 72px 58px;
+  background:rgba(14,10,13,.94);
+  backdrop-filter:blur(10px);
+  overscroll-behavior:contain;
+}
+.photo-album-modal.open{display:flex;}
+body.photo-album-open{overflow:hidden;}
+.photo-album-close{
+  position:fixed;
+  top:18px;
+  right:calc(50% - 240px);
+  z-index:10000;
+  width:52px;
+  height:52px;
+  border:1px solid rgba(255,255,255,.24);
+  border-radius:50%;
+  background:rgba(255,255,255,.94);
+  color:var(--gold);
+  font-size:28px;
+  line-height:1;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(0,0,0,.28);
+}
+@media(max-width:560px){.photo-album-close{right:18px;}}
+.photo-album-stage{
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:14px;
+  text-align:center;
+}
+.photo-album-image{
+  max-width:100%;
+  max-height:calc(100vh - 178px);
+  width:auto;
+  height:auto;
+  object-fit:contain;
+  border-radius:18px;
+  background:#fff;
+  box-shadow:0 18px 46px rgba(0,0,0,.38);
+}
+.photo-album-caption{
+  min-height:18px;
+  color:rgba(255,255,255,.82);
+  font-family:'Cormorant Garamond',serif;
+  font-size:17px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.photo-album-arrow{
+  position:fixed;
+  top:50%;
+  z-index:10000;
+  transform:translateY(-50%);
+  width:54px;
+  height:54px;
+  border:1px solid rgba(255,255,255,.28);
+  border-radius:50%;
+  background:rgba(255,255,255,.92);
+  color:var(--gold);
+  font-size:36px;
+  line-height:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  box-shadow:0 10px 28px rgba(0,0,0,.26);
+}
+.photo-album-arrow.prev{left:18px;}
+.photo-album-arrow.next{right:18px;}
+@media(max-width:420px){
+  .album-preview-img{height:600px;}
+  .album-open-btn{bottom:24px;padding:14px 22px;font-size:10px;letter-spacing:.16em;}
+  .photo-album-modal{padding:76px 16px 48px;}
+  .photo-album-image{max-height:calc(100vh - 168px);border-radius:14px;}
+  .photo-album-arrow{width:46px;height:46px;font-size:31px;background:rgba(255,255,255,.88);}
+  .photo-album-arrow.prev{left:10px;}
+  .photo-album-arrow.next{right:10px;}
+  .photo-album-caption{font-size:14px;}
 }
 
 
@@ -886,20 +976,23 @@
 <div class="reveal">
 <img alt="Two hearts illustration" class="icon small original-color" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/Two_hearts.png"/>
 <h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2>
-<p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
-<div class="album" id="album">
-<div class="album-track" id="albumTrack">
-<div class="album-slide"><img alt="Wedding table" loading="lazy" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/2.jpeg"/></div>
-<div class="album-slide"><img alt="Wedding dinner" loading="lazy" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/4.jpeg"/></div>
-<div class="album-slide"><img alt="Wedding flowers" loading="lazy" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/3.jpeg"/></div>
-<div class="album-slide"><img alt="Wedding flowers" loading="lazy" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/1.jpeg"/></div>
-
+<p class="subtitle"><span class="lang-en">Tap to view the photos in full size</span><span class="lang-fr">Touchez pour voir les photos en grand</span></p>
+<div class="album-preview">
+<img alt="Eliot and Titani photo album preview" class="album-preview-img" loading="lazy" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/2.jpeg"/>
+<button type="button" class="album-open-btn" onclick="openPhotoAlbum(0,event)"><span class="lang-en">Open photo album</span><span class="lang-fr">Ouvrir l’album photo</span></button>
 </div>
-<button aria-label="Previous album slide / Photo précédente" class="album-arrow prev" onclick="albumMove(-1)">‹</button><button aria-label="Next album slide / Photo suivante" class="album-arrow next" onclick="albumMove(1)">›</button>
-</div>
-<div class="album-dots" id="albumDots"></div>
 </div>
 </section>
+
+<div aria-hidden="true" class="photo-album-modal" id="photoAlbumModal" onclick="handlePhotoAlbumBackdrop(event)">
+<button aria-label="Close photo album / Fermer l’album photo" class="photo-album-close" onclick="closePhotoAlbum(event)" type="button">×</button>
+<button aria-label="Previous photo / Photo précédente" class="photo-album-arrow prev" onclick="changePhotoAlbumPhoto(-1,event)" type="button">‹</button>
+<div aria-label="Photo album" aria-modal="true" class="photo-album-stage" role="dialog">
+<img alt="Eliot and Titani photo 1" class="photo-album-image" id="photoAlbumFullImage" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/2.jpeg"/>
+<div class="photo-album-caption" id="photoAlbumCounter">1 / 4</div>
+</div>
+<button aria-label="Next photo / Photo suivante" class="photo-album-arrow next" onclick="changePhotoAlbumPhoto(1,event)" type="button">›</button>
+</div>
 
 <!-- BOW DIVIDER (between gallery and gifts) -->
 <section class="section" style="padding-bottom:20px;"><div class="reveal"><img alt="Bow illustration" class="icon small" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Royal/Bow2.png" style="margin-bottom:0;"/></div></section>
@@ -958,6 +1051,14 @@
 <script>
     const CONFIG = {coupleName:'Eliot & Titani',weddingDate:'2026-09-04T16:30:00',rsvpDeadline:'2026-08-15',location:'Lebanon',church:'St. Doumit Church, Zouk Mikael',reception:'Jardin des Lys, Faytroun',rsvpEmail:'nemer.david9@gmail.com'};
 
+
+    const PHOTO_ALBUM_IMAGES = [
+      {src:'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/2.jpeg', alt:'Eliot and Titani photo 1'},
+      {src:'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/4.jpeg', alt:'Eliot and Titani photo 2'},
+      {src:'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/3.jpeg', alt:'Eliot and Titani photo 3'},
+      {src:'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Eliot_Titani/1.jpeg', alt:'Eliot and Titani photo 4'}
+    ];
+
     const PRELOAD_TIMEOUT_MS = 45000;
 
     function normalizeAssetUrl(url){
@@ -976,6 +1077,10 @@
       });
       document.querySelectorAll('audio source[src], video source[src]').forEach(source => {
         const src = normalizeAssetUrl(source.getAttribute('src'));
+        if(src) urls.add(src);
+      });
+      PHOTO_ALBUM_IMAGES.forEach(photo => {
+        const src = normalizeAssetUrl(photo.src);
         if(src) urls.add(src);
       });
       urls.add('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Royal/Envelope2.png');
@@ -1110,7 +1215,7 @@
 
     const COUPLE_NAME = CONFIG.coupleName || 'Eliot & Titani';
     const CUSTOMER_EMAIL = CONFIG.rsvpEmail || 'cardiastudios@gmail.com';
-    const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyB_hT4irfrPkv53tihZwLgNxfAtxGIE5kRomsX9raNNq_NVQFbegMNOEsqObsFzvywEA/exec';
+    const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzb20fSZjyh6ggT_d-BbY3iGnIVBdp-VBglQJk4NfdsizKKMSPuzRPeOXLt0RJVDQbsyQ/exec';
 
     /* RSVP link modes:
        ?limit=2 shows editable Guest 1 / Guest 2 fields.
@@ -1448,9 +1553,78 @@
 
     let revealObserver;function observeReveals(){if(revealObserver)return;revealObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}});},{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));}
 
-    let albumIndex=0;let albumReady=false;function initAlbum(){if(albumReady)return;albumReady=true;const track=document.getElementById('albumTrack');const dotsWrap=document.getElementById('albumDots');const slides=track.children.length;for(let i=0;i<slides;i++){const dot=document.createElement('button');dot.className='album-dot'+(i===0?' active':'');dot.type='button';dot.onclick=()=>albumGo(i);dotsWrap.appendChild(dot);}const album=document.getElementById('album');let startX=0;let startY=0;album.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;startY=e.touches[0].clientY;},{passive:true});album.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;const dy=e.changedTouches[0].clientY-startY;if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){albumMove(dx<0?1:-1);}},{passive:true});}
-    function albumGo(index){const track=document.getElementById('albumTrack');const total=track.children.length;albumIndex=(index+total)%total;track.style.transform='translateX(-'+(albumIndex*100)+'%)';document.querySelectorAll('.album-dot').forEach((dot,i)=>dot.classList.toggle('active',i===albumIndex));}
-    function albumMove(direction){albumGo(albumIndex+direction);}
+    let photoAlbumIndex = 0;
+
+    function initAlbum(){
+      updatePhotoAlbumImage(0);
+    }
+
+    function updatePhotoAlbumImage(index){
+      if(!PHOTO_ALBUM_IMAGES.length) return;
+      photoAlbumIndex = (index + PHOTO_ALBUM_IMAGES.length) % PHOTO_ALBUM_IMAGES.length;
+      const photo = PHOTO_ALBUM_IMAGES[photoAlbumIndex];
+      const image = document.getElementById('photoAlbumFullImage');
+      const counter = document.getElementById('photoAlbumCounter');
+      if(image){
+        image.src = photo.src;
+        image.alt = photo.alt;
+      }
+      if(counter){
+        counter.textContent = (photoAlbumIndex + 1) + ' / ' + PHOTO_ALBUM_IMAGES.length;
+      }
+    }
+
+    function openPhotoAlbum(startIndex,event){
+      if(event){event.preventDefault();event.stopPropagation();}
+      const modal=document.getElementById('photoAlbumModal');
+      if(!modal)return;
+      updatePhotoAlbumImage(typeof startIndex === 'number' ? startIndex : 0);
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('photo-album-open');
+    }
+
+    function closePhotoAlbum(event){
+      if(event){event.preventDefault();event.stopPropagation();}
+      const modal=document.getElementById('photoAlbumModal');
+      if(!modal)return;
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('photo-album-open');
+    }
+
+    function changePhotoAlbumPhoto(direction,event){
+      if(event){event.preventDefault();event.stopPropagation();}
+      updatePhotoAlbumImage(photoAlbumIndex + direction);
+    }
+
+    function handlePhotoAlbumBackdrop(event){
+      const modal=document.getElementById('photoAlbumModal');
+      if(event && event.target === modal) closePhotoAlbum(event);
+    }
+
+    (function enablePhotoAlbumSwipe(){
+      const modal=document.getElementById('photoAlbumModal');
+      if(!modal)return;
+      let startX=0;
+      modal.addEventListener('touchstart',function(e){
+        if(e.touches && e.touches.length){ startX = e.touches[0].clientX; }
+      },{passive:true});
+      modal.addEventListener('touchend',function(e){
+        if(!e.changedTouches || !e.changedTouches.length) return;
+        const diff = e.changedTouches[0].clientX - startX;
+        if(Math.abs(diff) > 45){ changePhotoAlbumPhoto(diff > 0 ? -1 : 1); }
+      },{passive:true});
+    })();
+
+    document.addEventListener('keydown',function(e){
+      const modal=document.getElementById('photoAlbumModal');
+      const isOpen=modal && modal.classList.contains('open');
+      if(!isOpen) return;
+      if(e.key==='Escape') closePhotoAlbum(e);
+      if(e.key==='ArrowLeft') changePhotoAlbumPhoto(-1,e);
+      if(e.key==='ArrowRight') changePhotoAlbumPhoto(1,e);
+    });
     updateLocalizedFields();
   </script>
 </body>
