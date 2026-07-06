@@ -233,82 +233,6 @@
       --icon-filter:sepia(1) saturate(.9) hue-rotate(350deg) brightness(.92); /* Pages3/Rings2 fixed PNG tint: warm gold */
     }
 
-    body[data-theme="rose"]{
-      --bg:#f7f0f2;
-      --bg-soft:#fdf6f8;
-      --cream:#fff9fb;
-      --gold:#a05878;
-      --gold-soft:#c98ca6;
-      --gold-pale:#edd8e2;
-      --text:#6b4a56;
-      --text-soft:#a07a8a;
-      --muted:#c4aab5;
-      --border:rgba(160,88,120,.22);
-      --shadow:0 18px 45px rgba(100,50,70,.10);
-      --gold-gradient:radial-gradient(circle at center, #c98ca6 0%, #b07090 55%, #a05878 100%);
-      --hero-overlay:linear-gradient(to bottom, rgba(60,20,35,.05), rgba(80,30,50,.16), rgba(100,40,60,.26));
-      --paper-card-bg:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,246,249,.90));
-      --footer-gradient:linear-gradient(to bottom,var(--bg-soft),var(--bg));
-      --icon-filter:sepia(1) saturate(1.2) hue-rotate(295deg) brightness(.85); /* Pages3/Rings2 fixed PNG tint: mauve/berry */
-    }
-
-    body[data-theme="navy"]{
-      --bg:#f1f0ec;
-      --bg-soft:#fbfaf6;
-      --cream:#fffdf8;
-      --gold:#24364f;
-      --gold-soft:#c8aa6e;
-      --gold-pale:#e8d7b3;
-      --text:#24364f;
-      --text-soft:#69758a;
-      --muted:#a7adba;
-      --border:rgba(36,54,79,.22);
-      --shadow:0 18px 45px rgba(22,33,48,.12);
-      --gold-gradient:radial-gradient(circle at center, #3d526f 0%, #2f425d 55%, #24364f 100%);
-      --hero-overlay:linear-gradient(to bottom, rgba(14,24,38,.05), rgba(14,24,38,.20), rgba(14,24,38,.34));
-      --paper-card-bg:linear-gradient(160deg,rgba(255,255,255,.95),rgba(248,248,242,.90));
-      --footer-gradient:linear-gradient(to bottom,var(--bg-soft),var(--bg));
-      --icon-filter:sepia(1) saturate(1.1) hue-rotate(175deg) brightness(.62); /* Pages3/Rings2 fixed PNG tint: navy */
-    }
-
-    body[data-theme="olive"]{
-      --bg:#f2f5f1;
-      --bg-soft:#f8faf7;
-      --cream:#ffffff;
-      --gold:#7a8f7b;
-      --gold-soft:#a8bca9;
-      --gold-pale:#dde6dd;
-      --text:#4f5e52;
-      --text-soft:#7f8d80;
-      --muted:#aab5aa;
-      --border:rgba(122,143,123,.25);
-      --shadow:0 18px 45px rgba(60,80,60,.10);
-      --gold-gradient:radial-gradient(circle at center, #a8bca9 0%, #8ea58f 55%, #7a8f7b 100%);
-      --hero-overlay:linear-gradient(to bottom, rgba(35,55,38,.05), rgba(55,80,58,.16), rgba(70,95,70,.26));
-      --paper-card-bg:linear-gradient(160deg,rgba(255,255,255,.95),rgba(247,250,247,.90));
-      --footer-gradient:linear-gradient(to bottom,var(--bg-soft),var(--bg));
-      --icon-filter:sepia(1) saturate(1.15) hue-rotate(55deg) brightness(.82); /* Pages3/Rings2 fixed PNG tint: sage green */
-    }
-
-    body[data-theme="terracotta"]{
-      --bg:#f6eee7;
-      --bg-soft:#fff8f2;
-      --cream:#fffaf5;
-      --gold:#a85f45;
-      --gold-soft:#d49a7e;
-      --gold-pale:#edd0bf;
-      --text:#654438;
-      --text-soft:#967363;
-      --muted:#c1a395;
-      --border:rgba(168,95,69,.24);
-      --shadow:0 18px 45px rgba(120,65,45,.11);
-      --gold-gradient:radial-gradient(circle at center, #d49a7e 0%, #bd775d 55%, #a85f45 100%);
-      --hero-overlay:linear-gradient(to bottom, rgba(90,42,28,.05), rgba(120,55,35,.16), rgba(140,65,40,.28));
-      --paper-card-bg:linear-gradient(160deg,rgba(255,255,255,.95),rgba(255,248,242,.90));
-      --footer-gradient:linear-gradient(to bottom,var(--bg-soft),var(--bg));
-      --icon-filter:sepia(1) saturate(1.35) hue-rotate(330deg) brightness(.82); /* Pages3/Rings2 fixed PNG tint: terracotta/rust */
-    }
-
     .hero-cover::after{background:var(--hero-overlay);}
     .section.gold{background:var(--gold-gradient);}
     .paper-cut-invite .section.gold{background:var(--gold-gradient);}
@@ -331,39 +255,6 @@
     .album-slide img,
     .map-wrap iframe,
     img[data-no-theme="true"]{filter:none !important;}
-
-    .theme-switch{
-      position:fixed;
-      left:50%;
-      bottom:24px;
-      transform:translateX(-50%) translateY(14px);
-      z-index:120;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      gap:10px;
-      flex-wrap:nowrap;
-      width:max-content;
-      max-width:calc(100vw - 110px);
-      margin:0;
-      padding:10px 12px;
-      border-radius:999px;
-      background:rgba(255,255,255,.88);
-      border:1px solid rgba(0,0,0,.08);
-      box-shadow:0 10px 28px rgba(0,0,0,.16);
-      backdrop-filter:blur(10px);
-      opacity:0;
-      pointer-events:none;
-      transition:opacity .55s ease,transform .55s ease;
-    }
-    #mainInvite.visible .theme-switch{opacity:1;pointer-events:auto;transform:translateX(-50%) translateY(0);}
-    .theme-dot{width:22px;height:22px;min-width:22px;border-radius:50%;border:2px solid rgba(255,255,255,.95);box-shadow:0 5px 14px rgba(0,0,0,.16);cursor:pointer;position:relative;}
-    .theme-dot.active::after{content:"";position:absolute;inset:-5px;border:1px solid var(--gold);border-radius:50%;}
-    .theme-dot[data-theme="classic"]{background:#b89254;}
-    .theme-dot[data-theme="rose"]{background:#a05878;}
-    .theme-dot[data-theme="navy"]{background:#24364f;}
-    .theme-dot[data-theme="olive"]{background:#7a8f7b;}
-    .theme-dot[data-theme="terracotta"]{background:#a85f45;}
 
     .paper-gallery-frame{
       position:relative;
@@ -1243,15 +1134,6 @@
   body[data-theme="rose"],
   body[data-theme="navy"],
   body[data-theme="olive"],
-  body[data-theme="terracotta"]{
-    --accent:var(--gold);
-    --rsvp-accent:var(--gold);
-    --rsvp-accent-border:color-mix(in srgb,var(--gold) 48%,transparent);
-    --rsvp-accent-muted:color-mix(in srgb,var(--gold) 62%,transparent);
-    --rsvp-slot-bg:color-mix(in srgb,var(--gold) 8%,#fff);
-    --rsvp-slot-bg-locked:color-mix(in srgb,var(--gold) 13%,#fff);
-    --rsvp-soft-bg:color-mix(in srgb,var(--bg-soft) 86%,#fff);
-  }
 
   /* ── Raymond-style per-guest RSVP slots, fully theme-driven ── */
   .guest-welcome-step { text-align:left; }
@@ -1599,6 +1481,36 @@
       text-align:center;
     }
 
+
+    /* Final couple photo at the bottom */
+    .final-photo-section{
+      padding:0 !important;
+      background:var(--bg-soft) !important;
+      overflow:hidden;
+    }
+    .final-photo-img{
+      width:100%;
+      height:auto;
+      display:block;
+      filter:none !important;
+    }
+
+
+    /* Venue illustration: make Venue2.png take most of the top width */
+    #venue .venue-wide-illustration{
+      width:100% !important;
+      max-width:100% !important;
+      margin:-8px auto 24px !important;
+      display:block;
+    }
+    @media(max-width:420px){
+      #venue .venue-wide-illustration{
+        width:100% !important;
+        max-width:100% !important;
+        margin:-4px auto 22px !important;
+      }
+    }
+
 </style>
 </head>
 <body class="invitation-loading">
@@ -1618,7 +1530,7 @@
 </div>
 <button aria-label="Toggle music / Activer la musique" class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 <audio id="bgMusic" loop="" preload="auto">
-<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/John_Legend.mp3" type="audio/mpeg"/>
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/audiomass-output.mp3" type="audio/mpeg"/>
 </audio>
 <main class="invite">
 <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
@@ -1634,19 +1546,12 @@
 </div>
 <div class="hero-spacer"></div>
 <div class="hero-bottom">
-<p class="hero-date"><span class="lang-en">Friday, August 14, 2026 · Ehden, Lebanon</span><span class="lang-fr">vendredi 14 août 2026 · Ehden, Liban</span></p>
+<p class="hero-date"><span class="lang-en">Friday, August 14, 2026 </span><span class="lang-fr">vendredi 14 août 2026</span></p>
 <button class="open-btn" type="button"><span class="lang-en">Open invitation</span><span class="lang-fr">Ouvrir l'invitation</span></button>
 </div>
 </div>
 </section>
 <div class="paper-cut-invite" id="mainInvite">
-<div aria-label="Choose invitation color palette" class="theme-switch">
-<button aria-label="Classic gold palette" class="theme-dot active" data-theme="classic" onclick="setTheme('classic')" type="button"></button>
-<button aria-label="Dusty rose palette" class="theme-dot" data-theme="rose" onclick="setTheme('rose')" type="button"></button>
-<button aria-label="Navy champagne palette" class="theme-dot" data-theme="navy" onclick="setTheme('navy')" type="button"></button>
-<button aria-label="Olive green palette" class="theme-dot" data-theme="olive" onclick="setTheme('olive')" type="button"></button>
-<button aria-label="Terracotta palette" class="theme-dot" data-theme="terracotta" onclick="setTheme('terracotta')" type="button"></button>
-</div>
 <section class="section" id="countdownSection">
 <div class="reveal paper-sheet hero-paper">
 <img alt="" aria-hidden="true" class="paper-frame-bg" data-theme-filter-asset="Pages3.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Pages3.png"/>
@@ -1663,7 +1568,7 @@
 <div class="paper-amp">&amp;</div>
 <h2 class="paper-names">Vanessa</h2>
 <p class="paper-verse"><span class="lang-en">“I have found the one whom my soul loves.”<br/>Solomon 3:4</span><span class="lang-fr">« J’ai trouvé celui que mon âme aime. »<br/>Salomon 3:4</span></p>
-<p class="paper-date"><span class="lang-en">Friday, August 14, 2026 · Ehden, Lebanon</span><span class="lang-fr">vendredi 14 août 2026 · Ehden, Liban</span></p>
+<p class="paper-date"><span class="lang-en">Friday, August 14, 2026</span><span class="lang-fr">vendredi 14 août 2026</span></p>
 </div>
 <div class="page-scroll-hint" aria-hidden="true"><span>⌄</span><span>⌄</span></div>
 </section>
@@ -1672,7 +1577,7 @@
 <img alt="Paper-cut wedding rings" class="paper-asset" data-theme-filter-asset="Rings2.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Rings2.png"/>
 <p class="paper-kicker"><span class="lang-en">Together with their Families</span><span class="lang-fr">Avec leurs familles</span></p>
 <div class="paper-divider">✦</div>
-<p class="paper-body"><span class="lang-en">Mr Tannous <span class="simple-amp">&amp;</span> Gania Fenianos<br/>Mr Youssef <span class="simple-amp">&amp;</span> Lisette Azizi<br/><br/>Request the honor of your presence at the wedding of their son and daughter<br/>Maickel <span class="simple-amp">&amp;</span> Vanessa</span><span class="lang-fr">M. Tannous <span class="simple-amp">&amp;</span> Gania Fenianos<br/>M. Youssef <span class="simple-amp">&amp;</span> Lisette Azizi<br/><br/>Ont l’honneur de vous convier au mariage de leurs enfants<br/>Maickel <span class="simple-amp">&amp;</span> Vanessa</span></p>
+<p class="paper-body"><span class="lang-en">Mr. Tannous <span class="simple-amp">&amp;</span> Gania Fenianos<br/>Mr. Youssef <span class="simple-amp">&amp;</span> Lisette Azizi<br/><br/>Request the honor of your presence at the wedding of their son and daughter. </span><span class="lang-fr">M. Tannous <span class="simple-amp">&amp;</span> Gania Fenianos<br/>M. Youssef <span class="simple-amp">&amp;</span> Lisette Azizi<br/><br/>Ont l’honneur de vous convier au mariage de leurs enfants.<br/>  </span>
 </div>
 </section>
 
@@ -1680,11 +1585,11 @@
 <section class="section" id="programme">
 <div class="reveal paper-sheet">
 <img alt="Paper-cut champagne bucket" class="paper-asset" data-theme-asset="Cake5.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Cake5.png"/>
-<h2 class="section-title"><span class="lang-en">Day Programme</span><span class="lang-fr">Programme de la journée</span></h2>
+<h2 class="section-title"><span class="lang-en">Day Program</span><span class="lang-fr">Programme de la journée</span></h2>
 <p class="subtitle"><span class="lang-en">Friday, August 14, 2026</span><span class="lang-fr">vendredi 14 août 2026</span></p>
 <div class="paper-timeline">
 <div class="paper-time-row"><div class="paper-time"><span class="lang-en">4:30 PM</span><span class="lang-fr">16h30</span></div><div class="paper-label"><span class="lang-en">Wedding Ceremony<span class="paper-location">Saydet Al Hosn, Ehden</span></span><span class="lang-fr">Cérémonie de mariage<span class="paper-location">Saydet Al Hosn, Ehden</span></span></div></div>
-<div class="paper-time-row"><div class="paper-time"><span class="lang-en">6:30 PM</span><span class="lang-fr">18h30</span></div><div class="paper-label"><span class="lang-en">Welcome Drink<span class="paper-location">Splend'or, Ehden</span></span><span class="lang-fr">Verre de bienvenue<span class="paper-location">Splend'or, Ehden</span></span></div></div>
+<div class="paper-time-row"><div class="paper-time"><span class="lang-en">7:00 PM</span><span class="lang-fr">19h00</span></div><div class="paper-label"><span class="lang-en">Welcome Drink<span class="paper-location">Splend'or, Ehden</span></span><span class="lang-fr">Verre de bienvenue<span class="paper-location">Splend'or, Ehden</span></span></div></div>
 <div class="paper-time-row"><div class="paper-time"><span class="lang-en">8:00 PM</span><span class="lang-fr">20h00</span></div><div class="paper-label"><span class="lang-en">Dinner<span class="paper-location">Splend'or, Ehden</span></span><span class="lang-fr">Dîner<span class="paper-location">Splend'or, Ehden</span></span></div></div>
 </div>
 </div>
@@ -1708,7 +1613,7 @@
 <!-- ===================== REORDERED: 3. RECEPTION (VENUE) ===================== -->
 <section class="section gold" id="venue">
 <div class="reveal paper-sheet">
-<img alt="Paper-cut vintage wedding car" class="paper-asset large" data-theme-asset="Venue.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Venue.png"/>
+<img alt="Paper-cut vintage wedding car" class="paper-asset large venue-wide-illustration" data-theme-asset="Venue2.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Venue2.png"/>
 <div class="paper-card">
 
 <h3 class="venue-name">
@@ -1717,7 +1622,7 @@
 </h3>
 <h3 class="venue-name">Splend&apos;or Ehden</h3>
 <div class="thin-line"></div>
-<div class="venue-meta"><span><span class="lang-en">Friday, August 14, 2026</span><span class="lang-fr">vendredi 14 août 2026</span></span><span><span class="lang-en">6:30 PM</span><span class="lang-fr">18h30</span></span></div>
+<div class="venue-meta"><span><span class="lang-en">Friday, August 14, 2026</span><span class="lang-fr">vendredi 14 août 2026</span></span><span><span class="lang-en">7:00 PM</span><span class="lang-fr">19h00</span></span></div>
 <p class="venue-address">Splend&apos;or Ehden<br/><span class="lang-en">Ehden, Lebanon</span><span class="lang-fr">Ehden, Liban</span></p>
 <div class="map-wrap"><iframe allowfullscreen="" loading="lazy" src="https://www.google.com/maps?q=Splend%27or%20Ehden%20Lebanon&amp;output=embed"></iframe></div>
 </div>
@@ -1729,7 +1634,7 @@
 <img alt="Paper-cut wedding cake" class="paper-asset" data-theme-asset="Champagne9.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Champagne9.png"/>
 <h2 class="section-title"><span class="lang-en">Gifts</span><span class="lang-fr">Cadeaux</span></h2>
 <p class="paper-body"><span class="lang-en">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</span><span class="lang-fr">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money.</span></p>
-<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC#  20458017</span><span class="lang-fr">Compte n° 20458017</span></div></div>
+<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC#  20458017-03</span><span class="lang-fr">Compte n° 20458017-03</span></div></div>
 </div>
 </section>
 <section class="section" id="rsvp">
@@ -1754,27 +1659,26 @@
 <button class="send-btn rsvp-main-btn" id="sendBtn" type="button" onclick="submitRSVP()"><span class="lang-en">Send RSVP ✦</span><span class="lang-fr">Envoyer la réponse ✦</span></button>
 </div>
 <div id="stepOk" style="display:none;text-align:center;padding:28px 0;">
-<div style="font-size:46px;margin-bottom:12px;">✨</div>
 <h3 style="font-family:'Great Vibes',cursive;font-size:52px;color:var(--gold);margin-bottom:12px;"><span class="lang-en">Thank you!</span><span class="lang-fr">Merci !</span></h3>
 <p id="okMsg" style="font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;color:var(--text);"></p>
 </div>
 </div>
 </div>
 </section>
-<footer class="footer ornament-bg"><div class="reveal"><img alt="Paper-cut wedding rings" class="icon small" data-theme-asset="Angel.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Angel.png"/><div class="names">Maickel<br/>&amp;<br/>Vanessa</div><p class="subtitle"><span class="lang-en">Friday, August 14, 2026 · Ehden, Lebanon</span><span class="lang-fr">vendredi 14 août 2026 · Ehden, Liban</span></p><div class="thin-line"></div><p style="font-size:12px;letter-spacing:.16em;color:var(--text-soft);"><span class="lang-en">Powered by</span><span class="lang-fr">Créé par</span> <a href="https://www.instagram.com/cardiastudios/" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;" target="_blank">@cardiastudios</a></p></div></footer>
+
+<section class="final-photo-section" id="finalPhoto">
+<img alt="Maickel and Vanessa" class="final-photo-img" data-no-theme="true" decoding="async" loading="eager" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Orders/Pics/Maikel_Vanessa/M_V.jpg"/>
+</section>
+<footer class="footer ornament-bg"><div class="reveal"><img alt="Paper-cut wedding rings" class="icon small" data-theme-asset="Angel.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Angel.png"/><div class="names">Maickel<br/>&amp;<br/>Vanessa</div><p class="subtitle"><span class="lang-en">Friday, August 14, 2026</span><span class="lang-fr">vendredi 14 août 2026</span></p><div class="thin-line"></div><p style="font-size:12px;letter-spacing:.16em;color:var(--text-soft);"><span class="lang-en">Powered by</span><span class="lang-fr">Créé par</span> <a href="https://www.instagram.com/cardiastudios/" style="color:var(--gold); text-decoration:underline; text-underline-offset:3px;" target="_blank">@cardiastudios</a></p></div></footer>
 </div>
 </main>
 <script>
     const CONFIG = {coupleName:'Maickel & Vanessa',weddingDate:'2026-08-14T16:30:00',rsvpDeadline:'2026-08-01',location:'Ehden, Lebanon',church:'Saydet Al Hosn, Ehden',reception:"Splend'or Ehden",rsvpEmail:'cardia.studios@gmail.com'};
 
-    const THEMES = ['classic','rose','navy','olive','terracotta'];
+    const THEMES = ['classic'];
     const THEME_ASSET_BASE = 'https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut';
     const THEME_ASSET_FOLDERS = {
-      classic:'1_%23b89254',
-      rose:'2_%23a05878',
-      navy:'3_%2324364f',
-      olive:'4_%237a8f7b',
-      terracotta:'5_%23a85f45'
+      classic:'1_%23b89254'
     };
 
     function themedAssetUrl(theme, fileName){
@@ -1787,7 +1691,7 @@
     }
 
     function updateThemeAssets(theme){
-      // Six decorative assets use accurate pre-colored PNGs from the matching color folder.
+      // Decorative assets use the fixed gold palette (#b89254).
       document.querySelectorAll('img[data-theme-asset]').forEach(img=>{
         const fileName = img.getAttribute('data-theme-asset');
         if(!fileName) return;
@@ -1797,7 +1701,7 @@
         }
       });
 
-      // Pages3.png and Rings2.png stay as fixed root PNGs and are tinted by --icon-filter.
+      // Pages3.png and Rings2.png stay as fixed root PNGs and are tinted gold by --icon-filter.
       document.querySelectorAll('img[data-theme-filter-asset]').forEach(img=>{
         const fileName = img.getAttribute('data-theme-filter-asset');
         if(!fileName) return;
@@ -1809,17 +1713,17 @@
     }
 
     function setTheme(theme){
-      if(!THEMES.includes(theme)) theme='classic';
+      theme = 'classic';
       document.body.setAttribute('data-theme', theme);
       updateThemeAssets(theme);
-      localStorage.setItem('paperCutInvitationTheme', theme);
-      document.querySelectorAll('.theme-dot').forEach(btn=>btn.classList.toggle('active', btn.dataset.theme===theme));
+      try{ localStorage.removeItem('paperCutInvitationTheme'); }catch(e){}
       requestAnimationFrame(updateGuestListScrollbar);
     }
 
-    setTheme(localStorage.getItem('paperCutInvitationTheme') || 'classic');
+    setTheme('classic');
 
-    const PRELOAD_THEME_ASSETS = ['Angel.png','Church5.png','Doves4.png','Cake5.png','Champagne9.png','Venue.png'];
+    const FINAL_COUPLE_PHOTO_URL = 'https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Orders/Pics/Maikel_Vanessa/M_V.jpg';
+    const PRELOAD_THEME_ASSETS = ['Angel.png','Church5.png','Doves4.png','Cake5.png','Champagne9.png','Venue2.png'];
     const PRELOAD_FIXED_ASSETS = ['Pages3.png','Rings2.png','Envelope2.png'];
 
     function updateLoaderProgress(percent){
@@ -1841,7 +1745,36 @@
       },280);
     }
 
-    function preloadImageAsset(url, timeoutMs=9000){
+    function safeAbsoluteUrl(rawUrl){
+      try{ return new URL(rawUrl, window.location.href).href; }catch(e){ return ''; }
+    }
+
+    function preloadWithFetch(url, timeoutMs=30000){
+      return new Promise(resolve=>{
+        if(!url || !window.fetch){ resolve(false); return; }
+        let settled=false;
+        const controller = window.AbortController ? new AbortController() : null;
+        const done=(ok)=>{
+          if(settled) return;
+          settled=true;
+          clearTimeout(timer);
+          resolve(Boolean(ok));
+        };
+        const timer=setTimeout(()=>{
+          try{ if(controller) controller.abort(); }catch(e){}
+          done(false);
+        }, timeoutMs);
+        fetch(url, {cache:'force-cache', mode:'cors', signal:controller ? controller.signal : undefined})
+          .then(response=>{
+            if(!response || !response.ok) throw new Error('asset preload failed');
+            return response.blob();
+          })
+          .then(()=>done(true))
+          .catch(()=>done(false));
+      });
+    }
+
+    function preloadImageAsset(url, timeoutMs=22000){
       return new Promise(resolve=>{
         if(!url){ resolve(); return; }
         const img=new Image();
@@ -1849,62 +1782,90 @@
         const done=()=>{
           if(settled) return;
           settled=true;
+          clearTimeout(timer);
           resolve();
         };
         const timer=setTimeout(done,timeoutMs);
-        img.onload=()=>{ clearTimeout(timer); done(); };
-        img.onerror=()=>{ clearTimeout(timer); done(); };
+        img.onload=done;
+        img.onerror=done;
         img.src=url;
-        if(img.complete){ clearTimeout(timer); done(); }
+        if(img.complete) done();
       });
     }
 
-    function preloadVideoAsset(url, timeoutMs=12000){
+    function preloadMediaAsset(url, mediaKind='video', timeoutMs=36000){
       return new Promise(resolve=>{
         if(!url){ resolve(); return; }
-        const video=document.createElement('video');
-        let settled=false;
-        const done=()=>{
-          if(settled) return;
-          settled=true;
-          try{ video.pause(); video.removeAttribute('src'); video.load(); }catch(e){}
-          resolve();
-        };
-        const timer=setTimeout(done,timeoutMs);
-        video.muted=true;
-        video.playsInline=true;
-        video.preload='auto';
-        video.oncanplaythrough=()=>{ clearTimeout(timer); done(); };
-        video.onloadeddata=()=>{ clearTimeout(timer); done(); };
-        video.onerror=()=>{ clearTimeout(timer); done(); };
-        video.src=url;
-        try{ video.load(); }catch(e){ clearTimeout(timer); done(); }
+        preloadWithFetch(url, timeoutMs).then(fetched=>{
+          if(fetched){ resolve(); return; }
+          const media=document.createElement(mediaKind === 'audio' ? 'audio' : 'video');
+          let settled=false;
+          const done=()=>{
+            if(settled) return;
+            settled=true;
+            clearTimeout(timer);
+            try{ media.pause(); media.removeAttribute('src'); media.load(); }catch(e){}
+            resolve();
+          };
+          const timer=setTimeout(done,timeoutMs);
+          media.preload='auto';
+          if(mediaKind !== 'audio'){
+            media.muted=true;
+            media.playsInline=true;
+          }
+          media.oncanplaythrough=done;
+          media.onloadeddata=done;
+          media.onloadedmetadata=done;
+          media.onerror=done;
+          media.src=url;
+          try{ media.load(); }catch(e){ done(); }
+        });
+      });
+    }
+
+    function collectUrlsFromInlineStyles(imageUrls){
+      const urlRegex=/url\((['"]?)(.*?)\1\)/g;
+      document.querySelectorAll('[style]').forEach(el=>{
+        const style=el.getAttribute('style') || '';
+        let match;
+        while((match=urlRegex.exec(style)) !== null){
+          const url=safeAbsoluteUrl(match[2]);
+          if(url) imageUrls.add(url);
+        }
       });
     }
 
     function collectInvitationPreloadAssets(){
       const imageUrls=new Set();
       const videoUrls=new Set();
+      const audioUrls=new Set();
 
       document.querySelectorAll('img[src]').forEach(img=>{
-        const src=img.getAttribute('src');
-        if(src && /\.png(?:[?#]|$)/i.test(src)) imageUrls.add(new URL(src, window.location.href).href);
+        const url=safeAbsoluteUrl(img.getAttribute('src'));
+        if(url) imageUrls.add(url);
       });
       document.querySelectorAll('video[poster]').forEach(video=>{
-        const poster=video.getAttribute('poster');
-        if(poster && /\.png(?:[?#]|$)/i.test(poster)) imageUrls.add(new URL(poster, window.location.href).href);
+        const poster=safeAbsoluteUrl(video.getAttribute('poster'));
+        if(poster) imageUrls.add(poster);
       });
-      document.querySelectorAll('video source[src]').forEach(source=>{
-        videoUrls.add(new URL(source.getAttribute('src'), window.location.href).href);
+      document.querySelectorAll('video source[src], video[src]').forEach(source=>{
+        const raw=source.getAttribute('src') || source.src;
+        const url=safeAbsoluteUrl(raw);
+        if(url) videoUrls.add(url);
       });
-      document.querySelectorAll('video[src]').forEach(video=>videoUrls.add(video.src));
+      document.querySelectorAll('audio source[src], audio[src]').forEach(source=>{
+        const raw=source.getAttribute('src') || source.src;
+        const url=safeAbsoluteUrl(raw);
+        if(url) audioUrls.add(url);
+      });
 
+      collectUrlsFromInlineStyles(imageUrls);
+
+      imageUrls.add(FINAL_COUPLE_PHOTO_URL);
       PRELOAD_FIXED_ASSETS.forEach(fileName=>imageUrls.add(fixedPaperCutAssetUrl(fileName)));
-      THEMES.forEach(theme=>{
-        PRELOAD_THEME_ASSETS.forEach(fileName=>imageUrls.add(themedAssetUrl(theme,fileName)));
-      });
+      PRELOAD_THEME_ASSETS.forEach(fileName=>imageUrls.add(themedAssetUrl('classic',fileName)));
 
-      return {imageUrls:[...imageUrls], videoUrls:[...videoUrls]};
+      return {imageUrls:[...imageUrls], videoUrls:[...videoUrls], audioUrls:[...audioUrls]};
     }
 
     function startInvitationPreloader(){
@@ -1912,10 +1873,11 @@
       if(!loader){ document.body.classList.remove('invitation-loading'); return; }
       updateLoaderProgress(3);
 
-      const {imageUrls, videoUrls}=collectInvitationPreloadAssets();
+      const {imageUrls, videoUrls, audioUrls}=collectInvitationPreloadAssets();
       const jobs=[
-        ...imageUrls.map(url=>({type:'image', promise:preloadImageAsset(url)})),
-        ...videoUrls.map(url=>({type:'video', promise:preloadVideoAsset(url)}))
+        ...imageUrls.map(url=>preloadImageAsset(url)),
+        ...videoUrls.map(url=>preloadMediaAsset(url,'video')),
+        ...audioUrls.map(url=>preloadMediaAsset(url,'audio'))
       ];
 
       if(!jobs.length){ markInvitationAssetsReady(); return; }
@@ -1923,15 +1885,13 @@
       let completed=0;
       const total=jobs.length;
       jobs.forEach(job=>{
-        job.promise.finally(()=>{
+        job.finally(()=>{
           completed+=1;
           updateLoaderProgress(5 + (completed/total)*95);
         });
       });
 
-      const allAssetsLoaded=Promise.allSettled(jobs.map(job=>job.promise));
-      const safetyTimeout=new Promise(resolve=>setTimeout(resolve,18000));
-      Promise.race([allAssetsLoaded,safetyTimeout]).then(markInvitationAssetsReady);
+      Promise.allSettled(jobs).then(markInvitationAssetsReady);
     }
 
     startInvitationPreloader();
