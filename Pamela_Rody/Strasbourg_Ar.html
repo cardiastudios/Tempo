@@ -5284,7 +5284,7 @@ body::before{
     
        
        <img class="layer l-Stars"
-         src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars.png" alt="">
+         src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars4.png" alt="">
 
 
     
@@ -5330,11 +5330,15 @@ body::before{
         <div class="orn"><span></span><em>✦</em><span></span></div>
         <div class="sans" style="color:#fff;opacity:.52;font-weight:800;">Tap below to view the photos full-size</div>
 
+
+
         <div class="venice-album locked" id="veniceAlbum" aria-label="Photo album preview">
           <div class="venice-album-track" id="veniceAlbumTrack">
-            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Photo of the couple 1"></div>
-            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Photo of the couple 2"></div>
-            <div class="venice-album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=900&amp;auto=format&amp;fit=crop" alt="Photo of the couple 3"></div>
+            
+           
+            <div class="venice-album-slide"><img loading="lazy" src=" https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D1.jpg" alt="Photo of the couple 1"></div>
+            <div class="venice-album-slide"><img loading="lazy" src=" https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D2.jpg" alt="Photo of the couple 2"></div>
+            <div class="venice-album-slide"><img loading="lazy" src=" https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D3.jpg" alt="Photo of the couple 3"></div>
           </div>
           <button class="venice-album-arrow prev" type="button" aria-label="Previous photo">‹</button>
           <button class="venice-album-arrow next" type="button" aria-label="Next photo">›</button>
@@ -5953,13 +5957,31 @@ body::before{
 
 
 
-  /* INITIAL ASSET LOADER — preload every PNG/image + music file before the loader disappears */
+  /* INITIAL ASSET LOADER — wait for every MP3, PNG and JPG before the loader disappears */
   const assetLoader = document.getElementById('assetLoader');
   const loaderBar = document.getElementById('loaderBar');
   const loaderPercent = document.getElementById('loaderPercent');
-  const REQUIRED_ASSET_RE = /\.(png|jpe?g|gif|webp|svg|mp3|m4a|ogg|wav)(\?|#|$)/i;
-  const IMAGE_ASSET_RE = /\.(png|jpe?g|gif|webp|svg)(\?|#|$)/i;
-  const AUDIO_ASSET_RE = /\.(mp3|m4a|ogg|wav)(\?|#|$)/i;
+
+  /* Build-time list from this HTML file. This protects against lazy images or
+     assets that are not visible yet when the loader starts. */
+  const CARDIA_REQUIRED_MEDIA_URLS = [
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Page.png",
+    "https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/Indila_Love_Story.mp3",
+    "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Gondola3.png",
+    "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Strasbourg3.png",
+    "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky4.png",
+    "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky_aurora.png",
+    "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png",
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png",
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars4.png",
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D1.jpg",
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D2.jpg",
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D3.jpg"
+];
+
+  const REQUIRED_ASSET_RE = /\.(png|jpe?g|mp3)(\?|#|$)/i;
+  const IMAGE_ASSET_RE = /\.(png|jpe?g)(\?|#|$)/i;
+  const AUDIO_ASSET_RE = /\.mp3(\?|#|$)/i;
 
   function markLoaderProgress(done, total) {
     const pct = total ? Math.round((done / total) * 100) : 100;
@@ -5980,16 +6002,36 @@ body::before{
     if (cleaned && REQUIRED_ASSET_RE.test(cleaned)) urls.add(cleaned);
   }
 
+  function addSrcsetUrls(urls, srcset) {
+    if (!srcset) return;
+    String(srcset).split(',').forEach(part => {
+      const candidate = part.trim().split(/\s+/)[0];
+      addAssetUrl(urls, candidate);
+    });
+  }
+
   function collectAssetUrls() {
     const urls = new Set();
 
-    /* All visible/hidden image tags, including full-size album versions. */
+    CARDIA_REQUIRED_MEDIA_URLS.forEach(url => addAssetUrl(urls, url));
+
+    /* All visible, hidden, lazy and full-size image assets. */
     document.querySelectorAll('img').forEach(img => {
       addAssetUrl(urls, img.getAttribute('src'));
       addAssetUrl(urls, img.currentSrc);
       addAssetUrl(urls, img.getAttribute('data-full'));
       addAssetUrl(urls, img.getAttribute('data-src'));
       addAssetUrl(urls, img.getAttribute('poster'));
+      addSrcsetUrls(urls, img.getAttribute('srcset'));
+      try {
+        img.loading = 'eager';
+        img.fetchPriority = 'high';
+      } catch (_) {}
+    });
+
+    document.querySelectorAll('picture source, source[srcset]').forEach(source => {
+      addAssetUrl(urls, source.getAttribute('src'));
+      addSrcsetUrls(urls, source.getAttribute('srcset'));
     });
 
     /* Audio/video sources. This includes the wedding music MP3. */
@@ -5999,13 +6041,25 @@ body::before{
       addAssetUrl(urls, media.getAttribute('poster'));
     });
 
-    /* PNG/background assets referenced in CSS url(...), including Page.png. */
+    /* PNG/JPG assets referenced in CSS url(...), including Page.png. */
     const cssText = Array.from(document.querySelectorAll('style'))
       .map(style => style.textContent || '')
-      .join('\n');
+      .join('\\n');
     for (const match of cssText.matchAll(/url\(([^)]+)\)/g)) {
       addAssetUrl(urls, match[1]);
     }
+
+    /* Inline style background images, if later edits add any. */
+    document.querySelectorAll('[style]').forEach(el => {
+      const style = el.getAttribute('style') || '';
+      for (const match of style.matchAll(/url\(([^)]+)\)/g)) {
+        addAssetUrl(urls, match[1]);
+      }
+    });
+
+    document.querySelectorAll('link[href]').forEach(link => {
+      addAssetUrl(urls, link.getAttribute('href'));
+    });
 
     return Array.from(urls);
   }
@@ -6015,13 +6069,22 @@ body::before{
     const alreadyAdded = Array.from(document.head.querySelectorAll('link[data-cardia-preload]'))
       .some(link => link.href === url);
     if (alreadyAdded) return;
+
     const link = document.createElement('link');
     link.rel = 'preload';
     link.href = url;
     link.dataset.cardiaPreload = url;
-    if (IMAGE_ASSET_RE.test(url)) link.as = 'image';
-    else if (AUDIO_ASSET_RE.test(url)) link.as = 'audio';
-    else return;
+
+    if (IMAGE_ASSET_RE.test(url)) {
+      link.as = 'image';
+      try { link.fetchPriority = 'high'; } catch (_) {}
+    } else if (AUDIO_ASSET_RE.test(url)) {
+      link.as = 'audio';
+      link.type = 'audio/mpeg';
+    } else {
+      return;
+    }
+
     try { link.crossOrigin = 'anonymous'; } catch (_) {}
     document.head.appendChild(link);
   }
@@ -6034,9 +6097,10 @@ body::before{
     });
   }
 
-  function loadImageAsset(url) {
-    return fetchAssetCompletely(url).catch(() => new Promise((resolve, reject) => {
+  function decodeImageAsset(url) {
+    return new Promise((resolve, reject) => {
       const img = new Image();
+      try { img.crossOrigin = 'anonymous'; } catch (_) {}
       img.onload = async () => {
         try {
           if (img.decode) await img.decode();
@@ -6045,12 +6109,18 @@ body::before{
       };
       img.onerror = reject;
       img.src = url;
-    }));
+    });
+  }
+
+  function loadImageAsset(url) {
+    /* Fetch first so the file is fully cached, then decode so the first display is smooth. */
+    return fetchAssetCompletely(url)
+      .catch(() => null)
+      .then(() => decodeImageAsset(url));
   }
 
   function loadAudioAsset(url) {
-    /* Fetching the blob/array fully is the most reliable way to make sure the MP3 is cached
-       before the loader closes. The <audio> fallback is kept for browsers that block fetch. */
+    /* Fetching the blob fully is the most reliable way to cache the MP3 before opening. */
     return fetchAssetCompletely(url).catch(() => new Promise((resolve, reject) => {
       const audio = new Audio();
       let settled = false;
@@ -6072,6 +6142,7 @@ body::before{
         audio.removeEventListener('error', fail);
       };
       audio.preload = 'auto';
+      try { audio.crossOrigin = 'anonymous'; } catch (_) {}
       audio.addEventListener('canplaythrough', finish, { once: true });
       audio.addEventListener('loadeddata', finish, { once: true });
       audio.addEventListener('error', fail, { once: true });
@@ -6087,6 +6158,13 @@ body::before{
     return Promise.resolve();
   }
 
+  function preloadWithRetry(url) {
+    return preloadOneAsset(url).catch(firstErr => {
+      console.warn('Cardia preload retry:', url, firstErr);
+      return preloadOneAsset(url);
+    });
+  }
+
   async function preloadInvitationAssets() {
     if (!stage) return;
     stage.classList.add('assets-loading');
@@ -6097,8 +6175,9 @@ body::before{
     markLoaderProgress(done, total);
 
     await Promise.all(urls.map(url =>
-      preloadOneAsset(url).catch(err => {
-        console.warn('Cardia preload skipped unavailable asset:', url, err);
+      preloadWithRetry(url).catch(err => {
+        /* Do not leave guests stuck forever if a remote file is temporarily unavailable. */
+        console.warn('Cardia preload unavailable after retry:', url, err);
       }).finally(() => {
         done += 1;
         markLoaderProgress(done, total);
