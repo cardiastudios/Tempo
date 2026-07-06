@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -177,7 +178,7 @@
     .paper-kicker2{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:122px;}
     .paper-names{font-family:'Great Vibes',cursive;color:#a85f45;font-size:74px;line-height:.92;font-weight:400;text-shadow:0 2px 0 rgba(255,255,255,.7);}
     .paper-amp{font-family:'Cormorant Garamond',serif;color:var(--gold);font-size:25px;margin:12px 0;}
-    .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:16px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
+    .paper-verse{font-family:'EB Garamond',serif;font-style:italic;font-size:12px;line-height:1.52;color:var(--text);max-width:330px;margin:28px auto 0;}
     .paper-date{margin-top:28px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--text-soft);font-weight:600;line-height:1.6;}
     .paper-countdown{margin-top:34px;width:100%;}
     .paper-cut-invite .countdown{margin-top:24px;}
@@ -1719,7 +1720,7 @@
 
     .paper-verse[lang="ar"]{
       font-style:normal;
-      font-size:16px;
+      font-size:12px;
       line-height:2;
       max-width:360px;
     }
@@ -2122,7 +2123,7 @@
       width:100% !important;
       max-width:400px !important;
       margin:10px auto 0 !important;
-      font-size:16px !important;
+      font-size:12px !important;
       line-height:1.72 !important;
       letter-spacing:0 !important;
       font-style:normal !important;
@@ -2164,7 +2165,7 @@
       #countdownSection .paper-verse[lang="ar"]{
         max-width:352px !important;
         margin-top:8px !important;
-        font-size:16px !important;
+        font-size:12px !important;
         line-height:1.68 !important;
         transform:translateY(-12px);
       }
@@ -2172,7 +2173,7 @@
 
     @media(max-width:360px){
       #countdownSection .paper-verse[lang="ar"]{
-        font-size:16px !important;
+        font-size:12px !important;
       }
     }
 
@@ -2253,6 +2254,214 @@
       }
     }
 
+
+    /* ===================== Client fixes — centered day-programme dash + open-album lightbox ===================== */
+    .day-programme-row{
+      grid-template-columns:92px 26px 1fr !important;
+      gap:8px !important;
+      align-items:center !important;
+    }
+    .day-programme-time{
+      text-align:left !important;
+    }
+    .day-programme-dash{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:18px;
+      line-height:1;
+      color:#a85f45;
+      font-weight:500;
+    }
+    .day-programme-row.no-time{
+      grid-template-columns:1fr !important;
+      justify-items:center !important;
+    }
+    .day-programme-row.no-time .day-programme-label{
+      grid-column:1 / -1 !important;
+      width:100% !important;
+      text-align:center !important;
+      padding-top:8px;
+    }
+
+    #gallery .normal-gallery-card .album{
+      cursor:default !important;
+    }
+    #gallery .normal-gallery-card .album-track{
+      display:block !important;
+      transform:none !important;
+      transition:none !important;
+      will-change:auto !important;
+    }
+    #gallery .normal-gallery-card .album-slide{
+      display:none !important;
+      min-width:0 !important;
+    }
+    #gallery .normal-gallery-card .album-slide:first-child{
+      display:block !important;
+    }
+    #gallery .normal-gallery-card .album-arrow,
+    #gallery .normal-gallery-card .album-dots,
+    #albumDots{
+      display:none !important;
+    }
+    .album-open-btn{
+      position:absolute;
+      left:50%;
+      bottom:26px;
+      transform:translateX(-50%);
+      z-index:12;
+      min-width:174px;
+      border:1px solid rgba(255,255,255,.86);
+      border-radius:999px;
+      padding:14px 22px;
+      background:rgba(255,255,255,.88);
+      color:#a85f45;
+      font-family:'Montserrat',sans-serif;
+      font-size:11px;
+      font-weight:600;
+      letter-spacing:.20em;
+      text-transform:uppercase;
+      cursor:pointer;
+      box-shadow:0 12px 30px rgba(70,45,20,.18);
+      backdrop-filter:blur(7px);
+    }
+    .album-open-btn:active{
+      transform:translateX(-50%) scale(.98);
+    }
+    body.album-lightbox-open{
+      overflow:hidden !important;
+    }
+    .album-lightbox{
+      position:fixed;
+      inset:0;
+      z-index:100000;
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:22px;
+      background:rgba(20,17,15,.92);
+      backdrop-filter:blur(8px);
+    }
+    .album-lightbox.open{
+      display:flex;
+    }
+    .album-lightbox img{
+      display:block;
+      max-width:96vw;
+      max-height:88svh;
+      width:auto;
+      height:auto;
+      object-fit:contain;
+      border-radius:16px;
+      box-shadow:0 24px 70px rgba(0,0,0,.45);
+      background:#fff;
+    }
+    .album-lightbox-close,
+    .album-lightbox-nav{
+      position:absolute;
+      z-index:2;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.92);
+      color:#a85f45;
+      cursor:pointer;
+      box-shadow:0 10px 28px rgba(0,0,0,.20);
+    }
+    .album-lightbox-close{
+      top:18px;
+      right:18px;
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      font-size:26px;
+      line-height:1;
+    }
+    .album-lightbox-nav{
+      top:50%;
+      transform:translateY(-50%);
+      width:48px;
+      height:48px;
+      border-radius:50%;
+      font-size:34px;
+      line-height:1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+    .album-lightbox-nav.prev{left:18px;}
+    .album-lightbox-nav.next{right:18px;}
+    .album-lightbox-counter{
+      position:absolute;
+      left:50%;
+      bottom:18px;
+      transform:translateX(-50%);
+      padding:8px 14px;
+      border-radius:999px;
+      background:rgba(255,255,255,.92);
+      color:#a85f45;
+      font-family:'Cormorant Garamond',serif;
+      font-size:16px;
+      letter-spacing:.08em;
+      box-shadow:0 10px 28px rgba(0,0,0,.18);
+    }
+    @media(max-width:420px){
+      .day-programme-row{
+        grid-template-columns:78px 22px 1fr !important;
+        gap:7px !important;
+      }
+      .day-programme-dash{
+        font-size:17px;
+      }
+      .album-open-btn{
+        bottom:22px;
+        min-width:160px;
+        padding:13px 18px;
+        font-size:10px;
+        letter-spacing:.17em;
+      }
+      .album-lightbox{
+        padding:14px;
+      }
+      .album-lightbox img{
+        max-width:96vw;
+        max-height:82svh;
+        border-radius:12px;
+      }
+      .album-lightbox-close{
+        top:12px;
+        right:12px;
+        width:44px;
+        height:44px;
+      }
+      .album-lightbox-nav{
+        width:42px;
+        height:42px;
+        font-size:30px;
+      }
+      .album-lightbox-nav.prev{left:10px;}
+      .album-lightbox-nav.next{right:10px;}
+      .album-lightbox-counter{
+        bottom:14px;
+      }
+    }
+
+
+
+    /* ===================== FINAL FIX — optically center the day-programme dash ===================== */
+    #programme{
+      --day-programme-dash-offset:-16px;
+    }
+
+    #programme .day-programme-row:not(.no-time) .day-programme-dash{
+      transform:translateX(var(--day-programme-dash-offset)) !important;
+    }
+
+    @media(max-width:420px){
+      #programme{
+        --day-programme-dash-offset:-12px;
+      }
+    }
 </style>
 </head>
 <body class="invitation-loading" data-theme="terracotta">
@@ -2272,7 +2481,7 @@
 </div>
 <button aria-label="Toggle music / Activer la musique" class="music-btn" id="musicBtn" onclick="toggleMusic()">♪</button>
 <audio id="bgMusic" loop="" preload="auto">
-<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/You%20are%20the%20only%20one.mp3" type="audio/mpeg"/>
+<source src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/Moon_Music.mp3" type="audio/mpeg"/>
 </audio>
 <main class="invite">
 <!-- FIRST SCREEN: ENVELOPE CLOSED / OPEN BUTTON -->
@@ -2306,6 +2515,7 @@
 <section class="section" id="countdownSection">
 <div class="reveal paper-sheet hero-paper">
 <img alt="" aria-hidden="true" class="paper-frame-bg" data-theme-filter-asset="Pages3.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/Pages3.png"/>
+
 <p class="paper-kicker2"><span class="lang-en">Wedding Invitation</span><span class="lang-fr">Invitation de mariage</span></p>
 <h2 class="paper-names">Mahmoud</h2>
 <div class="paper-amp">&amp;</div>
@@ -2313,7 +2523,7 @@
 <p class="paper-verse" dir="rtl" lang="ar">
 <span class="verse-basmala">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</span>
 <span class="verse-main">
-<span class="verse-line">﴿وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</span>
+<span class="verse-line">﴿ وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</span>
 <span class="verse-line">وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْ مٍ يَتَفَكَّرُونَ﴾</span>
 </span>
 <span class="verse-closing">صدق الله العظيم</span>
@@ -2364,13 +2574,16 @@
 <section class="section" id="programme">
 <div class="reveal paper-sheet day-programme-sheet">
 <img alt="Wedding guests illustration" class="day-programme-dress" data-no-theme="true" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Day%20and%20night/dress.png"/>
-<h2 class="day-programme-title"><span class="lang-en">Day Programme</span><span class="lang-fr">Programme du jour</span></h2>
+<h2 class="day-programme-title"><span class="lang-en">The Celebration</span><span class="lang-fr">La célébration</span></h2>
 <p class="day-programme-date"><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></p>
 <div class="day-programme-timeline">
-<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Ceremony</span><span class="lang-fr">Cérémonie</span></div></div>
-<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Cocktails</span><span class="lang-fr">Cocktail</span></div></div>
-<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Dinner</span><span class="lang-fr">Dîner</span></div></div>
-<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></div><div class="day-programme-label"><span class="lang-en">Dancing</span><span class="lang-fr">Danse</span></div></div>
+
+
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">8:00 PM</span><span class="lang-fr">8:00 PM</span></div><div class="day-programme-dash" aria-hidden="true">–</div><div class="day-programme-label"><span class="lang-en">Welcome Reception</span><span class="lang-fr">Accueil des invités</span></div></div>
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">10:00 PM</span><span class="lang-fr">10:00 PM</span></div><div class="day-programme-dash" aria-hidden="true">–</div><div class="day-programme-label"><span class="lang-en">Dinner Buffet</span><span class="lang-fr">Buffet</span></div></div>
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">10:45 PM</span><span class="lang-fr">10:45 PM</span></div><div class="day-programme-dash" aria-hidden="true">–</div><div class="day-programme-label"><span class="lang-en">First Dance</span><span class="lang-fr">Première danse</span></div></div>
+<div class="day-programme-row"><div class="day-programme-time"><span class="lang-en">11:45 PM</span><span class="lang-fr">11:45 PM</span></div><div class="day-programme-dash" aria-hidden="true">–</div><div class="day-programme-label"><span class="lang-en">Cake Cutting</span><span class="lang-fr">Découpe du gâteau</span></div></div>
+<div class="day-programme-row no-time"><div class="day-programme-label"><span class="lang-en">Dancing Until Late ✨🤍</span><span class="lang-fr">Danse jusqu’au bout de la nuit ✨🤍</span></div></div>
 </div>
 </div>
 </section>
@@ -2387,7 +2600,7 @@
 </h3>
 <h3 class="venue-name">Château De Mer</h3>
 <div class="thin-line"></div>
-<div class="venue-meta"><span><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></span><span><span class="lang-en">TBD</span><span class="lang-fr">TBD</span></span></div>
+<div class="venue-meta"><span><span class="lang-en">26 September 2026</span><span class="lang-fr">26 septembre 2026</span></span><span><span class="lang-en">8:00 PM</span><span class="lang-fr">8:00 PM</span></span></div>
 <p class="venue-address">Château De Mer<br/><span class="lang-en">Damour, Lebanon</span><span class="lang-fr">Damour, Liban</span></p>
 <div class="map-button-wrap"><a class="map-button" href="https://maps.app.goo.gl/Maa3DLgGHuxvKyn28" target="_blank" rel="noopener"><span class="lang-en">View on Google Maps</span><span class="lang-fr">Voir sur Google Maps</span></a></div>
 </div>
@@ -2396,23 +2609,34 @@
 
 <section class="section gallery-section" id="gallery">
 <div class="reveal paper-sheet normal-gallery-card">
-<div class="gallery-content"><h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2><p class="subtitle"><span class="lang-en">Swipe to explore</span><span class="lang-fr">Glissez pour explorer</span></p>
+<div class="gallery-content"><h2 class="section-title"><span class="lang-en">Photo Album</span><span class="lang-fr">Album photo</span></h2><p class="subtitle"><span class="lang-en">Open to explore</span><span class="lang-fr">Ouvrez pour explorer</span></p>
 <div class="album" id="album">
 <div class="album-track" id="albumTrack">
-<div class="album-slide"><img alt="Wedding table" loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Bride bouquet" loading="lazy" src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding couple" loading="lazy" src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding dinner" loading="lazy" src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding detail" loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding ceremony" loading="lazy" src="https://images.unsplash.com/photo-1469371670807-013ccf25f16a?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding flowers" loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding rings" loading="lazy" src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
-<div class="album-slide"><img alt="Wedding celebration" loading="lazy" src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&amp;w=800&amp;auto=format&amp;fit=crop"/></div>
+<div class="album-slide"><img alt="Wedding table" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_1.png"/></div>
+<div class="album-slide"><img alt="Bride bouquet" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_7.png"/></div>
+<div class="album-slide"><img alt="Wedding couple" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_3.png"/></div>
+<div class="album-slide"><img alt="Wedding dinner" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_6.png"/></div>
+<div class="album-slide"><img alt="Wedding detail" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_5.png"/></div>
+<div class="album-slide"><img alt="Wedding ceremony" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_9.png"/></div>
+<div class="album-slide"><img alt="Wedding flowers" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_8.png"/></div>
+<div class="album-slide"><img alt="Wedding rings" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_4.png"/></div>
+<div class="album-slide"><img alt="Wedding celebration" loading="eager" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Mahmoud%20and%20Yassmine/IMG_2.png"/></div>
+
+
+
+
+
 </div>
-<button aria-label="Previous album slide / Photo précédente" class="album-arrow prev" onclick="albumMove(-1)">‹</button><button aria-label="Next album slide / Photo suivante" class="album-arrow next" onclick="albumMove(1)">›</button>
+<button class="album-open-btn" type="button" onclick="openAlbum(0)"><span class="lang-en">Open album</span><span class="lang-fr">Ouvrir l'album</span></button>
 </div>
-<div class="album-dots" id="albumDots"></div>
 </div>
+</div>
+<div class="album-lightbox" id="albumLightbox" aria-hidden="true" role="dialog" aria-label="Photo album / Album photo">
+<button class="album-lightbox-close" type="button" onclick="closeAlbum()" aria-label="Close album / Fermer l'album">×</button>
+<button class="album-lightbox-nav prev" type="button" onclick="albumLightboxMove(-1)" aria-label="Previous photo / Photo précédente">‹</button>
+<img id="albumLightboxImg" alt="Wedding photo"/>
+<button class="album-lightbox-nav next" type="button" onclick="albumLightboxMove(1)" aria-label="Next photo / Photo suivante">›</button>
+<div class="album-lightbox-counter" id="albumLightboxCounter">1 / 1</div>
 </div>
 </section>
 <section class="section gold" id="gifts">
@@ -2532,7 +2756,7 @@
       },280);
     }
 
-    function preloadImageAsset(url, timeoutMs=9000){
+    function preloadImageAsset(url, timeoutMs=30000){
       return new Promise(resolve=>{
         if(!url){ resolve(); return; }
         const img=new Image();
@@ -2550,47 +2774,80 @@
       });
     }
 
-    function preloadVideoAsset(url, timeoutMs=16000){
+    function fetchAssetFully(url, timeoutMs=60000){
       return new Promise(resolve=>{
-        if(!url){ resolve(); return; }
-        const video=document.createElement('video');
+        if(!url || !window.fetch){ resolve(false); return; }
         let settled=false;
-        const done=()=>{
+        const controller = window.AbortController ? new AbortController() : null;
+        const done=(ok)=>{
           if(settled) return;
           settled=true;
-          try{ video.pause(); video.removeAttribute('src'); video.load(); }catch(e){}
-          resolve();
+          clearTimeout(timer);
+          resolve(!!ok);
         };
-        const timer=setTimeout(done,timeoutMs);
-        video.muted=true;
-        video.playsInline=true;
-        video.preload='auto';
-        video.oncanplaythrough=()=>{ clearTimeout(timer); done(); };
-        video.onloadeddata=()=>{ clearTimeout(timer); done(); };
-        video.onerror=()=>{ clearTimeout(timer); done(); };
-        video.src=url;
-        try{ video.load(); }catch(e){ clearTimeout(timer); done(); }
+        const timer=setTimeout(()=>{
+          try{ if(controller) controller.abort(); }catch(e){}
+          done(false);
+        },timeoutMs);
+        fetch(url,{cache:'force-cache',signal:controller ? controller.signal : undefined})
+          .then(response=>{
+            if(!response || (!response.ok && response.type !== 'opaque')) throw new Error('asset fetch failed');
+            if(response.blob) return response.blob();
+            if(response.arrayBuffer) return response.arrayBuffer();
+            return null;
+          })
+          .then(()=>done(true))
+          .catch(()=>done(false));
       });
     }
 
-    function preloadAudioAsset(url, timeoutMs=16000){
-      return new Promise(resolve=>{
-        if(!url){ resolve(); return; }
-        const audio=document.createElement('audio');
-        let settled=false;
-        const done=()=>{
-          if(settled) return;
-          settled=true;
-          try{ audio.pause(); audio.removeAttribute('src'); audio.load(); }catch(e){}
-          resolve();
-        };
-        const timer=setTimeout(done,timeoutMs);
-        audio.preload='auto';
-        audio.oncanplaythrough=()=>{ clearTimeout(timer); done(); };
-        audio.onloadeddata=()=>{ clearTimeout(timer); done(); };
-        audio.onerror=()=>{ clearTimeout(timer); done(); };
-        audio.src=url;
-        try{ audio.load(); }catch(e){ clearTimeout(timer); done(); }
+    function preloadVideoAsset(url, timeoutMs=60000){
+      return fetchAssetFully(url,timeoutMs).then(fetched=>{
+        if(fetched) return;
+        return new Promise(resolve=>{
+          if(!url){ resolve(); return; }
+          const video=document.createElement('video');
+          let settled=false;
+          const done=()=>{
+            if(settled) return;
+            settled=true;
+            try{ video.pause(); video.removeAttribute('src'); video.load(); }catch(e){}
+            resolve();
+          };
+          const timer=setTimeout(done,timeoutMs);
+          video.muted=true;
+          video.playsInline=true;
+          video.preload='auto';
+          video.oncanplaythrough=()=>{ clearTimeout(timer); done(); };
+          video.onloadeddata=()=>{ clearTimeout(timer); done(); };
+          video.onerror=()=>{ clearTimeout(timer); done(); };
+          video.src=url;
+          try{ video.load(); }catch(e){ clearTimeout(timer); done(); }
+        });
+      });
+    }
+
+    function preloadAudioAsset(url, timeoutMs=60000){
+      return fetchAssetFully(url,timeoutMs).then(fetched=>{
+        if(fetched) return;
+        return new Promise(resolve=>{
+          if(!url){ resolve(); return; }
+          const audio=document.createElement('audio');
+          let settled=false;
+          const done=()=>{
+            if(settled) return;
+            settled=true;
+            try{ audio.pause(); audio.removeAttribute('src'); audio.load(); }catch(e){}
+            resolve();
+          };
+          const timer=setTimeout(done,timeoutMs);
+          audio.preload='auto';
+          audio.oncanplaythrough=()=>{ clearTimeout(timer); done(); };
+          audio.onloadeddata=()=>{ clearTimeout(timer); done(); };
+          audio.onerror=()=>{ clearTimeout(timer); done(); };
+          audio.src=url;
+          try{ audio.load(); }catch(e){ clearTimeout(timer); done(); }
+        });
       });
     }
 
@@ -2624,16 +2881,16 @@
 
       document.querySelectorAll('img[src]').forEach(img=>{
         const src=img.getAttribute('src');
-        if(src && /\.(png)(?:[?#]|$)/i.test(src)) imageUrls.add(normalizeAssetUrl(src));
+        if(src && /\.(?:png|jpe?g)(?:[?#]|$)/i.test(src)) imageUrls.add(normalizeAssetUrl(src));
       });
       document.querySelectorAll('img[srcset], source[srcset]').forEach(el=>{
         collectSourceSetUrls(el.getAttribute('srcset')).forEach(src=>{
-          if(/\.(png)(?:[?#]|$)/i.test(src)) imageUrls.add(normalizeAssetUrl(src));
+          if(/\.(?:png|jpe?g)(?:[?#]|$)/i.test(src)) imageUrls.add(normalizeAssetUrl(src));
         });
       });
       document.querySelectorAll('video[poster]').forEach(video=>{
         const poster=video.getAttribute('poster');
-        if(poster && /\.(png)(?:[?#]|$)/i.test(poster)) imageUrls.add(normalizeAssetUrl(poster));
+        if(poster && /\.(?:png|jpe?g)(?:[?#]|$)/i.test(poster)) imageUrls.add(normalizeAssetUrl(poster));
       });
       document.querySelectorAll('video source[src]').forEach(source=>{
         videoUrls.add(normalizeAssetUrl(source.getAttribute('src')));
@@ -3124,76 +3381,86 @@
 
     let albumIndex=0;
     let albumReady=false;
-    let albumTimer=null;
-
-    function startAlbumAuto(){
-      stopAlbumAuto();
-      albumTimer=setInterval(()=>albumMove(1),3500);
-    }
-
-    function stopAlbumAuto(){
-      if(albumTimer){
-        clearInterval(albumTimer);
-        albumTimer=null;
-      }
-    }
-
-    function restartAlbumAuto(){
-      stopAlbumAuto();
-      startAlbumAuto();
-    }
+    let albumPhotos=[];
+    let albumLightboxStartX=0;
+    let albumLightboxStartY=0;
 
     function initAlbum(){
       if(albumReady) return;
       albumReady=true;
-      const track=document.getElementById('albumTrack');
-      const dotsWrap=document.getElementById('albumDots');
-      const slides=track.children.length;
-      dotsWrap.innerHTML='';
+      albumPhotos=[...document.querySelectorAll('#albumTrack .album-slide img')]
+        .map(img=>({src:img.currentSrc || img.src, alt:img.alt || 'Wedding photo'}))
+        .filter(photo=>photo.src);
 
-      for(let i=0;i<slides;i++){
-        const dot=document.createElement('button');
-        dot.className='album-dot'+(i===0?' active':'');
-        dot.type='button';
-        dot.onclick=()=>{albumGo(i);restartAlbumAuto();};
-        dotsWrap.appendChild(dot);
-      }
+      const lightbox=document.getElementById('albumLightbox');
+      if(!lightbox) return;
 
-      const album=document.getElementById('album');
-      let startX=0;
-      let startY=0;
+      lightbox.addEventListener('click',e=>{
+        if(e.target===lightbox) closeAlbum();
+      });
 
-      album.addEventListener('mouseenter',stopAlbumAuto);
-      album.addEventListener('mouseleave',startAlbumAuto);
-
-      album.addEventListener('touchstart',e=>{
-        stopAlbumAuto();
-        startX=e.touches[0].clientX;
-        startY=e.touches[0].clientY;
+      lightbox.addEventListener('touchstart',e=>{
+        if(!e.touches || !e.touches.length) return;
+        albumLightboxStartX=e.touches[0].clientX;
+        albumLightboxStartY=e.touches[0].clientY;
       },{passive:true});
 
-      album.addEventListener('touchend',e=>{
-        const dx=e.changedTouches[0].clientX-startX;
-        const dy=e.changedTouches[0].clientY-startY;
-        if(Math.abs(dx)>45&&Math.abs(dx)>Math.abs(dy)){
-          albumMove(dx<0?1:-1);
+      lightbox.addEventListener('touchend',e=>{
+        if(!e.changedTouches || !e.changedTouches.length) return;
+        const dx=e.changedTouches[0].clientX-albumLightboxStartX;
+        const dy=e.changedTouches[0].clientY-albumLightboxStartY;
+        if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)){
+          albumLightboxMove(dx<0?1:-1);
         }
-        restartAlbumAuto();
       },{passive:true});
 
-      startAlbumAuto();
+      document.addEventListener('keydown',e=>{
+        const lb=document.getElementById('albumLightbox');
+        if(!lb || !lb.classList.contains('open')) return;
+        if(e.key==='Escape') closeAlbum();
+        if(e.key==='ArrowLeft') albumLightboxMove(-1);
+        if(e.key==='ArrowRight') albumLightboxMove(1);
+      });
     }
 
-    function albumGo(index){
-      const track=document.getElementById('albumTrack');
-      const total=track.children.length;
-      albumIndex=(index+total)%total;
-      track.style.transform='translateX(-'+(albumIndex*100)+'%)';
-      document.querySelectorAll('.album-dot').forEach((dot,i)=>dot.classList.toggle('active',i===albumIndex));
+    function openAlbum(index=0){
+      if(!albumReady) initAlbum();
+      if(!albumPhotos.length) return;
+      const lightbox=document.getElementById('albumLightbox');
+      if(!lightbox) return;
+      albumIndex=(index+albumPhotos.length)%albumPhotos.length;
+      updateAlbumLightbox();
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+      document.body.classList.add('album-lightbox-open');
+    }
+
+    function closeAlbum(){
+      const lightbox=document.getElementById('albumLightbox');
+      if(!lightbox) return;
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      document.body.classList.remove('album-lightbox-open');
+    }
+
+    function updateAlbumLightbox(){
+      const img=document.getElementById('albumLightboxImg');
+      const counter=document.getElementById('albumLightboxCounter');
+      if(!img || !albumPhotos.length) return;
+      const photo=albumPhotos[albumIndex];
+      img.src=photo.src;
+      img.alt=photo.alt || 'Wedding photo';
+      if(counter) counter.textContent=(albumIndex+1)+' / '+albumPhotos.length;
+    }
+
+    function albumLightboxMove(direction){
+      if(!albumPhotos.length) return;
+      albumIndex=(albumIndex+direction+albumPhotos.length)%albumPhotos.length;
+      updateAlbumLightbox();
     }
 
     function albumMove(direction){
-      albumGo(albumIndex+direction);
+      albumLightboxMove(direction);
     }
     updateLocalizedFields();
   </script>
