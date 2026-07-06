@@ -5062,6 +5062,40 @@ body::before{
   #p7 .closing-copy{ left:var(--closing-left) !important; }
 }
 
+
+
+/* ═════════ PERFORMANCE FIX — DEFER HEAVY PHOTO ALBUM JPGS ═════════ */
+#veniceAlbum .album-lazy-photo{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  background:rgba(255,245,230,.44) !important;
+  contain:paint !important;
+  will-change:auto !important;
+}
+.album-lightbox.loading .album-lightbox-img{
+  opacity:.18 !important;
+}
+.album-lightbox.loading::after{
+  content:'Loading photo…';
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  z-index:1001 !important;
+  padding:2.2cqw 4.8cqw !important;
+  border-radius:999px !important;
+  background:rgba(255,245,230,.78) !important;
+  color:var(--deep) !important;
+  font-family:'Jost', sans-serif !important;
+  font-size:2cqw !important;
+  letter-spacing:.22em !important;
+  text-transform:uppercase !important;
+  box-shadow:0 16px 42px rgba(0,0,0,.24) !important;
+  backdrop-filter:blur(8px) !important;
+}
+
 </style>
 </head>
 <body>
@@ -5334,11 +5368,9 @@ body::before{
 
         <div class="venice-album locked" id="veniceAlbum" aria-label="Photo album preview">
           <div class="venice-album-track" id="veniceAlbumTrack">
-            
-           
-            <div class="venice-album-slide"><img loading="lazy" src=" https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D1.jpg" alt="Photo of the couple 1"></div>
-            <div class="venice-album-slide"><img loading="lazy" src=" https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D2.jpg" alt="Photo of the couple 2"></div>
-            <div class="venice-album-slide"><img loading="lazy" src=" https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D3.jpg" alt="Photo of the couple 3"></div>
+            <div class="venice-album-slide"><img loading="lazy" decoding="async" fetchpriority="low" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D1.jpeg" alt="Photo of the couple 1"></div>
+            <div class="venice-album-slide"><img loading="lazy" decoding="async" fetchpriority="low" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D2.jpeg" alt="Photo of the couple 2"></div>
+            <div class="venice-album-slide"><img loading="lazy" decoding="async" fetchpriority="low" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D3.jpeg" alt="Photo of the couple 3"></div>
           </div>
           <button class="venice-album-arrow prev" type="button" aria-label="Previous photo">‹</button>
           <button class="venice-album-arrow next" type="button" aria-label="Next photo">›</button>
@@ -5813,12 +5845,70 @@ body::before{
     updateVeniceAlbum();
   }
 
+  const albumImageCache = new Map();
+  let albumLoadToken = 0;
+
+  function loadAlbumFullImage(src) {
+    if (!src) return Promise.reject(new Error('missing album image src'));
+    if (albumImageCache.has(src)) return albumImageCache.get(src);
+
+    const promise = new Promise((resolve, reject) => {
+      const preloader = new Image();
+      try { preloader.decoding = 'async'; } catch (_) {}
+      try { preloader.fetchPriority = 'high'; } catch (_) {}
+      preloader.onload = async () => {
+        try {
+          if (preloader.decode) await preloader.decode();
+        } catch (_) {}
+        resolve(src);
+      };
+      preloader.onerror = reject;
+      preloader.src = src;
+    }).catch(err => {
+      albumImageCache.delete(src);
+      throw err;
+    });
+
+    albumImageCache.set(src, promise);
+    return promise;
+  }
+
+  function setAlbumLightboxLoading(isLoading) {
+    if (albumLightbox) albumLightbox.classList.toggle('loading', !!isLoading);
+  }
+
+  function prewarmAlbumNeighbors() {
+    if (!veniceAlbumTotal || !albumLightboxOpen) return;
+    [veniceAlbumIndex + 1, veniceAlbumIndex - 1].forEach(i => {
+      const nextIndex = (i + veniceAlbumTotal) % veniceAlbumTotal;
+      const nextImg = albumSlides[nextIndex];
+      const nextSrc = getFullAlbumSrc(nextImg);
+      if (nextSrc) loadAlbumFullImage(nextSrc).catch(() => null);
+    });
+  }
+
   function updateAlbumLightbox() {
     if (!albumLightboxImage || !veniceAlbumTotal) return;
     const img = albumSlides[veniceAlbumIndex];
-    albumLightboxImage.src = getFullAlbumSrc(img);
+    const fullSrc = getFullAlbumSrc(img);
+    const token = ++albumLoadToken;
+
     albumLightboxImage.alt = img.alt || `Album photo ${veniceAlbumIndex + 1}`;
     if (albumLightboxCounter) albumLightboxCounter.textContent = `${veniceAlbumIndex + 1} / ${veniceAlbumTotal}`;
+    setAlbumLightboxLoading(true);
+    albumLightboxImage.removeAttribute('src');
+
+    loadAlbumFullImage(fullSrc).then(() => {
+      if (!albumLightboxOpen || token !== albumLoadToken) return;
+      albumLightboxImage.src = fullSrc;
+      setAlbumLightboxLoading(false);
+      window.setTimeout(prewarmAlbumNeighbors, 250);
+    }).catch(err => {
+      console.warn('Album photo could not be pre-decoded:', fullSrc, err);
+      if (!albumLightboxOpen || token !== albumLoadToken) return;
+      albumLightboxImage.src = fullSrc;
+      setAlbumLightboxLoading(false);
+    });
   }
 
   function openPhotoAlbum(e) {
@@ -5828,9 +5918,9 @@ body::before{
     }
     if (!albumLightbox || !veniceAlbumTotal) return;
     albumLightboxOpen = true;
-    updateAlbumLightbox();
     albumLightbox.classList.add('open');
     albumLightbox.setAttribute('aria-hidden', 'false');
+    updateAlbumLightbox();
   }
 
   function closePhotoAlbum(e) {
@@ -5839,7 +5929,9 @@ body::before{
       e.stopPropagation();
     }
     if (!albumLightbox) return;
+    albumLoadToken += 1;
     albumLightboxOpen = false;
+    setAlbumLightboxLoading(false);
     albumLightbox.classList.remove('open');
     albumLightbox.setAttribute('aria-hidden', 'true');
     if (albumLightboxImage) albumLightboxImage.src = '';
@@ -5957,13 +6049,15 @@ body::before{
 
 
 
-  /* INITIAL ASSET LOADER — wait for every MP3, PNG and JPG before the loader disappears */
+  /* INITIAL ASSET LOADER — wait for all main invitation MP3, PNG and JPG assets.
+     Full-size album JPGs are intentionally deferred until the album opens, because
+     15–20 MB photos block decoding and make the panorama lag near the album. */
   const assetLoader = document.getElementById('assetLoader');
   const loaderBar = document.getElementById('loaderBar');
   const loaderPercent = document.getElementById('loaderPercent');
 
   /* Build-time list from this HTML file. This protects against lazy images or
-     assets that are not visible yet when the loader starts. */
+     assets that are not visible yet when the loader starts, including the compressed album photos. */
   const CARDIA_REQUIRED_MEDIA_URLS = [
     "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Page.png",
     "https://raw.githubusercontent.com/NemerDavid/web-des/main/Music/Indila_Love_Story.mp3",
@@ -5973,10 +6067,7 @@ body::before{
     "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky_aurora.png",
     "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png",
     "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png",
-    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars4.png",
-    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D1.jpg",
-    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D2.jpg",
-    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/R_D3.jpg"
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars4.png"
 ];
 
   const REQUIRED_ASSET_RE = /\.(png|jpe?g|mp3)(\?|#|$)/i;
@@ -5997,8 +6088,14 @@ body::before{
     return cleaned;
   }
 
+  function isDeferredAlbumAsset(url) {
+    /* Album photos are compressed now, so they can be loaded with the rest of the invitation assets. */
+    return false;
+  }
+
   function addAssetUrl(urls, url) {
     const cleaned = cleanAssetUrl(url);
+    if (cleaned && isDeferredAlbumAsset(cleaned)) return;
     if (cleaned && REQUIRED_ASSET_RE.test(cleaned)) urls.add(cleaned);
   }
 
@@ -6017,15 +6114,24 @@ body::before{
 
     /* All visible, hidden, lazy and full-size image assets. */
     document.querySelectorAll('img').forEach(img => {
+      const deferredAlbumImage = img.classList.contains('album-lazy-photo') || (img.closest && img.closest('#veniceAlbum'));
       addAssetUrl(urls, img.getAttribute('src'));
       addAssetUrl(urls, img.currentSrc);
-      addAssetUrl(urls, img.getAttribute('data-full'));
-      addAssetUrl(urls, img.getAttribute('data-src'));
+      if (!deferredAlbumImage) {
+        addAssetUrl(urls, img.getAttribute('data-full'));
+        addAssetUrl(urls, img.getAttribute('data-src'));
+      }
       addAssetUrl(urls, img.getAttribute('poster'));
-      addSrcsetUrls(urls, img.getAttribute('srcset'));
+      if (!deferredAlbumImage) addSrcsetUrls(urls, img.getAttribute('srcset'));
       try {
-        img.loading = 'eager';
-        img.fetchPriority = 'high';
+        if (deferredAlbumImage) {
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          img.fetchPriority = 'low';
+        } else {
+          img.loading = 'eager';
+          img.fetchPriority = 'high';
+        }
       } catch (_) {}
     });
 
