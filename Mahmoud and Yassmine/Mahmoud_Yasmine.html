@@ -2225,9 +2225,9 @@
       white-space:nowrap;
       overflow:visible;
       font-family:'Montserrat',sans-serif;
-      font-size:clamp(10px, 2.85vw, 13px);
+      font-size:clamp(8.6px, 2.35vw, 11px);
       line-height:1.45;
-      letter-spacing:.135em;
+      letter-spacing:.105em;
       font-weight:500;
       text-align:center;
     }
@@ -2248,8 +2248,8 @@
       }
 
       #rsvp .rsvp-deadline{
-        font-size:clamp(9px, 2.72vw, 11.5px);
-        letter-spacing:.115em;
+        font-size:clamp(8.1px, 2.15vw, 9.6px);
+        letter-spacing:.075em;
         margin-bottom:26px !important;
       }
     }
@@ -2651,7 +2651,7 @@
 <div class="reveal paper-sheet">
 <img alt="Paper-cut doves and wedding rings" class="paper-asset" data-theme-asset="Doves4.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/5_%23a85f45/Doves4.png"/>
 <h2 class="section-title"><span class="lang-en">RSVP</span><span class="lang-fr">Réponse</span></h2>
-<p class="subtitle rsvp-deadline"><span class="lang-en">Kindly reply before <span class="rsvp-number">1</span> August <span class="rsvp-number">2026</span></span><span class="lang-fr">Merci de répondre avant le <span class="rsvp-number">1er</span> août <span class="rsvp-number">2026</span></span></p>
+<p class="subtitle rsvp-deadline"><span class="lang-en">Kindly reply before <span class="rsvp-number">1</span> September <span class="rsvp-number">2026</span></span><span class="lang-fr">Merci de répondre avant le <span class="rsvp-number">1er</span> septembre  <span class="rsvp-number">2026</span></span></p>
 <div class="card rsvp-box">
 <div class="step-dots single-step-dots" aria-hidden="true">
 <span class="step-dot on" id="dot-1"></span>
@@ -2980,7 +2980,23 @@
     function currentLang(){return document.body.classList.contains('fr')?'fr':'en';}
     function t(en,fr){return currentLang()==='fr'?fr:en;}
     function updateLocalizedFields(){document.querySelectorAll('[data-placeholder-en]').forEach(el=>{el.placeholder=el.getAttribute('data-placeholder-'+currentLang());});}
-    function setLang(lang){document.documentElement.lang=lang;document.body.classList.toggle('fr',lang==='fr');document.getElementById('btnEN').classList.toggle('active',lang==='en');document.getElementById('btnFR').classList.toggle('active',lang==='fr');updateLocalizedFields();}
+    function setLang(lang){
+      document.documentElement.lang=lang;
+      document.body.classList.toggle('fr',lang==='fr');
+      document.getElementById('btnEN').classList.toggle('active',lang==='en');
+      document.getElementById('btnFR').classList.toggle('active',lang==='fr');
+      updateLocalizedFields();
+
+      /* Rebuild the dynamic RSVP fields so every label changes language too. */
+      if (typeof applyPersonalGuestLink === 'function') applyPersonalGuestLink();
+
+      const errName=document.getElementById('errName');
+      if(errName && errName.style.display!=='none'){
+        errName.textContent=lang==='fr'
+          ? 'Merci d’indiquer au moins un nom et de choisir Oui ou Non.'
+          : 'Please enter at least one guest name and choose Yes or No.';
+      }
+    }
 
     const music=document.getElementById('bgMusic');const musicBtn=document.getElementById('musicBtn');let musicOn=false;
     function tryPlayMusic(){music.play().then(()=>{musicOn=true;musicBtn.textContent='♪';}).catch(()=>{musicOn=false;musicBtn.textContent='×';});}
@@ -3081,7 +3097,7 @@
     const manualWrap = document.getElementById('manualGuestListWrap');
 
     if (guestWelcomeName) {
-      guestWelcomeName.textContent = hasLockedGuestNames ? invitedGroupForClient : 'Guest';
+      guestWelcomeName.textContent = hasLockedGuestNames ? invitedGroupForClient : (currentLang() === 'fr' ? 'Invité(e)' : 'Guest');
     }
 
     if (personalGuestNote) {
@@ -3109,6 +3125,7 @@
   function renderGuestNameBoxes() {
     const boxList = document.getElementById('guestSlotNameList');
     if (!boxList) return;
+    const isFrench = currentLang() === 'fr';
     const manualWrap = document.getElementById('manualGuestListWrap');
     boxList.classList.remove('scrollable-guest-list');
     if (manualWrap) manualWrap.classList.remove('has-scroll');
@@ -3122,7 +3139,12 @@
       const lockedClass = guest.locked ? ' locked' : '';
       const readonlyAttr = guest.locked ? ' readonly aria-readonly="true"' : '';
       const inputHandler = guest.locked ? '' : ` oninput="setGuestName(${index}, this.value)"`;
-      const labelText = guest.locked ? escapeHTML(guest.name) : 'Guest ' + (index + 1);
+      const labelText = guest.locked ? escapeHTML(guest.name) : (isFrench ? 'Invité ' : 'Guest ') + (index + 1);
+      const namePlaceholder = isFrench ? 'Écrire le nom' : 'Write name';
+      const attendanceText = isFrench ? 'Présent(e) ?' : 'Attending?';
+      const yesText = isFrench ? 'Oui' : 'Yes';
+      const noText = isFrench ? 'Non' : 'No';
+      const attendanceAria = isFrench ? `Présence de l’invité ${index + 1}` : `Guest ${index + 1} attendance`;
       return `
         <div class="guest-slot-name-box${lockedClass}">
           <label class="guest-slot-name-label" for="guestSlotInput${index}">${labelText}</label>
@@ -3130,19 +3152,19 @@
             id="guestSlotInput${index}"
             type="text"
             value="${safeName}"
-            placeholder="Write name"
+            placeholder="${namePlaceholder}"
             ${readonlyAttr}${inputHandler}
           />
-          <div class="guest-slot-attendance" aria-label="Guest ${index + 1} attendance">
-            <span>Attending?</span>
+          <div class="guest-slot-attendance" aria-label="${attendanceAria}">
+            <span>${attendanceText}</span>
             <div class="guest-response-options">
               <label>
                 <input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')" />
-                <span class="guest-response-pill">Yes</span>
+                <span class="guest-response-pill">${yesText}</span>
               </label>
               <label>
                 <input type="radio" name="guestAttend${index}" value="No"${noChecked} onchange="setGuestResponse(${index}, 'No')" />
-                <span class="guest-response-pill">No</span>
+                <span class="guest-response-pill">${noText}</span>
               </label>
             </div>
           </div>
@@ -3308,7 +3330,7 @@
     }
 
     if (!RSVP_SCRIPT_URL || RSVP_SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')) {
-      alert('Please paste your Google Apps Script Web App URL into RSVP_SCRIPT_URL first.');
+      alert(currentLang() === 'fr' ? 'Veuillez d’abord ajouter l’URL de votre application Web Google Apps Script dans RSVP_SCRIPT_URL.' : 'Please paste your Google Apps Script Web App URL into RSVP_SCRIPT_URL first.');
       if (sendBtn) {
         sendBtn.innerHTML = sendBtn.dataset.originalHtml || 'Send RSVP ✦';
         sendBtn.disabled = false;
