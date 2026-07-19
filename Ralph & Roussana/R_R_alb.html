@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <title>Capture the Love | Cardia Studios</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/BG/Sunny_hall.png");
+      --qr-image: url("https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png");
+
+      --content-width: 450px;
+      --mobile-side-gap: 48px;
+
+      --cream: #FFF9EF;
+      --ivory: #FDF3E4;
+      --pearl: #FFFDF8;
+      --champagne: #E8C98B;
+      --gold: #C7A35A;
+      --gold-deep: #9C7740;
+      --rose: #D8A493;
+      --sage: #879873;
+      --sage-dark: #52604A;
+      --brown: #4E3424;
+      --espresso: #2F2018;
+      --muted: #8B7564;
+
+      --shadow-xl:
+        0 34px 90px rgba(94, 60, 28, 0.22),
+        0 12px 36px rgba(94, 60, 28, 0.16);
+
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100%;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 248, 230, 0.9), transparent 38rem),
+        linear-gradient(180deg, #FFF7E8, #F4E3CC);
+      color: var(--espresso);
+      font-family: "Cormorant Garamond", serif;
+      overflow-x: hidden;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-image: var(--bg-image);
+      background-position: center;
+      background-size: cover;
+      filter: blur(22px) brightness(1.04) saturate(1.02);
+      transform: scale(1.08);
+      opacity: 0.58;
+    }
+
+    .ambient-bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.28), transparent 22rem),
+        linear-gradient(180deg, rgba(255, 250, 240, 0.42), rgba(244, 226, 203, 0.52));
+    }
+
+    .experience {
+      width: min(100%, 560px);
+      margin-inline: auto;
+      background: var(--cream);
+      box-shadow: 0 0 80px rgba(116, 83, 48, 0.24);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      isolation: isolate;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      justify-items: center;
+      padding: 12px 0 18px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: -5;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.002);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -4;
+      background:
+        linear-gradient(180deg,
+          rgba(255, 252, 246, 0.38) 0%,
+          rgba(255, 249, 238, 0.22) 24%,
+          rgba(255, 246, 229, 0.12) 48%,
+          rgba(255, 242, 220, 0.56) 100%
+        ),
+        radial-gradient(circle at 50% 33%, rgba(255, 255, 255, 0.22), transparent 17rem),
+        radial-gradient(circle at 18% 22%, rgba(255, 243, 209, 0.28), transparent 16rem);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(90deg, rgba(255, 248, 235, 0.36), transparent 16%, transparent 84%, rgba(255, 248, 235, 0.36)),
+        radial-gradient(ellipse at center, transparent 34%, rgba(104, 72, 42, 0.12) 100%);
+      pointer-events: none;
+    }
+
+    .grain {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      opacity: 0.11;
+      mix-blend-mode: multiply;
+      background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 260 260' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='260' height='260' filter='url(%23n)' opacity='.36'/%3E%3C/svg%3E");
+    }
+
+    .frame {
+      position: absolute;
+      inset: 14px;
+      z-index: 4;
+      pointer-events: none;
+      border: 1px solid rgba(151, 111, 57, 0.36);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.34),
+        0 0 35px rgba(255, 255, 255, 0.22);
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(151, 111, 57, 0.16);
+    }
+
+    .corner {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-color: rgba(156, 119, 64, 0.72);
+    }
+
+    .corner.tl {
+      top: -1px;
+      left: -1px;
+      border-top: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .corner.tr {
+      top: -1px;
+      right: -1px;
+      border-top: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .corner.bl {
+      bottom: -1px;
+      left: -1px;
+      border-bottom: 1px solid;
+      border-left: 1px solid;
+    }
+
+    .corner.br {
+      bottom: -1px;
+      right: -1px;
+      border-bottom: 1px solid;
+      border-right: 1px solid;
+    }
+
+    .topbar,
+    .hero-content,
+    .upload-panel-wrap {
+      width: min(var(--content-width), calc(100% - var(--mobile-side-gap)));
+      max-width: var(--content-width);
+      margin-left: auto;
+      margin-right: auto;
+      justify-self: center;
+      transform: none;
+    }
+
+    .topbar {
+      position: relative;
+      z-index: 5;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 5px 8px;
+      margin-top: 8px;
+      color: #000;
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 14px rgba(255, 255, 255, 0.78);
+    }
+
+    .brand-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      white-space: nowrap;
+      transition: color 0.25s ease, opacity 0.25s ease;
+    }
+
+    .brand-mark:hover {
+      color: var(--gold-deep);
+      opacity: 0.86;
+    }
+
+    .brand-mark::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(199, 163, 90, 0.85);
+    }
+
+    .topbar-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(156, 119, 64, 0.42), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 5;
+      align-self: start;
+      padding: clamp(18px, 4.8svh, 42px) 0 0;
+      text-align: center;
+    }
+
+    .title-veil {
+      position: relative;
+      width: 100%;
+      margin-inline: auto;
+      padding: 26px 14px 28px;
+      border: 1px solid rgba(156, 119, 64, 0.18);
+      background:
+        radial-gradient(circle at 50% 10%, rgba(255, 255, 255, 0.72), rgba(255, 250, 239, 0.42) 56%, rgba(255, 250, 239, 0.12) 100%);
+      backdrop-filter: blur(3px) saturate(1.04);
+      -webkit-backdrop-filter: blur(3px) saturate(1.04);
+      box-shadow:
+        0 18px 55px rgba(92, 61, 33, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .title-veil::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      pointer-events: none;
+    }
+
+    .overline {
+      position: relative;
+      z-index: 1;
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 16px;
+      text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      place-items: center;
+      line-height: 1;
+      text-align: center;
+      text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.5),
+        0 8px 28px rgba(80, 49, 28, 0.26);
+    }
+
+    .hero-title .small {
+      display: block;
+      font-size: clamp(32px, 8vw, 45px);
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--brown);
+      line-height: 1.05;
+      padding-left: 0.22em;
+    }
+
+    .hero-title .script {
+      display: block;
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(72px, 19vw, 104px);
+      font-weight: 400;
+      color: var(--espresso);
+      line-height: 0.92;
+      margin-top: 5px;
+      text-align: center;
+    }
+
+    .ornament {
+      position: relative;
+      z-index: 1;
+      width: min(250px, 70vw);
+      height: 18px;
+      margin: 19px auto 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      opacity: 0.92;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: linear-gradient(90deg, transparent, rgba(156, 119, 64, 0.74));
+    }
+
+    .ornament::after {
+      background: linear-gradient(90deg, rgba(156, 119, 64, 0.74), transparent);
+    }
+
+    .ornament span {
+      width: 5px;
+      height: 5px;
+      transform: rotate(45deg);
+      background: var(--gold);
+      box-shadow: 0 0 18px rgba(199, 163, 90, 0.88);
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+      width: min(355px, 88vw);
+      margin: 0 auto;
+      color: rgba(61, 42, 30, 0.82);
+      font-size: clamp(18px, 4.6vw, 23px);
+      font-style: italic;
+      font-weight: 400;
+      line-height: 1.55;
+      text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+    }
+
+    .upload-panel-wrap {
+      position: relative;
+      z-index: 5;
+      align-self: end;
+      padding-top: 18px;
+    }
+
+    .upload-panel {
+      position: relative;
+      width: 100%;
+      margin-inline: auto;
+      padding: 16px;
+      border: 1px solid rgba(156, 119, 64, 0.34);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.58), rgba(255, 247, 232, 0.68)),
+        rgba(255, 249, 238, 0.54);
+      backdrop-filter: blur(8px) saturate(1.12);
+      -webkit-backdrop-filter: blur(8px) saturate(1.12);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .upload-panel::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      pointer-events: none;
+      border: 1px solid rgba(156, 119, 64, 0.13);
+    }
+
+    .panel-head {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 6px 4px 16px;
+    }
+
+    .camera-seal {
+      width: 48px;
+      height: 48px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(156, 119, 64, 0.38);
+      background:
+        radial-gradient(circle, rgba(199, 163, 90, 0.22), transparent 62%),
+        rgba(255, 255, 255, 0.54);
+      box-shadow:
+        inset 0 0 22px rgba(199, 163, 90, 0.08),
+        0 8px 20px rgba(96, 60, 28, 0.12);
+    }
+
+    .camera-seal svg {
+      width: 23px;
+      height: 23px;
+      stroke: var(--gold-deep);
+      stroke-width: 1.5;
+      fill: none;
+    }
+
+    .panel-kicker {
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 5px;
+    }
+
+    .panel-title {
+      font-size: 24px;
+      font-weight: 500;
+      color: var(--espresso);
+      line-height: 1.05;
+    }
+
+    .panel-text {
+      margin-top: 4px;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      line-height: 1.55;
+      color: rgba(61, 42, 30, 0.62);
+      letter-spacing: 0.04em;
+    }
+
+    #fileInput {
+      display: none;
+    }
+
+    .drop-zone {
+      position: relative;
+      z-index: 1;
+      min-height: 116px;
+      display: grid;
+      place-items: center;
+      padding: 19px 16px;
+      text-align: center;
+      cursor: pointer;
+      overflow: hidden;
+      border: 1px dashed rgba(156, 119, 64, 0.46);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.65), transparent 70%),
+        rgba(255, 241, 218, 0.54);
+      transition:
+        border-color 0.35s var(--ease),
+        background 0.35s var(--ease),
+        transform 0.35s var(--ease);
+    }
+
+    .drop-zone::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.72), transparent);
+      transform: translateX(-120%);
+      transition: transform 0.7s var(--ease);
+    }
+
+    .drop-zone:hover,
+    .drop-zone.dragover {
+      border-color: rgba(82, 96, 74, 0.64);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.78), transparent 70%),
+        rgba(239, 223, 197, 0.72);
+      transform: translateY(-1px);
+    }
+
+    .drop-zone:hover::before,
+    .drop-zone.dragover::before {
+      transform: translateX(120%);
+    }
+
+    .drop-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .drop-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 35px;
+      height: 35px;
+      margin-bottom: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.56);
+      border: 1px solid rgba(156, 119, 64, 0.3);
+      box-shadow: 0 8px 20px rgba(96, 60, 28, 0.1);
+    }
+
+    .drop-icon svg {
+      width: 17px;
+      height: 17px;
+      stroke: var(--gold-deep);
+      stroke-width: 1.7;
+      fill: none;
+    }
+
+    .drop-label {
+      display: block;
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--brown);
+    }
+
+    .drop-sub {
+      display: block;
+      margin-top: 7px;
+      font-family: "Jost", sans-serif;
+      font-size: 9.5px;
+      letter-spacing: 0.06em;
+      color: rgba(61, 42, 30, 0.56);
+    }
+
+    .file-list {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 8px;
+      max-height: 190px;
+      overflow: auto;
+      margin-top: 12px;
+      padding-right: 2px;
+    }
+
+    .file-list:empty {
+      display: none;
+    }
+
+    .file-list::-webkit-scrollbar {
+      width: 3px;
+    }
+
+    .file-list::-webkit-scrollbar-thumb {
+      background: rgba(156, 119, 64, 0.34);
+    }
+
+    .file-item {
+      display: grid;
+      grid-template-columns: 38px minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 10px;
+      padding: 9px;
+      background: rgba(255, 255, 255, 0.56);
+      border: 1px solid rgba(156, 119, 64, 0.18);
+    }
+
+    .thumb {
+      width: 38px;
+      height: 38px;
+      object-fit: cover;
+      background: rgba(199, 163, 90, 0.12);
+      border: 1px solid rgba(156, 119, 64, 0.2);
+    }
+
+    .thumb-placeholder {
+      display: grid;
+      place-items: center;
+    }
+
+    .thumb-placeholder svg {
+      width: 16px;
+      height: 16px;
+      stroke: rgba(61, 42, 30, 0.7);
+      fill: none;
+    }
+
+    .file-meta {
+      min-width: 0;
+    }
+
+    .file-name {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-family: "Jost", sans-serif;
+      font-size: 10.5px;
+      letter-spacing: 0.04em;
+      color: rgba(61, 42, 30, 0.86);
+    }
+
+    .file-size {
+      margin-top: 2px;
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      color: rgba(61, 42, 30, 0.48);
+    }
+
+    .file-actions {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .file-status {
+      font-family: "Jost", sans-serif;
+      font-size: 8.5px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .file-status.pending {
+      color: rgba(61, 42, 30, 0.54);
+    }
+
+    .file-status.uploading {
+      color: var(--gold-deep);
+    }
+
+    .file-status.done {
+      color: #51734C;
+    }
+
+    .file-status.error {
+      color: #B05C4F;
+    }
+
+    .remove-file {
+      width: 24px;
+      height: 24px;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      color: rgba(61, 42, 30, 0.5);
+      background: rgba(255, 255, 255, 0.36);
+      border: 1px solid rgba(156, 119, 64, 0.18);
+      transition: color 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .remove-file:hover {
+      color: var(--espresso);
+      border-color: rgba(156, 119, 64, 0.42);
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    .progress-wrap {
+      position: relative;
+      z-index: 1;
+      display: none;
+      height: 2px;
+      margin-top: 13px;
+      background: rgba(156, 119, 64, 0.16);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--sage), var(--gold), var(--rose));
+      transition: width 0.35s var(--ease);
+      box-shadow: 0 0 18px rgba(199, 163, 90, 0.45);
+    }
+
+    .cta-row {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 9px;
+      margin-top: 13px;
+    }
+
+    /* Auto-upload version: guests only tap to choose, then upload starts immediately */
+    #uploadBtn {
+      display: none;
+    }
+
+    .cta-btn {
+      position: relative;
+      isolation: isolate;
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      color: #FFF8EC;
+      background:
+        linear-gradient(135deg, #A77E43, #CDA766 46%, #8C6C3D);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      box-shadow:
+        0 18px 38px rgba(90, 58, 30, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.36);
+      transition:
+        transform 0.3s var(--ease),
+        filter 0.3s var(--ease),
+        opacity 0.3s ease;
+    }
+
+    .cta-btn::before {
+      content: "";
+      position: absolute;
+      inset: 1px;
+      z-index: -1;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .cta-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .cta-btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.52;
+      filter: grayscale(0.2);
+    }
+
+    .cta-btn svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .note {
+      font-family: "Jost", sans-serif;
+      font-size: 9.5px;
+      line-height: 1.55;
+      letter-spacing: 0.07em;
+      text-align: center;
+      color: rgba(61, 42, 30, 0.56);
+    }
+
+    .success-msg {
+      position: relative;
+      z-index: 1;
+      display: none;
+      text-align: center;
+      padding: 20px 8px 12px;
+    }
+
+    .success-ring {
+      width: 66px;
+      height: 66px;
+      margin: 0 auto 12px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(156, 119, 64, 0.38);
+      background: rgba(255, 255, 255, 0.54);
+      box-shadow: 0 18px 40px rgba(96, 60, 28, 0.12);
+    }
+
+    .success-ring svg {
+      width: 28px;
+      height: 28px;
+      stroke: var(--sage-dark);
+      stroke-width: 1.9;
+      fill: none;
+    }
+
+    .success-msg h3 {
+      font-family: "Great Vibes", cursive;
+      font-size: 58px;
+      font-weight: 400;
+      line-height: 0.9;
+      color: var(--espresso);
+      margin-bottom: 8px;
+    }
+
+    .success-msg p {
+      width: min(290px, 92%);
+      margin: 0 auto;
+      font-family: "Jost", sans-serif;
+      font-size: 10.5px;
+      line-height: 1.8;
+      letter-spacing: 0.08em;
+      color: rgba(61, 42, 30, 0.62);
+    }
+
+    .upload-more-btn {
+      margin-top: 18px;
+      padding: 12px 20px;
+      cursor: pointer;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(156, 119, 64, 0.3);
+      color: var(--brown);
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+
+    .upload-more-btn:hover {
+      border-color: rgba(156, 119, 64, 0.56);
+      background: rgba(255, 255, 255, 0.82);
+      color: var(--espresso);
+    }
+
+    .mini-info {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      width: 100%;
+      margin: 8px auto 0;
+      border: 1px solid rgba(156, 119, 64, 0.24);
+      background: rgba(255, 255, 255, 0.52);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 16px 40px rgba(90, 58, 30, 0.1);
+    }
+
+    .mini-info div {
+      padding: 10px 8px;
+      text-align: center;
+      background: rgba(255, 250, 242, 0.64);
+    }
+
+    .mini-info strong {
+      display: block;
+      margin-bottom: 3px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--espresso);
+    }
+
+    .mini-info span {
+      display: block;
+      font-family: "Jost", sans-serif;
+      font-size: 7.5px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+
+
+    .gallery-card {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      margin: 8px auto 0;
+      padding: 12px 12px;
+      border: 1px solid rgba(156, 119, 64, 0.24);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.56), rgba(255, 247, 232, 0.66));
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      box-shadow: 0 16px 40px rgba(90, 58, 30, 0.1);
+    }
+
+    .gallery-card::before {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      pointer-events: none;
+      border: 1px solid rgba(156, 119, 64, 0.12);
+    }
+
+    .gallery-card-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .gallery-copy {
+      min-width: 0;
+      text-align: left;
+    }
+
+    .gallery-kicker {
+      display: block;
+      margin-bottom: 4px;
+      font-family: "Jost", sans-serif;
+      font-size: 7.5px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .gallery-title {
+      display: block;
+      font-size: 21px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--espresso);
+    }
+
+    .gallery-text {
+      margin-top: 5px;
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      color: rgba(61, 42, 30, 0.58);
+    }
+
+    .gallery-btn {
+      flex: 0 0 auto;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 0 12px;
+      color: #FFF8EC;
+      background: linear-gradient(135deg, #A77E43, #CDA766 46%, #8C6C3D);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      box-shadow:
+        0 12px 28px rgba(90, 58, 30, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.36);
+      transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
+      white-space: nowrap;
+    }
+
+    .gallery-btn:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.06);
+    }
+
+    .gallery-btn svg {
+      width: 13px;
+      height: 13px;
+      fill: currentColor;
+    }
+
+    .hero-cardia-card {
+      position: relative;
+      z-index: 5;
+      width: 100%;
+      margin: 8px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(156, 119, 64, 0.24);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.54), rgba(255, 247, 232, 0.64));
+      backdrop-filter: blur(7px);
+      -webkit-backdrop-filter: blur(7px);
+      box-shadow: 0 16px 40px rgba(90, 58, 30, 0.1);
+    }
+
+    .hero-cardia-copy {
+      min-width: 0;
+      text-align: left;
+    }
+
+    .hero-cardia-kicker {
+      display: block;
+      margin-bottom: 4px;
+      font-family: "Jost", sans-serif;
+      font-size: 7.5px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .hero-cardia-title {
+      display: block;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--espresso);
+    }
+
+    .hero-cardia-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-family: "Jost", sans-serif;
+      font-size: 8.5px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(61, 42, 30, 0.62);
+      border-bottom: 1px solid rgba(156, 119, 64, 0.36);
+      padding-bottom: 2px;
+    }
+
+    .hero-cardia-link:hover {
+      color: var(--gold-deep);
+      border-bottom-color: var(--gold-deep);
+    }
+
+    .hero-cardia-qr {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      display: block;
+      padding: 5px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(156, 119, 64, 0.22);
+      box-shadow: 0 8px 20px rgba(90, 58, 30, 0.12);
+    }
+
+    .hero-cardia-qr img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .scroll-cue {
+      position: relative;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      gap: 7px;
+      margin-top: 10px;
+      color: rgba(61, 42, 30, 0.58);
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.23em;
+      text-transform: uppercase;
+      text-shadow: 0 1px 12px rgba(255, 255, 255, 0.9);
+    }
+
+    .scroll-cue::after {
+      content: "";
+      width: 1px;
+      height: 24px;
+      background: linear-gradient(180deg, rgba(156, 119, 64, 0.78), transparent);
+      animation: scrollLine 2.2s var(--ease) infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(0.35); opacity: 0.35; }
+      50% { transform: scaleY(1); opacity: 1; }
+    }
+
+    .qr-section {
+      position: relative;
+      padding: 74px 22px 66px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.78), transparent 24rem),
+        linear-gradient(180deg, #FFF8ED, #F2DDC3 58%, #EAD2B6);
+      overflow: hidden;
+    }
+
+    .qr-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center bottom;
+      opacity: 0.14;
+      filter: blur(2px) saturate(0.9);
+      transform: scale(1.04);
+    }
+
+    .qr-section::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 250, 240, 0.78), rgba(255, 246, 231, 0.88));
+    }
+
+    .qr-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 430px;
+      margin-inline: auto;
+      text-align: center;
+    }
+
+    .qr-label {
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 12px;
+    }
+
+    .qr-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 12vw, 66px);
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: 0.005em;
+      color: var(--espresso);
+      margin-bottom: 18px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .qr-title em,
+    .qr-title span {
+      font-family: inherit;
+      font-size: inherit;
+      font-style: normal;
+      font-weight: inherit;
+      color: inherit;
+    }
+
+    .qr-text {
+      width: min(330px, 92%);
+      margin: 0 auto 30px;
+      font-family: "Jost", sans-serif;
+      font-size: 11px;
+      line-height: 1.85;
+      letter-spacing: 0.06em;
+      color: rgba(61, 42, 30, 0.62);
+    }
+
+    .qr-card {
+      position: relative;
+      width: min(258px, 72vw);
+      margin: 0 auto;
+      padding: 14px;
+      border: 1px solid rgba(156, 119, 64, 0.34);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(255, 247, 232, 0.82));
+      box-shadow:
+        0 30px 80px rgba(90, 58, 30, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+
+    .qr-card::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      pointer-events: none;
+      border: 1px solid rgba(156, 119, 64, 0.12);
+    }
+
+    .qr-code-wrap {
+      position: relative;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: inset 0 0 0 1px rgba(89, 58, 31, 0.1);
+    }
+
+    .qr-code-wrap img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .qr-caption {
+      margin-top: 14px;
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+    }
+
+    .footer {
+      position: relative;
+      padding: 54px 22px 42px;
+      text-align: center;
+      background:
+        linear-gradient(180deg, #F4DEC2, #FFF7EC);
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 110px;
+      height: 1px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, rgba(156, 119, 64, 0.72), transparent);
+    }
+
+    .footer-script {
+      display: block;
+      font-family: "Great Vibes", cursive;
+      font-size: 66px;
+      line-height: 0.85;
+      color: var(--espresso);
+      margin-bottom: 20px;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-names {
+      font-family: "Jost", sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 26px;
+    }
+
+    .powered {
+      font-family: "Jost", sans-serif;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(61, 42, 30, 0.48);
+    }
+
+    .powered a {
+      border-bottom: 1px solid rgba(61, 42, 30, 0.32);
+      padding-bottom: 2px;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 22px;
+      z-index: 99;
+      width: min(calc(100% - 32px), 430px);
+      transform: translate(-50%, 24px);
+      opacity: 0;
+      pointer-events: none;
+      padding: 13px 16px;
+      background: rgba(255, 249, 239, 0.92);
+      border: 1px solid rgba(156, 119, 64, 0.32);
+      color: rgba(61, 42, 30, 0.78);
+      font-family: "Jost", sans-serif;
+      font-size: 10px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 18px 50px rgba(90, 58, 30, 0.22);
+      transition: opacity 0.35s ease, transform 0.35s var(--ease);
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 390px) {
+      :root {
+        --mobile-side-gap: 44px;
+      }
+
+      .hero {
+        padding-top: 10px;
+        padding-bottom: 16px;
+      }
+
+      .hero-content {
+        padding-top: 18px;
+      }
+
+      .title-veil {
+        padding: 24px 11px 25px;
+      }
+
+      .hero-title .small {
+        font-size: clamp(28px, 8.2vw, 36px);
+        letter-spacing: 0.19em;
+        padding-left: 0.19em;
+      }
+
+      .hero-title .script {
+        font-size: clamp(68px, 19vw, 90px);
+      }
+
+      .upload-panel {
+        padding: 13px;
+      }
+
+      .panel-head {
+        gap: 10px;
+      }
+
+      .camera-seal {
+        width: 42px;
+        height: 42px;
+      }
+
+      .panel-title {
+        font-size: 21px;
+      }
+
+      .mini-info strong {
+        font-size: 15px;
+      }
+
+      .hero-cardia-card {
+        padding: 9px 10px;
+        gap: 10px;
+      }
+
+      .gallery-card {
+        padding: 10px;
+      }
+
+      .gallery-card-inner {
+        gap: 9px;
+      }
+
+      .gallery-title {
+        font-size: 19px;
+      }
+
+      .gallery-text {
+        font-size: 8.5px;
+      }
+
+      .gallery-btn {
+        min-height: 39px;
+        padding: 0 10px;
+        font-size: 7.5px;
+        letter-spacing: 0.14em;
+      }
+
+      .hero-cardia-title {
+        font-size: 20px;
+      }
+
+      .hero-cardia-qr {
+        width: 52px;
+        height: 52px;
+        flex-basis: 52px;
+      }
+
+      .qr-section {
+        padding: 66px 18px 58px;
+      }
+
+      .qr-title {
+        font-size: clamp(42px, 12vw, 54px);
+      }
+    }
+
+    @media (max-width: 340px) {
+      :root {
+        --mobile-side-gap: 36px;
+      }
+
+
+      .gallery-card-inner {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .gallery-btn {
+        width: 100%;
+      }
+
+      .hero-cardia-title {
+        font-size: 18px;
+      }
+
+      .hero-cardia-link {
+        font-size: 7.5px;
+      }
+
+      .hero-cardia-qr {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+      }
+    }
+
+    @media (min-width: 740px) {
+      .experience {
+        margin-top: 28px;
+        margin-bottom: 28px;
+        border: 1px solid rgba(156, 119, 64, 0.22);
+      }
+
+      .hero {
+        min-height: 860px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="ambient-bg" aria-hidden="true"></div>
+
+  <main class="experience">
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+
+      <div class="frame" aria-hidden="true">
+        <span class="corner tl"></span>
+        <span class="corner tr"></span>
+        <span class="corner bl"></span>
+        <span class="corner br"></span>
+      </div>
+
+      <header class="topbar">
+        <a class="brand-mark" href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">
+          Cardia Studios
+        </a>
+        <span class="topbar-line"></span>
+        <span>Private Album</span>
+      </header>
+
+      <div class="hero-content">
+        <div class="title-veil">
+          <p class="overline" id="eyebrowText">Ralph &amp; Roussana</p>
+
+          <h1 class="hero-title">
+            <span class="small">Capture</span>
+            <span class="script">the Love</span>
+          </h1>
+
+          <div class="ornament" aria-hidden="true">
+            <span></span>
+          </div>
+
+          <p class="hero-subtitle">
+            Share the little moments they may have missed.
+          </p>
+        </div>
+      </div>
+
+      <div class="upload-panel-wrap">
+        <div class="upload-panel">
+          <div id="uploadZone">
+            <div class="panel-head">
+              <div class="camera-seal" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M4.5 8.2h3l1.4-2h6.2l1.4 2h3a1.8 1.8 0 0 1 1.8 1.8v7.1a1.8 1.8 0 0 1-1.8 1.8h-15a1.8 1.8 0 0 1-1.8-1.8V10a1.8 1.8 0 0 1 1.8-1.8Z"/>
+                  <circle cx="12" cy="13.5" r="3.6"/>
+                  <path d="M18.2 10.3h.01"/>
+                </svg>
+              </div>
+
+              <div>
+                <p class="panel-kicker">Guest photo drop</p>
+                <h2 class="panel-title">Send your memories</h2>
+                <p class="panel-text">No account needed. Select photos or videos and they upload automatically.</p>
+              </div>
+            </div>
+
+            <input type="file" id="fileInput" accept="image/*,video/*,.heic,.HEIC" multiple />
+
+            <div class="drop-zone" id="dropZone" role="button" tabindex="0" aria-label="Choose photos or videos to upload">
+              <div class="drop-inner">
+                <span class="drop-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M12 16V5"/>
+                    <path d="m7 10 5-5 5 5"/>
+                    <path d="M5 18.5h14"/>
+                  </svg>
+                </span>
+                <span class="drop-label">Tap to choose & upload</span>
+                <span class="drop-sub">JPG · PNG · HEIC · MP4 · up to 100 MB each</span>
+              </div>
+            </div>
+
+            <div class="file-list" id="fileList" aria-live="polite"></div>
+
+            <div class="progress-wrap" id="progressWrap">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <div class="cta-row">
+              <button class="cta-btn" id="uploadBtn" disabled>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+                </svg>
+                Send your photos
+              </button>
+
+              <p class="note" id="uploadNote">Private automatic upload · Up to 10 files · Max 100 MB each</p>
+            </div>
+          </div>
+
+          <div class="success-msg" id="successMsg">
+            <div class="success-ring" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M5 12.6 9.2 17 19 7"/>
+              </svg>
+            </div>
+            <h3>Thank you</h3>
+            <p>Your memories have been received. The couple will treasure every photo you shared.</p>
+            <button class="upload-more-btn" id="uploadMoreBtn">Upload more</button>
+          </div>
+        </div>
+
+    
+
+
+        <div class="gallery-card">
+          <div class="gallery-card-inner">
+            <div class="gallery-copy">
+              <span class="gallery-kicker">Shared memories</span>
+              <span class="gallery-title">Guest Gallery</span>
+              <p class="gallery-text">View the photos and videos shared by everyone.</p>
+            </div>
+
+            <a class="gallery-btn" href="https://drive.google.com/drive/folders/1lZwIkrSGnhH3tpxtjyrXSSrpO9czGz-A?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 5h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm0 2v10h16V7H4Zm2 8 3.2-4 2.4 3 1.7-2.1L18 15H6Zm10.2-5.5a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8Z"/>
+              </svg>
+              View Gallery
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-cardia-card">
+          <div class="hero-cardia-copy">
+            <span class="hero-cardia-kicker">Digital invitations</span>
+            <span class="hero-cardia-title">Cardia Studios</span>
+            <a class="hero-cardia-link" href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">
+              Instagram @cardiastudios
+            </a>
+          </div>
+
+          <a class="hero-cardia-qr" href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener" aria-label="Open Cardia Studios Instagram">
+            <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Qr%20code/qr-code.png" alt="Cardia Studios QR code">
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span class="footer-script">Thank you</span>
+      <p class="footer-names" id="footerNames">With love · Ralph &amp; Roussana · 16th of July 2026</p>
+      <p class="powered">
+        Powered by
+        <a href="https://www.instagram.com/cardiastudios" target="_blank" rel="noopener">Cardia Studios</a>
+      </p>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyMpQBhYC7W_YwLHrkfGhOapgdREkOhFx92rM9JfHkUL1xk0iVHgOV27dUq_RqGjBUmmA/exec";
+    const coupleName = "Ralph & Roussana";
+    const weddingDate = "28th of July 2026";
+
+    const MAX_FILES = 10;
+    const MAX_MB = 100;
+    const MAX_BYTES = MAX_MB * 1024 * 1024;
+
+    document.getElementById("eyebrowText").textContent = coupleName;
+    document.getElementById("footerNames").textContent = "With love · " + coupleName + " · " + weddingDate;
+
+    let selectedFiles = [];
+    let previewUrls = [];
+    let isUploading = false;
+
+    const fileInput = document.getElementById("fileInput");
+    const dropZone = document.getElementById("dropZone");
+    const fileList = document.getElementById("fileList");
+    const uploadBtn = document.getElementById("uploadBtn");
+    const progressWrap = document.getElementById("progressWrap");
+    const progressBar = document.getElementById("progressBar");
+    const uploadZone = document.getElementById("uploadZone");
+    const successMsg = document.getElementById("successMsg");
+    const uploadMoreBtn = document.getElementById("uploadMoreBtn");
+    const uploadNote = document.getElementById("uploadNote");
+    const toast = document.getElementById("toast");
+
+    dropZone.addEventListener("click", () => fileInput.click());
+
+    dropZone.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        fileInput.click();
+      }
+    });
+
+    dropZone.addEventListener("dragover", (event) => {
+      event.preventDefault();
+      dropZone.classList.add("dragover");
+    });
+
+    dropZone.addEventListener("dragleave", () => {
+      dropZone.classList.remove("dragover");
+    });
+
+    dropZone.addEventListener("drop", (event) => {
+      event.preventDefault();
+      dropZone.classList.remove("dragover");
+      addFiles([...event.dataTransfer.files]);
+      if (selectedFiles.length > 0) startUpload();
+    });
+
+    fileInput.addEventListener("change", () => {
+      addFiles([...fileInput.files]);
+      fileInput.value = "";
+      if (selectedFiles.length > 0) startUpload();
+    });
+
+    uploadBtn.addEventListener("click", startUpload);
+
+    uploadMoreBtn.addEventListener("click", () => {
+      clearSelectedFiles();
+      progressBar.style.width = "0%";
+      progressWrap.style.display = "none";
+      uploadBtn.disabled = true;
+      uploadBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/>
+        </svg>
+        Send your photos
+      `;
+      uploadZone.style.display = "block";
+      successMsg.style.display = "none";
+      renderFileList();
+    });
+
+    function addFiles(files) {
+      let skippedSize = 0;
+      let skippedCount = 0;
+      let skippedDuplicate = 0;
+
+      files.forEach((file) => {
+        const isDuplicate = selectedFiles.some(
+          (existing) => existing.name === file.name && existing.size === file.size && existing.lastModified === file.lastModified
+        );
+
+        if (isDuplicate) {
+          skippedDuplicate++;
+          return;
+        }
+
+        if (file.size > MAX_BYTES) {
+          skippedSize++;
+          return;
+        }
+
+        if (selectedFiles.length >= MAX_FILES) {
+          skippedCount++;
+          return;
+        }
+
+        selectedFiles.push(file);
+      });
+
+      if (skippedSize > 0) {
+        showToast(`${skippedSize} file(s) skipped because the maximum size is ${MAX_MB} MB each.`);
+      }
+
+      if (skippedCount > 0) {
+        showToast(`You can upload up to ${MAX_FILES} files per session.`);
+      }
+
+      if (skippedDuplicate > 0) {
+        showToast(`${skippedDuplicate} duplicate file(s) skipped.`);
+      }
+
+      renderFileList();
+    }
+
+    function renderFileList() {
+      revokePreviewUrls();
+      fileList.innerHTML = "";
+
+      selectedFiles.forEach((file, index) => {
+        const item = document.createElement("div");
+        item.className = "file-item";
+
+        const thumb = createThumbnail(file);
+
+        const meta = document.createElement("div");
+        meta.className = "file-meta";
+
+        const name = document.createElement("div");
+        name.className = "file-name";
+        name.textContent = file.name;
+
+        const size = document.createElement("div");
+        size.className = "file-size";
+        size.textContent = formatFileSize(file.size);
+
+        meta.appendChild(name);
+        meta.appendChild(size);
+
+        const actions = document.createElement("div");
+        actions.className = "file-actions";
+
+        const status = document.createElement("span");
+        status.className = "file-status pending";
+        status.id = `status-${index}`;
+        status.textContent = "Ready";
+
+        const removeBtn = document.createElement("button");
+        removeBtn.type = "button";
+        removeBtn.className = "remove-file";
+        removeBtn.setAttribute("aria-label", `Remove ${file.name}`);
+        removeBtn.textContent = "×";
+        removeBtn.addEventListener("click", () => {
+          selectedFiles.splice(index, 1);
+          renderFileList();
+        });
+
+        actions.appendChild(status);
+        actions.appendChild(removeBtn);
+
+        item.appendChild(thumb);
+        item.appendChild(meta);
+        item.appendChild(actions);
+
+        fileList.appendChild(item);
+      });
+
+      uploadBtn.disabled = selectedFiles.length === 0;
+
+      if (selectedFiles.length === 0) {
+        uploadNote.textContent = `Private automatic upload · Up to ${MAX_FILES} files · Max ${MAX_MB} MB each`;
+      } else {
+        const remaining = MAX_FILES - selectedFiles.length;
+        uploadNote.textContent =
+          `${selectedFiles.length} file${selectedFiles.length > 1 ? "s" : ""} selected · ` +
+          `${remaining} slot${remaining !== 1 ? "s" : ""} remaining`;
+      }
+    }
+
+    function createThumbnail(file) {
+      const isImage = file.type.startsWith("image/");
+      const isVideo = file.type.startsWith("video/");
+
+      if (isImage) {
+        const img = document.createElement("img");
+        img.className = "thumb";
+        img.alt = "";
+        const url = URL.createObjectURL(file);
+        previewUrls.push(url);
+        img.src = url;
+        return img;
+      }
+
+      const placeholder = document.createElement("div");
+      placeholder.className = "thumb thumb-placeholder";
+      placeholder.innerHTML = isVideo
+        ? `<svg viewBox="0 0 24 24"><path d="M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/><path d="m10 9 5 3-5 3V9Z"/></svg>`
+        : `<svg viewBox="0 0 24 24"><path d="M7 3h7l5 5v13H7V3Z"/><path d="M14 3v5h5"/></svg>`;
+
+      return placeholder;
+    }
+
+    function revokePreviewUrls() {
+      previewUrls.forEach((url) => URL.revokeObjectURL(url));
+      previewUrls = [];
+    }
+
+    function clearSelectedFiles() {
+      selectedFiles = [];
+      revokePreviewUrls();
+    }
+
+    function formatFileSize(bytes) {
+      if (bytes < 1024 * 1024) {
+        return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+      }
+
+      return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+    }
+
+    async function startUpload() {
+      if (!SCRIPT_URL || selectedFiles.length === 0 || isUploading) return;
+
+      isUploading = true;
+      uploadBtn.disabled = true;
+      dropZone.style.pointerEvents = "none";
+      dropZone.setAttribute("aria-disabled", "true");
+      uploadNote.textContent = "Uploading automatically… please keep this page open.";
+      progressWrap.style.display = "block";
+      progressBar.style.width = "0%";
+
+      let completed = 0;
+      let failed = 0;
+
+      for (let i = 0; i < selectedFiles.length; i++) {
+        const file = selectedFiles[i];
+        const status = document.getElementById(`status-${i}`);
+
+        if (status) {
+          status.textContent = "Sending";
+          status.className = "file-status uploading";
+        }
+
+        try {
+          const base64 = await toBase64(file);
+
+          await fetch(SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            body: JSON.stringify({
+              fileName: file.name,
+              mimeType: file.type || "application/octet-stream",
+              base64: base64,
+              fileIndex: i + 1,
+              totalFiles: selectedFiles.length,
+              coupleName: coupleName,
+              uploadedAt: new Date().toISOString()
+            })
+          });
+
+          if (status) {
+            status.textContent = "Sent";
+            status.className = "file-status done";
+          }
+        } catch (error) {
+          failed++;
+
+          if (status) {
+            status.textContent = "Failed";
+            status.className = "file-status error";
+          }
+        }
+
+        completed++;
+        progressBar.style.width = Math.round((completed / selectedFiles.length) * 100) + "%";
+      }
+
+      if (failed === 0) {
+        isUploading = false;
+        dropZone.style.pointerEvents = "";
+        dropZone.removeAttribute("aria-disabled");
+        showToast("Your memories were sent successfully.");
+        setTimeout(() => {
+          uploadZone.style.display = "none";
+          successMsg.style.display = "block";
+        }, 650);
+      } else {
+        isUploading = false;
+        dropZone.style.pointerEvents = "";
+        dropZone.removeAttribute("aria-disabled");
+        uploadBtn.disabled = false;
+        uploadBtn.innerHTML = `
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 5V2L7 7l5 5V9c3.31 0 6 2.69 6 6a6 6 0 0 1-10.24 4.24l-1.42 1.42A8 8 0 1 0 12 5Z"/>
+          </svg>
+          Retry upload
+        `;
+        showToast(`${failed} file(s) could not be sent. Please try again.`);
+      }
+    }
+
+    function toBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+
+        reader.onload = () => {
+          const result = String(reader.result || "");
+          resolve(result.includes(",") ? result.split(",")[1] : result);
+        };
+
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    let toastTimer;
+
+    function showToast(message) {
+      clearTimeout(toastTimer);
+      toast.textContent = message;
+      toast.classList.add("show");
+
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 3600);
+    }
+  </script>
+</body>
+</html>
