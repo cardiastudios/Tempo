@@ -469,8 +469,8 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 /* Mobile enlargement pass — keep a slim, even blue margin above and below */
 :root {
   --book-edge-gap: clamp(34px, 4.8dvh, 40px);
-  --bw: min(calc(100vw - 6px), calc((100dvh - var(--book-edge-gap) - var(--book-edge-gap)) / 2.05), 560px);
-  --page-h: min(calc(100dvh - var(--book-edge-gap) - var(--book-edge-gap)), calc(var(--bw) * 2.05));
+  --bw: 100vw;
+  --page-h: calc(100dvh - var(--book-edge-gap) - var(--book-edge-gap));
 }
 #scene-cover,
 #scene-open,
@@ -545,11 +545,11 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 }
 .book-gold,
 .tl-time {
-  font-size: clamp(18px, 4vw, 20px) !important;
+  font-size: clamp(22px, 4vw, 24px) !important;
 }
 
 .tl-venue  {
-  font-size: clamp(16px, 3vw, 18px) !important;
+  font-size: clamp(20px, 3vw, 22px) !important;
 }
 
 .tl-label{
