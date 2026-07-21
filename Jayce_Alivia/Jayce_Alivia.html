@@ -633,6 +633,119 @@ animation: hintPulse 2s ease-in-out infinite; margin-left: clamp(40px, 12vw, 120
   }
 }
 
+
+/* ══════ ALWAYS-VISIBLE SCROLL INDICATORS ══════
+   Mobile browsers often hide native scrollbars until the user starts moving.
+   These soft-blue indicators stay visible whenever a page or the guest list
+   has more content below the visible area. */
+#scene-open {
+  overflow: hidden !important;
+}
+
+.page.is-scrollable {
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(95,118,151,.72) rgba(138,155,181,.16);
+}
+
+.page.is-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.page.is-scrollable::-webkit-scrollbar-track {
+  background: rgba(138,155,181,.14);
+  border-radius: 999px;
+}
+
+.page.is-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(95,118,151,.72);
+  border-radius: 999px;
+}
+
+.page-scroll-indicator {
+  position: absolute;
+  top: clamp(16px, 4vw, 24px);
+  right: 5px;
+  bottom: clamp(54px, 13vw, 70px);
+  width: 5px;
+  z-index: 35;
+  border-radius: 999px;
+  background: rgba(138,155,181,.22);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.38), 0 1px 5px rgba(95,118,151,.14);
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .2s ease, visibility .2s ease;
+}
+
+.page-scroll-indicator.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.page-scroll-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 34px;
+  border-radius: inherit;
+  background: rgba(95,118,151,.82);
+  box-shadow: 0 1px 5px rgba(95,118,151,.28);
+  transform: translateY(0);
+  will-change: transform, height;
+}
+
+.manual-guest-list-wrap.has-scroll {
+  padding-right: 12px;
+}
+
+.guest-list-scroll-indicator {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  bottom: 4px;
+  width: 5px;
+  z-index: 4;
+  display: none;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(138,155,181,.22);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.34);
+  pointer-events: none;
+}
+
+.manual-guest-list-wrap.has-scroll .guest-list-scroll-indicator {
+  display: block;
+}
+
+.guest-list-scroll-thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 28px;
+  border-radius: inherit;
+  background: rgba(95,118,151,.82);
+  box-shadow: 0 1px 4px rgba(95,118,151,.24);
+  transform: translateY(0);
+  will-change: transform, height;
+}
+
+.guest-slot-name-list.scrollable-guest-list {
+  padding-right: 6px;
+}
+
+@media (min-width: 720px) {
+  .page-scroll-indicator {
+    right: 7px;
+  }
+}
+
 /* ══════ ASSET LOADER ══════ */
 html.loading, body.loading { overflow: hidden !important; }
 #asset-loader {
@@ -815,6 +928,9 @@ html.loading, body.loading { overflow: hidden !important; }
     <div class="open-spine"></div>
     <div class="book-spread">
       <div class="flip-sheet" id="flip-sheet"></div>
+      <div class="page-scroll-indicator" id="pageScrollIndicator" aria-hidden="true">
+        <span class="page-scroll-thumb" id="pageScrollThumb"></span>
+      </div>
 
       <!-- PAGE 1 — Title & Verse -->
       <div class="page active" id="page-1">
@@ -937,6 +1053,9 @@ html.loading, body.loading { overflow: hidden !important; }
             <p id="personalGuestNote" class="guest-welcome-note">Please confirm who can attend from this invitation.</p>
             <div id="manualGuestListWrap" class="manual-guest-list-wrap">
               <div id="guestSlotNameList" class="guest-slot-name-list"></div>
+              <div class="guest-list-scroll-indicator" id="guestListScrollIndicator" aria-hidden="true">
+                <span class="guest-list-scroll-thumb" id="guestListScrollThumb"></span>
+              </div>
             </div>
             <p class="guest-total-line">Total guests attending: <strong id="guestCount">0</strong></p>
             <p class="error-msg" id="errName">Please enter at least one guest name and choose Yes or No.</p>
@@ -974,7 +1093,7 @@ html.loading, body.loading { overflow: hidden !important; }
         </div>
         <button class="back-btn" onclick="reopenFromBack()">← Back to Invitation</button>
            <div class="cardia-credit">
-          <a href="https://nemerdavid.github.io/web-des/" target="_blank">
+          <a href="https://www.instagram.com/cardiastudios?igsh=MXByaGpxdHNjMTJnbQ==" target="_blank">
             Powered by <span>Cardia Studios</span>
             <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Chain2.png" alt="">
           </a>
@@ -1228,6 +1347,113 @@ window.INVITATION_ALBUM_PHOTOS = [
 const TOTAL = 8;
 let current = 1;
 
+
+/* ══════ PERSISTENT SCROLL INDICATORS ══════ */
+function getActiveInvitationPage() {
+  return document.querySelector('.page.active');
+}
+
+function updateActivePageScrollIndicator(resetPosition) {
+  const page = getActiveInvitationPage();
+  const track = document.getElementById('pageScrollIndicator');
+  const thumb = document.getElementById('pageScrollThumb');
+  if (!page || !track || !thumb) return;
+
+  if (resetPosition) page.scrollTop = 0;
+
+  /* Temporarily use the scroll layout to measure the full content reliably. */
+  page.classList.add('is-scrollable');
+  const maxScroll = Math.max(0, page.scrollHeight - page.clientHeight);
+  const canScroll = maxScroll > 3;
+
+  if (!canScroll) {
+    page.classList.remove('is-scrollable');
+    page.scrollTop = 0;
+    track.classList.remove('visible');
+    thumb.style.height = '100%';
+    thumb.style.transform = 'translateY(0)';
+    return;
+  }
+
+  track.classList.add('visible');
+
+  const trackHeight = track.clientHeight;
+  const thumbHeight = Math.max(34, Math.min(trackHeight, trackHeight * (page.clientHeight / page.scrollHeight)));
+  const travel = Math.max(0, trackHeight - thumbHeight);
+  const thumbTop = maxScroll > 0 ? travel * (page.scrollTop / maxScroll) : 0;
+
+  thumb.style.height = thumbHeight + 'px';
+  thumb.style.transform = 'translateY(' + thumbTop + 'px)';
+}
+
+function queueActivePageScrollIndicator(resetPosition) {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      updateActivePageScrollIndicator(!!resetPosition);
+    });
+  });
+}
+
+function updateGuestListScrollIndicator() {
+  const list = document.getElementById('guestSlotNameList');
+  const wrap = document.getElementById('manualGuestListWrap');
+  const track = document.getElementById('guestListScrollIndicator');
+  const thumb = document.getElementById('guestListScrollThumb');
+  if (!list || !wrap || !track || !thumb) return;
+
+  /* When the RSVP page is hidden, its list has no measurable height yet.
+     Keep the pre-rendered cue in place and measure it as soon as the page opens. */
+  if (list.clientHeight <= 0 || list.scrollHeight <= 0) return;
+
+  const maxScroll = Math.max(0, list.scrollHeight - list.clientHeight);
+  const canScroll = list.classList.contains('scrollable-guest-list') && maxScroll > 3;
+  wrap.classList.toggle('has-scroll', canScroll);
+
+  if (!canScroll) {
+    thumb.style.height = '100%';
+    thumb.style.transform = 'translateY(0)';
+    return;
+  }
+
+  const trackHeight = track.clientHeight;
+  const thumbHeight = Math.max(28, Math.min(trackHeight, trackHeight * (list.clientHeight / list.scrollHeight)));
+  const travel = Math.max(0, trackHeight - thumbHeight);
+  const thumbTop = maxScroll > 0 ? travel * (list.scrollTop / maxScroll) : 0;
+
+  thumb.style.height = thumbHeight + 'px';
+  thumb.style.transform = 'translateY(' + thumbTop + 'px)';
+}
+
+function queueGuestListScrollIndicator() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      updateGuestListScrollIndicator();
+      updateActivePageScrollIndicator(false);
+    });
+  });
+}
+
+function initializePersistentScrollIndicators() {
+  document.querySelectorAll('.page').forEach(function(page) {
+    page.addEventListener('scroll', function() {
+      if (page.classList.contains('active')) updateActivePageScrollIndicator(false);
+    }, { passive: true });
+  });
+
+  const guestList = document.getElementById('guestSlotNameList');
+  if (guestList) {
+    guestList.addEventListener('scroll', updateGuestListScrollIndicator, { passive: true });
+  }
+
+  window.addEventListener('resize', function() {
+    queueGuestListScrollIndicator();
+    queueActivePageScrollIndicator(false);
+  }, { passive: true });
+
+  queueGuestListScrollIndicator();
+  queueActivePageScrollIndicator(false);
+}
+
 /* ── Music controls ── */
 const music = document.getElementById('wedding-music');
 music.volume = 0.4;
@@ -1268,6 +1494,8 @@ function openBook() {
     buildCalendar();
     tick();
     setInterval(tick, 1000);
+    queueGuestListScrollIndicator();
+    queueActivePageScrollIndicator(true);
   }, 600);
 }
 
@@ -1319,6 +1547,8 @@ function goTo(n) {
     document.getElementById('page-' + current).classList.add('active');
     document.getElementById('page-label').textContent = 'Page ' + current + ' of ' + TOTAL;
     updateNavButtons();
+    queueGuestListScrollIndicator();
+    queueActivePageScrollIndicator(true);
   }, 220);
 }
 
@@ -1533,6 +1763,7 @@ function renderGuestNameBoxes() {
   }).join('');
 
   if (shouldScroll) list.scrollTop = 0;
+  queueGuestListScrollIndicator();
 }
 
 function getNamedGuestResponses() {
@@ -1583,6 +1814,9 @@ function showRSVPThankYou(groupName,attendingCount) {
       '</strong>!<br>We received your RSVP for ' +
       attendingCount + ' guest' + (attendingCount === 1 ? '' : 's') + '.';
   }
+
+  queueGuestListScrollIndicator();
+  queueActivePageScrollIndicator(false);
 }
 
 function postRSVPToGoogleSheet(payload) {
@@ -1705,6 +1939,7 @@ function submitRSVP() {
 }
 
 applyPersonalGuestLink();
+initializePersistentScrollIndicators();
 
 </script>
 </body>
