@@ -233,15 +233,15 @@ html, body { width: 100%; height: 100%; overflow-x: hidden; background: #e8edf4;
 .tl-row { display: grid; grid-template-columns: 1fr clamp(38px,14vw,62px) 1fr; align-items: center; gap: clamp(3px,1.5vw,6px); margin-bottom: clamp(5px,2vw,10px); }
 .tl-left { text-align: right; padding-right: clamp(4px,1.5vw,8px); }
 .tl-right { text-align: left; padding-left: clamp(4px,1.5vw,8px); }
-.tl-time { font-family: 'Cormorant Garamond', serif; font-size: clamp(11px,3.8vw,16px); color: var(--blue-dk); }
-.tl-venue { font-size: clamp(9px,2.5vw,11px); color: var(--ink-lt); margin-top: 1px; font-style: italic; line-height: 1.4; }
+.tl-time { font-family: 'Cormorant Garamond', serif; font-size: clamp(9px, 3vw, 13px); color: var(--blue-dk); }
+.tl-venue { font-size: clamp(7px, 2vw, 9px); color: var(--ink-lt); margin-top: 1px; font-style: italic; line-height: 1.4; }
 .tl-icon { width: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
 .tl-icon::before { content: ""; position: absolute; left: 50%; bottom: 100%; width: 1px; height: clamp(8px,2.5vw,12px); background: var(--blue-lt); opacity: .6; transform: translateX(-50%); }
 .tl-icon::after  { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: clamp(8px,2.5vw,12px); background: var(--blue-lt); opacity: .6; transform: translateX(-50%); }
 .tl-row:first-child .tl-icon::before { display: none; }
 .tl-row:last-child .tl-icon::after  { display: none; }
 .tl-icon img { width: clamp(22px,8vw,34px); height: clamp(22px,8vw,34px); object-fit: contain; opacity: .7; filter: hue-rotate(190deg) saturate(.5) brightness(.85); }
-.tl-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(14px,5vw,22px); color: var(--blue-dk); }
+.tl-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(2px,5vw,4px); color: var(--blue-dk); }
 
 /* Gift */
 .gift-box { background: rgba(255,255,255,.45); border: 1px solid rgba(138,155,181,.2); display: inline-block; padding: clamp(8px,3vw,14px) clamp(14px,5vw,24px); border-radius: 3px; }
@@ -466,10 +466,16 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 
 
 
-/* Phone 9:16 enlargement pass */
+/* Mobile enlargement pass — use the tall phone viewport more fully */
 :root {
-  --bw: min(96vw, calc((100svh - 32px) * 9 / 16), 520px);
-  --page-h: calc(var(--bw) * 16 / 9);
+  --bw: min(calc(100vw - 6px), calc((100dvh - 8px) / 2.05), 560px);
+  --page-h: min(calc(100dvh - 8px), calc(var(--bw) * 2.05));
+}
+#scene-cover,
+#scene-open,
+#scene-back {
+  height: 100dvh !important;
+  min-height: 100dvh;
 }
 .cover-wrap,
 .cover-flipper,
@@ -504,14 +510,14 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 .back-text small,
 .back-reopen-btn,
 .back-btn {
-  font-size: clamp(10px, 3vw, 15px) !important;
+  font-size: clamp(11px, 3.25vw, 16px) !important;
 }
 .cover-name,
 .cover-name-script {
-  font-size: clamp(72px, 19vw, 104px) !important;
+  font-size: clamp(78px, 20.5vw, 112px) !important;
 }
 .cover-amp {
-  font-size: clamp(24px, 6.4vw, 36px) !important;
+  font-size: clamp(28px, 7.6vw, 41px) !important;
 }
 .cover-script,
 .cover-invite,
@@ -521,31 +527,42 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 .tl-venue,
 .attend-label,
 .form-field {
-  font-size: clamp(16px, 4.3vw, 22px) !important;
+  font-size: clamp(17px, 4.65vw, 24px) !important;
   line-height: 1.55 !important;
 }
 .book-bigname {
-  font-size: clamp(54px, 14.5vw, 82px) !important;
+  font-size: clamp(58px, 15.5vw, 88px) !important;
 }
 .book-amp {
-  font-size: clamp(22px, 5.8vw, 32px) !important;
+  font-size: clamp(24px, 6.2vw, 34px) !important;
 }
 .book-section,
 .tl-label,
 .back-cover-text p,
 .back-text p {
-  font-size: clamp(26px, 7vw, 40px) !important;
+  font-size: clamp(29px, 7.8vw, 44px) !important;
 }
 .book-gold,
+
 .tl-time {
-  font-size: clamp(18px, 5vw, 28px) !important;
+  font-size: clamp(16px, 3vw, 18px) !important;
 }
+
+.tl-venue  {
+  font-size: clamp(14px, 2vw, 16px) !important;
+}
+
+.tl-label{
+  font-size: clamp(24px, 8vw, 26px) !important;
+}
+
+
 .cal-cell {
-  font-size: clamp(12px, 3.4vw, 17px) !important;
+  font-size: clamp(13px, 3.7vw, 18px) !important;
   padding-block: clamp(4px, 1.2vw, 7px) !important;
 }
 .cal-cell.hdr {
-  font-size: clamp(10px, 2.7vw, 14px) !important;
+  font-size: clamp(11px, 3vw, 15px) !important;
 }
 .flip {
   min-width: clamp(58px, 16vw, 78px) !important;
@@ -556,14 +573,14 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
   font-size: clamp(26px, 7vw, 38px) !important;
 }
 .flip .lbl {
-  font-size: clamp(8px, 2.3vw, 12px) !important;
+  font-size: clamp(9px, 2.5vw, 13px) !important;
 }
 .tl-row {
-  grid-template-columns: 1fr clamp(48px, 15vw, 72px) 1fr !important;
+  grid-template-columns: 1fr clamp(52px, 16vw, 76px) 1fr !important;
 }
 .tl-icon img {
-  width: clamp(32px, 9vw, 46px) !important;
-  height: clamp(32px, 9vw, 46px) !important;
+  width: clamp(36px, 10vw, 50px) !important;
+  height: clamp(36px, 10vw, 50px) !important;
 }
 .photo-carousel {
   width: min(100%, calc(var(--bw) - 28px)) !important;
@@ -587,9 +604,29 @@ textarea.form-field { border: 1px solid rgba(138,155,181,.3); padding: clamp(5px
 .cal-box {
   padding: clamp(14px, 4vw, 22px) !important;
 }
+/* RSVP readability pass for older guests */
+.guest-welcome-name { font-size: clamp(21px, 5.9vw, 29px) !important; }
+.guest-welcome-note { font-size: clamp(13px, 3.5vw, 17px) !important; line-height: 1.45 !important; }
+.guest-slot-name-label,
+.guest-slot-attendance > span,
+.wish-message-label { font-size: clamp(9px, 2.4vw, 12px) !important; }
+.guest-slot-name-box > input { font-size: clamp(15px, 4.1vw, 19px) !important; }
+.guest-response-pill {
+  min-width: clamp(52px, 14vw, 66px) !important;
+  padding: clamp(7px, 1.9vw, 9px) clamp(9px, 2.5vw, 13px) !important;
+  font-size: clamp(9px, 2.4vw, 12px) !important;
+}
+.guest-total-line { font-size: clamp(14px, 3.8vw, 18px) !important; }
+#guestMsg { font-size: clamp(13px, 3.5vw, 17px) !important; }
+.rsvp-single-btn { font-size: clamp(10px, 3vw, 14px) !important; padding: clamp(10px, 2.8vw, 13px) !important; }
+@media (max-width: 390px) {
+  .guest-slot-name-list.scrollable-guest-list { max-height: 230px; }
+}
+
 @media (min-width: 720px) {
   :root {
-    --bw: min(72vw, calc((100svh - 48px) * 9 / 16), 560px);
+    --bw: min(72vw, calc((100dvh - 48px) * 9 / 16), 560px);
+    --page-h: calc(var(--bw) * 16 / 9);
   }
 }
 
@@ -621,23 +658,31 @@ html.loading, body.loading { overflow: hidden !important; }
 .music-icon { font-size: 14px; line-height: 1; }
 
 /* ══════ CLIENT DETAIL COMPONENTS ══════ */
-.couple-full-name { font-size: clamp(27px,8.4vw,43px) !important; line-height: 1.05 !important; }
-.celebration-two-events { margin-top: clamp(8px,3vw,15px); }
-.venue-address { margin-top: clamp(5px,1.8vw,9px); font-size: clamp(10px,2.8vw,13px); font-style: italic; color: var(--ink-lt); }
+.couple-full-name { font-size: clamp(31px,9.4vw,50px) !important; line-height: 1.08 !important; }
+.celebration-two-events { margin-top: clamp(10px,3.2vw,17px); }
+.celebration-two-events .tl-row {
+  column-gap: clamp(14px, 4vw, 22px) !important;
+  margin-bottom: clamp(18px, 5vw, 28px) !important;
+}
+.celebration-two-events .tl-row:last-child { margin-bottom: 0 !important; }
+.celebration-two-events .tl-left,
+.celebration-two-events .tl-right { padding-left: 0 !important; padding-right: 0 !important; }
+.celebration-two-events .tl-label { white-space: nowrap; }
+.venue-address { margin-top: clamp(7px,2.2vw,11px); font-size: clamp(12px,3.2vw,15px); font-style: italic; color: var(--ink-lt); }
 .location-btn {
   display: inline-block; margin-top: clamp(6px,2vw,10px); padding: clamp(7px,2vw,10px) clamp(14px,4vw,20px);
   border: 1px solid rgba(95,118,151,.38); background: rgba(255,255,255,.48); color: var(--blue-dk);
-  font-family: 'Cinzel', serif; font-size: clamp(8px,2.4vw,10px); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
+  font-family: 'Cinzel', serif; font-size: clamp(9px,2.7vw,12px); letter-spacing: .14em; text-transform: uppercase; text-decoration: none;
 }
 .registry-list { display: flex; flex-direction: column; gap: clamp(7px,2vw,11px); width: min(82%, 270px); }
-.registry-list span { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px,5.2vw,26px); color: var(--blue-dk); }
+.registry-list span { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px,5.7vw,29px); color: var(--blue-dk); }
 .registry-list span + span { border-top: 1px solid rgba(138,155,181,.18); padding-top: clamp(7px,2vw,11px); }
-.registry-note { margin-top: clamp(7px,2.2vw,11px); font-size: clamp(9px,2.5vw,12px); color: var(--ink-lt); font-style: italic; }
+.registry-note { margin-top: clamp(8px,2.4vw,12px); font-size: clamp(11px,2.9vw,14px); color: var(--ink-lt); font-style: italic; }
 .lodging-intro { max-width: 92%; margin-bottom: clamp(7px,2.5vw,12px); }
 .lodging-list { width: 100%; display: flex; flex-direction: column; gap: clamp(6px,2vw,10px); }
 .lodging-card { padding: clamp(8px,2.4vw,12px); background: rgba(255,255,255,.45); border: 1px solid rgba(138,155,181,.2); }
-.lodging-card strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,4.7vw,23px); font-weight: 400; color: var(--blue-dk); }
-.lodging-card span { display: block; margin-top: 1px; font-size: clamp(10px,2.8vw,13px); font-style: italic; color: var(--ink-lt); }
+.lodging-card strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: clamp(18px,5.2vw,26px); font-weight: 400; color: var(--blue-dk); }
+.lodging-card span { display: block; margin-top: 2px; font-size: clamp(12px,3.2vw,15px); font-style: italic; color: var(--ink-lt); }
 
 /* ══════ PHOTO PREVIEW + FULL-SIZE ALBUM ══════ */
 .photo-preview { width: 100%; position: relative; overflow: hidden; border-radius: 3px; box-shadow: 0 9px 24px rgba(70,90,120,.16); }
@@ -647,7 +692,7 @@ html.loading, body.loading { overflow: hidden !important; }
   position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); z-index: 2;
   width: max-content; max-width: 86%; padding: clamp(10px,3vw,14px) clamp(16px,5vw,26px);
   border: 1px solid rgba(255,255,255,.9); background: rgba(250,247,242,.9); color: var(--blue-dk);
-  font-family: 'Cinzel', serif; font-size: clamp(9px,2.6vw,12px); letter-spacing: .13em; text-transform: uppercase;
+  font-family: 'Cinzel', serif; font-size: clamp(10px,2.9vw,14px); letter-spacing: .13em; text-transform: uppercase;
   cursor: pointer; box-shadow: 0 8px 22px rgba(20,35,55,.18); backdrop-filter: blur(6px);
 }
 .album-lightbox {
