@@ -131,8 +131,7 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      overflow-x: auto;
-      overflow-y: hidden;
+      overflow: hidden;
       cursor: grab;
       scrollbar-width: none;
       touch-action: none;
@@ -157,6 +156,7 @@
       background-position: center center;
       background-repeat: no-repeat;
       overflow: hidden;
+      will-change: transform;
     }
 
     /* Soft golden atmosphere only. No duplicated/cut panorama layers. */
@@ -2321,18 +2321,21 @@ color: #1E1C11;
     const musicToggleText = document.getElementById("musicToggleText");
     const sendBtn = document.getElementById("sendBtn");
 
+    const pano = document.getElementById("pano");
+
     let isDragging = false;
     let pointerStartX = 0;
-    let scrollStartLeft = 0;
-    let lastScrollLeft = 0;
-    let lastScrollDelta = 0;
-    let lastScrollTime = performance.now();
+    let dragBaseTarget = 0;
+    let target = 0;
+    let offset = 0;
+    let lastOffset = 0;
+    let lastFrameTime = performance.now();
     let velocity = 0;
+    let lastFrameDelta = 0;
     let carDirection = 1;
     let pendingCarDirection = 1;
     let pendingDirectionDistance = 0;
     let currentRatio = 0;
-    let rafPending = false;
 
     /* Prevents the car from flipping from tiny accidental finger movements.
        It will only turn around after a clear, intentional drag in the opposite direction. */
@@ -2344,12 +2347,12 @@ color: #1E1C11;
     }
 
     function maxScroll() {
-      return Math.max(0, wrap.scrollWidth - wrap.clientWidth);
+      return Math.max(0, pano.offsetWidth - wrap.clientWidth);
     }
 
     function getRatio() {
       const max = maxScroll();
-      return max ? clamp(wrap.scrollLeft / max, 0, 1) : 0;
+      return max ? clamp(offset / max, 0, 1) : 0;
     }
 
     function updateCar(ratio) {
@@ -2358,7 +2361,7 @@ color: #1E1C11;
       /* Flip the car only after a deliberate opposite drag.
          Positive velocity = moving forward through the panorama, negative = going back. */
       const intendedDirection = velocity > CAR_FLIP_SPEED_THRESHOLD ? 1 : (velocity < -CAR_FLIP_SPEED_THRESHOLD ? -1 : 0);
-      const scrollDelta = Math.abs(lastScrollDelta);
+      const scrollDelta = Math.abs(lastFrameDelta);
 
       if (intendedDirection && intendedDirection !== carDirection) {
         if (pendingCarDirection !== intendedDirection) {
@@ -2388,43 +2391,61 @@ color: #1E1C11;
       if (dust) dust.style.left = `calc(${carLeft.toFixed(3)}% - 9%)`;
     }
 
-    function updateUI() {
-      rafPending = false;
-
+    /* The heart of the smooth-drag feel, ported from the Venice template:
+       input only ever changes "target". Every animation frame, "offset" eases
+       a little closer to "target" and the panorama is repositioned with a
+       transform. Because rendering is decoupled from input events, the motion
+       stays glassy-smooth no matter how fast or choppy the finger events are. */
+    function tick() {
       const now = performance.now();
-      const dt = Math.max(16, now - lastScrollTime);
-      const dx = wrap.scrollLeft - lastScrollLeft;
-      lastScrollDelta = dx;
-      velocity = dx / dt * 1000;
-      lastScrollLeft = wrap.scrollLeft;
-      lastScrollTime = now;
+      const dt = Math.max(16, now - lastFrameTime);
+      lastFrameTime = now;
+
+      const max = maxScroll();
+      target = clamp(target, 0, max);
+      const d = target - offset;
+      offset = Math.abs(d) < 0.4 ? target : offset + d * 0.16;
+      offset = clamp(offset, 0, max);
+
+      lastFrameDelta = offset - lastOffset;
+      velocity = lastFrameDelta / dt * 1000;
+      lastOffset = offset;
+
+      pano.style.transform = `translate3d(${(-offset).toFixed(2)}px,0,0)`;
 
       currentRatio = getRatio();
       progressFill.style.width = `${(currentRatio * 100).toFixed(2)}%`;
       updateCar(currentRatio);
-    }
 
-    function requestUIUpdate() {
-      if (rafPending) return;
-      rafPending = true;
-      requestAnimationFrame(updateUI);
+      requestAnimationFrame(tick);
     }
+    requestAnimationFrame(tick);
+
+    /* Kept as a no-op for compatibility with existing call sites below —
+       the tick() loop above already keeps everything in sync every frame. */
+    function requestUIUpdate() {}
 
     function scrollToRatio(ratio, behavior = "smooth") {
-      wrap.scrollTo({ left: maxScroll() * clamp(ratio, 0, 1), behavior });
+      const value = maxScroll() * clamp(ratio, 0, 1);
+      target = value;
+      if (behavior === "auto") {
+        offset = value;
+        lastOffset = value;
+      }
     }
 
+    /* Only real form controls and the vertically-scrolling guest list stay
+       excluded — everything else, including the RSVP card's own background,
+       can be used to drag the panorama. */
     function targetIsInteractive(target) {
-      return Boolean(target.closest("button, a, input, select, textarea, label, .rsvp-card"));
+      return Boolean(target.closest("button, a, input, select, textarea, label, .guest-slot-name-list"));
     }
-
-    wrap.addEventListener("scroll", requestUIUpdate, { passive: true });
 
     wrap.addEventListener("wheel", (event) => {
       if (body.classList.contains("invitation-locked")) return;
       if (targetIsInteractive(event.target)) return;
       const delta = Math.abs(event.deltaY) > Math.abs(event.deltaX) ? event.deltaY : event.deltaX;
-      wrap.scrollLeft += delta;
+      target = clamp(target + delta * 1.8, 0, maxScroll());
       event.preventDefault();
     }, { passive: false });
 
@@ -2433,13 +2454,13 @@ color: #1E1C11;
       if (targetIsInteractive(event.target)) return;
       isDragging = true;
       pointerStartX = event.clientX;
-      scrollStartLeft = wrap.scrollLeft;
+      dragBaseTarget = target;
       wrap.setPointerCapture(event.pointerId);
     });
 
     wrap.addEventListener("pointermove", (event) => {
       if (!isDragging) return;
-      wrap.scrollLeft = scrollStartLeft - (event.clientX - pointerStartX);
+      target = clamp(dragBaseTarget + (pointerStartX - event.clientX) * 1.5, 0, maxScroll());
     });
 
     function endDrag() {
