@@ -90,8 +90,6 @@
     .gold .card{color:var(--text);}
     .gold .card .section-title,
     .gold .card .script-title{color:var(--gold);}
-    .gold .card .bank-name{color:var(--text);}
-    .gold .card .bank-line{color:var(--text-soft);}
 
     .countdown{display:flex;align-items:center;justify-content:center;gap:0;margin-top:42px;}
     .count-item{min-width:86px;padding:0 12px;border-right:1px solid color-mix(in srgb,var(--gold) 42%,transparent);}
@@ -131,11 +129,6 @@
     .album-arrow.prev{left:8px;}.album-arrow.next{right:8px;}
     .album-dots{display:flex;justify-content:center;gap:8px;margin-top:18px;}
     .album-dot{width:8px;height:8px;border-radius:50%;background:rgba(184,146,84,.25);border:0;cursor:pointer;}.album-dot.active{background:var(--gold);}
-
-    .gift-card{max-width:430px;margin:0 auto;}
-    .bank-box{text-align:left;background:#faf7f1;border-radius:12px;padding:22px;margin-top:18px;border:1px solid rgba(184,146,84,.13);}
-    .bank-name{font-family:'Cormorant Garamond',serif;font-size:18px;letter-spacing:.18em;text-transform:uppercase;color:var(--text);font-weight:600;margin-bottom:10px;}
-    .bank-line{font-family:'Cormorant Garamond',serif;font-size:16px;color:var(--text-soft);line-height:1.5;}
 
     .rsvp-box{text-align:left;padding:28px;}
     .question{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--text);margin:22px 0 12px;font-weight:600;}
@@ -241,7 +234,6 @@
     .paper-sheet::after{background:radial-gradient(circle at 50% 5%,rgba(255,255,255,.82),transparent 40%),linear-gradient(135deg,color-mix(in srgb,var(--gold) 8%,transparent),transparent 35%,color-mix(in srgb,var(--gold) 9%,transparent));}
     .album-dot{background:color-mix(in srgb,var(--gold) 25%,transparent);}
     input,textarea,.guest-counter button{border-color:color-mix(in srgb,var(--gold) 28%,transparent);}
-    .bank-box{background:color-mix(in srgb,var(--bg-soft) 78%,#fff);border-color:color-mix(in srgb,var(--gold) 18%,transparent);}
     .paper-names{color:var(--text);}
 
     img[data-theme-asset]{
@@ -1472,15 +1464,6 @@
       50%{transform:translateY(7px);opacity:1;}
     }
 
-    /* Center Whish Money account details */
-    #gifts .bank-box{
-      text-align:center;
-    }
-    #gifts .bank-name,
-    #gifts .bank-line{
-      text-align:center;
-    }
-
 
     /* Final couple photo at the bottom */
     .final-photo-section{
@@ -1629,14 +1612,6 @@
 </div>
 </section>
 
-<section class="section gold" id="gifts">
-<div class="reveal paper-sheet">
-<img alt="Paper-cut wedding cake" class="paper-asset" data-theme-asset="Champagne9.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Champagne9.png"/>
-<h2 class="section-title"><span class="lang-en">Gifts</span><span class="lang-fr">Cadeaux</span></h2>
-<p class="paper-body"><span class="lang-en">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</span><span class="lang-fr">Votre présence est notre plus beau cadeau. Pour ceux qui le souhaitent, une liste de mariage est disponible dans toutes les agences Whish Money.</span></p>
-<div class="bank-box"><div class="bank-name">Whish Money</div><div class="bank-line"><span class="lang-en">ACC#  20458017-03</span><span class="lang-fr">Compte n° 20458017-03</span></div></div>
-</div>
-</section>
 <section class="section" id="rsvp">
 <div class="reveal paper-sheet">
 <img alt="Paper-cut doves and wedding rings" class="paper-asset" data-theme-asset="Doves4.png" src="https://raw.githubusercontent.com/NemerDavid/web-des/main/Paper%20cut/1_%23b89254/Doves4.png"/>
@@ -1723,7 +1698,7 @@
     setTheme('classic');
 
     const FINAL_COUPLE_PHOTO_URL = 'https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Orders/Pics/Maikel_Vanessa/M_V.jpg';
-    const PRELOAD_THEME_ASSETS = ['Angel.png','Church5.png','Doves4.png','Cake5.png','Champagne9.png','Venue2.png'];
+    const PRELOAD_THEME_ASSETS = ['Angel.png','Church5.png','Doves4.png','Cake5.png','Venue2.png'];
     const PRELOAD_FIXED_ASSETS = ['Pages3.png','Rings2.png','Envelope2.png'];
 
     function updateLoaderProgress(percent){
