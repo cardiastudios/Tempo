@@ -2152,7 +2152,7 @@ body::before{
 #p6{ left:805cqw !important; }
 #p7{ left:950cqw !important; }
 
-/* Road2.png moved farther right so it no longer crowds the story page. */
+/* Road3.png moved farther right so it no longer crowds the story page. */
 #p1 .l-Road{
   left:380% !important;
   width:190% !important;
@@ -2630,7 +2630,7 @@ body::before{
   --panel-rsvp-x:805cqw;
   --panel-closing-x:950cqw;
 
-  /* Road2.png */
+  /* Road3.png */
   --road-left:392%;                /* bigger = more RIGHT */
   --road-top:2.8%;                 /* bigger = lower */
   --road-width:190%;
@@ -2723,7 +2723,7 @@ body::before{
 
 
 
-/* Road2.png invisible location hotspots.
+/* Road3.png invisible location hotspots.
    The PNG stays visually untouched; only the "Open location" labels are clickable.
    To reposition the whole Road2 image later, keep using --road-left / --road-top / --road-width above. */
 #p1 .road-location-layer{
@@ -2739,7 +2739,7 @@ body::before{
 #p1 .road-location-hit{
   position:absolute;
   top:74.8%;
-  height:10.8%;
+  height:15.8%;
   border-radius:999px;
   pointer-events:auto;
   cursor:pointer;
@@ -2753,10 +2753,10 @@ body::before{
   outline-offset:2px;
   background:rgba(255,255,255,.08);
 }
-#p1 .road-location-church{ left:9.4%; width:17.5%; }
+#p1 .road-location-church{ left:10.4%; width:17.5%; }
 #p1 .road-location-reception{ left:30.9%; width:17.5%; }
 #p1 .road-location-dinner{ left:52.5%; width:17.5%; }
-#p1 .road-location-party{ left:73.6%; width:17.5%; }
+#p1 .road-location-party{ left:58.5%; width:17.5%; }
 
 
 /* Keep these text-size/readability fixes after the position controls */
@@ -3739,252 +3739,6 @@ body::before{
 #p6 .rsvp-card.venice-rsvp-box::-webkit-scrollbar-thumb{
   background:rgba(61,42,20,.22) !important;
   border-radius:999px !important;
-}
-
-
-
-/* ═════════ CARDIA UPDATE — PHOTO UPLOAD AS ITS OWN SECTION AFTER RSVP ═════════
-   The guest photo uploader is now a permanent standalone panel after RSVP.
-   The closing panel moves one screen farther right. */
-#panorama{
-  width:1200% !important;
-}
-.panel{
-  width:100cqw !important;
-}
-:root{
-  --panel-photo-upload-x:950cqw;
-  --panel-closing-x:1100cqw;
-}
-#p9{ left:var(--panel-photo-upload-x) !important; }
-#p7{ left:var(--panel-closing-x) !important; }
-
-#p9 .photo-section-copy{
-  left:50% !important;
-  top:9.4% !important;
-  transform:translateX(-50%) !important;
-  width:84% !important;
-  text-align:center !important;
-}
-#p9 .photo-section-copy .script{
-  font-size:11.6cqw !important;
-  line-height:.96 !important;
-  color:#fff !important;
-  text-shadow:0 2px 12px rgba(255,255,255,.46), 0 8px 26px rgba(38,67,91,.18) !important;
-}
-#p9 .photo-section-copy .sans{
-  font-size:2.65cqw !important;
-  line-height:1.55 !important;
-  letter-spacing:.24em !important;
-  color:#fff !important;
-  opacity:.58 !important;
-  text-shadow:0 2px 10px rgba(28,53,75,.16) !important;
-}
-#p9 .orn span{
-  background:rgba(255,255,255,.62) !important;
-  opacity:1 !important;
-}
-#p9 .orn em{
-  color:#fff !important;
-  opacity:.72 !important;
-}
-
-#p9 .photo-upload-box{
-  display:block !important;
-  width:100% !important;
-  max-width:68cqw !important;
-  margin:3.4cqw auto 0 !important;
-  padding:6.6cqw 6.1cqw 5.5cqw !important;
-  border-radius:6.2cqw !important;
-  background-color:transparent !important;
-  background-image:
-    linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.04)),
-    var(--paper-page-bg) !important;
-  background-size:100% 100% !important;
-  background-position:center center !important;
-  background-repeat:no-repeat !important;
-  border:1px solid rgba(61,42,20,.18) !important;
-  box-shadow:0 18px 45px rgba(45,76,105,.18), inset 0 0 0 1px rgba(255,255,255,.44) !important;
-  text-align:center !important;
-  pointer-events:auto !important;
-  color:#3d2a14 !important;
-  text-shadow:none !important;
-}
-#p9 .photo-upload-box,
-#p9 .photo-upload-box *{
-  color:#3d2a14 !important;
-  text-shadow:none !important;
-}
-#p9 .photo-upload-title{
-  font-family:'Cormorant Garamond',serif !important;
-  font-size:4.65cqw !important;
-  line-height:1.25 !important;
-  font-weight:600 !important;
-  margin-bottom:1.4cqw !important;
-}
-#p9 .photo-upload-text{
-  font-family:'Cormorant Garamond',serif !important;
-  font-size:3.25cqw !important;
-  line-height:1.62 !important;
-  opacity:.9 !important;
-  margin:0 auto 2.8cqw !important;
-}
-#p9 .photo-upload-name-label{
-  display:block !important;
-  margin:0 0 1cqw !important;
-  font-family:'Jost',sans-serif !important;
-  font-size:2.05cqw !important;
-  line-height:1.3 !important;
-  letter-spacing:.12em !important;
-  text-transform:uppercase !important;
-  font-weight:800 !important;
-  text-align:left !important;
-}
-#p9 .photo-upload-name-input{
-  display:block !important;
-  width:100% !important;
-  margin:0 0 2.6cqw !important;
-  padding:2.2cqw 0 !important;
-  background:transparent !important;
-  border:0 !important;
-  border-bottom:1.5px solid rgba(61,42,20,.34) !important;
-  outline:none !important;
-  font-family:'Cormorant Garamond',serif !important;
-  font-size:3.35cqw !important;
-  line-height:1.3 !important;
-  text-align:left !important;
-}
-#p9 .photo-upload-name-input::placeholder{
-  color:rgba(61,42,20,.42) !important;
-}
-#p9 .photo-upload-name-input:focus{
-  border-bottom-color:rgba(61,42,20,.72) !important;
-}
-#p9 .photo-upload-drop{
-  display:block !important;
-  width:100% !important;
-  padding:3.3cqw 3cqw !important;
-  border-radius:3.8cqw !important;
-  border:1px dashed rgba(61,42,20,.34) !important;
-  background:rgba(255,255,255,.54) !important;
-  cursor:pointer !important;
-  transition:transform .2s ease, background .2s ease, border-color .2s ease !important;
-}
-#p9 .photo-upload-drop:hover{
-  transform:translateY(-1px) !important;
-  background:rgba(255,255,255,.74) !important;
-  border-color:rgba(61,42,20,.52) !important;
-}
-#p9 .photo-upload-drop input{
-  display:none !important;
-}
-#p9 .photo-upload-icon{
-  display:block !important;
-  font-size:5.6cqw !important;
-  line-height:1 !important;
-  margin-bottom:1.2cqw !important;
-}
-#p9 .photo-upload-drop-text{
-  display:block !important;
-  font-family:'Jost',sans-serif !important;
-  font-size:2.25cqw !important;
-  line-height:1.35 !important;
-  letter-spacing:.08em !important;
-  text-transform:uppercase !important;
-  font-weight:800 !important;
-}
-#p9 .photo-upload-hint{
-  display:block !important;
-  margin-top:.9cqw !important;
-  font-family:'Cormorant Garamond',serif !important;
-  font-size:2.55cqw !important;
-  line-height:1.35 !important;
-  color:rgba(61,42,20,.62) !important;
-}
-#p9 .photo-preview-wrap{
-  display:none;
-  margin:2.6cqw auto 0 !important;
-  width:34cqw !important;
-  height:34cqw !important;
-  border-radius:4.4cqw !important;
-  overflow:hidden !important;
-  border:1px solid rgba(61,42,20,.20) !important;
-  background:rgba(255,255,255,.45) !important;
-  box-shadow:0 10px 24px rgba(61,42,20,.10) !important;
-}
-#p9 .photo-preview-wrap img{
-  width:100% !important;
-  height:100% !important;
-  object-fit:cover !important;
-  display:block !important;
-}
-#p9 .photo-upload-btn{
-  margin-top:2.8cqw !important;
-  width:100% !important;
-  border-radius:999px !important;
-  padding:2.4cqw 3cqw !important;
-  cursor:pointer !important;
-  font-family:'Jost',sans-serif !important;
-  font-size:2.2cqw !important;
-  letter-spacing:.12em !important;
-  text-transform:uppercase !important;
-  font-weight:800 !important;
-  background:rgba(255,255,255,.66) !important;
-  border:1px solid rgba(61,42,20,.30) !important;
-  box-shadow:0 8px 22px rgba(61,42,20,.08) !important;
-}
-#p9 .photo-upload-btn:disabled{
-  opacity:.58 !important;
-  cursor:default !important;
-}
-#p9 .photo-upload-status{
-  min-height:1.4em !important;
-  margin-top:1.8cqw !important;
-  font-family:'Cormorant Garamond',serif !important;
-  font-size:2.65cqw !important;
-  line-height:1.35 !important;
-  color:#3d2a14 !important;
-  opacity:.82 !important;
-}
-#p9 .photo-upload-status.is-error{
-  color:#8b2f23 !important;
-  opacity:1 !important;
-}
-#p9 .photo-upload-status.is-success{
-  color:#2f6b45 !important;
-  opacity:1 !important;
-  font-weight:700 !important;
-}
-
-@media (max-width:600px), (pointer:coarse){
-  :root{
-    --panel-photo-upload-x:950cqw;
-    --panel-closing-x:1100cqw;
-  }
-  #p9{ left:var(--panel-photo-upload-x) !important; }
-  #p7{ left:var(--panel-closing-x) !important; }
-  #p9 .photo-section-copy{
-    top:9.2% !important;
-    width:86% !important;
-  }
-  #p9 .photo-section-copy .script{
-    font-size:12.1cqw !important;
-  }
-  #p9 .photo-section-copy .sans{
-    font-size:2.85cqw !important;
-  }
-  #p9 .photo-upload-box{
-    max-width:72cqw !important;
-    padding:6.8cqw 6.1cqw 5.7cqw !important;
-  }
-  #p9 .photo-upload-title{ font-size:4.9cqw !important; }
-  #p9 .photo-upload-text{ font-size:3.4cqw !important; }
-  #p9 .photo-upload-name-label{ font-size:2.2cqw !important; }
-  #p9 .photo-upload-name-input{ font-size:3.55cqw !important; }
-  #p9 .photo-upload-drop-text{ font-size:2.45cqw !important; }
-  #p9 .photo-upload-hint{ font-size:2.8cqw !important; }
-  #p9 .photo-upload-btn{ font-size:2.45cqw !important; }
-  #p9 .photo-upload-status{ font-size:2.9cqw !important; }
 }
 
 
@@ -5245,7 +4999,7 @@ body::before{
 
 
  <img class="layer l-Road"
-         src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png" alt="">
+         src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road3c.png" alt="">
 
 
 
@@ -5256,14 +5010,7 @@ body::before{
          href="https://maps.app.goo.gl/16AcHzhR46aD9QcH9"
          target="_blank" rel="noopener"
          aria-label="Open church location"></a>
-      <a class="road-location-hit road-location-reception"
-         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
-         target="_blank" rel="noopener"
-         aria-label="Open Octagon location for reception drinks"></a>
-      <a class="road-location-hit road-location-dinner"
-         href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
-         target="_blank" rel="noopener"
-         aria-label="Open Octagon location for dinner"></a>
+  
       <a class="road-location-hit road-location-party"
          href="https://maps.app.goo.gl/x4afZjaPJGWXyiiY6"
          target="_blank" rel="noopener"
@@ -5399,7 +5146,7 @@ body::before{
           <p class="wedding-list-text">
             Your presence is the greatest gift. For those who wish to contribute, you may do so via our account:
           </p>
-          <p class="wedding-list-text wish-money-line" dir="ltr">Wish Money: #xxxxxxx</p>
+          <p class="wedding-list-text wish-money-line" dir="ltr">Wish Money: 20724440-03 </p>
 
         </div>
       </div>
@@ -5418,8 +5165,11 @@ body::before{
       <div class="fixed-copy rsvp-copy">
         <div class="script" style="color:#fff;font-weight:900;">RSVP</div>
         <div class="orn" style="margin:4px auto 0;"><span></span><em>✦</em><span></span></div>
-        <div class="sans" style="color:#fff;opacity:0.5;margin-bottom:4px;">Kindly confirm your attendance</div>
-
+       
+       <div class="sans" style="color:#fff;opacity:0.5;margin-bottom:4px;">
+  Kindly confirm your attendance<br>
+  by December 5th.
+</div> 
         <div class="rsvp-card venice-rsvp-box" id="rsvp" aria-label="RSVP form">
           <div class="step-dots" aria-hidden="true">
             <span class="step-dot on" id="dot-1"></span>
@@ -5463,38 +5213,10 @@ body::before{
   </div>
 
   <!-- ══════════════════════════════════
-       PANEL 9 — Guest Photo Upload
-       Separate section after RSVP for the magnet souvenir surprise
-  ══════════════════════════════════ -->
-  <div class="panel" id="p9" style="left:950cqw;">
-
-    <div class="water-shimmer"></div>
-
-    <div class="content">
-      <div class="fixed-copy photo-section-copy">
-        <div class="script photo-secret-title" style="color:#fff;font-weight:900;">A Secret for the<br>Big Day</div>
-        <div class="orn"><span></span><em>✦</em><span></span></div>
-
-        <div id="photoUploadBox" class="photo-upload-box permanent-photo-upload" aria-live="polite">
-
-          <p class="photo-upload-text">
-            Pick/take a photo that says “this is so us” <br> for a surprise 🎁 on the wedding day 💙
-          </p>
-
-          <div id="photoUploadGuestList" class="photo-upload-guest-list" aria-label="Invitation photo"></div>
-          <p id="photoUploadSummary" class="photo-upload-summary">One photo per invitation — choose wisely 😉</p>
-          <button class="photo-upload-btn" id="photoUploadBtn" type="button" onclick="uploadGuestPhoto()" disabled>Send Our Photo</button>
-          <p class="photo-upload-status" id="photoUploadStatus"></p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ══════════════════════════════════
        PANEL 7 — Closing
        Buildings: 18.png (left), 19.png (right)
   ══════════════════════════════════ -->
-  <div class="panel" id="p7" style="left:1100cqw;">
+  <div class="panel" id="p7" style="left:950cqw;">
 
     <div class="water-shimmer"></div>
 
@@ -5531,7 +5253,7 @@ body::before{
   const hint     = document.getElementById('hint');
   const stage    = document.getElementById('stage');
   const travelGondola = document.getElementById('travelGondola');
-  const PANELS   = 12;
+  const PANELS   = 10.5;
 
   let offset = 0;
   let target = 0;
@@ -5544,7 +5266,7 @@ body::before{
 
   function isInteractiveTarget(targetEl) {
     return Boolean(targetEl && targetEl.closest && targetEl.closest(
-      'button, a, input, select, textarea, label, .rsvp-card, .wedding-list-card, .photo-upload-section, .photo-upload-box, #manualGuestListWrap, #guestSlotNameList, .album-lightbox, .venice-album'
+      'button, a, input, select, textarea, label, .rsvp-card, .wedding-list-card, #manualGuestListWrap, #guestSlotNameList, .album-lightbox, .venice-album'
     ));
   }
 
@@ -5552,8 +5274,8 @@ body::before{
   /* CARDIA FIX — allow horizontal panorama drag even when the finger/mouse starts
      on RSVP, album, wedding list, or photo-upload cards. Vertical movement inside
      scrollable RSVP areas is still left alone so the guest list can scroll. */
-  const DRAGGABLE_INTERACTIVE_SELECTOR = '.rsvp-card, .wedding-list-card, .photo-upload-box, .venice-album, .road-location-layer, #manualGuestListWrap, #guestSlotNameList';
-  const VERTICAL_SCROLL_SELECTOR = '.rsvp-card, #manualGuestListWrap, #guestSlotNameList, .photo-upload-box';
+  const DRAGGABLE_INTERACTIVE_SELECTOR = '.rsvp-card, .wedding-list-card, .venice-album, .road-location-layer, #manualGuestListWrap, #guestSlotNameList';
+  const VERTICAL_SCROLL_SELECTOR = '.rsvp-card, #manualGuestListWrap, #guestSlotNameList';
 
   function closestMatch(targetEl, selector) {
     return targetEl && targetEl.closest ? targetEl.closest(selector) : null;
@@ -6066,7 +5788,7 @@ body::before{
     "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky4.png",
     "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Sky_aurora.png",
     "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/strasbourg/Ice.png",
-    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road2.png",
+    "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Road3.png",
     "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Pamela_Rody/Stars4.png"
 ];
 
@@ -6663,386 +6385,6 @@ body::before{
 
   applyGuestParams();
 
-  /* GUEST PHOTO UPLOAD → GOOGLE DRIVE — one photo per invitation */
-  const PHOTO_UPLOAD_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyaYiBmAYOVWpNixBaQFO1wGtxmJt4_0_sLdFfNwCuAJWJjvYyTTfSVTc_BzWkuLEA/exec';
-  const PHOTO_UPLOAD_MAX_MB = 8;
-  const PHOTO_UPLOAD_MAX_BYTES = PHOTO_UPLOAD_MAX_MB * 1024 * 1024;
-  const PHOTO_UPLOAD_MAX_DIMENSION = 1800;
-  const PHOTO_UPLOAD_JPEG_QUALITY = 0.88;
-
-  let selectedInvitationPhoto = null;
-  let photoUploadSentInvitation = false;
-  let photoUploadDraftInvitationName = '';
-
-  function setPhotoUploadStatus(message, state) {
-    const status = document.getElementById('photoUploadStatus');
-    if (!status) return;
-    status.textContent = message || '';
-    status.classList.remove('is-error', 'is-success');
-    if (state) status.classList.add(state);
-  }
-
-  function setPhotoSlotStatus(index, message, state) {
-    const status = document.getElementById('photoSlotStatus' + index);
-    if (!status) return;
-    status.textContent = message || '';
-    status.classList.remove('is-error', 'is-success');
-    if (state) status.classList.add(state);
-  }
-
-  function getPhotoInvitationNames() {
-    const rsvpNames = guestResponses
-      .map((guest) => guest && guest.name ? guest.name.trim() : '')
-      .filter(Boolean);
-
-    if (rsvpNames.length) return rsvpNames;
-
-    const lockedNames = lockedGuestNames
-      .map((name) => String(name || '').trim())
-      .filter(Boolean);
-
-    return lockedNames;
-  }
-
-  function getDefaultPhotoInvitationName() {
-    const names = getPhotoInvitationNames();
-    if (names.length) return formatGuestNames(names);
-    if (currentRSVPGuestName && currentRSVPGuestName.trim()) return currentRSVPGuestName.trim();
-    return photoUploadDraftInvitationName || '';
-  }
-
-  function getPhotoGuestName(index) {
-    return getDefaultPhotoInvitationName();
-  }
-
-  function getPhotoGuestAttendance(index) {
-    const namedGuests = guestResponses.filter((guest) => guest && guest.name && guest.name.trim());
-    if (namedGuests.length) {
-      const attendingCount = namedGuests.filter((guest) => guest.attending === 'Yes').length;
-      if (attendingCount > 0) return 'Yes';
-      return 'No';
-    }
-    return currentRSVPGuestName ? (currentRSVPAttending ? 'Yes' : 'No') : 'Not submitted';
-  }
-
-  function getPhotoInvitationKey() {
-    const params = new URLSearchParams(window.location.search || '');
-    const lockedNames = lockedGuestNames
-      .map((name) => String(name || '').trim())
-      .filter(Boolean);
-
-    let identity = '';
-    if (lockedNames.length) {
-      identity = lockedNames.map((name) => name.toLowerCase()).join('|');
-    } else {
-      const queryEntries = Array.from(params.entries())
-        .map(([key, value]) => [String(key || '').toLowerCase(), String(value || '')])
-        .filter(([key]) => key !== 'cache' && key !== 't' && key !== '_')
-        .sort((a, b) => (a[0] + '=' + a[1]).localeCompare(b[0] + '=' + b[1]));
-
-      identity = queryEntries.map(([key, value]) => key + '=' + value).join('&');
-    }
-
-    const path = [
-      window.location.origin || '',
-      window.location.pathname || ''
-    ].join('');
-
-    return [COUPLE_NAME, path, identity || getDefaultPhotoInvitationName() || 'generic-invitation']
-      .map((part) => String(part || '').trim())
-      .filter(Boolean)
-      .join(' | ');
-  }
-
-  function getPhotoUploadGuests() {
-    const invitationName = getDefaultPhotoInvitationName();
-    return [{
-      index: 0,
-      slot: 'Invitation',
-      displayLabel: '',
-      name: invitationName,
-      locked: Boolean(hasLockedGuestNames && invitationName),
-      attending: getPhotoGuestAttendance(0)
-    }];
-  }
-
-  function updatePhotoUploadButtonState() {
-    const btn = document.getElementById('photoUploadBtn');
-    const summary = document.getElementById('photoUploadSummary');
-    const hasReadyPhoto = Boolean(selectedInvitationPhoto && !photoUploadSentInvitation);
-
-    if (btn) {
-      btn.disabled = !hasReadyPhoto || photoUploadSentInvitation;
-      btn.textContent = hasReadyPhoto ? 'Send Our Photo' : (photoUploadSentInvitation ? 'Photo Sent ✓' : 'Send Our Photo');
-    }
-
-    if (summary) {
-      if (photoUploadSentInvitation) {
-        summary.textContent = 'Your invitation photo was sent ✓';
-      } else if (hasReadyPhoto) {
-        summary.textContent = '1 photo ready. This invitation can send one photo only.';
-      } else {
-        summary.textContent = 'One photo per invitation — choose wisely 😉';
-      }
-    }
-  }
-
-  function renderPhotoUploadSlots() {
-    const list = document.getElementById('photoUploadGuestList');
-    if (!list) return;
-
-    const invitationName = getDefaultPhotoInvitationName();
-    if (invitationName && (!photoUploadDraftInvitationName || hasLockedGuestNames)) {
-      photoUploadDraftInvitationName = invitationName;
-    }
-
-    const safeName = escapeHTML(photoUploadDraftInvitationName || invitationName || '');
-    const inputId = 'guestPhotoInput0';
-    const sent = Boolean(photoUploadSentInvitation);
-    const readonlyAttr = hasLockedGuestNames && (photoUploadDraftInvitationName || invitationName) ? ' readonly aria-readonly="true"' : '';
-
-    const previewHTML = selectedInvitationPhoto && selectedInvitationPhoto.dataUrl
-      ? '<img class="photo-guest-preview" src="' + selectedInvitationPhoto.dataUrl + '" alt="Preview invitation photo">' + (sent ? '<span class="photo-guest-sent-badge">Sent</span>' : '')
-      : '<span class="photo-guest-empty"><span>📸</span><span>Choose photo</span></span>';
-
-    const statusText = sent
-      ? 'Your invitation photo was sent ✓'
-      : (selectedInvitationPhoto ? 'Photo ready to send' : 'No photo selected yet');
-
-    const statusClass = sent ? ' is-success' : '';
-
-    list.innerHTML = `
-      <div class="photo-guest-slot simple-photo-slot" data-photo-slot="0">
-        <label class="photo-guest-photo-control" for="${inputId}" aria-label="Choose one photo">
-          ${previewHTML}
-          <input id="${inputId}" type="file" accept="image/jpeg,image/png,image/webp,image/*" onchange="handleGuestPhotoChoice(0, event)" ${sent ? 'disabled' : ''}>
-        </label>
-        <div id="photoSlotStatus0" class="photo-guest-mini-status${statusClass}">${statusText}</div>
-      </div>`;
-
-    updatePhotoUploadButtonState();
-  }
-
-  function updatePhotoGuestName(index, value) {
-    photoUploadDraftInvitationName = String(value || '').trim();
-    setPhotoSlotStatus(0, selectedInvitationPhoto ? 'Photo ready to send' : 'No photo selected yet', '');
-    updatePhotoUploadButtonState();
-  }
-
-  function resetPhotoUploadUI() {
-    selectedInvitationPhoto = null;
-    photoUploadSentInvitation = false;
-    photoUploadDraftInvitationName = getDefaultPhotoInvitationName();
-    renderPhotoUploadSlots();
-    setPhotoUploadStatus('', '');
-  }
-
-  function showPhotoUploadBoxForGuest(name, yes) {
-    currentRSVPGuestName = name || 'Guest';
-    currentRSVPAttending = !!yes;
-    photoUploadDraftInvitationName = getDefaultPhotoInvitationName() || photoUploadDraftInvitationName;
-    const box = document.getElementById('photoUploadBox');
-    if (box) box.style.display = 'block';
-    renderPhotoUploadSlots();
-  }
-
-  function sanitizeClientFileName(name) {
-    return String(name || 'invitation-photo.jpg')
-      .replace(/[\\/:*?"<>|]+/g, '_')
-      .replace(/\s+/g, '_')
-      .slice(0, 90);
-  }
-
-  function compressGuestImage(file, index) {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onerror = () => reject(new Error('Could not read the photo.'));
-      reader.onload = () => {
-        const img = new Image();
-        img.onerror = () => reject(new Error('Please choose a JPG, PNG, or WEBP photo.'));
-        img.onload = () => {
-          const scale = Math.min(1, PHOTO_UPLOAD_MAX_DIMENSION / Math.max(img.width, img.height));
-          const canvas = document.createElement('canvas');
-          canvas.width = Math.max(1, Math.round(img.width * scale));
-          canvas.height = Math.max(1, Math.round(img.height * scale));
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          const dataUrl = canvas.toDataURL('image/jpeg', PHOTO_UPLOAD_JPEG_QUALITY);
-          const base64 = dataUrl.split(',')[1] || '';
-          const cleanName = sanitizeClientFileName((file.name || 'invitation_photo').replace(/\.[^.]+$/, '') + '.jpg');
-          resolve({
-            base64,
-            mimeType: 'image/jpeg',
-            fileName: cleanName,
-            dataUrl,
-            originalName: sanitizeClientFileName(file.name || cleanName),
-            index: 0
-          });
-        };
-        img.src = reader.result;
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  async function handleGuestPhotoChoice(index, event) {
-    const files = event && event.target && event.target.files ? Array.from(event.target.files) : [];
-    const file = files[0];
-
-    if (photoUploadSentInvitation) {
-      setPhotoUploadStatus('A photo has already been sent for this invitation.', 'is-error');
-      renderPhotoUploadSlots();
-      return;
-    }
-
-    selectedInvitationPhoto = null;
-
-    if (!file) {
-      renderPhotoUploadSlots();
-      return;
-    }
-
-    if (!file.type || !file.type.startsWith('image/')) {
-      setPhotoSlotStatus(0, 'Please choose an image file only.', 'is-error');
-      updatePhotoUploadButtonState();
-      return;
-    }
-
-    if (file.size > PHOTO_UPLOAD_MAX_BYTES) {
-      setPhotoSlotStatus(0, 'Photo is too large. Maximum ' + PHOTO_UPLOAD_MAX_MB + 'MB.', 'is-error');
-      updatePhotoUploadButtonState();
-      return;
-    }
-
-    try {
-      setPhotoSlotStatus(0, 'Preparing photo…', '');
-      const prepared = await compressGuestImage(file, 1);
-      selectedInvitationPhoto = prepared;
-      renderPhotoUploadSlots();
-      setPhotoUploadStatus('Photo ready. One perfect pick is all we need for the surprise 🤍', '');
-    } catch (err) {
-      selectedInvitationPhoto = null;
-      renderPhotoUploadSlots();
-      setPhotoSlotStatus(0, err && err.message ? err.message : 'Could not prepare the photo. Try another one.', 'is-error');
-    }
-  }
-
-  function postPhotoUploadToGoogleDrive(payload, frameSuffix) {
-    return new Promise((resolve) => {
-      const iframeName = 'photoUploadGoogleDriveFrame_' + String(frameSuffix || Date.now()).replace(/\W+/g, '_');
-      const iframe = document.createElement('iframe');
-      iframe.name = iframeName;
-      iframe.id = iframeName;
-      iframe.style.display = 'none';
-      document.body.appendChild(iframe);
-
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = PHOTO_UPLOAD_SCRIPT_URL;
-      form.target = iframeName;
-      form.style.display = 'none';
-      Object.entries(payload).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value == null ? '' : String(value);
-        form.appendChild(input);
-      });
-      document.body.appendChild(form);
-      form.submit();
-
-      setTimeout(() => {
-        form.remove();
-        iframe.remove();
-        resolve(true);
-      }, 2600);
-    });
-  }
-
-  async function uploadGuestPhoto() {
-    if (!PHOTO_UPLOAD_SCRIPT_URL || PHOTO_UPLOAD_SCRIPT_URL.includes('PASTE_YOUR_PHOTO_UPLOAD_WEB_APP_URL_HERE')) {
-      setPhotoUploadStatus('You need to add the Google Apps Script link for photo uploads inside the code.', 'is-error');
-      return;
-    }
-
-    if (photoUploadSentInvitation) {
-      setPhotoUploadStatus('A photo has already been sent for this invitation.', 'is-success');
-      return;
-    }
-
-    if (!selectedInvitationPhoto) {
-      setPhotoUploadStatus('Please choose one photo first.', 'is-error');
-      return;
-    }
-
-    const input = document.getElementById('photoGuestName0');
-    const invitationName = ((input && input.value.trim()) || getDefaultPhotoInvitationName()).trim();
-
-    if (!invitationName) {
-      setPhotoUploadStatus('Please write the name on this invitation before sending the photo.', 'is-error');
-      setPhotoSlotStatus(0, 'Enter the invitation name first.', 'is-error');
-      if (input) input.focus();
-      return;
-    }
-
-    photoUploadDraftInvitationName = invitationName;
-
-    const btn = document.getElementById('photoUploadBtn');
-
-    try {
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = 'Uploading photo…';
-      }
-
-      const allInvitationNames = getPhotoInvitationNames();
-      const inviteGroup = allInvitationNames.length ? formatGuestNames(allInvitationNames) : invitationName;
-      const namedGuests = guestResponses.filter((guest) => guest && guest.name && guest.name.trim());
-      const attendingGuests = namedGuests.filter((guest) => guest.attending === 'Yes');
-      const attending = namedGuests.length ? (attendingGuests.length > 0 ? 'Yes' : 'No') : getPhotoGuestAttendance(0);
-
-      setPhotoUploadStatus('Uploading your invitation photo…', '');
-      setPhotoSlotStatus(0, 'Uploading photo…', '');
-
-      const payload = {
-        event: COUPLE_NAME,
-        invitation_key: getPhotoInvitationKey(),
-        invitation_name: invitationName,
-        guest_name: invitationName,
-        guest_slot: 'Invitation',
-        invite_group: inviteGroup,
-        attending,
-        guest_count: namedGuests.length ? attendingGuests.length : (guestLimit || 1),
-        page_url: window.location.href,
-        file_name: selectedInvitationPhoto.fileName || 'invitation-photo.jpg',
-        original_file_name: selectedInvitationPhoto.originalName || '',
-        mime_type: selectedInvitationPhoto.mimeType || 'image/jpeg',
-        base64: selectedInvitationPhoto.base64,
-        file_index: 1,
-        total_files: 1,
-        uploaded_at: new Date().toISOString()
-      };
-
-      await postPhotoUploadToGoogleDrive(payload, 'invitation');
-      photoUploadSentInvitation = true;
-      setPhotoSlotStatus(0, 'Your invitation photo was sent ✓', 'is-success');
-      renderPhotoUploadSlots();
-      setPhotoUploadStatus('Your photo has arrived! Get ready for the surprise on the wedding day 🤍', 'is-success');
-    } catch (err) {
-      if (btn) {
-        btn.disabled = false;
-        btn.textContent = 'Send Our Photo';
-      }
-      setPhotoUploadStatus('Could not upload the photo. Please try again.', 'is-error');
-    }
-  }
-
-  photoUploadDraftInvitationName = getDefaultPhotoInvitationName();
-  renderPhotoUploadSlots();
-  window.handleGuestPhotoChoice = handleGuestPhotoChoice;
-  window.updatePhotoGuestName = updatePhotoGuestName;
-  window.uploadGuestPhoto = uploadGuestPhoto;
-
   /* Single-name RSVP workflow removed: Strasbourg now uses the Ralph_Roussana multi-guest RSVP. */
 
   window.addEventListener('resize', () => {
@@ -7296,7 +6638,7 @@ body::before{
   presets.forEach((p, i) => {
     const light = document.createElement('i');
     light.className = 'city-light' + (p.strong || Math.random() > .78 ? ' big' : '') + (Math.random() > .62 ? ' cool' : '');
-    light.style.left = p.x + '%';
+    light.style.left = p.x + '%';                                                                                                                                                                                                                                                                                                                                                                                                                                                         
     light.style.top = p.y + '%';
     light.style.setProperty('--flicker-speed', (1.8 + Math.random() * 1.2).toFixed(2) + 's');
     light.style.setProperty('--flicker-delay', (-Math.random() * 3.5).toFixed(2) + 's');
