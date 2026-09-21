@@ -1234,6 +1234,47 @@ html.loading, body.loading { overflow:hidden !important; }
   .celebration-simple-place { font-size:clamp(10px,2.55vw,12px); }
 }
 
+
+/* ══════ ACCESSIBILITY — LARGER TEXT ON PAGES 3 & 7 ══════ */
+/* Page 3 has enough vertical room, so enlarge the event details for easier reading. */
+#page-3 .celebration-simple-label {
+  font-size:clamp(21px,5.6vw,28px) !important;
+  line-height:1.1;
+}
+#page-3 .celebration-simple-time {
+  font-size:clamp(12px,3.1vw,15px) !important;
+}
+#page-3 .celebration-simple-place {
+  font-size:clamp(14px,3.45vw,17px) !important;
+  line-height:1.34;
+}
+#page-3 .celebration-route-simple {
+  font-size:clamp(9px,2.3vw,11px) !important;
+  line-height:1.35;
+}
+
+/* Page 7 note: larger body copy and signature, while keeping the card airy. */
+#page-7 .guest-note-card {
+  width:min(95%,380px);
+  padding:clamp(18px,5.2vw,26px) clamp(17px,5.5vw,27px);
+}
+#page-7 .guest-note-card p {
+  font-size:clamp(17px,4.55vw,22px) !important;
+  line-height:1.52;
+}
+#page-7 .guest-note-card p + p {
+  margin-top:clamp(11px,2.8vw,15px);
+}
+#page-7 .guest-note-signature {
+  font-size:clamp(32px,8.8vw,44px) !important;
+}
+
+@media (max-width:390px) {
+  #page-3 .celebration-simple-label { font-size:clamp(20px,5.25vw,24px) !important; }
+  #page-3 .celebration-simple-place { font-size:clamp(13px,3.25vw,15px) !important; }
+  #page-7 .guest-note-card p { font-size:clamp(16px,4.25vw,20px) !important; }
+}
+
 </style>
 </head>
 <body class="loading">
@@ -1415,7 +1456,7 @@ html.loading, body.loading { overflow:hidden !important; }
         <div class="page-num">✦ VI ✦</div>
         <p class="book-section">RSVP</p>
         <!-- RSVP DEADLINE TODO: replace [ADD SHANA'S CONFIRMED RSVP DEADLINE] with the exact deadline Shana provided. -->
-        <p class="book-sub rsvp-deadline-placeholder" style="margin-bottom:clamp(3px,1.2vw,6px);">Kindly reply by [ADD SHANA'S CONFIRMED RSVP DEADLINE]</p>
+        <p class="book-sub rsvp-deadline-placeholder" style="margin-bottom:clamp(3px,1.2vw,6px);">Kindly reply by January 10, 2027</p>
         <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
         <div class="rsvp-box">
           <div class="step-dots" aria-hidden="true">
