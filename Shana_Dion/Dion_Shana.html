@@ -1993,6 +1993,8 @@ const CUSTOMER_EMAIL = 'nemer.david9@gmail.com';
 const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxjPC1-qt4jD201i0_a4k7CKZPdcskBjaZ_J9Ki8fBgZx63HSq76TRJaSWn25J5jMd1/exec';
 
 const inviteParams = new URLSearchParams(window.location.search);
+const inviteRsvpId = String(inviteParams.get('rsvp_id') || '').trim();
+const inviteSignature = String(inviteParams.get('sig') || '').trim();
 function decodeGuestList(rawValue) {
   if (!rawValue) return [];
   return rawValue.split(/\||,|\n|;/).map(name => name.trim()).filter(Boolean);
@@ -2156,6 +2158,9 @@ function submitRSVP() {
   const payload = {
     event:COUPLE_NAME,
     customer_email:CUSTOMER_EMAIL,
+    rsvp_id:inviteRsvpId,
+    invite_sig:inviteSignature,
+    invite_guest_names:lockedGuestNames.join('|'),
     guest_name:groupName,
     invited_guest_from_link:invitedGroupForClient,
     attending:attendingCount > 0 ? 'Yes' : 'No',
