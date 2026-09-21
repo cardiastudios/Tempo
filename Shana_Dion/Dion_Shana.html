@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>Wedding Invitation — Dion &amp; Shana</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:    #211d18;
+  --navy-lt: #332d25;
+  --gold:    #b38b32;
+  --gold-lt: #c29b45;
+  --gold-dk: #80611f;
+  --ivory:   #fffaf0;
+  --peach:   #e8a090;
+  --ink:     #4a433a;
+  --ink-lt:  #746b60;
+  --border:  rgba(179,139,50,.34);
+  --bw: min(92vw, 420px);
+--page-h: calc(var(--bw) * 1.5);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; overflow-x: hidden; background: #14120f; font-family: 'EB Garamond', serif; color: var(--ink); user-select: none; }
+
+/* ══════ FALLING PETALS CANVAS ══════ */
+#petals-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 999; }
+
+/* ══════ COVER SCENE ══════ */
+#scene-cover {
+  width: 100vw; height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: radial-gradient(ellipse at center, #2c271f 0%, #14120f 100%);
+}
+.cover-outer { position: relative; width: var(--bw); }
+.cover-spine {
+  position: absolute; top: 0; left: -8px; width: 8px; height: 100%;
+  background: linear-gradient(to right, #3a3020, #6a5a30, #3a3020);
+  border-radius: 4px 0 0 4px; z-index: 20; pointer-events: none;
+}
+.cover-wrap {
+  position: relative; width: var(--bw); height: var(--page-h);
+  overflow: hidden; border-radius: 4px 12px 12px 4px;
+  box-shadow: -8px 0 0 rgba(100,80,20,.4), -16px 14px 34px rgba(0,0,0,.6), 0 16px 36px rgba(0,0,0,.5);
+  cursor: pointer;
+}
+.cover-bg {
+  position: absolute; inset: 0;
+  background: url('https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/cover3.png') center/cover no-repeat;
+}
+.cover-content {
+  position: absolute; top: 44%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center; z-index: 2; width: 75%;
+  animation: fadeUp 1.2s ease both;
+}
+.cover-eyebrow {
+  font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 10px);
+  letter-spacing: .35em; text-transform: uppercase;
+  color: var(--gold-lt); font-weight: 400;
+  text-shadow: none;
+  margin-bottom: clamp(4px,1.5vw,8px); display: block;
+}
+.cover-name {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(48px, 15vw, 70px);
+  color: var(--gold-lt);
+  text-shadow: none;
+  line-height: 1.0; display: block;
+}
+.cover-amp {
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+  font-size: clamp(14px, 4.5vw, 22px);
+  color: var(--gold); font-weight: 300;
+  text-shadow: none;
+  display: block; margin: 2px 0;
+}
+.cover-date {
+  font-family: 'Cinzel', serif; font-size: clamp(7px, 2vw, 10px);
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold-lt); font-weight: 400;
+  text-shadow: none;
+  margin-top: clamp(5px,1.5vw,9px); display: block;
+}
+.cover-line {
+  width: 65%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
+  opacity: .6; margin: clamp(5px,1.5vw,8px) auto;
+}
+.cover-open-hint {
+  position: absolute; bottom: 22%; left: 50%; transform: translateX(-50%);
+  z-index: 3; text-align: center;
+  animation: hintPulse 2s ease-in-out infinite; cursor: pointer;
+}
+.cover-open-hint span {
+  font-family: 'Cinzel', serif; font-size: clamp(7px,2.2vw,10px);
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold-lt); display: block; margin-bottom: 5px;
+  text-shadow: none;
+}
+.cover-open-hint svg { width: clamp(13px,3.8vw,17px); opacity: .9; }
+@keyframes hintPulse { 0%,100%{opacity:.5;transform:translateX(-50%) translateY(0)} 50%{opacity:1;transform:translateX(-50%) translateY(-4px)} }
+@keyframes fadeUp { from{opacity:0;transform:translate(-50%,-40%)} to{opacity:1;transform:translate(-50%,-50%)} }
+
+/* ══════ OPEN BOOK SCENE ══════ */
+#scene-open {
+  display: none; width: 100vw; min-height: 100vh;
+  background: radial-gradient(ellipse at center, #2c271f 0%, #14120f 100%);
+  align-items: center; justify-content: center; overflow-y: auto;
+  padding: 20px 0 30px;
+}
+#scene-open.visible { display: flex; }
+.open-book { width: var(--bw); position: relative; display: flex; flex-direction: column; align-items: stretch; }
+.open-spine {
+  position: absolute; top: 0; left: -8px; width: 8px; height: var(--page-h);
+  background: linear-gradient(to right, #3a3020, #6a5a30, #3a3020);
+  border-radius: 4px 0 0 4px; z-index: 5; pointer-events: none;
+}
+.book-spread {
+  width: 100%;
+  background: url('https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/pages.png') center/cover no-repeat;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: -8px 0 0 rgba(100,80,20,.4), -16px 14px 34px rgba(0,0,0,.55), 0 16px 36px rgba(0,0,0,.45);
+  overflow: hidden; position: relative; perspective: 800px;
+}
+.book-spread::before {
+  content: ""; position: absolute; top: 0; left: 0; width: 18px; height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,.18), transparent);
+  z-index: 5; pointer-events: none;
+}
+
+/* ── Realistic right-to-left book page flip ── */
+.flip-sheet {
+  position: absolute; inset: 0;
+  background: linear-gradient(to left, #f7f3eb 0%, #fffdf8 42%, #eee8dc 100%);
+  transform-origin: left center;
+  z-index: 10;
+  border-radius: 4px 12px 12px 4px;
+  pointer-events: none; opacity: 0;
+  backface-visibility: hidden;
+}
+.flip-sheet.animate { animation: pageFlipLR .65s cubic-bezier(.4,0,.2,1) forwards; }
+@keyframes pageFlipLR {
+  0%   { opacity:1; transform: perspective(1200px) rotateY(0deg);
+         box-shadow: -4px 0 12px rgba(0,0,0,.3); }
+  35%  { opacity:1; transform: perspective(1200px) rotateY(-55deg);
+         box-shadow: -10px 0 28px rgba(0,0,0,.45); }
+  70%  { opacity:.6; transform: perspective(1200px) rotateY(-110deg);
+         box-shadow: -4px 0 10px rgba(0,0,0,.2); }
+  100% { opacity:0; transform: perspective(1200px) rotateY(-180deg);
+         box-shadow: none; }
+}
+
+.page {
+  display: none; flex-direction: column; align-items: center; text-align: center;
+  height: var(--page-h); overflow: hidden;
+  padding: clamp(12px,4.5vw,22px) clamp(18px,7vw,32px) clamp(20px,6vw,30px);
+  position: relative; z-index: 6; animation: pgIn .35s ease; justify-content: center;
+}
+.page.active { display: flex; }
+@keyframes pgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+/* Nav — now OUTSIDE the book, below it */
+.page-arrows {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 12px clamp(14px,5vw,24px) 0;
+  margin-top: 2px;
+}
+.page-arrow-btn {
+  font-family: 'Cinzel', serif; font-size: clamp(8px,2.8vw,12px);
+  letter-spacing: .1em; text-transform: uppercase; color: var(--gold-lt);
+  background: none; border: none; padding: 0; cursor: pointer; transition: opacity .2s; font-weight: 400;
+}
+.page-arrow-btn:hover { opacity: .6; }
+.page-label { font-family: 'Cinzel', serif; font-size: clamp(7px,2vw,9px); color: var(--gold); letter-spacing: .1em; opacity: .7; }
+
+/* ── Typography ── */
+.page-num { font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); color: var(--gold); letter-spacing: .15em; margin-bottom: clamp(3px,1.2vw,6px); opacity: .8; }
+.gold-div { display: flex; align-items: center; gap: clamp(5px,2vw,10px); margin: clamp(5px,1.8vw,9px) auto; width: 78%; color: var(--gold); }
+.gold-div::before { content: ""; flex: 1; height: 1px; background: linear-gradient(to right, transparent, var(--gold)); opacity: .5; }
+.gold-div::after  { content: ""; flex: 1; height: 1px; background: linear-gradient(to left,  transparent, var(--gold)); opacity: .5; }
+.gold-div svg { flex-shrink: 0; }
+.book-eyebrow { font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .3em; text-transform: uppercase; color: var(--gold); margin-bottom: clamp(4px,1.5vw,7px); opacity: .85; }
+.book-bigname { font-family: 'Great Vibes', cursive; font-size: clamp(34px,12vw,54px); color: var(--gold-lt); line-height: 1.05; text-shadow: none; }
+.book-amp { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(15px,4.5vw,20px); color: var(--ink-lt); margin: clamp(2px,1vw,4px) 0; }
+.book-verse { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(12px,3.4vw,15px); color: var(--ink-lt); line-height: 1.65; max-width: 90%; }
+.book-verse-ref { font-family: 'Cinzel', serif; font-size: clamp(8px,2.2vw,10px); color: var(--gold); letter-spacing: .15em; margin-top: clamp(4px,1.5vw,7px); }
+.book-section { font-family: 'Cormorant Garamond', serif; font-size: clamp(16px,5.5vw,24px); color: var(--gold-lt); letter-spacing: .06em; margin-bottom: clamp(3px,1.2vw,6px); font-weight: 300; font-style: italic; }
+.book-detail { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(12px,3.4vw,15px); color: var(--ink-lt); line-height: 1.5; }
+.book-sub { font-family: 'Cinzel', serif; font-size: clamp(7px,2.2vw,10px); letter-spacing: .2em; text-transform: uppercase; color: var(--gold); margin-top: clamp(2px,1vw,5px); opacity: .8; }
+.t-parent { font-family: 'Cormorant Garamond', serif; font-size: clamp(11px,3.5vw,15px); color: var(--ink); line-height: 1.4; }
+.t-label-sm { font-family: 'Cinzel', serif; font-size: clamp(7px,1.8vw,9px); letter-spacing: .15em; text-transform: uppercase; color: var(--gold); opacity: .75; margin-bottom: 2px; }
+.parents-wrap { display: flex; justify-content: center; gap: clamp(8px,5vw,20px); margin: clamp(3px,1.2vw,6px) 0; width: 100%; }
+
+/* Calendar */
+.cal-box { background: rgba(248,244,236,.72); border: 1px solid var(--border); padding: clamp(7px,2.5vw,13px) clamp(5px,2vw,10px); width: 100%; margin: clamp(4px,1.5vw,8px) 0; border-radius: 3px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7,1fr); gap: .3vw; }
+.cal-cell { text-align: center; padding: clamp(2px,1vw,4px) .5vw; font-size: clamp(8px,2.8vw,12px); color: var(--ink-lt); font-family: 'Cinzel', serif; }
+.cal-cell.hdr { font-size: clamp(7px,1.8vw,9px); text-transform: uppercase; color: var(--gold); opacity: .8; }
+.cal-cell.empty { opacity: 0; }
+.cal-cell.highlight { color: var(--gold-lt); font-weight: 600; position: relative; }
+
+/* Countdown */
+.countdown { display: flex; justify-content: center; gap: clamp(4px,2vw,10px); margin-top: clamp(6px,2.5vw,12px); }
+.flip { text-align: center; background: rgba(248,244,236,.72); border: 1px solid var(--border); padding: clamp(6px,2.5vw,10px) clamp(4px,1.5vw,8px); min-width: clamp(42px,14vw,58px); border-radius: 3px; }
+.flip .num { font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: clamp(16px,6vw,26px); color: var(--gold-lt); line-height: 1; }
+.flip .lbl { font-family: 'Cinzel', serif; font-size: clamp(6px,1.8vw,8px); letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-top: clamp(2px,1vw,4px); opacity: .8; }
+
+/* Timeline */
+.tl-wrap { width: 100%; margin-top: clamp(4px,1.5vw,7px); }
+.tl-row { display: grid; grid-template-columns: 1fr clamp(38px,14vw,62px) 1fr; align-items: center; gap: clamp(3px,1.5vw,6px); margin-bottom: clamp(5px,2vw,10px); }
+.tl-left { text-align: right; padding-right: clamp(4px,1.5vw,8px); }
+.tl-right { text-align: left; padding-left: clamp(4px,1.5vw,8px); }
+.tl-time { font-family: 'Cormorant Garamond', serif; font-size: clamp(11px,3.8vw,16px); color: var(--gold-lt); }
+.tl-venue { font-size: clamp(9px,2.5vw,11px); color: var(--ink-lt); margin-top: 1px; font-style: italic; line-height: 1.4; }
+.tl-icon { width: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+.tl-icon::before { content: ""; position: absolute; left: 50%; bottom: 100%; width: 1px; height: clamp(8px,2.5vw,12px); background: var(--gold); opacity: .35; transform: translateX(-50%); }
+.tl-icon::after  { content: ""; position: absolute; left: 50%; top: 100%; width: 1px; height: clamp(8px,2.5vw,12px); background: var(--gold); opacity: .35; transform: translateX(-50%); }
+.tl-row:first-child .tl-icon::before { display: none; }
+.tl-row:last-child .tl-icon::after  { display: none; }
+.tl-icon img { width: clamp(22px,8vw,34px); height: clamp(22px,8vw,34px); object-fit: contain; opacity: .85; filter: sepia(1) saturate(2) hue-rotate(5deg) brightness(1.1); }
+.tl-label { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(14px,5vw,22px); color: var(--gold-lt); }
+
+/* Dress code */
+.dress-code-title {
+  font-family:'Cinzel',serif;
+  font-size:clamp(11px,3.2vw,15px);
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  color:var(--gold-dk);
+  margin:clamp(2px,1vw,5px) 0 clamp(8px,2.5vw,12px);
+}
+.dress-code-frame {
+  width:min(88%,340px);
+  max-height:calc(var(--page-h) - 190px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:clamp(8px,2.5vw,14px);
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:rgba(255,253,248,.68);
+  box-shadow:0 8px 24px rgba(88,68,30,.08);
+  overflow:hidden;
+}
+.dress-code-frame img {
+  display:block;
+  width:100%;
+  max-height:calc(var(--page-h) - 220px);
+  object-fit:contain;
+}
+
+/* Photos */
+.photo-carousel { width: 100%; position: relative; overflow: hidden; border: 1px solid var(--border); border-radius: 3px; }
+.photo-track { display: flex; transition: transform .4s cubic-bezier(.25,.46,.45,.94); }
+.photo-slide { min-width: 100%; }
+.photo-slide img { width: 100%; height: clamp(200px,58vw,260px); object-fit: cover; display: block; }
+.photo-counter { font-family: 'Cinzel', serif; font-size: clamp(8px,2.2vw,10px); color: var(--gold); letter-spacing: .1em; text-align: center; margin-top: clamp(4px,1.5vw,7px); opacity: .7; }
+.photo-arrows { position: absolute; top: 50%; width: 100%; display: flex; justify-content: space-between; padding: 0 clamp(6px,2vw,10px); transform: translateY(-50%); pointer-events: none; }
+.photo-arr { pointer-events: auto; background: rgba(56,47,34,.78); border: 1px solid var(--border); color: var(--gold-lt); width: clamp(24px,7vw,32px); height: clamp(24px,7vw,32px); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: clamp(12px,4vw,16px); cursor: pointer; }
+
+/* RSVP */
+.rsvp-box { background: rgba(248,244,236,.72); border: 1px solid var(--border); padding: clamp(10px,3.5vw,16px); width: 100%; border-radius: 3px; }
+.step-dots { display: flex; align-items: center; justify-content: center; gap: clamp(4px,2vw,8px); margin-bottom: clamp(8px,2.5vw,12px); }
+.step-dot { width: clamp(6px,2vw,9px); height: clamp(6px,2vw,9px); border-radius: 50%; background: rgba(201,168,76,.15); border: 1px solid var(--gold-dk); transition: all .3s; }
+.step-dot.on { background: var(--gold); transform: scale(1.3); }
+.form-label { font-family: 'Cinzel', serif; font-size: clamp(7px,2vw,9px); letter-spacing: .15em; text-transform: uppercase; color: var(--gold); display: block; margin-bottom: clamp(2px,1vw,4px); }
+.form-field { width: 100%; padding: clamp(5px,2vw,8px) 0; border: none; border-bottom: 1px solid rgba(201,168,76,.3); font-family: 'EB Garamond', serif; font-size: clamp(12px,3.5vw,15px); color: var(--ink); background: transparent; outline: none; }
+.form-field::placeholder { color: rgba(116,107,96,.48); }
+textarea.form-field { border: 1px solid rgba(201,168,76,.25); padding: clamp(5px,2vw,8px); resize: none; }
+.error-msg { font-size: clamp(8px,2.5vw,10px); color: #e87060; margin-top: clamp(2px,1vw,4px); display: none; font-family: 'Cinzel', serif; }
+.attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(5px,2vw,10px); margin: clamp(5px,2vw,9px) 0; }
+.attend-opt { position: relative; cursor: pointer; }
+.attend-opt input { position: absolute; opacity: 0; }
+.attend-box { border: 1px solid rgba(179,139,50,.28); padding: clamp(6px,2.5vw,10px); text-align: center; background: rgba(248,244,236,.62); transition: all .2s; }
+.attend-opt input:checked + .attend-box { border-color: var(--gold); background: rgba(201,168,76,.08); }
+.attend-label { font-family: 'EB Garamond', serif; font-style: italic; font-size: clamp(11px,3.2vw,14px); color: var(--ink); }
+.count-row { display: flex; align-items: center; justify-content: center; gap: clamp(8px,4vw,16px); margin: clamp(4px,1.5vw,8px) 0; }
+.count-btn { width: clamp(26px,8vw,34px); height: clamp(26px,8vw,34px); border-radius: 50%; border: 1px solid var(--border); background: rgba(248,244,236,.72); font-size: clamp(14px,4vw,18px); color: var(--gold-lt); cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.count-num-disp { font-family: 'Cormorant Garamond', serif; font-size: clamp(18px,7vw,28px); color: var(--gold-lt); min-width: 6vw; text-align: center; }
+.btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(4px,2vw,8px); margin-top: clamp(4px,1.5vw,8px); }
+.btn-rsvp { display: block; width: 100%; padding: clamp(6px,2vw,10px); border: 1px solid var(--border); color: var(--gold-dk); font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .15em; text-transform: uppercase; cursor: pointer; background: rgba(248,244,236,.62); transition: all .2s; }
+.btn-solid { background: var(--gold-dk); border-color: var(--gold); color: var(--ivory); }
+.rsvp-single-btn { width: 100%; padding: clamp(8px,2.5vw,11px); background: rgba(248,244,236,.72); border: 1px solid var(--gold); color: var(--gold-dk); font-family: 'Cinzel', serif; font-size: clamp(9px,2.8vw,12px); letter-spacing: .2em; text-transform: uppercase; cursor: pointer; margin-top: clamp(5px,2vw,9px); }
+
+/* ══════ BACK COVER ══════ */
+#scene-back { display: none; width: 100vw; height: 100vh; background: radial-gradient(ellipse at center,#2c271f 0%,#14120f 100%); align-items: center; justify-content: center; }
+#scene-back.visible { display: flex; }
+.back-outer { width: var(--bw); position: relative; }
+.back-spine { position: absolute; top: 0; left: -8px; width: 8px; height: 100%; background: linear-gradient(to right,#3a3020,#6a5a30,#3a3020); border-radius: 4px 0 0 4px; z-index: 5; }
+.back-wrap { position: relative; width: var(--bw); height: var(--page-h); }
+.back-face {
+  position: absolute; inset: 0;
+  background: url('https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/cover2.png') center/cover no-repeat;
+  border-radius: 4px 12px 12px 4px;
+  box-shadow: -8px 0 0 rgba(100,80,20,.4), -16px 14px 34px rgba(0,0,0,.6);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: clamp(16px,6%,32px); overflow: hidden;
+}
+.back-face::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,.03); pointer-events: none; }
+.back-text { position: relative; z-index: 1; text-align: center; margin-bottom: clamp(6px,2vw,12px); }
+.back-text p { font-family: 'Great Vibes', cursive; font-size: clamp(22px,8vw,36px); color: var(--gold-lt); margin-bottom: clamp(4px,1.5vw,8px); text-shadow: none; }
+.back-text small { font-family: 'Cinzel', serif; font-size: clamp(8px,2.2vw,11px); color: var(--gold); font-weight: 400; letter-spacing: .2em; text-transform: uppercase; }
+.back-btn { position: relative; z-index: 2; font-family: 'Cinzel', serif; font-size: clamp(8px,2.5vw,11px); letter-spacing: .2em; text-transform: uppercase; color: var(--gold-dk); font-weight: 400; background: none; border: none; padding: 0; cursor: pointer; animation: hintPulse 2s ease-in-out infinite; text-shadow: none; }
+
+
+
+.cardia-credit {
+  position: relative; z-index: 2;
+  text-align: center; margin-top: clamp(80px, 3vw, 96px);
+}
+.cardia-credit a {
+  display: inline-flex; align-items: center; gap: clamp(4px, 1.5vw, 8px);
+  font-family: 'Cinzel', serif; font-size: clamp(7px, 2.2vw, 10px);
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--ink-lt); text-decoration: none; transition: color .2s;
+}
+.cardia-credit a:hover { color: var(--gold); }
+.cardia-credit span { color: var(--gold); }
+.cardia-credit img {
+  height: clamp(6px, 3.5vw, 8px); width: auto;
+  filter: invert(72%) sepia(30%) saturate(400%) hue-rotate(5deg) brightness(90%);
+}
+
+
+
+
+/* Phone 9:16 enlargement pass */
+:root {
+  --bw: min(96vw, calc((100svh - 32px) * 9 / 16), 520px);
+  --page-h: calc(var(--bw) * 16 / 9);
+}
+.cover-wrap,
+.cover-flipper,
+.back-cover-wrap,
+.back-wrap,
+.back-cover-face,
+.page {
+  height: var(--page-h) !important;
+}
+#scene-open { align-items: center; }
+.page {
+  padding-left: clamp(22px, 6.2vw, 38px) !important;
+  padding-right: clamp(22px, 6.2vw, 38px) !important;
+}
+.cover-eyebrow,
+.cover-monogram,
+.cover-date,
+.cover-date-below,
+.cover-open-hint span,
+.tap-hint span,
+.page-arrow-btn,
+.page-label,
+.page-num,
+.book-eyebrow,
+.book-sub,
+.info-label,
+.t-label-sm,
+.form-label,
+.error-msg,
+.photo-counter,
+.back-cover-text small,
+.back-text small,
+.back-reopen-btn,
+.back-btn {
+  font-size: clamp(10px, 3vw, 15px) !important;
+}
+.cover-name,
+.cover-name-script {
+  font-size: clamp(72px, 19vw, 104px) !important;
+}
+.cover-amp {
+  font-size: clamp(24px, 6.4vw, 36px) !important;
+}
+.cover-script,
+.cover-invite,
+.book-verse,
+.book-detail,
+.t-parent,
+.tl-venue,
+.attend-label,
+.form-field {
+  font-size: clamp(16px, 4.3vw, 22px) !important;
+  line-height: 1.55 !important;
+}
+.book-bigname {
+  font-size: clamp(54px, 14.5vw, 82px) !important;
+}
+.book-amp {
+  font-size: clamp(22px, 5.8vw, 32px) !important;
+}
+.book-section,
+.tl-label,
+.back-cover-text p,
+.back-text p {
+  font-size: clamp(26px, 7vw, 40px) !important;
+}
+.book-gold,
+.tl-time {
+  font-size: clamp(18px, 5vw, 28px) !important;
+}
+.cal-cell {
+  font-size: clamp(12px, 3.4vw, 17px) !important;
+  padding-block: clamp(4px, 1.2vw, 7px) !important;
+}
+.cal-cell.hdr {
+  font-size: clamp(10px, 2.7vw, 14px) !important;
+}
+.flip {
+  min-width: clamp(58px, 16vw, 78px) !important;
+}
+.flip .num,
+.count-num,
+.count-num-disp {
+  font-size: clamp(26px, 7vw, 38px) !important;
+}
+.flip .lbl {
+  font-size: clamp(8px, 2.3vw, 12px) !important;
+}
+.tl-row {
+  grid-template-columns: 1fr clamp(48px, 15vw, 72px) 1fr !important;
+}
+.tl-icon img {
+  width: clamp(32px, 9vw, 46px) !important;
+  height: clamp(32px, 9vw, 46px) !important;
+}
+.photo-carousel {
+  width: min(100%, calc(var(--bw) - 28px)) !important;
+  margin-inline: auto !important;
+}
+.photo-slide img {
+  width: 100% !important;
+  height: min(calc(var(--page-h) - 170px), calc(var(--bw) * 1.28)) !important;
+  min-height: clamp(360px, 92vw, 560px) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.photo-arr,
+.count-btn {
+  width: clamp(36px, 9vw, 48px) !important;
+  height: clamp(36px, 9vw, 48px) !important;
+  font-size: clamp(18px, 5vw, 24px) !important;
+}
+.rsvp-box,
+.dress-code-frame,
+.cal-box {
+  padding: clamp(14px, 4vw, 22px) !important;
+}
+@media (min-width: 720px) {
+  :root {
+    --bw: min(72vw, calc((100svh - 48px) * 9 / 16), 560px);
+  }
+}
+
+
+/* ══════ REFERENCE RESPONSIVE LAYOUT BEHAVIOR — DARK FLORAL VISUALS PRESERVED ══════ */
+#scene-open {
+  height: 100vh;
+  min-height: 100vh;
+  padding: 0 !important;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+}
+.open-book { width: var(--bw); position: relative; display: block; }
+.open-spine { height: 100%; }
+.page {
+  padding: clamp(12px,4.5vw,22px) clamp(18px,7vw,32px) clamp(44px,12vw,58px);
+}
+.page-arrows {
+  position: absolute;
+  bottom: clamp(2px,.8vw,5px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 clamp(10px,4vw,18px);
+  margin-top: 0;
+  pointer-events: none;
+}
+.page-arrow-btn { pointer-events: auto; }
+
+/* ══════ RSVP — per-guest responses ══════ */
+.guest-welcome-step { text-align:left; }
+.guest-welcome-title {
+  margin:0 0 clamp(4px,1.2vw,7px);
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(18px,5vw,24px);
+  line-height:1.15;
+  font-weight:400;
+  color:var(--gold-lt);
+}
+.guest-welcome-note {
+  margin:0 0 clamp(5px,1.5vw,8px);
+  font-family:'EB Garamond',serif;
+  font-style:italic;
+  font-size:clamp(11px,3vw,14px);
+  line-height:1.35;
+  color:var(--ink-lt);
+}
+.manual-guest-list-wrap { width:100%; position:relative; }
+.guest-slot-name-list {
+  display:grid;
+  gap:clamp(6px,1.8vw,9px);
+  width:100%;
+  margin:clamp(5px,1.5vw,8px) 0;
+}
+.guest-slot-name-list.scrollable-guest-list {
+  max-height:clamp(205px,35vh,255px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  overscroll-behavior:contain;
+  touch-action:pan-y;
+  padding-right:5px;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(201,168,76,.55) transparent;
+}
+.guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar { width:4px; }
+.guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-track { background:transparent; }
+.guest-slot-name-list.scrollable-guest-list::-webkit-scrollbar-thumb { border-radius:999px; background:rgba(201,168,76,.55); }
+.guest-slot-name-box {
+  width:100%;
+  min-width:0;
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:8px;
+  padding:clamp(7px,2vw,10px);
+  background:rgba(248,244,236,.68);
+}
+.guest-slot-name-box.locked { background:rgba(201,168,76,.07); }
+.guest-slot-name-label {
+  display:block;
+  margin:0 0 3px;
+  font-family:'Cinzel',serif;
+  font-size:clamp(7px,1.9vw,9px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.guest-slot-name-box > input {
+  width:100%;
+  border:none;
+  border-bottom:1px solid rgba(201,168,76,.35);
+  border-radius:0;
+  background:transparent;
+  color:var(--ink);
+  padding:clamp(3px,1vw,5px) 0;
+  margin:0;
+  font-family:'EB Garamond',serif;
+  font-size:clamp(13px,3.6vw,16px);
+  outline:none;
+}
+.guest-slot-name-box > input::placeholder { color:rgba(116,107,96,.48); }
+.guest-slot-name-box > input[readonly] { cursor:default; }
+.guest-slot-attendance {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-top:clamp(5px,1.5vw,8px);
+}
+.guest-slot-attendance > span {
+  font-family:'Cinzel',serif;
+  font-size:clamp(7px,1.8vw,9px);
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.guest-response-options { display:flex; gap:5px; margin-left:auto; }
+.guest-response-options input { position:absolute; opacity:0; pointer-events:none; }
+.guest-response-options label { cursor:pointer; }
+.guest-response-pill {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:clamp(45px,12vw,58px);
+  padding:clamp(5px,1.5vw,7px) clamp(7px,2vw,10px);
+  border-radius:999px;
+  border:1px solid rgba(201,168,76,.4);
+  background:rgba(248,244,236,.72);
+  color:var(--gold-lt);
+  font-family:'Cinzel',serif;
+  font-size:clamp(7px,1.8vw,9px);
+  font-weight:500;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  transition:background .2s ease,border-color .2s ease,color .2s ease;
+}
+.guest-response-options input:checked + .guest-response-pill {
+  background:var(--gold-dk);
+  border-color:var(--gold);
+  color:var(--ivory);
+}
+.guest-total-line {
+  margin:clamp(5px,1.5vw,8px) 0 0;
+  text-align:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(12px,3.3vw,15px);
+  color:var(--gold-lt);
+}
+.wish-message-label {
+  display:block;
+  margin:clamp(5px,1.5vw,8px) 0 0;
+  font-family:'Cinzel',serif;
+  font-size:clamp(7px,1.9vw,9px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+#guestMsg {
+  width:100%;
+  min-height:clamp(44px,11vw,58px);
+  max-height:72px;
+  margin-top:4px;
+  padding:clamp(5px,1.5vw,7px);
+  resize:none;
+  border:1px solid rgba(201,168,76,.3);
+  border-radius:5px;
+  background:rgba(248,244,236,.68);
+  color:var(--ink);
+  font-family:'EB Garamond',serif;
+  font-size:clamp(11px,3vw,14px);
+  outline:none;
+}
+.rsvp-main-btn:disabled { opacity:.68; cursor:default; }
+#page-6 .rsvp-box { padding:clamp(9px,2.5vw,13px)!important; }
+#page-6 .step-dots { margin-bottom:clamp(5px,1.5vw,8px); }
+#page-6 .error-msg { margin-top:5px; text-align:left; }
+@media (max-width:390px) {
+  .guest-slot-name-list.scrollable-guest-list { max-height:190px; }
+  .guest-slot-attendance { align-items:stretch; flex-direction:column; }
+  .guest-response-options { width:100%; margin-left:0; }
+  .guest-response-options label { flex:1; }
+  .guest-response-pill { width:100%; }
+}
+
+/* Mobile enlargement pass — match reference spacing and responsive behavior */
+:root {
+  --book-edge-gap: clamp(34px, 4.8dvh, 40px);
+  --bw: 100vw;
+  --page-h: calc(100dvh - var(--book-edge-gap) - var(--book-edge-gap));
+}
+#scene-cover,
+#scene-open,
+#scene-back {
+  height: 100dvh !important;
+  min-height: 100dvh;
+}
+.cover-wrap,
+.cover-flipper,
+.back-cover-wrap,
+.back-wrap,
+.back-cover-face,
+.page {
+  height: var(--page-h) !important;
+}
+#scene-open { align-items: center; }
+.page {
+  padding-left: clamp(22px, 6.2vw, 38px) !important;
+  padding-right: clamp(22px, 6.2vw, 38px) !important;
+}
+.cover-eyebrow,
+.cover-monogram,
+.cover-date,
+.cover-date-below,
+.cover-open-hint span,
+.tap-hint span,
+.page-arrow-btn,
+.page-label,
+.page-num,
+.book-eyebrow,
+.book-sub,
+.info-label,
+.t-label-sm,
+.form-label,
+.error-msg,
+.photo-counter,
+.back-cover-text small,
+.back-text small,
+.back-reopen-btn,
+.back-btn {
+  font-size: clamp(11px, 3.25vw, 16px) !important;
+}
+.cover-name,
+.cover-name-script { font-size: clamp(78px, 20.5vw, 112px) !important; }
+.cover-amp { font-size: clamp(28px, 7.6vw, 41px) !important; }
+.cover-script,
+.cover-invite,
+.book-verse,
+.book-detail,
+.t-parent,
+.tl-venue,
+.attend-label,
+.form-field {
+  font-size: clamp(17px, 4.65vw, 24px) !important;
+  line-height: 1.55 !important;
+}
+.book-bigname { font-size: clamp(58px, 15.5vw, 88px) !important; }
+.book-amp { font-size: clamp(24px, 6.2vw, 34px) !important; }
+.book-section,
+.tl-label,
+.back-cover-text p,
+.back-text p { font-size: clamp(29px, 7.8vw, 44px) !important; }
+.book-gold,
+.tl-time { font-size: clamp(22px, 4vw, 24px) !important; }
+.tl-venue { font-size: clamp(20px, 3vw, 22px) !important; }
+.tl-label { font-size: clamp(24px, 8vw, 26px) !important; }
+.cal-cell {
+  font-size: clamp(13px, 3.7vw, 18px) !important;
+  padding-block: clamp(4px, 1.2vw, 7px) !important;
+}
+.cal-cell.hdr { font-size: clamp(11px, 3vw, 15px) !important; }
+.flip { min-width: clamp(58px, 16vw, 78px) !important; }
+.flip .num,
+.count-num,
+.count-num-disp { font-size: clamp(26px, 7vw, 38px) !important; }
+.flip .lbl { font-size: clamp(9px, 2.5vw, 13px) !important; }
+.tl-row { grid-template-columns: 1fr clamp(52px, 16vw, 76px) 1fr !important; }
+.tl-icon img {
+  width: clamp(36px, 10vw, 50px) !important;
+  height: clamp(36px, 10vw, 50px) !important;
+}
+.photo-carousel {
+  width: min(100%, calc(var(--bw) - 28px)) !important;
+  margin-inline: auto !important;
+}
+.photo-slide img {
+  width: 100% !important;
+  height: min(calc(var(--page-h) - 170px), calc(var(--bw) * 1.28)) !important;
+  min-height: clamp(360px, 92vw, 560px) !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.photo-arr,
+.count-btn {
+  width: clamp(36px, 9vw, 48px) !important;
+  height: clamp(36px, 9vw, 48px) !important;
+  font-size: clamp(18px, 5vw, 24px) !important;
+}
+.rsvp-box,
+.dress-code-frame,
+.cal-box { padding: clamp(14px, 4vw, 22px) !important; }
+.guest-welcome-name { font-size: clamp(21px, 5.9vw, 29px) !important; }
+.guest-welcome-note { font-size: clamp(13px, 3.5vw, 17px) !important; line-height: 1.45 !important; }
+.guest-slot-name-label,
+.guest-slot-attendance > span,
+.wish-message-label { font-size: clamp(9px, 2.4vw, 12px) !important; }
+.guest-slot-name-box > input { font-size: clamp(15px, 4.1vw, 19px) !important; }
+.guest-response-pill {
+  min-width: clamp(52px, 14vw, 66px) !important;
+  padding: clamp(7px, 1.9vw, 9px) clamp(9px, 2.5vw, 13px) !important;
+  font-size: clamp(9px, 2.4vw, 12px) !important;
+}
+.guest-total-line { font-size: clamp(14px, 3.8vw, 18px) !important; }
+#guestMsg { font-size: clamp(13px, 3.5vw, 17px) !important; }
+.rsvp-single-btn { font-size: clamp(10px, 3vw, 14px) !important; padding: clamp(10px, 2.8vw, 13px) !important; }
+@media (max-width: 390px) {
+  .guest-slot-name-list.scrollable-guest-list { max-height: 230px; }
+}
+@media (min-width: 720px) {
+  :root {
+    --bw: min(72vw, calc((100dvh - 48px) * 9 / 16), 560px);
+    --page-h: calc(var(--bw) * 16 / 9);
+  }
+}
+
+/* ══════ ALWAYS-VISIBLE SCROLL INDICATORS ══════ */
+#scene-open { overflow: hidden !important; }
+.page.is-scrollable {
+  justify-content: flex-start !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.72) rgba(201,168,76,.14);
+}
+.page.is-scrollable::-webkit-scrollbar { width: 6px; }
+.page.is-scrollable::-webkit-scrollbar-track { background: rgba(201,168,76,.12); border-radius:999px; }
+.page.is-scrollable::-webkit-scrollbar-thumb { background: rgba(201,168,76,.72); border-radius:999px; }
+.page-scroll-indicator {
+  position:absolute;
+  top:clamp(16px,4vw,24px);
+  right:5px;
+  bottom:clamp(54px,13vw,70px);
+  width:5px;
+  z-index:35;
+  border-radius:999px;
+  background:rgba(201,168,76,.18);
+  box-shadow:0 0 0 1px rgba(255,255,255,.12),0 1px 5px rgba(0,0,0,.28);
+  pointer-events:none;
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .2s ease,visibility .2s ease;
+}
+.page-scroll-indicator.visible { opacity:1; visibility:visible; }
+.page-scroll-thumb {
+  position:absolute; top:0; left:0; width:100%; min-height:34px; border-radius:inherit;
+  background:rgba(201,168,76,.82); box-shadow:0 1px 5px rgba(0,0,0,.3); transform:translateY(0); will-change:transform,height;
+}
+.manual-guest-list-wrap.has-scroll { padding-right:12px; }
+.guest-list-scroll-indicator {
+  position:absolute; top:4px; right:2px; bottom:4px; width:5px; z-index:4; display:none; overflow:hidden;
+  border-radius:999px; background:rgba(201,168,76,.18); box-shadow:0 0 0 1px rgba(255,255,255,.1); pointer-events:none;
+}
+.manual-guest-list-wrap.has-scroll .guest-list-scroll-indicator { display:block; }
+.guest-list-scroll-thumb {
+  position:absolute; top:0; left:0; width:100%; min-height:28px; border-radius:inherit;
+  background:rgba(201,168,76,.82); box-shadow:0 1px 4px rgba(0,0,0,.28); transform:translateY(0); will-change:transform,height;
+}
+.guest-slot-name-list.scrollable-guest-list { padding-right:6px; }
+@media (min-width:720px) { .page-scroll-indicator { right:7px; } }
+
+/* ══════ ASSET LOADER ══════ */
+html.loading, body.loading { overflow:hidden !important; }
+#asset-loader {
+  position:fixed; inset:0; z-index:10000;
+  display:flex; align-items:center; justify-content:center;
+  background:radial-gradient(ellipse at center,#2c271f 0%,#14120f 100%);
+  transition:opacity .55s ease,visibility .55s ease;
+}
+#asset-loader.loader-hidden { opacity:0; visibility:hidden; pointer-events:none; }
+.loader-card { width:min(78vw,320px); text-align:center; }
+.loader-mark { font-family:'Great Vibes',cursive; font-size:clamp(42px,12vw,62px); color:var(--gold-lt); line-height:1; }
+.loader-sub { margin-top:8px; font-family:'Cinzel',serif; font-size:10px; letter-spacing:.24em; text-transform:uppercase; color:var(--ink); }
+.loader-track { height:2px; margin-top:22px; background:rgba(201,168,76,.18); overflow:hidden; }
+.loader-progress { width:0%; height:100%; background:var(--gold); transition:width .2s ease; }
+.loader-percent { margin-top:9px; font-family:'Cinzel',serif; font-size:9px; color:var(--gold-lt); letter-spacing:.12em; }
+
+/* ══════ PHOTO PREVIEW + FULL-SIZE ALBUM ══════ */
+.photo-preview { width:100%; position:relative; overflow:hidden; border-radius:3px; border:1px solid var(--border); box-shadow:0 9px 24px rgba(0,0,0,.26); }
+.photo-preview img { width:100%; height:min(calc(var(--page-h) - 205px),calc(var(--bw) * 1.15)); min-height:clamp(330px,84vw,500px); object-fit:cover; display:block; }
+.photo-preview::after { content:''; position:absolute; inset:0; background:rgba(55,45,31,.18); pointer-events:none; }
+.open-album-btn {
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); z-index:2;
+  width:max-content; max-width:86%; padding:clamp(10px,3vw,14px) clamp(16px,5vw,26px);
+  border:1px solid rgba(194,155,69,.9); background:rgba(55,45,31,.88); color:#fffaf0;
+  font-family:'Cinzel',serif; font-size:clamp(10px,2.9vw,14px); letter-spacing:.13em; text-transform:uppercase;
+  cursor:pointer; box-shadow:0 8px 22px rgba(0,0,0,.3); backdrop-filter:blur(6px);
+}
+.album-lightbox {
+  position:fixed; inset:0; z-index:9000; display:none; align-items:center; justify-content:center;
+  background:rgba(18,16,13,.96); padding:max(16px,env(safe-area-inset-top)) max(12px,env(safe-area-inset-right)) max(16px,env(safe-area-inset-bottom)) max(12px,env(safe-area-inset-left));
+}
+.album-lightbox.open { display:flex; }
+.album-stage { position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; }
+.album-image { max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; user-select:none; }
+.album-close,.album-nav {
+  position:absolute; z-index:2; border:1px solid rgba(255,255,255,.35); background:rgba(55,48,38,.62); color:#fff;
+  width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer;
+  font-size:25px; line-height:1; backdrop-filter:blur(7px);
+}
+.album-close { top:0; right:0; font-size:20px; }
+.album-prev { left:0; top:50%; transform:translateY(-50%); }
+.album-next { right:0; top:50%; transform:translateY(-50%); }
+.album-count { position:absolute; left:50%; bottom:2px; transform:translateX(-50%); color:#fff; font-family:'Cinzel',serif; font-size:10px; letter-spacing:.16em; }
+@media (max-width:540px) {
+  .album-nav { width:38px; height:38px; }
+  .album-image { max-width:calc(100% - 4px); max-height:calc(100% - 58px); }
+}
+
+/* Mobile cover spine visibility — left inset only; right edge stays flush */
+@media (max-width:719px) {
+  #scene-cover { justify-content:flex-start; padding-left:12px; padding-right:0; }
+  #scene-cover > div {
+    flex:0 0 calc(100vw - 12px);
+    width:calc(100vw - 12px) !important;
+    max-width:none !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+  #scene-cover .cover-wrap { width:100% !important; margin-right:0 !important; }
+}
+
+
+/* ══════ WHITE / GOLD THEME ADAPTATION ══════
+   White paper assets use warm charcoal body text, richer gold for contrast,
+   warm ivory panels, and neutral espresso UI accents instead of navy. */
+
+
+/* ══════ SHANA & DION CLIENT CONTENT ══════ */
+#page-1 .book-bigname { font-size:clamp(48px,13vw,72px) !important; }
+.verse-pair { width:94%; display:grid; gap:clamp(5px,1.5vw,8px); align-items:center; }
+.verse-pair .book-verse { max-width:100%; font-size:clamp(11px,3vw,14px); line-height:1.48; }
+.verse-pair .book-verse-ref { margin-top:clamp(2px,.8vw,4px); }
+.verse-separator { color:var(--gold); font-size:clamp(8px,2.2vw,11px); opacity:.72; line-height:1; }
+
+.note-heading { margin-bottom:0; }
+.guest-note-card {
+  width:min(94%,360px);
+  padding:clamp(16px,5vw,24px) clamp(16px,5.5vw,26px);
+  border:1px solid rgba(179,139,50,.34);
+  border-radius:14px;
+  background:rgba(255,253,248,.72);
+  box-shadow:0 10px 28px rgba(88,68,30,.08);
+  position:relative;
+}
+.guest-note-card::before,
+.guest-note-card::after {
+  content:'✦';
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:var(--gold);
+  font-size:clamp(8px,2.5vw,11px);
+  opacity:.65;
+}
+.guest-note-card::before { top:7px; }
+.guest-note-card::after { bottom:7px; }
+.guest-note-card p {
+  font-family:'EB Garamond',serif;
+  font-style:italic;
+  font-size:clamp(14px,3.8vw,18px);
+  line-height:1.58;
+  color:var(--ink-lt);
+  max-width:100%;
+}
+.guest-note-card p + p { margin-top:clamp(10px,2.6vw,14px); }
+.guest-note-signature {
+  margin-top:clamp(10px,2.8vw,15px);
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(28px,8vw,40px);
+  line-height:1;
+  color:var(--gold-lt);
+}
+
+.event-reception-note {
+  max-width:94%;
+  font-family:'EB Garamond',serif;
+  font-style:italic;
+  font-size:clamp(10px,2.8vw,13px);
+  line-height:1.4;
+  color:var(--ink-lt);
+  margin:0 auto clamp(2px,.8vw,4px);
+}
+.event-reception-note strong { color:var(--ink); font-weight:400; }
+.event-timeline { margin-top:clamp(2px,.8vw,4px); }
+.event-timeline .tl-row { margin-bottom:clamp(3px,1vw,6px) !important; }
+.event-timeline .tl-label { font-size:clamp(14px,4.1vw,20px) !important; line-height:1.1; }
+.event-timeline .tl-time { font-size:clamp(12px,3.2vw,16px) !important; }
+.event-timeline .tl-venue { font-size:clamp(9px,2.25vw,11px) !important; line-height:1.25; }
+.event-timeline .tl-icon img { width:clamp(27px,7vw,38px) !important; height:clamp(27px,7vw,38px) !important; }
+.event-no-time { min-height:1em; }
+
+.rsvp-deadline-placeholder { letter-spacing:.12em !important; }
+
+
+
+/* ══════ DION & SHANA — FINAL LAYOUT REFINEMENTS ══════ */
+
+/* Celebration page: roomy vertical flow with clickable real-world locations. */
+.celebration-page .celebration-title { margin-bottom:0; }
+.celebration-subtitle { margin-top:clamp(2px,.8vw,4px); }
+.celebration-page .gold-div { margin:clamp(7px,2vw,11px) auto clamp(8px,2.2vw,12px); }
+.celebration-list {
+  width:min(94%,370px);
+  display:grid;
+  gap:clamp(8px,2.2vw,13px);
+  margin:0 auto;
+  text-align:left;
+}
+.celebration-item {
+  display:grid;
+  grid-template-columns:clamp(38px,10vw,48px) minmax(0,1fr);
+  align-items:center;
+  gap:clamp(10px,3vw,15px);
+  min-height:clamp(44px,10vw,54px);
+  padding:0 clamp(4px,1.4vw,7px);
+  position:relative;
+}
+.celebration-item:not(:last-child)::after {
+  content:'';
+  position:absolute;
+  left:calc(clamp(38px,10vw,48px) / 2 + clamp(4px,1.4vw,7px));
+  top:calc(100% + 1px);
+  width:1px;
+  height:clamp(7px,1.8vw,11px);
+  background:linear-gradient(to bottom,rgba(179,139,50,.5),rgba(179,139,50,.08));
+}
+.celebration-item.featured {
+  align-items:start;
+  padding-top:clamp(2px,.7vw,4px);
+  padding-bottom:clamp(2px,.7vw,4px);
+}
+.celebration-icon {
+  width:clamp(38px,10vw,48px);
+  height:clamp(38px,10vw,48px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.celebration-icon img {
+  width:clamp(29px,7.5vw,38px);
+  height:clamp(29px,7.5vw,38px);
+  object-fit:contain;
+  opacity:.9;
+  filter:sepia(1) saturate(1.8) hue-rotate(4deg) brightness(1.02);
+}
+.celebration-label {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(19px,5.2vw,26px);
+  line-height:1.08;
+  color:var(--gold-lt);
+}
+.celebration-meta {
+  display:flex;
+  align-items:baseline;
+  flex-wrap:wrap;
+  gap:3px 8px;
+  margin-top:clamp(3px,.9vw,5px);
+}
+.celebration-time {
+  font-family:'Cinzel',serif;
+  font-size:clamp(10px,2.6vw,13px);
+  letter-spacing:.1em;
+  color:var(--gold-dk);
+  white-space:nowrap;
+}
+.celebration-location,
+.reception-location-link {
+  color:var(--ink-lt);
+  text-decoration:none;
+  font-family:'EB Garamond',serif;
+  font-style:italic;
+  line-height:1.24;
+}
+.celebration-location { 
+  display:block;
+  margin-top:clamp(3px,.9vw,5px);
+  font-size:clamp(11px,2.85vw,14px);
+}
+.location-name { display:block; color:var(--ink); }
+.location-area { display:block; margin-top:1px; }
+.travel-note {
+  width:max-content;
+  max-width:90%;
+  margin:clamp(6px,1.7vw,10px) auto clamp(2px,.7vw,4px);
+  padding:clamp(4px,1.2vw,6px) clamp(10px,3vw,14px);
+  border:1px solid rgba(179,139,50,.22);
+  border-radius:999px;
+  background:rgba(255,253,248,.58);
+  color:var(--ink-lt);
+  font-family:'Cinzel',serif;
+  font-size:clamp(7px,1.9vw,9px);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.celebration-location .open-location,
+.reception-location-link .open-location {
+  color:var(--gold-dk);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+  white-space:nowrap;
+}
+.celebration-location:hover .open-location,
+.reception-location-link:hover .open-location { color:var(--gold); }
+.reception-location-card {
+  width:min(90%,350px);
+  margin:clamp(10px,2.5vw,14px) auto 0;
+  padding:clamp(8px,2.3vw,12px) clamp(12px,3.5vw,17px);
+  border-top:1px solid rgba(179,139,50,.28);
+  border-bottom:1px solid rgba(179,139,50,.22);
+  text-align:center;
+}
+.reception-location-kicker {
+  font-family:'Cinzel',serif;
+  font-size:clamp(8px,2vw,10px);
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gold);
+  margin-bottom:clamp(3px,.9vw,5px);
+}
+.reception-location-link {
+  display:block;
+  font-size:clamp(11px,3vw,15px);
+}
+
+/* Music control — visible without interfering with the invitation navigation. */
+.music-toggle {
+  position:fixed;
+  top:max(9px,env(safe-area-inset-top));
+  right:max(10px,env(safe-area-inset-right));
+  z-index:1200;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:30px;
+  padding:6px 10px;
+  border:1px solid rgba(194,155,69,.62);
+  border-radius:999px;
+  background:rgba(32,27,21,.84);
+  color:#fffaf0;
+  font-family:'Cinzel',serif;
+  font-size:9px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  box-shadow:0 5px 16px rgba(0,0,0,.18);
+  backdrop-filter:blur(6px);
+  -webkit-backdrop-filter:blur(6px);
+  transition:opacity .2s ease,background .2s ease,border-color .2s ease;
+}
+.music-toggle:hover { background:rgba(49,40,29,.94); border-color:var(--gold-lt); }
+.music-toggle .music-icon { color:var(--gold-lt); font-size:13px; line-height:1; }
+.music-toggle.is-playing .music-icon { animation:musicPulse 1.5s ease-in-out infinite; }
+@keyframes musicPulse { 0%,100%{opacity:.55} 50%{opacity:1} }
+@media (max-width:420px) {
+  .music-toggle { min-height:27px; padding:5px 8px; font-size:8px; gap:5px; }
+  .music-toggle .music-icon { font-size:12px; }
+}
+
+/* Back cover: keep the action genuinely centered; don't reuse hintPulse's translateX(-50%). */
+.back-btn {
+  display:inline-flex !important;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:clamp(5px,1.5vw,8px);
+  width:max-content;
+  margin:clamp(20px,5vh,34px) auto 0;
+  animation:backButtonPulse 2s ease-in-out infinite !important;
+  transform:none;
+}
+.back-btn .back-arrow {
+  display:block;
+  font-size:clamp(18px,5vw,25px);
+  line-height:.8;
+  letter-spacing:0;
+}
+@keyframes backButtonPulse {
+  0%,100% { opacity:.62; transform:translateY(0); }
+  50% { opacity:1; transform:translateY(-3px); }
+}
+
+/* Make the Cardia Studios brand itself unmistakably clickable. */
+.cardia-credit span {
+  color:var(--gold);
+  text-decoration:underline;
+  text-decoration-thickness:1px;
+  text-underline-offset:3px;
+}
+
+
+
+/* ══════ DION & SHANA — SIMPLIFIED CELEBRATION ORDER ══════ */
+.celebration-page .gold-div { margin:clamp(6px,1.6vw,9px) auto clamp(8px,2vw,11px) !important; }
+.celebration-simple-list {
+  width:min(92%,360px);
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  text-align:left;
+}
+.celebration-simple-row {
+  display:grid;
+  grid-template-columns:clamp(38px,9.5vw,46px) minmax(0,1fr);
+  gap:clamp(10px,2.8vw,14px);
+  align-items:center;
+  padding:clamp(7px,1.8vw,10px) 0;
+  border-bottom:1px solid rgba(179,139,50,.14);
+}
+.celebration-simple-row:last-child { border-bottom:none; }
+.celebration-simple-row.major {
+  padding:clamp(9px,2.2vw,12px) 0;
+}
+.celebration-simple-icon {
+  width:clamp(38px,9.5vw,46px);
+  height:clamp(38px,9.5vw,46px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.celebration-simple-icon img {
+  width:clamp(28px,7vw,36px);
+  height:clamp(28px,7vw,36px);
+  object-fit:contain;
+  opacity:.9;
+  filter:sepia(1) saturate(1.8) hue-rotate(4deg) brightness(1.02);
+}
+.celebration-simple-label {
+  font-family:'Cormorant Garamond',serif;
+  font-style:italic;
+  font-size:clamp(18px,4.8vw,24px);
+  line-height:1.08;
+  color:var(--gold-lt);
+}
+.celebration-simple-time {
+  display:inline-block;
+  margin-top:2px;
+  font-family:'Cinzel',serif;
+  font-size:clamp(9px,2.35vw,12px);
+  letter-spacing:.1em;
+  color:var(--gold-dk);
+}
+.celebration-simple-place {
+  display:block;
+  margin-top:clamp(3px,.8vw,5px);
+  color:var(--ink-lt);
+  text-decoration:none;
+  font-family:'EB Garamond',serif;
+  font-style:italic;
+  font-size:clamp(11px,2.7vw,14px);
+  line-height:1.28;
+}
+.celebration-simple-place strong {
+  display:block;
+  color:var(--ink);
+  font-weight:400;
+}
+.celebration-simple-place .open-location {
+  color:var(--gold-dk);
+  text-decoration:underline;
+  text-underline-offset:3px;
+}
+.celebration-route-simple {
+  text-align:center;
+  margin:clamp(3px,.8vw,5px) 0;
+  font-family:'Cinzel',serif;
+  font-size:clamp(7px,1.8vw,9px);
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--ink-lt);
+}
+@media (max-width:390px) {
+  .celebration-simple-row { padding:6px 0; }
+  .celebration-simple-label { font-size:clamp(17px,4.6vw,21px); }
+  .celebration-simple-place { font-size:clamp(10px,2.55vw,12px); }
+}
+
+</style>
+</head>
+<body class="loading">
+
+<!-- ══════ ASSET LOADER ══════ -->
+<div id="asset-loader" role="status" aria-live="polite">
+  <div class="loader-card">
+    <div class="loader-mark">D &amp; S</div>
+    <div class="loader-sub">Preparing your invitation</div>
+    <div class="loader-track"><div class="loader-progress" id="loader-progress"></div></div>
+    <div class="loader-percent" id="loader-percent">0%</div>
+  </div>
+</div>
+
+
+<canvas id="petals-canvas"></canvas>
+
+<button id="music-toggle" class="music-toggle" type="button" onclick="toggleMusic(event)" aria-pressed="false" aria-label="Play music">
+  <span class="music-icon" aria-hidden="true">♫</span>
+  <span id="music-toggle-label">Play music</span>
+</button>
+
+<!-- ══════ COVER ══════ -->
+<div id="scene-cover">
+  <div class="cover-outer">
+    <div class="cover-spine"></div>
+    <div class="cover-wrap" onclick="openBook()">
+      <div class="cover-bg"></div>
+      <div class="cover-content">
+        <span class="cover-eyebrow">You are invited to the wedding of</span>
+        <div class="cover-line"></div>
+        <span class="cover-name">Dion</span>
+        <span class="cover-amp">&amp;</span>
+        <span class="cover-name">Shana</span>
+        <div class="cover-line"></div>
+        <span class="cover-date">27 February 2027 · Portsmouth</span>
+      </div>
+      <div class="cover-open-hint">
+        <span>✦ Open Invitation </span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:var(--gold-lt)"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════ OPEN BOOK ══════ -->
+<div id="scene-open">
+  <div class="open-book">
+    <div class="open-spine"></div>
+
+    <!-- Book frame -->
+    <div class="book-spread">
+      <div class="flip-sheet" id="flip-sheet"></div>
+      <div class="page-scroll-indicator" id="pageScrollIndicator" aria-hidden="true">
+        <span class="page-scroll-thumb" id="pageScrollThumb"></span>
+      </div>
+
+      <!-- PAGE 1 -->
+      <div class="page active" id="page-1">
+        <div class="page-num">✦ I ✦</div>
+        <p class="book-eyebrow">Wedding Invitation</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="book-bigname">Dion</div>
+        <div class="book-amp">&amp;</div>
+        <div class="book-bigname">Shana</div>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="verse-pair">
+          <div class="verse-item">
+            <p class="book-verse">“What therefore God has joined together,<br>let no man put asunder.”</p>
+            <p class="book-verse-ref">Matthew 19:6</p>
+          </div>
+          <div class="verse-separator">✦</div>
+          <div class="verse-item">
+            <p class="book-verse">“At the right time, I, the Lord will make it happen.”</p>
+            <p class="book-verse-ref">Isaiah 60:22</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 2 -->
+      <div class="page" id="page-2">
+        <div class="page-num">✦ II ✦</div>
+        <p class="book-section">Wedding Day</p>
+        <p class="book-sub">Saturday · February 27, 2027</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="cal-box">
+          <p style="font-family:'Cinzel',serif;font-size:clamp(8px,2.5vw,11px);color:var(--gold);letter-spacing:.15em;text-transform:uppercase;text-align:center;margin-bottom:clamp(4px,1.5vw,7px);opacity:.8;">February 2027</p>
+          <div class="cal-grid" id="cal-grid"></div>
+        </div>
+        <div class="countdown">
+          <div class="flip"><div class="num" id="cd-d">--</div><div class="lbl">Days</div></div>
+          <div class="flip"><div class="num" id="cd-h">--</div><div class="lbl">Hours</div></div>
+          <div class="flip"><div class="num" id="cd-m">--</div><div class="lbl">Min</div></div>
+          <div class="flip"><div class="num" id="cd-s">--</div><div class="lbl">Sec</div></div>
+        </div>
+      </div>
+
+      <!-- PAGE 3 -->
+      <div class="page celebration-page" id="page-3">
+        <div class="page-num">✦ III ✦</div>
+        <p class="book-section celebration-title">The Celebration</p>
+        <p class="book-sub celebration-subtitle">Order of Events</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+
+        <div class="celebration-simple-list">
+          <div class="celebration-simple-row major">
+            <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Rings-removebg-preview.png" alt="Wedding rings"></div>
+            <div>
+              <div class="celebration-simple-label">Wedding Ceremony</div>
+              <span class="celebration-simple-time">2:30 PM</span>
+              <a class="celebration-simple-place" href="https://www.google.com/maps/search/?api=1&amp;query=St.%20John%27s%20Catholic%20Church%20Hall%2C%20Portsmouth%2C%20Dominica" target="_blank" rel="noopener noreferrer" aria-label="Open St. John's Catholic Church Hall in Google Maps">
+                <strong>St. John's Catholic Church Hall</strong>
+                Portsmouth, Dominica · <span class="open-location">Open location ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="celebration-route-simple">↓ Approximately 5 minutes by car ↓</div>
+
+          <div class="celebration-simple-row major">
+            <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Drink-removebg-preview.png" alt="Reception"></div>
+            <div>
+              <div class="celebration-simple-label">Reception</div>
+              <a class="celebration-simple-place" href="https://www.google.com/maps/search/?api=1&amp;query=HGMG%2B7HV%2C%20Portsmouth%2C%20Dominica" target="_blank" rel="noopener noreferrer" aria-label="Open Fort Shirley, Cabrits National Park in Google Maps">
+                <strong>Fort Shirley · Cabrits National Park</strong>
+                Portsmouth, Dominica · <span class="open-location">Open location ↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="celebration-simple-row">
+            <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/Camera.png" alt="Camera"></div>
+            <div class="celebration-simple-label">Photo Session</div>
+          </div>
+
+          <div class="celebration-simple-row">
+            <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Drink-removebg-preview.png" alt="Cocktail glasses"></div>
+            <div class="celebration-simple-label">Cocktail Hour</div>
+          </div>
+
+          <div class="celebration-simple-row">
+            <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Dine-removebg-preview.png" alt="Dinner"></div>
+            <div class="celebration-simple-label">Dinner</div>
+          </div>
+
+          <div class="celebration-simple-row">
+            <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Dance-removebg-preview.png" alt="Dance"></div>
+            <div class="celebration-simple-label">Dance</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 4 -->
+      <div class="page" id="page-4">
+        <div class="page-num">✦ IV ✦</div>
+        <p class="book-section">Dress Code</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <p class="dress-code-title">Formal Attire</p>
+        <div class="dress-code-frame">
+          <img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/Dress_code.png" alt="Formal Attire dress code">
+        </div>
+      </div>
+
+      <!-- PAGE 5 -->
+      <div class="page" id="page-5">
+        <div class="page-num">✦ V ✦</div>
+        <p class="book-section" style="margin-bottom:clamp(2px,1vw,4px);">Our Story</p>
+        <p class="book-sub" style="margin-bottom:clamp(4px,1.5vw,7px);">A glimpse of us</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="photo-preview" id="photo-preview">
+          <img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/1.jpg" alt="Dion and Shana photo album preview">
+          <button class="open-album-btn" type="button" onclick="openAlbum(0)">Open Photo Album</button>
+        </div>
+      
+      </div>
+
+      <!-- PAGE 6 — RSVP -->
+      <div class="page" id="page-6">
+        <div class="page-num">✦ VI ✦</div>
+        <p class="book-section">RSVP</p>
+        <!-- RSVP DEADLINE TODO: replace [ADD SHANA'S CONFIRMED RSVP DEADLINE] with the exact deadline Shana provided. -->
+        <p class="book-sub rsvp-deadline-placeholder" style="margin-bottom:clamp(3px,1.2vw,6px);">Kindly reply by [ADD SHANA'S CONFIRMED RSVP DEADLINE]</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="rsvp-box">
+          <div class="step-dots" aria-hidden="true">
+            <div class="step-dot on" id="dot-1"></div>
+          </div>
+          <div id="step1" class="guest-welcome-step">
+            <h3 class="guest-welcome-title">Dear <span id="guestWelcomeName">Guest</span>,</h3>
+            <p id="personalGuestNote" class="guest-welcome-note">Please confirm who can attend from this invitation.</p>
+            <div id="manualGuestListWrap" class="manual-guest-list-wrap">
+              <div id="guestSlotNameList" class="guest-slot-name-list"></div>
+              <div class="guest-list-scroll-indicator" id="guestListScrollIndicator" aria-hidden="true">
+                <span class="guest-list-scroll-thumb" id="guestListScrollThumb"></span>
+              </div>
+            </div>
+            <p class="guest-total-line">Total guests attending: <strong id="guestCount">0</strong></p>
+            <p class="error-msg" id="errName">Please enter at least one guest name and choose Yes or No.</p>
+            <label class="wish-message-label" for="guestMsg">Your message / wishes</label>
+            <textarea id="guestMsg" rows="2" placeholder="Is there anything you'd like to tell us?"></textarea>
+            <button class="rsvp-single-btn rsvp-main-btn" id="sendBtn" type="button" onclick="submitRSVP()">Send RSVP ✦</button>
+          </div>
+          <div id="stepOk" style="display:none;text-align:center;padding:clamp(12px,4vw,20px) 0;">
+            <div style="font-size:clamp(20px,8vw,32px);margin-bottom:clamp(4px,1.5vw,8px);">🌹</div>
+            <p style="font-family:'Great Vibes',cursive;font-size:clamp(20px,7vw,30px);color:var(--gold-lt);margin-bottom:clamp(3px,1vw,5px);">Thank you!</p>
+            <p id="okMsg" style="font-size:clamp(11px,3vw,14px);line-height:1.7;color:var(--ink-lt);font-style:italic;"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PAGE 7 -->
+      <div class="page" id="page-7">
+        <div class="page-num">✦ VII ✦</div>
+        <p class="book-section note-heading">A Note from D &amp; S</p>
+        <div class="gold-div"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg></div>
+        <div class="guest-note-card">
+          <p>“As we celebrate this special day, we respectfully ask that only those who have been personally invited attend. Due to limited seating and arrangements, we are unable to accommodate additional guests.</p>
+          <p>We truly appreciate your understanding and look forward to celebrating with you! ❤️”</p>
+        </div>
+        <div class="guest-note-signature">D &amp; S</div>
+      </div>
+
+      <!-- Nav -->
+      <div class="page-arrows">
+        <button class="page-arrow-btn" id="btn-prev" onclick="changePage(-1)">← Prev</button>
+        <span class="page-label" id="page-label">Page 1 of 7</span>
+        <button class="page-arrow-btn" id="btn-next" onclick="changePage(1)">Next →</button>
+      </div>
+    </div><!-- end .book-spread -->
+
+  </div><!-- end .open-book -->
+</div>
+
+<!-- ══════ BACK COVER ══════ -->
+<div id="scene-back">
+  <div class="back-outer">
+    <div class="back-spine"></div>
+    <div class="back-wrap">
+      <div class="back-face">
+        <div class="back-text">
+          <p>Dion &amp; Shana</p>
+          <small>27 February 2027 · Portsmouth</small>
+        </div>
+        <button class="back-btn" onclick="reopenFromBack()" aria-label="Back to invitation">
+          <span>Back to Invitation</span>
+          <span class="back-arrow" aria-hidden="true">←</span>
+        </button>
+        <div class="cardia-credit">
+  <a href="https://www.cardiastudios.com/" target="_blank">
+    Powered by <span>Cardia Studios</span>
+    <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Tina%20communion/Chain2.png" alt="">
+  </a>
+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════ FULL-SIZE PHOTO ALBUM ══════ -->
+<div id="album-lightbox" class="album-lightbox" role="dialog" aria-modal="true" aria-label="Photo album" onclick="albumBackdropClose(event)">
+  <div class="album-stage">
+    <button class="album-close" type="button" onclick="closeAlbum()" aria-label="Close photo album">×</button>
+    <button class="album-nav album-prev" type="button" onclick="albumMove(-1)" aria-label="Previous photo">‹</button>
+    <img id="album-image" class="album-image" src="" alt="Wedding photo">
+    <button class="album-nav album-next" type="button" onclick="albumMove(1)" aria-label="Next photo">›</button>
+    <div class="album-count" id="album-count"></div>
+  </div>
+</div>
+
+<script>
+window.INVITATION_ALBUM_PHOTOS = [
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/1.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/2.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/3.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/4.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/5.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/6.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/7.jpg',
+  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/8.jpg'
+];
+</script>
+
+<audio id="page-flip-sound" src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Tina%20communion/Page%20Flip%202.mp3" preload="auto"></audio>
+<audio id="wedding-music" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/Music.mp3" loop preload="auto"></audio>
+
+<script>
+/* ══════ ASSET PRELOADER ══════ */
+(function preloadInvitationAssets() {
+  const loader = document.getElementById('asset-loader');
+  const progressBar = document.getElementById('loader-progress');
+  const percentText = document.getElementById('loader-percent');
+  const startedAt = Date.now();
+  const minimumDisplayMs = 1100;
+
+  const backgroundAssets = [
+    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/cover3.png',
+    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/pages.png',
+    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/cover2.png',
+    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/Heart.png'
+  ];
+  const imageAssets = [
+    ...Array.from(document.images).map(img => img.currentSrc || img.getAttribute('src')),
+    ...backgroundAssets,
+    ...(window.INVITATION_ALBUM_PHOTOS || [])
+  ];
+  const audioAssets = Array.from(document.querySelectorAll('audio')).map(audio => audio.src);
+  const uniqueImages = [...new Set(imageAssets.filter(Boolean))];
+  const uniqueAudios = [...new Set(audioAssets.filter(Boolean))];
+  const total = Math.max(1, uniqueImages.length + uniqueAudios.length + 1);
+  let completed = 0;
+
+  function report() {
+    completed += 1;
+    const pct = Math.min(100, Math.round((completed / total) * 100));
+    if (progressBar) progressBar.style.width = pct + '%';
+    if (percentText) percentText.textContent = pct + '%';
+  }
+  function loadImage(url) {
+    return new Promise(resolve => {
+      const img = new Image();
+      let settled = false;
+      const done = () => { if (settled) return; settled = true; report(); resolve(); };
+      img.onload = done; img.onerror = done; img.src = url; if (img.complete) done();
+    });
+  }
+  function loadAudio(url) {
+    return new Promise(resolve => {
+      const audio = new Audio();
+      let settled = false;
+      const done = () => { if (settled) return; settled = true; cleanup(); report(); resolve(); };
+      const cleanup = () => {
+        audio.removeEventListener('canplaythrough', done);
+        audio.removeEventListener('loadeddata', done);
+        audio.removeEventListener('error', done);
+      };
+      audio.preload = 'auto';
+      audio.addEventListener('canplaythrough', done, { once: true });
+      audio.addEventListener('loadeddata', done, { once: true });
+      audio.addEventListener('error', done, { once: true });
+      audio.src = url; audio.load();
+    });
+  }
+  const fontReady = (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).catch(() => {}).then(report);
+  Promise.all([...uniqueImages.map(loadImage),...uniqueAudios.map(loadAudio),fontReady]).then(() => {
+    const remaining = Math.max(0, minimumDisplayMs - (Date.now() - startedAt));
+    setTimeout(() => {
+      if (progressBar) progressBar.style.width = '100%';
+      if (percentText) percentText.textContent = '100%';
+      if (loader) loader.classList.add('loader-hidden');
+      document.documentElement.classList.remove('loading');
+      document.body.classList.remove('loading');
+      setTimeout(() => { if (loader) loader.remove(); }, 650);
+    }, remaining);
+  });
+})();
+
+/* ══════ FALLING PETALS ══════ */
+(function(){
+  const canvas = document.getElementById('petals-canvas');
+  const ctx = canvas.getContext('2d');
+  const colors = [
+    'rgba(201,168,76,',
+    'rgba(226,201,126,',
+    'rgba(245,240,232,',
+    'rgba(232,160,144,',
+    'rgba(255,255,255,',
+  ];
+  let petals = [];
+
+  function resize(){ canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+  resize(); window.addEventListener('resize', resize);
+
+  function drawPetal(ctx, size, color, opacity){
+    const s = size;
+    ctx.fillStyle = color + opacity + ')';
+    ctx.strokeStyle = color + (opacity*.5) + ')';
+    ctx.lineWidth = 0.4;
+    for(let i=0;i<5;i++){
+      ctx.save(); ctx.rotate((i/5)*Math.PI*2);
+      ctx.beginPath();
+      ctx.moveTo(0,0);
+      ctx.bezierCurveTo(s*.4,-s*.1,s*.6,-s*.8,0,-s);
+      ctx.bezierCurveTo(-s*.6,-s*.8,-s*.4,-s*.1,0,0);
+      ctx.fill(); ctx.stroke(); ctx.restore();
+    }
+    for(let i=0;i<5;i++){
+      ctx.save(); ctx.rotate((i/5)*Math.PI*2+Math.PI/5);
+      ctx.beginPath();
+      ctx.moveTo(0,0);
+      ctx.bezierCurveTo(s*.25,-s*.05,s*.35,-s*.5,0,-s*.6);
+      ctx.bezierCurveTo(-s*.35,-s*.5,-s*.25,-s*.05,0,0);
+      ctx.fill(); ctx.restore();
+    }
+    ctx.beginPath(); ctx.arc(0,0,s*.16,0,Math.PI*2);
+    ctx.fillStyle=color+(opacity*.9)+')'; ctx.fill();
+  }
+
+  function create(){
+    return { x:Math.random()*(canvas.width+40)-20, y:-30,
+      size:Math.random()*7+4, speed:Math.random()*.55+.2,
+      drift:(Math.random()-.5)*.35, rot:Math.random()*Math.PI*2,
+      rotSpeed:(Math.random()-.5)*.02, opacity:Math.random()*.4+.15,
+      color:colors[Math.floor(Math.random()*colors.length)],
+      sway:Math.random()*1.4+.4, swaySpeed:Math.random()*.012+.004,
+      swayOffset:Math.random()*Math.PI*2 };
+  }
+
+  for(let i=0;i<14;i++){ const p=create(); p.y=Math.random()*window.innerHeight; petals.push(p); }
+
+  let frame=0;
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height); frame++;
+    if(frame%55===0&&petals.length<28) petals.push(create());
+    petals.forEach((p,i)=>{
+      p.x+=p.drift+Math.sin(frame*p.swaySpeed+p.swayOffset)*p.sway*.08;
+      p.y+=p.speed; p.rot+=p.rotSpeed;
+      ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+      drawPetal(ctx,p.size,p.color,p.opacity); ctx.restore();
+      if(p.y>canvas.height+30) petals[i]=create();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+})();
+
+/* ══════ BOOK LOGIC ══════ */
+const TOTAL = 7;
+let current = 1;
+
+/* ══════ PERSISTENT SCROLL INDICATORS ══════ */
+function getActiveInvitationPage() {
+  return document.querySelector('.page.active');
+}
+
+function updateActivePageScrollIndicator(resetPosition) {
+  const page = getActiveInvitationPage();
+  const track = document.getElementById('pageScrollIndicator');
+  const thumb = document.getElementById('pageScrollThumb');
+  if (!page || !track || !thumb) return;
+
+  if (resetPosition) page.scrollTop = 0;
+  page.classList.add('is-scrollable');
+  const maxScroll = Math.max(0, page.scrollHeight - page.clientHeight);
+  const canScroll = maxScroll > 3;
+
+  if (!canScroll) {
+    page.classList.remove('is-scrollable');
+    page.scrollTop = 0;
+    track.classList.remove('visible');
+    thumb.style.height = '100%';
+    thumb.style.transform = 'translateY(0)';
+    return;
+  }
+
+  track.classList.add('visible');
+  const trackHeight = track.clientHeight;
+  const thumbHeight = Math.max(34, Math.min(trackHeight, trackHeight * (page.clientHeight / page.scrollHeight)));
+  const travel = Math.max(0, trackHeight - thumbHeight);
+  const thumbTop = maxScroll > 0 ? travel * (page.scrollTop / maxScroll) : 0;
+  thumb.style.height = thumbHeight + 'px';
+  thumb.style.transform = 'translateY(' + thumbTop + 'px)';
+}
+
+function queueActivePageScrollIndicator(resetPosition) {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      updateActivePageScrollIndicator(!!resetPosition);
+    });
+  });
+}
+
+function updateGuestListScrollIndicator() {
+  const list = document.getElementById('guestSlotNameList');
+  const wrap = document.getElementById('manualGuestListWrap');
+  const track = document.getElementById('guestListScrollIndicator');
+  const thumb = document.getElementById('guestListScrollThumb');
+  if (!list || !wrap || !track || !thumb) return;
+  if (list.clientHeight <= 0 || list.scrollHeight <= 0) return;
+
+  const maxScroll = Math.max(0, list.scrollHeight - list.clientHeight);
+  const canScroll = list.classList.contains('scrollable-guest-list') && maxScroll > 3;
+  wrap.classList.toggle('has-scroll', canScroll);
+
+  if (!canScroll) {
+    thumb.style.height = '100%';
+    thumb.style.transform = 'translateY(0)';
+    return;
+  }
+
+  const trackHeight = track.clientHeight;
+  const thumbHeight = Math.max(28, Math.min(trackHeight, trackHeight * (list.clientHeight / list.scrollHeight)));
+  const travel = Math.max(0, trackHeight - thumbHeight);
+  const thumbTop = maxScroll > 0 ? travel * (list.scrollTop / maxScroll) : 0;
+  thumb.style.height = thumbHeight + 'px';
+  thumb.style.transform = 'translateY(' + thumbTop + 'px)';
+}
+
+function queueGuestListScrollIndicator() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      updateGuestListScrollIndicator();
+      updateActivePageScrollIndicator(false);
+    });
+  });
+}
+
+function initializePersistentScrollIndicators() {
+  document.querySelectorAll('.page').forEach(function(page) {
+    page.addEventListener('scroll', function() {
+      if (page.classList.contains('active')) updateActivePageScrollIndicator(false);
+    }, { passive: true });
+  });
+  const guestList = document.getElementById('guestSlotNameList');
+  if (guestList) guestList.addEventListener('scroll', updateGuestListScrollIndicator, { passive: true });
+  window.addEventListener('resize', function() {
+    queueGuestListScrollIndicator();
+    queueActivePageScrollIndicator(false);
+  }, { passive: true });
+  queueGuestListScrollIndicator();
+  queueActivePageScrollIndicator(false);
+}
+
+/* ── Music behavior ── */
+const music = document.getElementById('wedding-music');
+const musicToggle = document.getElementById('music-toggle');
+const musicToggleLabel = document.getElementById('music-toggle-label');
+let musicUserStopped = false;
+music.volume = 0.4;
+
+function updateMusicButton() {
+  if (!musicToggle || !musicToggleLabel) return;
+  const isPlaying = !music.paused;
+  musicToggle.classList.toggle('is-playing', isPlaying);
+  musicToggle.setAttribute('aria-pressed', isPlaying ? 'true' : 'false');
+  musicToggle.setAttribute('aria-label', isPlaying ? 'Stop music' : 'Play music');
+  musicToggleLabel.textContent = isPlaying ? 'Stop music' : 'Play music';
+}
+
+function playMusic() {
+  const result = music.play();
+  if (result && typeof result.catch === 'function') result.catch(() => updateMusicButton());
+}
+
+function toggleMusic(event) {
+  if (event) { event.preventDefault(); event.stopPropagation(); }
+  if (music.paused) {
+    musicUserStopped = false;
+    playMusic();
+  } else {
+    musicUserStopped = true;
+    music.pause();
+    music.currentTime = 0;
+    updateMusicButton();
+  }
+}
+
+music.addEventListener('play', updateMusicButton);
+music.addEventListener('pause', updateMusicButton);
+music.addEventListener('ended', updateMusicButton);
+updateMusicButton();
+
+function openBook() {
+  if (music.paused && music.currentTime === 0 && !musicUserStopped) playMusic();
+  document.getElementById('scene-cover').style.opacity = '0';
+  document.getElementById('scene-cover').style.transition = 'opacity .6s ease';
+  setTimeout(() => {
+    document.getElementById('scene-cover').style.display = 'none';
+    document.getElementById('scene-open').classList.add('visible');
+    updateNavButtons();
+    buildCalendar();
+    tick();
+    setInterval(tick, 1000);
+    queueGuestListScrollIndicator();
+    queueActivePageScrollIndicator(true);
+  }, 600);
+}
+
+function closeBible() {
+  const s = document.getElementById('scene-open');
+  s.style.opacity = '0'; s.style.transition = 'opacity .4s ease';
+  setTimeout(() => { s.classList.remove('visible'); s.style.opacity = ''; s.style.transition = ''; document.getElementById('scene-back').classList.add('visible'); }, 400);
+}
+
+function closeBibleToFront() {
+  const s = document.getElementById('scene-open');
+  s.style.opacity = '0'; s.style.transition = 'opacity .4s ease';
+  setTimeout(() => {
+    s.classList.remove('visible'); s.style.opacity = ''; s.style.transition = '';
+    const cover = document.getElementById('scene-cover');
+    cover.style.display = 'flex'; cover.style.opacity = '0'; cover.style.transition = 'opacity .6s ease';
+    setTimeout(() => { cover.style.opacity = '1'; }, 50);
+    current = 1;
+    document.querySelectorAll('.page').forEach((p,i) => p.classList.toggle('active', i === 0));
+    document.getElementById('page-label').textContent = 'Page 1 of ' + TOTAL;
+    updateNavButtons();
+  }, 400);
+}
+
+function reopenFromBack() {
+  document.getElementById('scene-back').classList.remove('visible');
+  const cover = document.getElementById('scene-cover');
+  cover.style.display = 'flex'; cover.style.opacity = '0'; cover.style.transition = 'opacity .6s ease';
+  setTimeout(() => { cover.style.opacity = '1'; }, 50);
+  current = 1;
+  document.querySelectorAll('.page').forEach((p,i) => p.classList.toggle('active', i === 0));
+  document.getElementById('page-label').textContent = 'Page 1 of ' + TOTAL;
+  updateNavButtons();
+}
+
+function updateNavButtons() {
+  document.getElementById('btn-prev').textContent = current === 1 ? '✕ Close' : '← Prev';
+  document.getElementById('btn-next').textContent = current === TOTAL ? 'Close ✕' : 'Next →';
+}
+
+function goTo(n) {
+  const snd = document.getElementById('page-flip-sound');
+  if(snd) { snd.currentTime = 0; snd.play().catch(() => {}); }
+  const sh = document.getElementById('flip-sheet');
+  sh.classList.remove('animate'); void sh.offsetWidth; sh.classList.add('animate');
+  setTimeout(() => {
+    document.getElementById('page-' + current).classList.remove('active');
+    current = Math.max(1, Math.min(TOTAL, n));
+    document.getElementById('page-' + current).classList.add('active');
+    document.getElementById('page-label').textContent = 'Page ' + current + ' of ' + TOTAL;
+    updateNavButtons();
+    queueGuestListScrollIndicator();
+    queueActivePageScrollIndicator(true);
+  }, 220);
+}
+
+function changePage(dir) {
+  const t = current + dir;
+  if(t < 1) { closeBibleToFront(); return; }
+  if(t > TOTAL) { closeBible(); return; }
+  goTo(t);
+}
+
+/* Calendar — February 2027 begins on Monday (Monday-first grid). */
+function buildCalendar() {
+  const g = document.getElementById('cal-grid');
+  if(g.children.length > 0) return;
+  ['M','T','W','T','F','S','S'].forEach(d => { const e = document.createElement('div'); e.className='cal-cell hdr'; e.textContent=d; g.appendChild(e); });
+  for(let d=1;d<=28;d++) {
+    const e = document.createElement('div'); e.className='cal-cell';
+    if(d===27) {
+      e.className+=' highlight';
+      e.innerHTML='<span style="position:relative;z-index:1;">'+d+'</span><img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/Heart.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:.55;" alt="heart"/>';
+    } else { e.textContent=d; }
+    g.appendChild(e);
+  }
+}
+
+/* Countdown */
+const TARGET = new Date('2027-02-27T14:30:00-04:00');
+function tick() {
+  const diff=Math.max(0,TARGET-new Date()); const pad=n=>String(n).padStart(2,'0');
+  document.getElementById('cd-d').textContent=Math.floor(diff/86400000);
+  document.getElementById('cd-h').textContent=pad(Math.floor(diff/3600000)%24);
+  document.getElementById('cd-m').textContent=pad(Math.floor(diff/60000)%60);
+  document.getElementById('cd-s').textContent=pad(Math.floor(diff/1000)%60);
+}
+
+/* Photos — full-size lightbox album */
+const ALBUM_PHOTOS = window.INVITATION_ALBUM_PHOTOS;
+let albumIndex = 0;
+function renderAlbum() {
+  const image = document.getElementById('album-image');
+  const count = document.getElementById('album-count');
+  if (!image || !count) return;
+  image.src = ALBUM_PHOTOS[albumIndex];
+  count.textContent = (albumIndex + 1) + ' / ' + ALBUM_PHOTOS.length;
+}
+function openAlbum(index = 0) {
+  albumIndex = Math.max(0, Math.min(ALBUM_PHOTOS.length - 1, index));
+  renderAlbum();
+  document.getElementById('album-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeAlbum() {
+  document.getElementById('album-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function albumMove(direction) {
+  albumIndex = (albumIndex + direction + ALBUM_PHOTOS.length) % ALBUM_PHOTOS.length;
+  renderAlbum();
+}
+function albumBackdropClose(event) {
+  if (event.target === document.getElementById('album-lightbox')) closeAlbum();
+}
+document.addEventListener('keydown', event => {
+  const open = document.getElementById('album-lightbox').classList.contains('open');
+  if (!open) return;
+  if (event.key === 'Escape') closeAlbum();
+  if (event.key === 'ArrowLeft') albumMove(-1);
+  if (event.key === 'ArrowRight') albumMove(1);
+});
+const albumBox = document.getElementById('album-lightbox');
+if (albumBox) {
+  let albumTouchX = 0;
+  albumBox.addEventListener('touchstart', e => { albumTouchX = e.touches[0].clientX; }, { passive: true });
+  albumBox.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - albumTouchX;
+    if (Math.abs(dx) >= 35) albumMove(dx < 0 ? 1 : -1);
+  }, { passive: true });
+}
+
+/* Swipe pages */
+let sx=0,sy=0;
+document.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+document.addEventListener('touchend',e=>{if(document.getElementById('album-lightbox').classList.contains('open'))return;const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)<40||Math.abs(dx)<Math.abs(dy))return;if(!document.getElementById('scene-open').classList.contains('visible'))return;changePage(dx<0?1:-1);},{passive:true});
+
+/* RSVP — guest-by-guest reference behavior/submission method */
+const COUPLE_NAME = 'Dion & Shana';
+const CUSTOMER_EMAIL = 'nemer.david9@gmail.com';
+const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxjPC1-qt4jD201i0_a4k7CKZPdcskBjaZ_J9Ki8fBgZx63HSq76TRJaSWn25J5jMd1/exec';
+
+const inviteParams = new URLSearchParams(window.location.search);
+function decodeGuestList(rawValue) {
+  if (!rawValue) return [];
+  return rawValue.split(/\||,|\n|;/).map(name => name.trim()).filter(Boolean);
+}
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[char]));
+}
+function formatGuestNames(names) {
+  const clean = names.map(name => String(name || '').trim()).filter(Boolean);
+  if (!clean.length) return 'Guest';
+  if (clean.length === 1) return clean[0];
+  if (clean.length === 2) return clean[0] + ' & ' + clean[1];
+  return clean.slice(0,-1).join(', ') + ' & ' + clean[clean.length - 1];
+}
+const namedGuestsFromLink = [
+  ...decodeGuestList(inviteParams.get('invite') || ''),
+  ...decodeGuestList(inviteParams.get('group') || ''),
+  ...decodeGuestList(inviteParams.get('guests') || ''),
+  ...decodeGuestList(inviteParams.get('guest') || '')
+];
+const uniqueNamedGuestsFromLink = [...new Set(namedGuestsFromLink)];
+const hasLockedGuestNames = uniqueNamedGuestsFromLink.length > 0;
+const parsedGuestLimit = parseInt(inviteParams.get('limit') || String(uniqueNamedGuestsFromLink.length || 1),10);
+const guestLimit = Number.isFinite(parsedGuestLimit) && parsedGuestLimit > 0 ? parsedGuestLimit : Math.max(uniqueNamedGuestsFromLink.length,1);
+const lockedGuestNames = hasLockedGuestNames ? uniqueNamedGuestsFromLink.slice(0,guestLimit) : [];
+const invitedGroupForClient = formatGuestNames(lockedGuestNames);
+let guestResponses = hasLockedGuestNames
+  ? lockedGuestNames.map((name,index) => ({slot:'Guest '+(index+1),name,attending:'',manualAttendance:false,locked:true}))
+  : Array.from({length:guestLimit},(_,index)=>({slot:'Guest '+(index+1),name:'',attending:'',manualAttendance:false,locked:false}));
+
+function applyPersonalGuestLink() {
+  const welcome = document.getElementById('guestWelcomeName');
+  const note = document.getElementById('personalGuestNote');
+  if (welcome) welcome.textContent = hasLockedGuestNames ? invitedGroupForClient : 'Guest';
+  if (note) {
+    note.textContent = hasLockedGuestNames
+      ? 'Please confirm who can attend from this invitation.'
+      : (guestLimit === 1 ? 'Please enter your name to confirm the RSVP.' : 'Please enter the guest names to confirm the RSVP.');
+  }
+  renderGuestNameBoxes();
+  updateGuestTotal();
+}
+
+function renderGuestNameBoxes() {
+  const list = document.getElementById('guestSlotNameList');
+  const wrap = document.getElementById('manualGuestListWrap');
+  if (!list) return;
+  const shouldScroll = guestResponses.length > 2;
+  list.classList.toggle('scrollable-guest-list',shouldScroll);
+  if (wrap) wrap.classList.toggle('has-scroll',shouldScroll);
+  list.innerHTML = guestResponses.map((guest,index) => {
+    const safeName = escapeHTML(guest.name || '');
+    const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
+    const noChecked = guest.attending === 'No' ? ' checked' : '';
+    const lockedClass = guest.locked ? ' locked' : '';
+    const readonlyAttr = guest.locked ? ' readonly aria-readonly="true"' : '';
+    const inputHandler = guest.locked ? '' : ` oninput="setGuestName(${index}, this.value)"`;
+    const labelText = guest.locked ? escapeHTML(guest.name) : 'Guest ' + (index + 1);
+    return `
+      <div class="guest-slot-name-box${lockedClass}">
+        <label class="guest-slot-name-label" for="guestSlotInput${index}">${labelText}</label>
+        <input id="guestSlotInput${index}" type="text" value="${safeName}" placeholder="Write name"${readonlyAttr}${inputHandler} />
+        <div class="guest-slot-attendance" aria-label="Guest ${index + 1} attendance">
+          <span>Attending?</span>
+          <div class="guest-response-options">
+            <label><input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')" /><span class="guest-response-pill">Yes</span></label>
+            <label><input type="radio" name="guestAttend${index}" value="No"${noChecked} onchange="setGuestResponse(${index}, 'No')" /><span class="guest-response-pill">No</span></label>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  if (shouldScroll) list.scrollTop = 0;
+  queueGuestListScrollIndicator();
+}
+
+function getNamedGuestResponses() {
+  return guestResponses.map((guest,index)=>({guest,index})).filter(item=>item.guest.name && item.guest.name.trim());
+}
+function setGuestName(index,value) {
+  if (!guestResponses[index]) return;
+  guestResponses[index].name = value.trim();
+  const error = document.getElementById('errName');
+  if (error) error.style.display = 'none';
+  updateGuestTotal();
+}
+function setGuestResponse(index,value) {
+  if (!guestResponses[index]) return;
+  guestResponses[index].attending = value;
+  guestResponses[index].manualAttendance = true;
+  const error = document.getElementById('errName');
+  if (error) error.style.display = 'none';
+  updateGuestTotal();
+}
+function updateGuestTotal() {
+  const total = guestResponses.filter(guest=>guest.name && guest.name.trim() && guest.attending === 'Yes').length;
+  const totalEl = document.getElementById('guestCount');
+  if (totalEl) totalEl.textContent = total;
+}
+function showRSVPThankYou(groupName,attendingCount) {
+  const step = document.getElementById('step1');
+  if (step) step.style.display = 'none';
+  const dots = document.querySelector('#page-6 .step-dots');
+  if (dots) dots.style.display = 'none';
+  const ok = document.getElementById('stepOk');
+  if (ok) ok.style.display = 'block';
+  const okMsg = document.getElementById('okMsg');
+  if (okMsg) {
+    okMsg.innerHTML = 'Thank you, <strong>' + escapeHTML(groupName) + '</strong>!<br>We received your RSVP for ' + attendingCount + ' guest' + (attendingCount === 1 ? '' : 's') + '.';
+  }
+  queueGuestListScrollIndicator();
+  queueActivePageScrollIndicator(false);
+}
+function postRSVPToGoogleSheet(payload) {
+  const iframeName = 'rsvpGoogleSheetFrame';
+  let iframe = document.getElementById(iframeName);
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.name = iframeName;
+    iframe.id = iframeName;
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = RSVP_SCRIPT_URL;
+  form.target = iframeName;
+  form.style.display = 'none';
+  Object.entries(payload).forEach(([key,value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden'; input.name = key; input.value = value; form.appendChild(input);
+  });
+  document.body.appendChild(form);
+  form.submit();
+  setTimeout(() => form.remove(),1500);
+}
+function submitRSVP() {
+  const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
+  const namedGuests = getNamedGuestResponses();
+  const error = document.getElementById('errName');
+  if (!namedGuests.length) {
+    if (error) { error.textContent = 'Please enter at least one guest name.'; error.style.display = 'block'; }
+    return;
+  }
+  if (namedGuests.some(({guest}) => !guest.attending)) {
+    if (error) { error.textContent = 'Please choose Yes or No for each guest.'; error.style.display = 'block'; }
+    return;
+  }
+  guestResponses.forEach(guest => { if (!guest.name || !guest.name.trim()) guest.attending = ''; });
+  updateGuestTotal();
+  const sendBtn = document.getElementById('sendBtn');
+  if (sendBtn) {
+    sendBtn.dataset.originalHtml = sendBtn.dataset.originalHtml || sendBtn.innerHTML;
+    sendBtn.textContent = 'Sending...'; sendBtn.disabled = true;
+  }
+  const namedResponses = guestResponses.filter(guest=>guest.name && guest.name.trim()).map(guest=>({slot:guest.slot||'',name:guest.name.trim(),attending:guest.attending === 'Yes' ? 'Yes' : 'No'}));
+  const attendingGuestsList = namedResponses.filter(guest=>guest.attending === 'Yes').map(guest=>guest.name);
+  const notAttendingGuestsList = namedResponses.filter(guest=>guest.attending !== 'Yes').map(guest=>guest.name);
+  const attendingCount = attendingGuestsList.length;
+  const groupName = formatGuestNames(namedResponses.map(guest=>guest.name));
+  const responseLines = namedResponses.map(guest=>guest.name+' — '+(guest.attending === 'Yes' ? 'Attending' : 'Not attending')).join('\n');
+  const payload = {
+    event:COUPLE_NAME,
+    customer_email:CUSTOMER_EMAIL,
+    guest_name:groupName,
+    invited_guest_from_link:invitedGroupForClient,
+    attending:attendingCount > 0 ? 'Yes' : 'No',
+    guest_count:attendingCount,
+    guest_limit:guestLimit,
+    attending_guests:attendingGuestsList.join(', '),
+    not_attending_guests:notAttendingGuestsList.join(', '),
+    individual_responses:responseLines,
+    attending_summary:responseLines,
+    guest_responses:responseLines,
+    responses:responseLines,
+    guests_json:JSON.stringify(namedResponses),
+    message:msg || '',
+    page_url:window.location.href,
+    submitted_at:new Date().toISOString()
+  };
+  postRSVPToGoogleSheet(payload);
+  setTimeout(() => {
+    if (sendBtn) { sendBtn.textContent = 'Sent ✓'; sendBtn.disabled = true; }
+    showRSVPThankYou(groupName,attendingCount);
+  },650);
+}
+
+applyPersonalGuestLink();
+initializePersistentScrollIndicators();
+</script>
+</body>
+</html>
