@@ -829,6 +829,9 @@ html.loading, body.loading { overflow:hidden !important; }
 .loader-track { height:2px; margin-top:22px; background:rgba(201,168,76,.18); overflow:hidden; }
 .loader-progress { width:0%; height:100%; background:var(--gold); transition:width .2s ease; }
 .loader-percent { margin-top:9px; font-family:'Cinzel',serif; font-size:9px; color:var(--gold-lt); letter-spacing:.12em; }
+.loader-status { margin-top:10px; min-height:16px; font-family:'EB Garamond',serif; font-style:italic; font-size:12px; line-height:1.35; color:var(--ink-lt); }
+.loader-retry { display:none; margin:12px auto 0; padding:8px 14px; border:1px solid var(--gold); background:transparent; color:var(--gold-lt); font-family:'Cinzel',serif; font-size:9px; letter-spacing:.12em; text-transform:uppercase; cursor:pointer; }
+.loader-retry.visible { display:block; }
 
 /* ══════ PHOTO PREVIEW + FULL-SIZE ALBUM ══════ */
 .photo-preview { width:100%; position:relative; overflow:hidden; border-radius:3px; border:1px solid var(--border); box-shadow:0 9px 24px rgba(0,0,0,.26); }
@@ -1286,6 +1289,8 @@ html.loading, body.loading { overflow:hidden !important; }
     <div class="loader-sub">Preparing your invitation</div>
     <div class="loader-track"><div class="loader-progress" id="loader-progress"></div></div>
     <div class="loader-percent" id="loader-percent">0%</div>
+    <div class="loader-status" id="loader-status">Loading all invitation assets…</div>
+    <button class="loader-retry" id="loader-retry" type="button">Retry loading</button>
   </div>
 </div>
 
@@ -1385,8 +1390,8 @@ html.loading, body.loading { overflow:hidden !important; }
             <div>
               <div class="celebration-simple-label">Wedding Ceremony</div>
               <span class="celebration-simple-time">2:30 PM</span>
-              <a class="celebration-simple-place" href="https://www.google.com/maps/search/?api=1&amp;query=St.%20John%27s%20Catholic%20Church%20Hall%2C%20Portsmouth%2C%20Dominica" target="_blank" rel="noopener noreferrer" aria-label="Open St. John's Catholic Church Hall in Google Maps">
-                <strong>St. John's Catholic Church Hall</strong>
+              <a class="celebration-simple-place" href="https://www.google.com/maps/search/?api=1&amp;query=HGMG%2B7HV%2C%20Portsmouth%2C%20Dominica" target="_blank" rel="noopener noreferrer" aria-label="Open Fort Shirley, Cabrits in Google Maps">
+                <strong>Fort Shirley · Cabrits</strong>
                 Portsmouth, Dominica · <span class="open-location">Open location ↗</span>
               </a>
             </div>
@@ -1398,8 +1403,8 @@ html.loading, body.loading { overflow:hidden !important; }
             <div class="celebration-simple-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Icon2/Drink-removebg-preview.png" alt="Reception"></div>
             <div>
               <div class="celebration-simple-label">Reception</div>
-              <a class="celebration-simple-place" href="https://www.google.com/maps/search/?api=1&amp;query=HGMG%2B7HV%2C%20Portsmouth%2C%20Dominica" target="_blank" rel="noopener noreferrer" aria-label="Open Fort Shirley, Cabrits National Park in Google Maps">
-                <strong>Fort Shirley · Cabrits National Park</strong>
+              <a class="celebration-simple-place" href="https://www.google.com/maps/search/?api=1&amp;query=St.%20John%27s%20Catholic%20Church%20Hall%2C%20Portsmouth%2C%20Dominica" target="_blank" rel="noopener noreferrer" aria-label="Open St. John's Catholic Church Hall in Google Maps">
+                <strong>St. John's Catholic Church Hall</strong>
                 Portsmouth, Dominica · <span class="open-location">Open location ↗</span>
               </a>
             </div>
@@ -1550,86 +1555,180 @@ window.INVITATION_ALBUM_PHOTOS = [
   'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/1.jpg',
   'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/2.jpg',
   'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/3.jpg',
-  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/4.jpg',
+
   'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/5.jpg',
-  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/6.jpg',
+
   'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/7.jpg',
-  'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/8.jpg'
+
 ];
 </script>
 
 <audio id="page-flip-sound" src="https://raw.githubusercontent.com/cardiastudios/Wed/refs/heads/main/public/Tina%20communion/Page%20Flip%202.mp3" preload="auto"></audio>
-<audio id="wedding-music" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/Music.mp3" loop preload="auto"></audio>
+<audio id="wedding-music" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Shana_Dion/Music2.mp3" loop preload="auto"></audio>
 
 <script>
-/* ══════ ASSET PRELOADER ══════ */
+/* ══════ STRICT ASSET PRELOADER ══════ */
 (function preloadInvitationAssets() {
   const loader = document.getElementById('asset-loader');
   const progressBar = document.getElementById('loader-progress');
   const percentText = document.getElementById('loader-percent');
+  const statusText = document.getElementById('loader-status');
+  const retryBtn = document.getElementById('loader-retry');
+  const minimumDisplayMs = 900;
   const startedAt = Date.now();
-  const minimumDisplayMs = 1100;
 
-  const backgroundAssets = [
-    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/cover3.png',
-    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/pages.png',
-    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/cover2.png',
-    'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/White_Floral_book/Heart.png'
-  ];
-  const imageAssets = [
-    ...Array.from(document.images).map(img => img.currentSrc || img.getAttribute('src')),
-    ...backgroundAssets,
-    ...(window.INVITATION_ALBUM_PHOTOS || [])
-  ];
-  const audioAssets = Array.from(document.querySelectorAll('audio')).map(audio => audio.src);
-  const uniqueImages = [...new Set(imageAssets.filter(Boolean))];
-  const uniqueAudios = [...new Set(audioAssets.filter(Boolean))];
-  const total = Math.max(1, uniqueImages.length + uniqueAudios.length + 1);
+  /*
+    Scan the complete invitation source so assets referenced in HTML, CSS,
+    JavaScript arrays, and dynamically-created elements are all included.
+    Only PNG/JPG/JPEG/MP3 files are part of this strict gate.
+  */
+  function collectAssets() {
+    const html = document.documentElement.innerHTML.replace(/&amp;/g, '&');
+    const matches = html.match(/https?:\/\/[^\s"'`<>]+?\.(?:png|jpe?g|mp3)(?:\?[^\s"'`<>]*)?/gi) || [];
+    return [...new Set(matches.map(url => url.replace(/[),;]+$/g, '')))];
+  }
+
+  const assets = collectAssets();
+  const imageAssets = assets.filter(url => /\.(?:png|jpe?g)(?:\?|$)/i.test(url));
+  const audioAssets = assets.filter(url => /\.mp3(?:\?|$)/i.test(url));
+  const fontPromise = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  const total = Math.max(1, imageAssets.length + audioAssets.length + 1);
   let completed = 0;
+  let running = false;
 
-  function report() {
-    completed += 1;
-    const pct = Math.min(100, Math.round((completed / total) * 100));
+  function setProgress(value) {
+    const pct = Math.max(0, Math.min(100, value));
     if (progressBar) progressBar.style.width = pct + '%';
-    if (percentText) percentText.textContent = pct + '%';
+    if (percentText) percentText.textContent = Math.round(pct) + '%';
   }
-  function loadImage(url) {
-    return new Promise(resolve => {
+
+  function reportDone() {
+    completed += 1;
+    setProgress((completed / total) * 100);
+  }
+
+  async function fetchComplete(url) {
+    const response = await fetch(url, { cache: 'force-cache', mode: 'cors' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}: ${url}`);
+    return response.blob(); // resolves only after the complete file body is downloaded
+  }
+
+  async function loadImageFully(url) {
+    const blob = await fetchComplete(url);
+    const objectUrl = URL.createObjectURL(blob);
+    try {
       const img = new Image();
-      let settled = false;
-      const done = () => { if (settled) return; settled = true; report(); resolve(); };
-      img.onload = done; img.onerror = done; img.src = url; if (img.complete) done();
-    });
+      img.decoding = 'async';
+      img.src = objectUrl;
+      if (typeof img.decode === 'function') {
+        await img.decode();
+      } else {
+        await new Promise((resolve, reject) => {
+          img.onload = resolve;
+          img.onerror = () => reject(new Error(`Image decode failed: ${url}`));
+        });
+      }
+      if (!img.naturalWidth || !img.naturalHeight) {
+        throw new Error(`Image decode failed: ${url}`);
+      }
+    } finally {
+      URL.revokeObjectURL(objectUrl);
+    }
+    reportDone();
   }
-  function loadAudio(url) {
-    return new Promise(resolve => {
-      const audio = new Audio();
-      let settled = false;
-      const done = () => { if (settled) return; settled = true; cleanup(); report(); resolve(); };
-      const cleanup = () => {
-        audio.removeEventListener('canplaythrough', done);
-        audio.removeEventListener('loadeddata', done);
-        audio.removeEventListener('error', done);
-      };
-      audio.preload = 'auto';
-      audio.addEventListener('canplaythrough', done, { once: true });
-      audio.addEventListener('loadeddata', done, { once: true });
-      audio.addEventListener('error', done, { once: true });
-      audio.src = url; audio.load();
+
+  async function loadAudioFully(url) {
+    const blob = await fetchComplete(url);
+    if (!blob.size) throw new Error(`Empty audio file: ${url}`);
+
+    /*
+      The full MP3 bytes are already in memory at this point. Replace matching
+      <audio> elements with Blob URLs so playback never has to fetch the remote
+      MP3 again after the loader disappears.
+    */
+    const objectUrl = URL.createObjectURL(blob);
+    const matchingAudio = Array.from(document.querySelectorAll('audio')).filter(audio => {
+      try { return new URL(audio.getAttribute('src'), document.baseURI).href === url; }
+      catch (_) { return audio.src === url; }
     });
+
+    if (matchingAudio.length) {
+      await Promise.all(matchingAudio.map(audio => new Promise((resolve, reject) => {
+        const cleanup = () => {
+          audio.removeEventListener('loadedmetadata', ready);
+          audio.removeEventListener('canplaythrough', ready);
+          audio.removeEventListener('error', failed);
+        };
+        const ready = () => { cleanup(); resolve(); };
+        const failed = () => { cleanup(); reject(new Error(`Audio decode failed: ${url}`)); };
+        audio.addEventListener('loadedmetadata', ready, { once:true });
+        audio.addEventListener('canplaythrough', ready, { once:true });
+        audio.addEventListener('error', failed, { once:true });
+        audio.src = objectUrl;
+        audio.preload = 'auto';
+        audio.load();
+        if (audio.readyState >= 1) ready();
+      })));
+    } else {
+      /* Validate MP3 decoding even if it is only referenced dynamically. */
+      await new Promise((resolve, reject) => {
+        const audio = new Audio();
+        const cleanup = () => {
+          audio.removeEventListener('loadedmetadata', ready);
+          audio.removeEventListener('error', failed);
+        };
+        const ready = () => { cleanup(); resolve(); };
+        const failed = () => { cleanup(); reject(new Error(`Audio decode failed: ${url}`)); };
+        audio.addEventListener('loadedmetadata', ready, { once:true });
+        audio.addEventListener('error', failed, { once:true });
+        audio.preload = 'auto';
+        audio.src = objectUrl;
+        audio.load();
+        if (audio.readyState >= 1) ready();
+      });
+      URL.revokeObjectURL(objectUrl);
+    }
+
+    reportDone();
   }
-  const fontReady = (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).catch(() => {}).then(report);
-  Promise.all([...uniqueImages.map(loadImage),...uniqueAudios.map(loadAudio),fontReady]).then(() => {
-    const remaining = Math.max(0, minimumDisplayMs - (Date.now() - startedAt));
-    setTimeout(() => {
-      if (progressBar) progressBar.style.width = '100%';
-      if (percentText) percentText.textContent = '100%';
-      if (loader) loader.classList.add('loader-hidden');
-      document.documentElement.classList.remove('loading');
-      document.body.classList.remove('loading');
-      setTimeout(() => { if (loader) loader.remove(); }, 650);
-    }, remaining);
-  });
+
+  async function runLoader() {
+    if (running) return;
+    running = true;
+    completed = 0;
+    setProgress(0);
+    if (retryBtn) retryBtn.classList.remove('visible');
+    if (statusText) statusText.textContent = `Loading ${imageAssets.length} images and ${audioAssets.length} audio files…`;
+
+    try {
+      await Promise.all([
+        ...imageAssets.map(loadImageFully),
+        ...audioAssets.map(loadAudioFully),
+        Promise.resolve(fontPromise).then(() => reportDone())
+      ]);
+
+      const remaining = Math.max(0, minimumDisplayMs - (Date.now() - startedAt));
+      setTimeout(() => {
+        setProgress(100);
+        if (statusText) statusText.textContent = 'Ready';
+        requestAnimationFrame(() => {
+          if (loader) loader.classList.add('loader-hidden');
+          document.documentElement.classList.remove('loading');
+          document.body.classList.remove('loading');
+          setTimeout(() => { if (loader) loader.remove(); }, 650);
+        });
+      }, remaining);
+    } catch (error) {
+      console.error('Invitation asset preload failed:', error);
+      /* Do NOT dismiss the loader: the invitation must never open incomplete. */
+      if (statusText) statusText.textContent = 'Some invitation assets could not finish loading. Please check your connection and retry.';
+      if (retryBtn) retryBtn.classList.add('visible');
+      running = false;
+    }
+  }
+
+  if (retryBtn) retryBtn.addEventListener('click', runLoader);
+  runLoader();
 })();
 
 /* ══════ FALLING PETALS ══════ */
