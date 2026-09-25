@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Romanos &amp; Maha — Zgharta Wedding Invitation</title>
+  <title>Romanos &amp; Maha — Wedding Invitation</title>
 
   <link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,8 +25,8 @@
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Birds1.png">
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png">
   <link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png">
-  <link rel="preload" as="image" href="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Rossi/Plane3.png">
-  <link rel="preload" as="audio" href="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Ray.mp3" type="audio/mpeg">
+  <link rel="preload" as="image" href="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Romanos_Maha/Plane3.png">
+  <link rel="preload" as="audio" href="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Romanos_Maha/Music.mp3" type="audio/mpeg">
 
   <style>
     :root {
@@ -322,15 +322,17 @@
     .parents-card .couple-line,
     .guest-welcome-title,
     #stepOk h3 {
-      color: #ecd18c;
-      background: linear-gradient(180deg, #fff6d4 0%, #f0d58f 40%, #c58a42 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: none;
-      filter:
-        drop-shadow(0 calc(var(--screen-h) * .0018) calc(var(--screen-h) * .0022) rgba(54, 23, 8, .68))
-        drop-shadow(0 0 calc(var(--screen-h) * .0045) rgba(255, 234, 177, .28));
+      /* Cross-browser-safe gold: avoid transparent text + background-clip,
+         which can render dark/brown on some Android/Samsung browsers. */
+      color: #f0d58f !important;
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      -webkit-text-fill-color: #f0d58f !important;
+      filter: none !important;
+      text-shadow:
+        0 calc(var(--screen-h) * .0015) calc(var(--screen-h) * .0025) rgba(54, 23, 8, .62),
+        0 0 calc(var(--screen-h) * .0045) rgba(255, 234, 177, .30) !important;
     }
 
     .static-card h2.gold-text {
@@ -790,14 +792,17 @@ color: #1E1C11;
       font-size: calc(var(--screen-h) * .033);
       font-weight: 400;
       line-height: .95;
-      color: #efd698;
-      background: linear-gradient(180deg, #fff5d0 0%, #eacb82 48%, #b87934 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter:
-        drop-shadow(0 calc(var(--screen-h) * .0018) calc(var(--screen-h) * .0022) rgba(52, 22, 7, .62))
-        drop-shadow(0 0 calc(var(--screen-h) * .004) rgba(255, 232, 176, .24));
+
+      /* Same cross-browser-safe gold method used throughout the invitation. */
+      color: #efd698 !important;
+      background: none !important;
+      -webkit-background-clip: initial !important;
+      background-clip: initial !important;
+      -webkit-text-fill-color: #efd698 !important;
+      filter: none !important;
+      text-shadow:
+        0 calc(var(--screen-h) * .0015) calc(var(--screen-h) * .0025) rgba(52, 22, 7, .58),
+        0 0 calc(var(--screen-h) * .004) rgba(255, 232, 176, .26) !important;
     }
 
     .powered-by-cta {
@@ -2138,31 +2143,29 @@ color: #1E1C11;
         <img class="hot-air hot-air-5" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png" alt="" draggable="false">
         <img class="hot-air hot-air-6" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png" alt="" draggable="false">
         <img class="hot-air hot-air-7" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Birds1.png" alt="" draggable="false">
-        <img class="hot-air hot-air-8" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Rossi/Plane3.png" alt="" draggable="false">
+        <img class="hot-air hot-air-8" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Romanos_Maha/Plane3.png" alt="" draggable="false">
 
         
         <div class="hero-text gold-text" aria-label="1 John 4:16 Bible verse">
           <h1 class="story-title">1 John 4:16</h1>
           <div class="story-star" aria-hidden="true">✦</div>
           <p class="story-copy">
-            “And so we know and rely on the love God has for us.<br>
-            God is love.<br>
-            Whoever lives in love lives in God,<br>
-            and God in them.”
+            “God is love, and those who abide in love abide in God,<br>
+            and God abides in them”
           </p>
         </div>
 
         <section class="static-card parents-card" aria-label="Parents invitation">
           <p class="kicker">With Joyful Hearts</p>
-          <p class="parents-names">Family of Kbalan &amp; Marie-Antoinette Azizi<br>Family of Elie &amp; Marie Khoury</p>
-          <p class="request-line">request the honor of your presence at the wedding of their son and daughter</p>
+          <p class="request-line">The family of Kabalan &amp; Marie-Antoinette Azizi<br> The family of Elie &amp; Marie Al-Khoury<br> </p>
+          <p class="request-line">Request the honor of your presence at the wedding of their son and daughter</p>
           <span class="couple-line">Romanos &amp; Maha</span>
         </section>
 
         <section class="static-card church-card" aria-label="Church information">
           <p class="kicker">Marriage Ceremony</p>
-          <h2 class="gold-text">Saydet Zgharta</h2>
-          <p><strong>Zgharta</strong><span class="small">4:00 PM</span></p>
+          <h2 class="gold-text">Saydet Zgharta Church</h2>
+          <p><strong></strong><span class="small">4:00 PM</span></p>
           <a class="map-link" href="https://www.google.com/maps/search/?api=1&amp;query=Saydet+Zgharta+Church+Zgharta+Lebanon" target="_blank" rel="noopener">Open Location</a>
         </section>
 
@@ -2176,7 +2179,7 @@ color: #1E1C11;
         <section class="static-card gift-card" aria-label="Wedding list and gift information">
           <p class="kicker">Wedding List</p>
           <h2 class="gold-text">With Love</h2>
-          <p>Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p>
+          <p>Your presence is a gift, celebrating with you is what we cherish most. For those who wish, a gift may be made through our WHISH account.</p>
           <div class="gift-line">
             <div>
               <span>Whish money</span>
@@ -2189,7 +2192,7 @@ color: #1E1C11;
       
           <h2 class="gold-text">RSVP</h2>
           <p class="kicker">Kindly Reply</p>
-          <p>Before 17 December 2026</p>
+          <p>Before December 17, 2026</p>
 
           <div class="rr-rsvp-box">
             <div class="step-dots" aria-hidden="true">
@@ -2208,7 +2211,7 @@ color: #1E1C11;
                 <div class="guest-list-scroll-cue" aria-hidden="true">Scroll guests ↓</div>
               </div>
 
-              <p class="guest-total-line">Total guests attending: <strong id="attendingGuestCount">0</strong></p>
+              <p class="guest-total-line">Number of guests attending: <strong id="attendingGuestCount">0</strong></p>
               <p class="error-msg" id="errName" style="display:none;">Please enter at least one guest name.</p>
 
               <button class="btn-solid rsvp-main-btn" id="continueToMessageBtn" type="button">Continue →</button>
@@ -2269,7 +2272,7 @@ color: #1E1C11;
 
     const PANO_URL = "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Romanos_Maha/Lebanon.png";
     const CAR_URL = "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Romanos_Maha/Car.png";
-    const MUSIC_URL = "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Raymond/Ray.mp3";
+    const MUSIC_URL = "https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Romanos_Maha/Music.mp3";
     const HOT_AIR_4B_URL = "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air4b.png";
     const HOT_AIR_5_URL = "https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hot_air5.png";
 
