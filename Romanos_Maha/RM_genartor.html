@@ -480,13 +480,24 @@
     <section class="mode-panel active" id="mode-self">
       <div class="mode-desc">
         The invitation opens with <strong>"Dear Guest"</strong> and blank name fields. Guests fill in their own names.<br><br>
-        Choose how many links to generate — one per guest count. Send the <em>1-guest link</em> to solo guests, the <em>2-guest link</em> to couples, and so on.
+        Generate <strong>one unique link per household</strong>. Every link gets its own RSVP ID, so that household can submit only once.
       </div>
-      <div class="field-group">
-        <label class="field-label">How many links do you need?</label>
-        <div class="number-input-row">
-          <input class="field-input" id="selfMaxSlots" type="number" min="1" max="20" step="1" value="1" />
-          <p class="number-label">Links will be generated from <strong>1 guest</strong> up to this number.</p>
+
+      <div class="fields-row" style="margin-bottom:0;">
+        <div class="field-group">
+          <label class="field-label">How many unique links?</label>
+          <div class="number-input-row">
+            <input class="field-input" id="selfLinkCount" type="number" min="1" max="200" step="1" value="1" />
+            <p class="number-label">Generate one different link for each household.</p>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label">Guests allowed per link</label>
+          <div class="number-input-row">
+            <input class="field-input" id="selfGuestLimit" type="number" min="1" max="20" step="1" value="1" />
+            <p class="number-label">Maximum number of guests that can RSVP from each link.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -546,7 +557,7 @@ const INVITATION_URLS = {
   the signature will no longer match and the invitation will reject it.
 
   Keep INVITE_LINK_SECRET exactly the same in this generator and in
-  M_V_Floral.html.
+  the Google Apps Script.
 */
 const MAX_INVITED_GUESTS = 20;
 const INVITE_LINK_SECRET = 'cardia-mv-floral-2026-secure-rsvp-v1-K9p3Qx72';
@@ -563,10 +574,21 @@ function normalizeGuestNames(names) {
     .filter(Boolean);
 }
 
-function canonicalInvitePayload(limit, names) {
+function createInviteId() {
+  if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+    return 'RM-' + window.crypto.randomUUID().replace(/-/g, '').slice(0, 16).toUpperCase();
+  }
+
+  const randomPart = Math.random().toString(36).slice(2, 10);
+  const timePart = Date.now().toString(36);
+  return ('RM-' + timePart + randomPart).toUpperCase();
+}
+
+function canonicalInvitePayload(limit, names, inviteId) {
   const safeLimit = clampGuestLimit(limit);
   const safeNames = normalizeGuestNames(names);
-  return 'limit=' + safeLimit + '&guests=' + safeNames.join('|');
+  const safeInviteId = String(inviteId || '').trim();
+  return 'limit=' + safeLimit + '&guests=' + safeNames.join('|') + '&invite_id=' + safeInviteId;
 }
 
 function inviteHash(input) {
@@ -583,21 +605,31 @@ function inviteHash(input) {
   return (h1 >>> 0).toString(36).padStart(7, '0') + (h2 >>> 0).toString(36).padStart(7, '0');
 }
 
-function createInviteSignature(limit, names) {
-  return inviteHash(canonicalInvitePayload(limit, names));
+function createInviteSignature(limit, names, inviteId) {
+  return inviteHash(canonicalInvitePayload(limit, names, inviteId));
 }
 
-function signInviteUrl(url, limit, guestNames = []) {
+function signInviteUrl(url, limit, guestNames = [], inviteId = '') {
   const safeLimit = clampGuestLimit(limit);
   const safeNames = normalizeGuestNames(guestNames);
+  const safeInviteId = String(inviteId || '').trim() || createInviteId();
+
   url.searchParams.set('limit', safeLimit);
   if (safeNames.length) {
     url.searchParams.set('guests', safeNames.join('|'));
   } else {
     url.searchParams.delete('guests');
   }
-  url.searchParams.set('sig', createInviteSignature(safeLimit, safeNames));
-  return { url, limit: safeLimit, guestNames: safeNames };
+
+  url.searchParams.set('invite_id', safeInviteId);
+  url.searchParams.set('sig', createInviteSignature(safeLimit, safeNames, safeInviteId));
+
+  return {
+    url,
+    limit: safeLimit,
+    guestNames: safeNames,
+    inviteId: safeInviteId
+  };
 }
 
 let rows = [];
@@ -650,7 +682,7 @@ function makeSafeUrl(base) {
 function cleanUrl(language = defaultLanguage) {
   const safeLanguage = language === 'ar' ? 'ar' : 'en';
   const url = makeSafeUrl(INVITATION_URLS[safeLanguage]);
-  ['guest', 'guests', 'invite', 'group', 'id', 'limit', 'sig'].forEach(p => url.searchParams.delete(p));
+  ['guest', 'guests', 'invite', 'group', 'id', 'limit', 'sig', 'invite_id'].forEach(p => url.searchParams.delete(p));
   return url;
 }
 
@@ -673,13 +705,33 @@ function generateLinks() {
 }
 
 function buildSlotRows() {
-  const max = parseInt(document.getElementById('selfMaxSlots').value, 10);
-  if (!Number.isFinite(max) || max < 1) throw new Error('Please enter a valid number of guests (1 or more).');
-  if (max > MAX_INVITED_GUESTS) throw new Error('For safety, this generator allows a maximum of ' + MAX_INVITED_GUESTS + ' guests per invitation link.');
-  return Array.from({ length: max }, (_, i) => {
-    const limit = i + 1;
+  const linkCount = parseInt(document.getElementById('selfLinkCount').value, 10);
+  const limit = parseInt(document.getElementById('selfGuestLimit').value, 10);
+
+  if (!Number.isFinite(linkCount) || linkCount < 1) {
+    throw new Error('Please enter how many unique invitation links you need.');
+  }
+  if (linkCount > 200) {
+    throw new Error('Please generate a maximum of 200 links at a time.');
+  }
+  if (!Number.isFinite(limit) || limit < 1) {
+    throw new Error('Please enter a valid guest limit.');
+  }
+  if (limit > MAX_INVITED_GUESTS) {
+    throw new Error('The maximum guest limit per invitation link is ' + MAX_INVITED_GUESTS + '.');
+  }
+
+  return Array.from({ length: linkCount }, (_, i) => {
     const signed = signInviteUrl(cleanUrl(defaultLanguage), limit, []);
-    return { label: signed.limit + ' guest' + (signed.limit === 1 ? '' : 's'), limit: signed.limit, url: formatGeneratedUrl(signed.url), guestNames: [], mode: 'self', language: defaultLanguage };
+    return {
+      label: 'Guest link ' + (i + 1) + ' · max ' + signed.limit + ' guest' + (signed.limit === 1 ? '' : 's'),
+      limit: signed.limit,
+      url: formatGeneratedUrl(signed.url),
+      guestNames: [],
+      inviteId: signed.inviteId,
+      mode: 'self',
+      language: defaultLanguage
+    };
   });
 }
 
@@ -690,7 +742,15 @@ function buildNamedRows() {
     .filter(r => r && r.names.length)
     .map(row => {
       const signed = signInviteUrl(cleanUrl(defaultLanguage), row.limit, row.names);
-      return { label: formatGuestNames(signed.guestNames), limit: signed.limit, url: formatGeneratedUrl(signed.url), guestNames: signed.guestNames, mode: 'named', language: defaultLanguage };
+      return {
+        label: formatGuestNames(signed.guestNames),
+        limit: signed.limit,
+        url: formatGeneratedUrl(signed.url),
+        guestNames: signed.guestNames,
+        inviteId: signed.inviteId,
+        mode: 'named',
+        language: defaultLanguage
+      };
     });
 }
 
@@ -756,9 +816,15 @@ function setRowLanguage(index, language) {
   if (!row) return;
 
   const safeLanguage = language === 'ar' ? 'ar' : 'en';
-  const signed = signInviteUrl(cleanUrl(safeLanguage), row.limit, row.guestNames || []);
+  const signed = signInviteUrl(
+    cleanUrl(safeLanguage),
+    row.limit,
+    row.guestNames || [],
+    row.inviteId
+  );
 
   row.language = safeLanguage;
+  row.inviteId = signed.inviteId;
   row.url = formatGeneratedUrl(signed.url);
   renderTable();
 }
