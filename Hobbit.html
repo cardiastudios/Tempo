@@ -1,0 +1,1721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Thomas & Sarah — Hobbit Garden Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Cinzel:wght@400;600&family=Montserrat:wght@200;300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --hero-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png');
+    --paper-bg: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png');
+    --garden-bg: #f4efe3;
+    --garden-dark: #244b29;
+    --garden-deep: #17371d;
+    --garden-mid: #4f7a35;
+    --garden-soft: #dce8c6;
+    --gold: #b98b52;
+    --gold-soft: #ead1ac;
+    --ink: #2f2417;
+    --ink-soft: #6e5b42;
+    --paper: #fffaf0;
+    --border: rgba(91, 93, 44, .22);
+    --shadow: 0 18px 48px rgba(39, 55, 23, .18);
+  }
+
+  html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
+  body {
+    background: #eef0f5;
+    color: var(--ink);
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+  }
+  img, video { max-width: 100%; display: block; }
+  button, input, textarea { font: inherit; }
+
+  .page {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    background: var(--garden-bg);
+    box-shadow: 0 0 60px rgba(0,0,0,.12);
+  }
+  @media (max-width: 560px) {
+    .page {
+      max-width: 100%;
+      box-shadow: none;
+    }
+
+    .section {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .loc-section,
+    .photo-section,
+    .rsvp-section {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .loc-card,
+    .glass-card,
+    .photo-card,
+    .gift-dark-card,
+   .rsvp-section .page-card {
+    /* warm parchment card — no more cold white */
+    background: rgba(153,246,236,.96);
+    border: 1px solid rgba(201,151,58,.30);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(6px);
+  }
+  }
+
+
+  /* ═════════ OPENING COVER + VIDEO INTRO ═════════ */
+  .intro-cover,
+  .intro-video-screen {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    overflow: hidden;
+    background: #0f1f12;
+  }
+
+  .intro-cover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .intro-cover-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .intro-cover::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.18));
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .intro-cover-text {
+    position: absolute;
+    top: 14%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    width: 88%;
+    text-align: center;
+    color: rgba(255,255,255,.9);
+    text-shadow: 0 2px 12px rgba(255,255,255,.65);
+    pointer-events: none;
+  }
+
+  .intro-cover-family {
+    font-family: 'Cormorant Garamond', serif;
+     font-size: clamp(18px, 15vw, 28px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: -40px;
+  }
+
+  .intro-cover-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(58px, 15vw, 88px);
+    line-height: .9;
+    margin-top: -30px;
+    font-weight: 400;
+  }
+
+  .intro-cover-amp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 8vw, 42px);
+
+    font-style: italic;
+    line-height: 1;
+    margin: 10px 0;
+  }
+
+  .intro-open-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 198px;
+    transform: translateX(-50%);
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,.82);
+    background: rgba(255,255,255,.18);
+    color: #fff;
+    border-radius: 999px;
+    padding: 14px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    box-shadow: 0 16px 35px rgba(0,0,0,.22);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+  }
+
+  .intro-video-screen {
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .intro-video-screen.show {
+    display: flex;
+  }
+
+  .intro-video {
+    width: 100%;
+    height: 100vh;
+    height: 100svh;
+    object-fit: cover;
+    object-position: center;
+    background: #000;
+  }
+
+  .intro-skip-btn {
+    position: absolute;
+    right: 18px;
+    bottom: 22px;
+    z-index: 3;
+    border: 1px solid rgba(255,255,255,.50);
+    background: rgba(0,0,0,.28);
+    color: #fff;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-size: 10px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ═════════ HERO — keeps your new Hobbit composition ═════════ */
+  .section-hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    min-height: 0;
+    height: auto;
+    overflow: hidden;
+    cursor: pointer;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--hero-bg) center center / cover no-repeat;
+  }
+  .hero-bg::after {
+    content: none;
+  }
+  .layer { position: absolute; pointer-events: none; user-select: none; }
+  .star {
+    position: absolute;
+    background: var(--gold);
+    clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    animation: twinkle 2s ease-in-out infinite;
+  }
+
+  .l-trunk-left {left: 0%; 
+  bottom: 0%;
+    width: 680px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 7; 
+  transform: scaleX(-1); }
+
+  .l-trunk-top {left: 0%; 
+  top: 0%;
+    width: 680px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 3; 
+  transform: scaleX(-1); }
+
+
+
+
+  .l-Hobbiton {left: -25%; 
+  bottom: -8%;
+    width: 680px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 1; 
+; 
+ }
+
+
+
+  .l-Hobbiton1 {left: 44%; 
+  bottom: 28%;
+    width: 80px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 1; 
+; 
+ }
+
+  .l-Hobbiton2 {left: 81%; 
+  bottom: 23%;
+    width: 100px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 1; 
+; 
+ }
+
+
+
+
+
+
+
+
+
+
+
+  .l-Chariot {left: 15%; 
+  bottom: 10%;
+    width: 70px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 2; 
+; 
+ }
+
+
+
+
+
+
+  
+    /* Lamp2L */
+    .l-Lamp2R {left: -1%; 
+    bottom: -43%;
+   width: 600px !important;
+  max-width: none !important;
+     height: auto !important;
+  z-index: 3; 
+  transform: scaleX(-1); 
+ }
+  
+  
+  
+  
+  
+  
+  .l-Tree1 { left: 15%; transform: translateX(-50%); bottom: 4%; width: 20%; z-index: 1; animation: floatMed 9s ease-in-out infinite .8s; }
+  .l-Tree2 { left: 35%; transform: translateX(-50%); bottom: 8%; width: 20%; z-index: 1; animation: floatBalloon 9s ease-in-out infinite .8s; }
+  .l-Tree3 { left: 45%; transform: translateX(-50%); bottom: 8%; width: 20%; z-index: 1; animation: floatMed 9s ease-in-out infinite .8s; }
+  
+  
+  .l-balloon {
+  left: -15%;
+  top: 20%;
+  width: 53% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 4;
+  animation: floatBalloon 6s ease-in-out infinite;
+  transform-origin: center top;
+}
+  
+  
+  
+    
+  
+.l-Sun { right: -35px;
+bottom: 33%; 
+width: 25px; 
+width: 43% !important;
+max-width: none !important; 
+height: auto !important; z-index: 5;
+animation: floatBalloon 7s ease-in-out infinite;
+transform-origin: center top; }
+
+
+    
+  .l-Sun2 { right: 371px;
+  bottom: 22%; 
+  width: 15px;
+   width: 33% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 3;
+  animation: floatBalloon 8s ease-in-out infinite;
+  transform-origin: center top;
+    
+  }
+  
+  
+    .l-Sun3 { right: -51px;
+  bottom: 47%; 
+  width: 25px;
+   width: 53% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 3;
+  animation: floatBalloon 8s ease-in-out infinite;
+  transform-origin: center top;
+    
+  }
+  
+  
+  
+  
+  
+  
+  
+  .l-5png {
+  left: -33%;
+  top: 0%;
+  width: 67%;
+  height: auto;
+  z-index: 6;
+  animation: floatBalloon 9s ease-in-out infinite;
+  transform-origin: center top;
+}
+  
+  
+  
+  
+  .l-5pngR {
+  right: -33%;
+  top: 0%;
+  width: 67%;
+  height: auto;
+  z-index: 6;
+  animation: floatBalloon 9s ease-in-out infinite;
+  transform-origin: center top;
+}
+  
+  
+  
+  
+  
+  .l-Lamp { left: 0%;
+  top: 5%;
+   width: 60px !important;
+  max-width: none !important;
+     height: auto !important;  
+  z-index: 6;
+
+  transform-origin: center top; }
+  
+  
+  
+  
+  .l-LampR { right: 0%; 
+  top: 5%;
+   width: 60px !important;
+  max-width: none !important;
+     height: auto !important; 
+  z-index: 6;
+  transform-origin: center top; }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    .l-F2png {
+  right: -21%;
+  top: 3%;
+  width: 50% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+  
+  
+    
+    .l-F2pngL {
+  left: -21%;
+  top: 3%;
+  width: 50% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+  
+  
+  .l-8png {
+  right: -15%;
+  top: -15%;
+  width: 60% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+
+  
+  .l-8pngL {
+  left:  -15%;
+  top: -18%;
+  width: 60% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+
+  .l-8pngT {
+  left:  15%;
+  top: -10%;
+  width: 40% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+
+  .l-8pngD {
+  left:  -15%;
+  top: -10%;
+  width: 120% !important;
+  max-width: none !important;
+  z-index: 5;
+  height: auto !important;
+  animation: floatFast 4s ease-in-out infinite .2s;
+}
+
+  
+  
+
+  
+.l-16png {
+  right: -17%;
+  bottom: -12%;
+  width: 146% !important;
+  max-width: none !important;
+  height: auto !important;
+  z-index: 2;
+}
+  .l-torn3a { left: 35px; top: 32%; width: 240px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
+  .l-Cloud2 { left: 75px; top: 32%; width: 140px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
+  .l-Cloud3 { right: 65px; top: 35%; width: 140px; z-index: 5; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
+  .l-cover-frame { inset: 0; width: 100%; height: 30%; position: absolute; top: -1%; z-index: 8; object-fit: cover; }
+
+  .hero-text {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9;
+    text-align: center;
+    width: 90%;
+    animation: fadeInDown 1.2s ease-out .3s both;
+  }
+  .hero-text::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(92%, 390px);
+    height: 210px;
+    transform: translate(-50%, -50%);
+    border-radius: 999px;
+   
+    z-index: -1;
+    pointer-events: none;
+  }
+  .hero-name {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(4.8rem, 9vw, 5.2rem);
+    color: #2b2117;
+    line-height: 1;
+    display: block;
+    -webkit-text-stroke: .35px rgba(255,255,255,.72);
+    text-shadow:
+      0 2px 0 rgba(255,255,255,.55),
+      0 8px 18px rgba(255,255,255,.70),
+      0 2px 8px rgba(0,0,0,.22);
+  }
+  .hero-weds {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 1.8vw, 1.75rem);
+    letter-spacing: .4em;
+    color: #ffffff;
+    display: block;
+    margin: .4em 0;
+    font-weight: 600;
+    text-shadow:
+      0 2px 5px rgba(0,0,0,.42),
+      0 0 14px rgba(255,255,255,.70);
+  }
+  .open-hint {
+    position: absolute;
+    z-index: 12;
+    left: 50%;
+    bottom: 56px;
+    transform: translateX(-50%);
+    border: 1px solid rgba(255,255,255,.78);
+    background: rgba(255,255,255,.20);
+    color: #fff;
+    border-radius: 999px;
+    padding: 13px 28px;
+    font-size: 11px;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+    box-shadow: 0 12px 30px rgba(55,42,25,.14);
+    backdrop-filter: blur(4px);
+  }
+
+  /* ═════════ MODERN NAVY-STYLE SECTIONS, RECOLORED FOR HOBBIT THEME ═════════ */
+  .section {
+    position: relative;
+    padding: 72px 0;
+    text-align: center;
+    overflow: hidden;
+    background: var(--paper-bg) center / cover no-repeat;
+  }
+  .section.green {
+    background:
+      linear-gradient(180deg, rgba(23,55,29,.88), rgba(36,75,41,.86)),
+      var(--paper-bg) center / cover no-repeat;
+  }
+  .section-divider {
+    min-height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--paper-bg) center / cover no-repeat;
+  }
+  .section-divider::before,
+  .section-divider::after {
+    content: '';
+    height: 1px;
+    width: 110px;
+    max-width: 32%;
+    background: linear-gradient(to right, transparent, rgba(185,139,82,.42));
+  }
+  .section-divider::after { background: linear-gradient(to left, transparent, rgba(185,139,82,.42)); }
+  .divider-leaf { width: 88px; margin: 0 16px; opacity: .85; }
+
+
+  /* ═════════ DIFFERENT BACKGROUND PNG FOR EACH SECTION ═════════ */
+  .section.bg-page1 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page2 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page3 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page4 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page5 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page6 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page7 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page8 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+  .section.bg-page9 { background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Blue-bg9.png') center center / cover no-repeat; }
+
+  .section.green.bg-page3 {
+    background:
+      linear-gradient(180deg, rgba(23,55,29,.72), rgba(36,75,41,.70)),
+      url('https://github.com/NemerDavid/web-des/blob/main/Hobbit/Page3.png?raw=true') center center / cover no-repeat;
+  }
+
+  .section.green.bg-page6 {
+    background:
+      linear-gradient(180deg, rgba(23,55,29,.72), rgba(36,75,41,.70)),
+      url('https://github.com/NemerDavid/web-des/blob/main/Hobbit/Page6.png?raw=true') center center / cover no-repeat;
+  }
+
+
+
+
+
+
+
+
+
+
+
+  .page-card {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 60px 36px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .glass-card,
+  .calendar-card,
+  .info-card,
+  .gift-dark-card,
+  .rsvp-section .page-card {
+    background: rgba(255,255,255,);
+    border: 1px solid rgba(255,255,255);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(5px);
+  }
+
+  .section-icon { width: 138px; max-height: 160px; object-fit: contain; margin: 0 auto 28px; filter: drop-shadow(0 10px 18px rgba(37,58,21,.18)); }
+  .section-icon.wide { width: 190px; max-height: 130px; }
+  .section-icon.tall { width: 140px; max-height: 185px; }
+  .kicker { font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .36em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; color: var(--garden-mid); }
+  .section-title, .script-title { font-family: 'Great Vibes', cursive; font-size: 54px; line-height: 1; font-weight: 400; color: var(--garden-dark); }
+  .names { font-family: 'Great Vibes', cursive; font-size: 78px; line-height: .92; font-weight: 400; color: var(--ink); }
+  .amp { font-family: 'Cormorant Garamond', serif; font-size: 28px; margin: 14px 0; color: var(--gold); }
+  .subtitle, .date-line { margin-top: 12px; font-family: 'Cormorant Garamond', serif; font-size: 18px; letter-spacing: .15em; text-transform: uppercase; font-weight: 500; line-height: 1.6; color: var(--ink-soft); }
+  .body-text { font-family: 'EB Garamond', serif; font-style: italic; font-size: 22px; line-height: 1.56; margin: 28px auto 0; max-width: 365px; color: var(--ink); }
+  .thin-line { width: 74px; height: 1px; margin: 24px auto; background: var(--border); }
+  .heart-divider { display: flex; align-items: center; justify-content: center; gap: 18px; width: 72%; margin: 26px auto; color: var(--gold); }
+  .heart-divider::before, .heart-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  .parent-grid { width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 26px 0 20px; }
+  .parent-card { padding: 18px 12px; border-radius: 16px; background: rgba(255,255,255,.58); border: 1px solid var(--border); }
+  .parent-label { font-size: 8px; letter-spacing: .24em; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; color: var(--garden-mid); }
+  .parent-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.3; font-weight: 600; color: var(--ink); }
+
+  .calendar-card { width: 100%; padding: 28px 20px; margin-top: 30px; border-radius: 18px; }
+  .cal-month { font-family: 'Cormorant Garamond', serif; font-size: 23px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; margin-bottom: 18px; color: var(--garden-dark); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 7px; }
+  .cal-cell { position: relative; min-height: 34px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink-soft); }
+  .cal-cell.hdr { font-family: 'Montserrat', sans-serif; font-size: 8px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; color: var(--garden-mid); }
+  .cal-cell.empty { opacity: 0; }
+  .cal-cell.highlight {
+    position: relative;
+    color: var(--garden-dark);
+    font-weight: 700;
+    overflow: visible;
+    z-index: 2;
+  }
+  .cal-cell.highlight::before { display: none !important; }
+  .cal-cell.highlight::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 42px;
+    height: 42px;
+    background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Heart1.png') center / contain no-repeat;
+    border-radius: 0;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .cal-cell.highlight .day-txt { position: relative; z-index: 2; }
+
+  .countdown { display: flex; align-items: center; justify-content: center; margin-top: 34px; width: 100%; }
+  .count-item { min-width: 76px; padding: 0 8px; border-right: 1px solid var(--border); }
+  .count-item:last-child { border-right: 0; }
+  .count-num { font-family: 'Great Vibes', cursive; font-size: 34px; line-height: 1; color: var(--garden-dark); }
+  .count-label { margin-top: 12px; font-size: 8px; letter-spacing: .20em; text-transform: uppercase; font-weight: 800; color: var(--ink-soft); }
+
+  .section.green .kicker,
+  .section.green .subtitle,
+  .section.green .body-text,
+  .section.green .date-line,
+  .section.green .label {color: #A97F36}
+  .section.green .section-title,
+  .section.green .names,
+  .section.green .time,
+  .section.green .count-num { color:#A97F36 }
+  .section.green .amp { color: var(--gold-soft); }
+  .section.green .time-row { border-color: rgba(255,255,255,.26); }
+  .section.green .time-icon img {   }
+
+  .timeline { display: grid; gap: 14px; margin-top: 34px; width: 100%; text-align: left; }
+  .time-row { display: grid; grid-template-columns: 74px 50px 1fr; gap: 15px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .time-row:last-child { border-bottom: 0; }
+  
+  
+  
+  
+  .timeline-row {
+  display: grid;
+  grid-template-columns: 74px 34px 1fr;
+  gap: 8px;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+
+  
+  .time { font-family: 'Cormorant Garamond', serif; font-weight: 700; letter-spacing: .08em; color: var(--garden-dark); }
+
+.time-icon {
+  width: 75px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -16px;
+}
+
+
+.time-icon img {
+  width: 75px;
+  height: 75px;
+  object-fit: contain;
+  opacity: 1;
+}
+
+
+
+  .label { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; line-height: 1.55; color: var(--ink-soft); }
+
+  .loc-section { padding: 48px 20px 60px; }
+  .loc-card {
+    position: relative;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 28px;
+    box-shadow: 0 20px 60px rgba(0,0,0,.13), 0 4px 16px rgba(0,0,0,.07);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(255,255,255,.80);
+  }
+  .loc-illustration-wrap {
+    width: 100%;
+    background:
+      linear-gradient(180deg, rgba(23,55,29,.86), rgba(62,98,43,.82)),
+      var(--paper-bg) center / cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 28px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .loc-illustration-wrap img { width: 245px; max-height: 220px; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 14px 18px rgba(0,0,0,.18)); }
+  .loc-illustration-wrap2 img { width: 345px; margin-top:10px; max-height: 320px; object-fit: contain; position: relative; z-index: 1; filter: drop-shadow(0 14px 18px rgba(0,0,0,.18)); }
+  .loc-body { width: 100%; padding: 32px 32px 36px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .loc-kicker { font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .38em; text-transform: uppercase; font-weight: 700; color: var(--garden-mid); margin-bottom: 10px; }
+  .loc-title { font-family: 'Great Vibes', cursive; font-size: 48px; color: var(--ink); line-height: 1; font-weight: 400; margin-bottom: 6px; }
+  .loc-divider { width: 48px; height: 1px; background: var(--border); margin: 14px auto; }
+  .loc-meta { display: flex; align-items: center; justify-content: center; gap: 18px; font-family: 'Cormorant Garamond', serif; font-size: 15px; letter-spacing: .10em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; margin-bottom: 6px; }
+  .loc-address { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--ink-soft); line-height: 1.5; margin-top: 4px; }
+  .loc-map { width: 100%; height: 240px; border-top: 1px solid rgba(0,0,0,.07); overflow: hidden; border-radius: 0 0 28px 28px; }
+  .loc-map iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+  /* Fixed invitation floral frame: cropped from the visible edge so it can sit flush at the top */
+  .loc-card.invitation-frame-card {
+    overflow: hidden;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.92);
+    isolation: isolate;
+  }
+  
+  
+   .loc-card.invitation-frame-card2 {
+    overflow: hidden;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.92);
+    isolation: isolate;
+  }
+  
+  
+
+  .invite-frame-piece {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    z-index: 20;
+    max-width: none !important;
+  }
+
+  .invite-frame-top,
+  .invite-frame-bottom {
+    left: 50%;
+    width: 104%;
+    height: 48px;
+    object-fit: cover;
+    object-position: center bottom;
+  }
+
+  .invite-frame-top {
+    top: 0;
+    transform: translateX(-50%) rotate(180deg);
+  }
+
+  .invite-frame-bottom {
+    bottom: 0;
+    transform: translateX(-50%);
+  }
+
+  .invite-frame-left,
+  .invite-frame-right {
+    top: 0;
+    height: 100%;
+    width: 48px;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .invite-frame-left { left: 0; }
+  .invite-frame-right { right: 0; }
+
+  .invitation-frame-card .loc-illustration-wrap {
+    padding-top: 54px;
+  }
+
+  .invitation-frame-card .loc-body {
+    padding-left: 58px;
+    padding-right: 58px;
+    padding-bottom: 58px;
+  }
+
+  @media (max-width: 420px) {
+    .invite-frame-top,
+    .invite-frame-bottom { height: 42px; }
+    .invite-frame-left,
+    .invite-frame-right { width: 42px; }
+    .invitation-frame-card .loc-illustration-wrap { padding-top: 50px; }
+    .invitation-frame-card .loc-body {
+      padding-left: 48px;
+      padding-right: 48px;
+      padding-bottom: 52px;
+    }
+  }
+
+
+  .gift-dark-card { background: rgba(0,255,255) !important; border-radius: 22px !important; border: 1px solid rgba(255,255,255) !important; box-shadow: 0 12px 36px rgba(0,0,0,.12) !important; padding: 44px 32px !important; }
+  .info-card { width: 100%; border-radius: 16px; padding: 28px 22px; margin-top: 28px; background: rgba(244,239,227,.86); border: 1px solid var(--border); }
+  .bank-name { font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 16px; color: var(--garden-dark); }
+  .bank-line { font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.5; color: var(--ink); }
+
+  .bg-page7 .gift-dark-card {
+    background: rgba(255,255,255,.88) !important;
+    border: 1px solid rgba(255,255,255,.92) !important;
+  }
+  
+  
+  
+  .bg-page7 .kicker {
+    color: #4f7a35 !important;
+    text-shadow: none;
+  }
+  .bg-page7 .section-title {
+    color: #244b29 !important;
+    text-shadow: 0 2px 10px rgba(255,255,255,.65);
+  }
+  .bg-page7 .body-text {
+    color: #2f2417 !important;
+    font-weight: 500;
+    text-shadow: 0 1px 8px rgba(255,255,255,.70);
+  }
+  .bg-page7 .info-card {
+    background: rgba(244,239,227,.92);
+  }
+
+  .photo-section { padding: 58px 20px 70px; }
+  .photo-card { width: 100%; max-width: 440px; margin: 0 auto; padding: 42px 28px 48px; background: #ffffff; border: 1px solid var(--border); border-radius: 30px; box-shadow: 0 20px 60px rgba(0,0,0,.11), 0 4px 16px rgba(0,0,0,.06); overflow: visible; }
+  .photo-card .section-icon { width: 118px; max-height: 118px; margin-bottom: 22px; }
+  .photo-card .kicker { margin-bottom: 10px; }
+  .photo-card .section-title { font-size: 56px; }
+  .photo-card .subtitle { margin-top: 14px; margin-bottom: 28px; font-size: 15px; letter-spacing: .28em; }
+  .album { width: 100%; margin: 0 auto; position: relative; overflow: hidden; border-radius: 28px; background: #fff; box-shadow: 0 18px 42px rgba(35,55,28,.18); touch-action: pan-y; }
+  .album-track { display: flex; transition: transform .7s cubic-bezier(.22,.61,.36,1); will-change: transform; }
+  .album-slide { min-width: 100%; display: block; }
+  .album-slide img { width: 100%; height: 610px; object-fit: cover; object-position: center; box-shadow: none; }
+  .album-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(36,75,41,.18); background: rgba(255,255,255,.92); color: var(--garden-dark); font-size: 28px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 22px rgba(0,0,0,.12); }
+  .album-arrow.prev { left: 12px; }
+  .album-arrow.next { right: 12px; }
+  .album-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
+  .album-dot { width: 8px; height: 8px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(36,75,41,.22); }
+  .album-dot.active { background: var(--garden-dark); }
+  .album-counter { margin-top: 12px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+
+  /* ── RSVP ── */
+  .rsvp-section { padding: 78px 40px 90px; }
+  .rsvp-section .page-card {
+    border-radius: 22px; padding: 52px 36px;
+    background: rgba(255,255,255) !important;
+    border: 1px solid rgba(201,151,58,.35) !important;
+  }
+  .rsvp-box { border-radius: 0; padding: 24px 0 0; margin-top: 24px; background: transparent !important; border: none !important; width: 100%; }
+  .step-dots { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 28px; }
+  .step-dot { width: 6px; height: 6px; border-radius: 50%; transition: .3s; background: rgba(185,139,82,.28); }
+  .step-dot.on { background: var(--garden-dark); }
+  .form-label, .question { display: block; font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; font-weight: 600; margin: 24px 0 10px; color: var(--ink-soft); text-align: left; }
+  .form-field, input:not([type='radio']), textarea { width: 100%; border-radius: 0; padding: 13px 0; margin-top: 6px; font-family: 'Cormorant Garamond', serif; font-size: 19px; outline: none; background: transparent; color: var(--ink); border: none; border-bottom: 1.5px solid var(--border); transition: border-color .25s; }
+  .form-field:focus, input:not([type='radio']):focus, textarea:focus { border-bottom-color: var(--garden-dark); }
+  textarea { min-height: 90px; resize: none; }
+  .attend-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0; }
+  .attend-opt { position: relative; cursor: pointer; }
+  .attend-opt input { position: absolute; opacity: 0; pointer-events: none; }
+  .attend-box { border-radius: 10px; padding: 16px 10px; text-align: center; transition: .25s; background: transparent; border: 1.5px solid var(--border); }
+  .attend-opt input:checked + .attend-box { border-color: var(--garden-dark); background: rgba(79,122,53,.08); }
+  .attend-label { font-family: 'Cormorant Garamond', serif; font-size: 16px; color: var(--ink); }
+  .count-row { display: flex; align-items: center; justify-content: center; gap: 18px; margin: 16px 0; }
+  .count-btn { width: 40px; height: 40px; border-radius: 50%; cursor: pointer; background: transparent; border: 1.5px solid var(--border); font-size: 20px; transition: .2s; color: var(--garden-dark); }
+  .guest-num { min-width: 24px; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 700; }
+  .btn-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+  .btn-soft, .btn-solid { width: 100%; border-radius: 10px; padding: 14px 16px; cursor: pointer; font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; transition: .25s; }
+  .btn-soft { background: transparent; color: var(--ink-soft); border: 1.5px solid var(--border); }
+  .btn-solid { background: var(--garden-dark); border: 1px solid var(--garden-dark); color: #fff9ec; box-shadow: 0 4px 16px rgba(36,75,41,.28); }
+  .btn-solid:hover, .btn-soft:hover { transform: translateY(-1px); }
+  .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: #9b3f35; }
+/* ── Footer ── */
+  .footer {
+  padding: 70px 28px 90px;
+  text-align: center;
+  background: url('https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Footer2.png') center center / cover no-repeat;
+}
+  .footer .names { color: rgba(0,0,0); font-size: 58px; }
+  .footer .date-line { color: rgba(55,55,55); font-weight: 800; }
+  .footer .thin-line { background: rgba(255,255,255,.38); }
+  .cardia-credit { margin-top: 34px; text-align: center; }
+  .cardia-credit a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(0,0,0); text-decoration: none; }
+  .cardia-credit a:hover { color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 420px) {
+    .section { padding: 58px 18px; }
+    .page-card { padding: 48px 24px 52px; }
+    .section-icon { width: 110px; max-height: 130px; }
+    .section-icon.wide { width: 155px; }
+    .section-icon.tall { width: 115px; max-height: 155px; }
+    .section-divider { min-height: 80px; }
+    .divider-leaf { width: 68px; margin: 0 12px; }
+    .parent-grid { grid-template-columns: 1fr; }
+    .loc-card { border-radius: 22px; }
+    .loc-illustration-wrap { padding: 28px 20px 22px; }
+    .loc-illustration-wrap img { width: 210px; max-height: 180px; }
+    .loc-title { font-size: 40px; }
+    .loc-body { padding: 24px 22px 28px; }
+    .loc-map { height: 200px; }
+    .photo-section { padding: 48px 18px 62px; }
+    .photo-card { padding: 36px 24px 42px; border-radius: 28px; }
+    .album-slide img { height: 560px !important; }
+    .rsvp-section .page-card { padding: 40px 20px 44px; }
+    .names { font-size: 60px; }
+    .hero-name { font-size: clamp(2.55rem, 12vw, 3.2rem); }
+    .section-hero {
+      aspect-ratio: 9 / 16;
+      min-height: 0;
+      height: auto;
+    }
+  }
+
+  @keyframes floatBalloon {
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(-18px) translateX(8px) rotate(1deg);
+  }
+
+  50% {
+    transform: translateY(-35px) translateX(15px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translateY(-18px) translateX(8px) rotate(1deg);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+}
+  
+  @keyframes floatSlow { 0%,100% { translate: 0 0; } 50% { translate: 0 -1.1%; } }
+  @keyframes floatMed { 0%,100% { translate: 0 0; } 50% { translate: 0 -1.3%; } }
+  @keyframes floatFast { 0%,100% { translate: 0 0; } 50% { translate: 0 -.9%; } }
+  @keyframes fadeInDown { from { opacity: 0; transform: translateX(-50%) translateY(-20px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
+  @keyframes twinkle { 0%,100% { opacity: .3; transform: scale(1); } 50% { opacity: .9; transform: scale(1.2); } }
+
+  .music-toggle-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 82px;
+    z-index: 999;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,.78);
+    background: rgba(23,55,29,.72);
+    color: #fff;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 1;
+    box-shadow: 0 12px 28px rgba(0,0,0,.22);
+    backdrop-filter: blur(5px);
+    cursor: pointer;
+  }
+
+  .music-toggle-btn.show { display: flex; }
+
+</style>
+</head>
+
+<body>
+<div class="page">
+
+
+  <section class="intro-cover" id="introCover" aria-label="Invitation cover">
+    <img class="intro-cover-img" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Envelope.png" alt="Wedding invitation cover" />
+    <div class="intro-cover-text">
+
+      <div class="intro-cover-names">Thomas</div>
+      <div class="intro-cover-amp">&amp;</div>
+      <div class="intro-cover-names">Sarrah</div>
+    </div>
+    <button class="intro-open-btn" id="introOpenBtn" type="button">Open Invitation</button>
+  </section>
+
+  <section class="intro-video-screen" id="introVideoScreen" aria-label="Invitation opening video">
+    <video class="intro-video" id="introVideo" playsinline preload="auto">
+      <source src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Envelope3.mp4" type="video/mp4" />
+    </video>
+    <button class="intro-skip-btn" id="introSkipBtn" type="button">Skip</button>
+  </section>
+
+  <audio id="bgMusic" preload="auto" loop>
+    <source src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hobbit.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="music-toggle-btn" id="musicToggleBtn" type="button" aria-label="Pause music">♫</button>
+
+
+  <section class="section-hero" id="heroCover">
+    <div class="hero-bg"></div>
+
+    <div class="star layer" style="left:12%;top:20%;width:10px;height:10px;animation-delay:0s"></div>
+    <div class="star layer" style="left:75%;top:14%;width:14px;height:14px;animation-delay:.7s"></div>
+    <div class="star layer" style="left:45%;top:8%;width:8px;height:8px;animation-delay:1.4s"></div>
+    <div class="star layer" style="left:85%;top:38%;width:12px;height:12px;animation-delay:.4s"></div>
+    <div class="star layer" style="left:22%;top:55%;width:8px;height:8px;animation-delay:2s"></div>
+    <div class="star layer" style="left:60%;top:68%;width:10px;height:10px;animation-delay:1.1s"></div>
+
+    <img class="layer l-trunk-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+    
+
+
+
+    <img class="layer l-Hobbiton" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hobbiton2.png" alt="" />
+    
+    <img class="layer l-Hobbiton1" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Smoke.gif" alt="" />
+    <img class="layer l-Hobbiton2" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Smoke.gif" alt="" />
+    
+    
+    
+
+    <img class="layer l-Chariot" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Chariot.png" alt="" />
+
+    
+    
+
+    <img class="layer l-balloon" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Kite1.png" alt="" />
+    
+
+    
+    <img class="layer l-5png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/5.png" alt="" />
+    <img class="layer l-5pngR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/5b.png" alt="" />
+    
+        <img class="layer l-Lamp" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+    <img class="layer l-LampR" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+    
+    
+    
+
+    
+        <img class="layer l-8pngD" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/DaisyA.png" alt="" />
+     <img class="layer l-8pngT" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" /> 
+        <img class="layer l-8pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" />
+      <img class="layer l-F2pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aR.png" alt="" />
+    
+    
+    
+    <img class="layer l-8png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aR.png" alt="" />
+      <img class="layer l-F2png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aL.png" alt="" />
+    
+    
+    
+    <img class="layer l-Sun" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Kite4a.png" alt="" />
+    <img class="layer l-Sun2" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Kite5.png" alt="" />
+    <img class="layer l-Sun3" src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Kite2.png" alt="" />
+    
+
+    <img class="layer l-torn3a" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
+    <img class="layer l-Cloud2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
+    <img class="layer l-Cloud3" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
+    <img class="layer l-cover-frame" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Window2.png" alt="" />
+
+    <div class="hero-text">
+      <span class="hero-name">Thomas</span>
+      <span class="hero-weds">— weds —</span>
+      <span class="hero-name">Sarah</span>
+    </div>
+
+  </section>
+
+  <main id="mainInvite">
+
+    <section class="section loc-section bg-page2" id="invitationPage">
+      
+      
+       
+       
+      <div class="loc-card reveal invitation-frame-card">
+        <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+        <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Arwen4.png" alt="Hobbit garden illustration" />
+        </div>
+        <div class="loc-body">
+          <p class="loc-kicker">Matthew 19:6</p>
+          <div class="loc-divider"></div>
+          <p class="body-text">"What therefore God has joined together,<br />let no man put asunder."</p>
+          <div class="heart-divider">♥</div>
+          <div style="margin:0 0 20px;text-align:center;">
+            <p style="font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.30em;text-transform:uppercase;font-weight:700;color:var(--garden-mid);margin-bottom:12px;">Together with their families</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);line-height:1.5;">Robert &amp; Tina Martin</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:13px;color:var(--ink-soft);letter-spacing:.08em;margin:4px 0;">&amp;</p>
+            <p style="font-family:'Cormorant Garamond',serif;font-size:19px;color:var(--ink);line-height:1.5;">Michael &amp; Anne Clarke</p>
+          </div>
+          <p class="body-text" style="margin-top:4px;">Request the honor of your presence<br />at the wedding of their son and daughter</p>
+          <h2 class="names" style="margin-top:24px;">Thomas</h2>
+          <p class="amp">and</p>
+          <h2 class="names">Sarah</h2>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <section class="section loc-section bg-page2" id="invitationPage">
+      
+      
+       
+       
+      <div class="loc-card reveal invitation-frame-card2">
+
+
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Fountain.png" alt="Hobbit garden illustration" />
+        </div>
+        <div class="loc-body">
+          
+        <p class="kicker">Save the date</p>
+        <h2 class="section-title">Wedding Day</h2>
+        <p class="subtitle">August 14, 2027</p>
+        <div class="calendar-card">
+          <p class="cal-month">August 2027</p>
+          <div class="cal-grid" id="calGrid"></div>
+        </div>
+        <div class="countdown">
+          <div class="count-item"><div class="count-num" id="cdDays">--</div><div class="count-label">Days</div></div>
+          <div class="count-item"><div class="count-num" id="cdHours">--</div><div class="count-label">Hours</div></div>
+          <div class="count-item"><div class="count-num" id="cdMinutes">--</div><div class="count-label">Min</div></div>
+          <div class="count-item"><div class="count-num" id="cdSeconds">--</div><div class="count-label">Sec</div></div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="section green bg-page4">
+      <div class="page-card reveal">
+        
+        <img class="section-icon wide" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="Clouds illustration" />
+        <p class="section-title">The celebration</p>
+        <h2 class="section-title">Programme</h2>
+        <p class="subtitle">Ceremony · Dinner · Dancing</p>
+        <div class="timeline">
+          <div class="time-row"><div class="time">6:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Rings2.png" alt="" /></div><div class="label">Church Ceremony<br />St. Mourra Church · Ehden</div></div>
+          <div class="time-row"><div class="time">7:30 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Glass2.png" alt="" /></div><div class="label">Reception Drinks<br />Twinz Hotel · Ehden</div></div>
+          <div class="time-row"><div class="time">8:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Cake2.png" alt="" /></div><div class="label">Dinner<br />Twinz Hotel · Ehden</div></div>
+          <div class="time-row"><div class="time">9:00 PM</div><div class="time-icon"><img src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Dance2.png" alt="" /></div><div class="label">Dancing<br />Twinz Hotel · Ehden</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section loc-section bg-page5">
+      
+      
+      
+      
+      <div class="loc-card reveal">
+              <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+        <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+        
+        
+        
+        
+        
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Church.png" alt="Ceremony illustration" />
+        </div>
+        <div class="loc-body">
+          <p class="loc-kicker">The Ceremony</p>
+          <h2 class="loc-title">St. Mourra Church</h2>
+          <div class="loc-divider"></div>
+          <div class="loc-meta"><span>14 August 2027</span><span>·</span><span>6:00 PM</span></div>
+          <p class="loc-address">St. Mourra Church<br />Ehden, Lebanon</p>
+        </div>
+        <div class="loc-map">
+          <iframe title="Map to St. Mourra Church" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=St.%20Mourra%20Church%20Ehden%20Lebanon&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section loc-section bg-page6">
+      <div class="loc-card reveal">
+              <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+        <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Hotel.png" alt="Reception illustration" />
+        </div>
+        <div class="loc-body">
+          <p class="loc-kicker">Where We Celebrate</p>
+          <h2 class="loc-title">Twinz Hotel</h2>
+          <div class="loc-divider"></div>
+          <div class="loc-meta"><span>14 August 2027</span><span>·</span><span>7:30 PM</span></div>
+          <p class="loc-address">Twinz Hotel<br />Ehden, Lebanon</p>
+        </div>
+        <div class="loc-map">
+          <iframe title="Map to Twinz Hotel" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Twinz%20Hotel%20Ehden%20Lebanon&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="section green bg-page7">
+      <div class="loc-card reveal invitation-frame-card2">
+   
+        
+             <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Statue.png" alt="Hobbit garden illustration" />
+        </div>
+        
+        
+        
+        
+        
+        <p class="kicker">With love</p>
+        <h2 class="section-title">Gift Registry</h2>
+        <p class="body-text">Your love, laughter, and presence are all we could wish for. For those who wish, a wedding list is available at all Whish Money branches.</p>
+        <div class="info-card">
+          <h3 class="bank-name">Whish Money</h3>
+          <div class="thin-line"></div>
+          <p class="bank-line">ACC# xxxxxx</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section photo-section bg-page8" id="gallery">
+      <div class="photo-card reveal">
+        
+   
+        
+             
+             <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Tower.png" alt="Hobbit garden illustration" />
+        </div>
+        
+        
+        
+        <p class="kicker">A glimpse of us</p>
+        <h2 class="section-title">Photo Album</h2>
+        <p class="subtitle">Swipe to explore</p>
+        <div class="album" id="album">
+                <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+        <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+        <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+          <div class="album-track" id="albumTrack">
+            <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Couple photo 1" /></div>
+            <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Couple photo 2" /></div>
+            <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Couple photo 3" /></div>
+          </div>
+          <button class="album-arrow prev" type="button" aria-label="Previous album slide" onclick="moveAlbum(-1)">‹</button>
+          <button class="album-arrow next" type="button" aria-label="Next album slide" onclick="moveAlbum(1)">›</button>
+        </div>
+        <div class="album-counter" id="albumCounter">1 / 3</div>
+        <div class="album-dots" id="albumDots"></div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- ═══ PAGE 8 — RSVP ═══ -->
+    <section class="section rsvp-section bg-page9" id="rsvp">
+      <div class="page-card reveal">
+        <div class="loc-illustration-wrap2">
+          <img src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Pergola.png" alt="Hobbit garden illustration" />
+        </div>
+        <p class="kicker">Kindly reply before August 1, 2027</p>
+        <h2 class="section-title">RSVP</h2>
+        <div class="rsvp-box">
+          <div class="step-dots">
+            <div class="step-dot on" id="dot-1"></div>
+            <div class="step-dot" id="dot-2"></div>
+            <div class="step-dot" id="dot-3"></div>
+          </div>
+          <div id="step1" class="rsvp-step">
+            <label class="form-label" for="guestName">Your name</label>
+            <input id="guestName" class="form-field" type="text" placeholder="Name and surname" />
+            <p class="error-msg" id="errName">Please enter your name.</p>
+            <button class="btn-solid" type="button" style="margin-top:18px;" onclick="goStep(1,2)">Continue →</button>
+          </div>
+          <div id="step2" class="rsvp-step" style="display:none;">
+            <label class="form-label">Will you be attending?</label>
+            <div class="attend-grid">
+              <label class="attend-opt"><input type="radio" name="attend" value="yes" /><div class="attend-box"><div class="attend-label">Joyfully accepts</div></div></label>
+              <label class="attend-opt"><input type="radio" name="attend" value="no"  /><div class="attend-box"><div class="attend-label">Regretfully declines</div></div></label>
+            </div>
+            <div id="guestCountWrap" style="display:none;margin-bottom:10px;">
+              <label class="form-label" style="text-align:center;">Number of guests</label>
+              <div class="count-row">
+                <button class="count-btn" type="button" onclick="changeCount(-1)">−</button>
+                <span class="guest-num" id="guestCount">1</span>
+                <button class="count-btn" type="button" onclick="changeCount(1)">+</button>
+              </div>
+            </div>
+            <p class="error-msg" id="errAttend">Please select an option.</p>
+            <div class="btn-grid">
+              <button class="btn-soft"  type="button" onclick="goStep(2,1)">← Back</button>
+              <button class="btn-solid" type="button" onclick="goStep(2,3)">Continue →</button>
+            </div>
+          </div>
+          <div id="step3" class="rsvp-step" style="display:none;">
+            <label class="form-label" for="guestMsg">Leave a wish <span style="font-weight:400;">(optional)</span></label>
+            <textarea id="guestMsg" class="form-field" rows="4" placeholder="Share a wish for Thomas & Sarah…"></textarea>
+            <div class="btn-grid">
+              <button class="btn-soft"  type="button" onclick="goStep(3,2)">← Back</button>
+              <button class="btn-solid" id="sendBtn" type="button" onclick="submitRSVP()">Send ✦</button>
+            </div>
+          </div>
+          <div id="stepOk" style="display:none;text-align:center;padding:28px 0;">
+            <div style="font-size:46px;margin-bottom:12px;">✨</div>
+            <h3 style="font-family:'Great Vibes',cursive;font-size:52px;color:var(--garden-dark);margin-bottom:12px;">Thank you!</h3>
+            <p id="okMsg" style="font-family:'Cormorant Garamond',serif;font-size:18px;line-height:1.7;color:var(--ink-soft);"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+    <footer class="footer">
+      <h2 class="names">Thomas &amp; Sarah</h2>
+      <p class="date-line">August 14, 2027 · Ehden, Lebanon</p>
+      <div class="thin-line"></div>
+      <div class="cardia-credit">
+        <a href="https://www.cardiastudios.com/" target="_blank" rel="noopener">Powered by <u>Cardia Studios</u></a>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<script>
+
+
+  const introCover = document.getElementById('introCover');
+  const introOpenBtn = document.getElementById('introOpenBtn');
+  const introVideoScreen = document.getElementById('introVideoScreen');
+  const introVideo = document.getElementById('introVideo');
+  const introSkipBtn = document.getElementById('introSkipBtn');
+  const bgMusic = document.getElementById('bgMusic');
+  const musicToggleBtn = document.getElementById('musicToggleBtn');
+
+  function updateMusicButton() {
+    if (!musicToggleBtn || !bgMusic) return;
+    musicToggleBtn.classList.add('show');
+    musicToggleBtn.textContent = bgMusic.paused ? '▶' : '♫';
+    musicToggleBtn.setAttribute('aria-label', bgMusic.paused ? 'Play music' : 'Pause music');
+  }
+
+  async function playBackgroundMusic() {
+    if (!bgMusic) return;
+    bgMusic.volume = 0.75;
+    try {
+      if (bgMusic.currentTime < 2) bgMusic.currentTime = 2;
+      await bgMusic.play();
+    } catch (err) {
+      console.warn('Background music could not start:', err);
+    }
+    updateMusicButton();
+  }
+
+  async function toggleMusic() {
+    if (!bgMusic) return;
+    if (bgMusic.paused) {
+      try {
+        await bgMusic.play();
+      } catch (err) {
+        console.warn('Background music could not play:', err);
+      }
+    } else {
+      bgMusic.pause();
+    }
+    updateMusicButton();
+  }
+
+  function goToInvitationStart() {
+    if (introVideo) {
+      introVideo.pause();
+      introVideo.currentTime = 0;
+    }
+    if (introVideoScreen) introVideoScreen.classList.remove('show');
+    const firstSection = document.getElementById('heroCover');
+    if (firstSection) firstSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  async function openIntroVideo() {
+    playBackgroundMusic();
+    if (introCover) introCover.style.display = 'none';
+    if (introVideoScreen) introVideoScreen.classList.add('show');
+    if (introVideoScreen) introVideoScreen.scrollIntoView({ behavior: 'auto', block: 'start' });
+
+    if (introVideo) {
+      introVideo.muted = false;
+      introVideo.currentTime = 0;
+      try {
+        await introVideo.play();
+      } catch (err) {
+        introVideo.muted = true;
+        try { await introVideo.play(); } catch (e) { goToInvitationStart(); }
+      }
+    }
+  }
+
+
+  if (musicToggleBtn) musicToggleBtn.addEventListener('click', event => {
+    event.stopPropagation();
+    toggleMusic();
+  });
+  if (bgMusic) {
+    bgMusic.addEventListener('play', updateMusicButton);
+    bgMusic.addEventListener('pause', updateMusicButton);
+  }
+
+  if (introOpenBtn) introOpenBtn.addEventListener('click', openIntroVideo);
+  if (introCover) introCover.addEventListener('click', event => {
+    if (event.target !== introOpenBtn) openIntroVideo();
+  });
+  if (introVideo) introVideo.addEventListener('ended', goToInvitationStart);
+  if (introSkipBtn) introSkipBtn.addEventListener('click', goToInvitationStart);
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: .08 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  document.getElementById('heroCover').addEventListener('click', () => {
+    const first = document.getElementById('invitationPage');
+    if (first) first.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  (function buildCalendar() {
+    const grid = document.getElementById('calGrid');
+    if (!grid) return;
+    ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].forEach(day => {
+      const el = document.createElement('div');
+      el.className = 'cal-cell hdr';
+      el.textContent = day;
+      grid.appendChild(el);
+    });
+    for (let i = 0; i < 6; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-cell empty';
+      el.textContent = '.';
+      grid.appendChild(el);
+    }
+    for (let day = 1; day <= 31; day++) {
+      const el = document.createElement('div');
+      el.className = 'cal-cell' + (day === 14 ? ' highlight' : '');
+      el.innerHTML = day === 14 ? '<span class="day-txt">14</span>' : day;
+      grid.appendChild(el);
+    }
+  })();
+
+  const TARGET = new Date('2027-08-14T18:00:00');
+  function tickCountdown() {
+    const diff = Math.max(0, TARGET - new Date());
+    const pad = n => String(n).padStart(2, '0');
+    document.getElementById('cdDays').textContent = Math.floor(diff / 86400000);
+    document.getElementById('cdHours').textContent = pad(Math.floor(diff / 3600000) % 24);
+    document.getElementById('cdMinutes').textContent = pad(Math.floor(diff / 60000) % 60);
+    document.getElementById('cdSeconds').textContent = pad(Math.floor(diff / 1000) % 60);
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  let guestCount = 1;
+  document.querySelectorAll('input[name="attend"]').forEach(radio => {
+    radio.addEventListener('change', () => {
+      document.getElementById('guestCountWrap').style.display = radio.value === 'yes' ? 'block' : 'none';
+    });
+  });
+  function changeCount(delta) {
+    guestCount = Math.max(1, Math.min(10, guestCount + delta));
+    document.getElementById('guestCount').textContent = guestCount;
+  }
+  function goStep(from, to) {
+    if (from === 1) {
+      const name = document.getElementById('guestName').value.trim();
+      if (!name) { document.getElementById('errName').style.display = 'block'; return; }
+      document.getElementById('errName').style.display = 'none';
+    }
+    if (from === 2 && to === 3) {
+      const attend = document.querySelector('input[name="attend"]:checked');
+      if (!attend) { document.getElementById('errAttend').style.display = 'block'; return; }
+      document.getElementById('errAttend').style.display = 'none';
+      if (attend.value === 'no') { submitRSVP(); return; }
+    }
+    document.getElementById('step' + from).style.display = 'none';
+    document.getElementById('step' + to).style.display = 'block';
+    [1,2,3].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= to));
+  }
+  const COUPLE_NAME = 'Thomas & Sarah';
+  const CLIENT_EMAIL = 'nemer.david9@gmail.com';
+
+  function submitRSVP() {
+    const name = document.getElementById('guestName').value.trim() || 'Guest';
+    const attend = document.querySelector('input[name="attend"]:checked');
+    const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
+    const yes = attend && attend.value === 'yes';
+    const sendBtn = document.getElementById('sendBtn');
+
+    if (sendBtn) {
+      sendBtn.textContent = 'Sending...';
+      sendBtn.disabled = true;
+    }
+
+    fetch('https://formsubmit.co/ajax/' + CLIENT_EMAIL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        _subject: 'New RSVP - ' + COUPLE_NAME,
+        _template: 'table',
+        name: name,
+        attending: yes ? 'Yes' : 'No',
+        guests: yes ? guestCount : 0,
+        message: msg || '(none)'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success === 'true' || data.success === true) {
+        ['step1','step2','step3'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.style.display = 'none';
+        });
+        document.querySelector('.step-dots').style.display = 'none';
+        document.getElementById('stepOk').style.display = 'block';
+        document.getElementById('okMsg').innerHTML = yes
+          ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br />See you on August 14th."
+          : "We'll miss you, <strong>" + name + "</strong>.<br />Thank you for letting us know.";
+      } else {
+        throw new Error('RSVP failed');
+      }
+    })
+    .catch(() => {
+      if (sendBtn) {
+        sendBtn.textContent = 'Send ✦';
+        sendBtn.disabled = false;
+      }
+      alert('Something went wrong. Please try again.');
+    });
+  }
+
+  (function initAlbum() {
+    const track = document.getElementById('albumTrack');
+    const dotsWrap = document.getElementById('albumDots');
+    const counter = document.getElementById('albumCounter');
+    const album = document.getElementById('album');
+    if (!track || !dotsWrap || !counter || !album) return;
+    const total = track.children.length;
+    let current = 0;
+    for (let i = 0; i < total; i++) {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'album-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
+      dot.addEventListener('click', () => goToAlbum(i));
+      dotsWrap.appendChild(dot);
+    }
+    function goToAlbum(index) {
+      current = (index + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      document.querySelectorAll('.album-dot').forEach((dot, i) => dot.classList.toggle('active', i === current));
+      counter.textContent = (current + 1) + ' / ' + total;
+    }
+    window.moveAlbum = function(direction) { goToAlbum(current + direction); };
+    let startX = 0;
+    album.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    album.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 45) goToAlbum(current + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
