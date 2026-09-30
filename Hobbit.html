@@ -1046,17 +1046,38 @@ transform-origin: center top; }
   .photo-card .kicker { margin-bottom: 10px; }
   .photo-card .section-title { font-size: 56px; }
   .photo-card .subtitle { margin-top: 14px; margin-bottom: 28px; font-size: 15px; letter-spacing: .28em; }
-  .album { width: 100%; margin: 0 auto; position: relative; overflow: hidden; border-radius: 28px; background: #fff; box-shadow: 0 18px 42px rgba(35,55,28,.18); touch-action: pan-y; }
-  .album-track { display: flex; transition: transform .7s cubic-bezier(.22,.61,.36,1); will-change: transform; }
-  .album-slide { min-width: 100%; display: block; }
-  .album-slide img { width: 100%; height: 610px; object-fit: cover; object-position: center; box-shadow: none; }
-  .album-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 42px; height: 42px; border-radius: 50%; border: 1px solid rgba(36,75,41,.18); background: rgba(255,255,255,.92); color: var(--garden-dark); font-size: 28px; line-height: 1; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 22px rgba(0,0,0,.12); }
-  .album-arrow.prev { left: 12px; }
-  .album-arrow.next { right: 12px; }
-  .album-dots { display: flex; justify-content: center; gap: 8px; margin-top: 18px; }
-  .album-dot { width: 8px; height: 8px; border-radius: 50%; border: 0; cursor: pointer; background: rgba(36,75,41,.22); }
-  .album-dot.active { background: var(--garden-dark); }
-  .album-counter { margin-top: 12px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+  .album { width: 100%; margin: 0 auto; position: relative; overflow: hidden; border-radius: 28px; background: #fff; box-shadow: 0 18px 42px rgba(35,55,28,.18); }
+  .album.album-preview {
+    margin-top: 10px;
+    cursor: pointer;
+    min-height: 420px;
+    background: #f6f1e6;
+  }
+  .album-preview-image {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    box-shadow: none;
+  }
+  .album-preview-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 28px 22px 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 38%, rgba(18,33,18,.10) 55%, rgba(18,33,18,.28) 100%);
+    pointer-events: none;
+  }
+  .photo-overlay-btn {
+    position: relative;
+    z-index: 3;
+    margin: 0;
+    pointer-events: auto;
+  }
+  .album-counter { margin-top: 14px; font-size: 10px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
 
   /* ── RSVP ── */
   .rsvp-section { padding: 78px 40px 90px; }
@@ -1088,6 +1109,226 @@ transform-origin: center top; }
   .btn-solid { background: var(--garden-dark); border: 1px solid var(--garden-dark); color: #fff9ec; box-shadow: 0 4px 16px rgba(36,75,41,.28); }
   .btn-solid:hover, .btn-soft:hover { transform: translateY(-1px); }
   .error-msg { font-size: 12px; margin-top: 8px; display: none; font-family: 'Montserrat', sans-serif; letter-spacing: .08em; color: #9b3f35; }
+
+  /* Garden_Romance RSVP behavior — guest-link / per-person response UI */
+  .guest-welcome-step { text-align: left; }
+  .guest-welcome-title {
+    margin: 10px 0 18px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 10vw, 60px);
+    line-height: 1.05;
+    font-weight: 400;
+    color: var(--garden-dark);
+  }
+  .guest-welcome-note {
+    margin: 0 0 30px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  .manual-guest-list-wrap { display: block; }
+  .guest-slot-name-list {
+    display: grid;
+    gap: 14px;
+    width: 100%;
+    margin: 18px 0 8px;
+  }
+  .guest-slot-name-box {
+    width: 100%;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 14px 14px 12px;
+    background: rgba(255,255,255,.42);
+  }
+  .guest-slot-name-box.locked { background: rgba(255,255,255,.58); }
+  .guest-slot-name-label {
+    display: block;
+    margin: 0 0 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--garden-dark);
+  }
+  .guest-slot-name-box > input {
+    width: 100%;
+    border: none !important;
+    border-bottom: 1.5px solid var(--border) !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    color: var(--ink) !important;
+    padding: 10px 0 !important;
+    margin: 0 !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 22px !important;
+    outline: none;
+  }
+  .guest-slot-name-box > input::placeholder { color: rgba(110,91,66,.58) !important; }
+  .guest-slot-name-box > input[readonly] { cursor: default; color: var(--ink) !important; }
+  .guest-slot-attendance {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 14px;
+  }
+  .guest-slot-attendance > span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--garden-dark);
+  }
+  .guest-response-options {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+  }
+  .guest-response-options label { cursor: pointer; }
+  .guest-response-options input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .guest-response-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 58px;
+    padding: 10px 12px;
+    border-radius: 999px;
+    border: 1.5px solid var(--border);
+    background: rgba(255,255,255,.35);
+    color: var(--garden-dark);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    transition: .2s;
+  }
+  .guest-response-options input:checked + .guest-response-pill {
+    background: var(--garden-dark);
+    border-color: var(--garden-dark);
+    color: #fff9ec;
+  }
+  .guest-total-line {
+    margin: 16px 0 4px;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--garden-dark);
+  }
+  .rsvp-main-btn { margin-top: 18px; }
+
+  /* Photo album: opens a full-screen uncropped viewer */
+  .photo-open-btn {
+    width: min(100%, 280px);
+    margin: 10px auto 0;
+    border: 1px solid var(--garden-dark);
+    border-radius: 999px;
+    padding: 15px 24px;
+    background: var(--garden-dark);
+    color: #fff9ec;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .20em;
+    text-transform: uppercase;
+    box-shadow: 0 10px 26px rgba(36,75,41,.20);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .photo-open-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 30px rgba(36,75,41,.24);
+  }
+  .photo-lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(8,12,9,.96);
+    padding: 58px 18px 54px;
+    touch-action: pan-y;
+  }
+  .photo-lightbox.open { display: flex; }
+  .photo-lightbox-stage {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  .photo-lightbox-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    user-select: none;
+    -webkit-user-drag: none;
+    box-shadow: 0 18px 55px rgba(0,0,0,.45);
+  }
+  .photo-lightbox-close,
+  .photo-lightbox-arrow {
+    position: absolute;
+    z-index: 2;
+    border: 1px solid rgba(255,255,255,.58);
+    background: rgba(0,0,0,.28);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+  }
+  .photo-lightbox-close {
+    top: max(14px, env(safe-area-inset-top));
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 27px;
+    line-height: 1;
+  }
+  .photo-lightbox-arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 54px;
+    border-radius: 999px;
+    font-size: 30px;
+    line-height: 1;
+  }
+  .photo-lightbox-arrow.prev { left: 12px; }
+  .photo-lightbox-arrow.next { right: 12px; }
+  .photo-lightbox-counter {
+    position: absolute;
+    left: 50%;
+    bottom: max(16px, env(safe-area-inset-bottom));
+    transform: translateX(-50%);
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+  @media (max-width:420px) {
+    .guest-slot-attendance { align-items: stretch; flex-direction: column; }
+    .guest-response-options { width: 100%; margin-left: 0; }
+    .guest-response-options label { flex: 1; }
+    .guest-response-pill { width: 100%; min-width: 0; }
+    .photo-lightbox { padding-left: 8px; padding-right: 8px; }
+    .photo-lightbox-arrow { width: 40px; height: 48px; }
+    .photo-lightbox-arrow.prev { left: 6px; }
+    .photo-lightbox-arrow.next { right: 6px; }
+  }
+
 /* ── Footer ── */
   .footer {
   padding: 70px 28px 90px;
@@ -1148,7 +1389,7 @@ transform-origin: center top; }
     .loc-map { height: 200px; }
     .photo-section { padding: 48px 18px 62px; }
     .photo-card { padding: 36px 24px 42px; border-radius: 28px; }
-    .album-slide img { height: 560px !important; }
+    .album-preview-image { height: 360px !important; }
     .rsvp-section .page-card { padding: 40px 20px 44px; }
     .names { font-size: 60px; }
   }
@@ -1623,22 +1864,18 @@ transform-origin: center top; }
         
         <p class="kicker">A glimpse of us</p>
         <h2 class="section-title">Photo Album</h2>
-        <p class="subtitle">Swipe to explore</p>
-        <div class="album" id="album">
-                <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
-        <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
-        <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
-        <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
-          <div class="album-track" id="albumTrack">
-            <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Couple photo 1" /></div>
-            <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Couple photo 2" /></div>
-            <div class="album-slide"><img loading="lazy" src="https://images.unsplash.com/photo-1507504031003-b417219a0fde?q=80&amp;w=800&amp;auto=format&amp;fit=crop" alt="Couple photo 3" /></div>
+        <p class="subtitle">Open to view full photos</p>
+        <div class="album album-preview" onclick="openPhotoAlbum(0)" role="button" tabindex="0" aria-label="Open photo album" onkeydown="if(event.key==='Enter' || event.key===' '){ event.preventDefault(); openPhotoAlbum(0); }">
+          <img class="invite-frame-piece invite-frame-top" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+          <img class="invite-frame-piece invite-frame-bottom" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2B.png" alt="" />
+          <img class="invite-frame-piece invite-frame-left" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2L.png" alt="" />
+          <img class="invite-frame-piece invite-frame-right" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Frame2R.png" alt="" />
+          <img class="album-preview-image" loading="lazy" src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Couple photo 1" />
+          <div class="album-preview-overlay">
+            <button class="photo-open-btn photo-overlay-btn" type="button" onclick="event.stopPropagation(); openPhotoAlbum(0)">Open Photo</button>
           </div>
-          <button class="album-arrow prev" type="button" aria-label="Previous album slide" onclick="moveAlbum(-1)">‹</button>
-          <button class="album-arrow next" type="button" aria-label="Next album slide" onclick="moveAlbum(1)">›</button>
         </div>
-        <div class="album-counter" id="albumCounter">1 / 3</div>
-        <div class="album-dots" id="albumDots"></div>
+        <div class="album-counter">1 / 3</div>
       </div>
     </section>
 
@@ -1652,6 +1889,17 @@ transform-origin: center top; }
 
 
 
+
+    <div class="photo-lightbox" id="photoLightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo album">
+      <button class="photo-lightbox-close" type="button" aria-label="Close photo album" onclick="closePhotoAlbum()">×</button>
+      <button class="photo-lightbox-arrow prev" type="button" aria-label="Previous photo" onclick="movePhotoAlbum(-1)">‹</button>
+      <div class="photo-lightbox-stage" id="photoLightboxStage">
+        <img class="photo-lightbox-image" id="photoLightboxImage" alt="" />
+      </div>
+      <button class="photo-lightbox-arrow next" type="button" aria-label="Next photo" onclick="movePhotoAlbum(1)">›</button>
+      <div class="photo-lightbox-counter" id="photoLightboxCounter">1 / 3</div>
+    </div>
+
 <!-- ═══ PAGE 8 — RSVP ═══ -->
     <section class="section rsvp-section bg-page9" id="rsvp">
       <div class="page-card reveal">
@@ -1662,44 +1910,32 @@ transform-origin: center top; }
         <h2 class="section-title">RSVP</h2>
         <div class="rsvp-box">
           <div class="step-dots">
-            <div class="step-dot on" id="dot-1"></div>
-            <div class="step-dot" id="dot-2"></div>
-            <div class="step-dot" id="dot-3"></div>
+            <span class="step-dot on" id="dot-1"></span>
+            <span class="step-dot" id="dot-2"></span>
           </div>
-          <div id="step1" class="rsvp-step">
-            <label class="form-label" for="guestName">Your name</label>
-            <input id="guestName" class="form-field" type="text" placeholder="Name and surname" />
-            <p class="error-msg" id="errName">Please enter your name.</p>
-            <button class="btn-solid" type="button" style="margin-top:18px;" onclick="goStep(1,2)">Continue →</button>
+
+          <div id="step1" class="rsvp-step guest-welcome-step">
+            <h3 class="guest-welcome-title">Dear <span id="guestWelcomeName">Guest</span>,</h3>
+            <p id="personalGuestNote" class="guest-welcome-note">Please confirm who can attend from this invitation.</p>
+
+            <div id="manualGuestListWrap" class="manual-guest-list-wrap">
+              <div id="guestSlotNameList" class="guest-slot-name-list"></div>
+            </div>
+
+            <p class="guest-total-line">Total guests attending: <strong id="guestCount">0</strong></p>
+            <p class="error-msg" id="errName">Please enter at least one guest name.</p>
+            <button class="btn-solid rsvp-main-btn" type="button" onclick="goStep(1,3)">Continue →</button>
           </div>
-          <div id="step2" class="rsvp-step" style="display:none;">
-            <label class="form-label">Will you be attending?</label>
-            <div class="attend-grid">
-              <label class="attend-opt"><input type="radio" name="attend" value="yes" /><div class="attend-box"><div class="attend-label">Joyfully accepts</div></div></label>
-              <label class="attend-opt"><input type="radio" name="attend" value="no"  /><div class="attend-box"><div class="attend-label">Regretfully declines</div></div></label>
-            </div>
-            <div id="guestCountWrap" style="display:none;margin-bottom:10px;">
-              <label class="form-label" style="text-align:center;">Number of guests</label>
-              <div class="count-row">
-                <button class="count-btn" type="button" onclick="changeCount(-1)">−</button>
-                <span class="guest-num" id="guestCount">1</span>
-                <button class="count-btn" type="button" onclick="changeCount(1)">+</button>
-              </div>
-            </div>
-            <p class="error-msg" id="errAttend">Please select an option.</p>
-            <div class="btn-grid">
-              <button class="btn-soft"  type="button" onclick="goStep(2,1)">← Back</button>
-              <button class="btn-solid" type="button" onclick="goStep(2,3)">Continue →</button>
-            </div>
-          </div>
+
           <div id="step3" class="rsvp-step" style="display:none;">
             <label class="form-label" for="guestMsg">Leave a wish <span style="font-weight:400;">(optional)</span></label>
             <textarea id="guestMsg" class="form-field" rows="4" placeholder="Share a wish for Thomas & Sarah…"></textarea>
             <div class="btn-grid">
-              <button class="btn-soft"  type="button" onclick="goStep(3,2)">← Back</button>
+              <button class="btn-soft" type="button" onclick="goStep(3,1)">← Back</button>
               <button class="btn-solid" id="sendBtn" type="button" onclick="submitRSVP()">Send ✦</button>
             </div>
           </div>
+
           <div id="stepOk" style="display:none;text-align:center;padding:28px 0;">
             <div style="font-size:46px;margin-bottom:12px;">✨</div>
             <h3 style="font-family:'Great Vibes',cursive;font-size:52px;color:var(--garden-dark);margin-bottom:12px;">Thank you!</h3>
@@ -2077,116 +2313,435 @@ transform-origin: center top; }
   tickCountdown();
   setInterval(tickCountdown, 1000);
 
-  let guestCount = 1;
-  document.querySelectorAll('input[name="attend"]').forEach(radio => {
-    radio.addEventListener('change', () => {
-      document.getElementById('guestCountWrap').style.display = radio.value === 'yes' ? 'block' : 'none';
-    });
-  });
-  function changeCount(delta) {
-    guestCount = Math.max(1, Math.min(10, guestCount + delta));
-    document.getElementById('guestCount').textContent = guestCount;
+  /* RSVP link modes:
+     ?limit=2 shows editable Guest 1 / Guest 2 fields.
+     ?guests=Marie|Jean&limit=2 pre-fills and locks the named household.
+  */
+  const inviteParams = new URLSearchParams(window.location.search);
+
+  function decodeGuestList(rawValue) {
+    if (!rawValue) return [];
+    return rawValue
+      .split(/\||,|\n|;/)
+      .map(name => name.trim())
+      .filter(Boolean);
   }
+
+  function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+    }[char]));
+  }
+
+  function formatGuestNames(names) {
+    const clean = names.map(name => String(name || '').trim()).filter(Boolean);
+    if (!clean.length) return 'Guest';
+    if (clean.length === 1) return clean[0];
+    if (clean.length === 2) return clean[0] + ' & ' + clean[1];
+    return clean.slice(0, -1).join(', ') + ' & ' + clean[clean.length - 1];
+  }
+
+  const namedGuestsFromLink = [
+    ...decodeGuestList(inviteParams.get('invite') || ''),
+    ...decodeGuestList(inviteParams.get('group') || ''),
+    ...decodeGuestList(inviteParams.get('guests') || ''),
+    ...decodeGuestList(inviteParams.get('guest') || '')
+  ];
+
+  const uniqueNamedGuestsFromLink = [...new Set(namedGuestsFromLink)];
+  const hasLockedGuestNames = uniqueNamedGuestsFromLink.length > 0;
+  const parsedGuestLimit = parseInt(inviteParams.get('limit') || String(uniqueNamedGuestsFromLink.length || 1), 10);
+  const guestLimit = Number.isFinite(parsedGuestLimit) && parsedGuestLimit > 0 ? parsedGuestLimit : Math.max(uniqueNamedGuestsFromLink.length, 1);
+  const lockedGuestNames = hasLockedGuestNames ? uniqueNamedGuestsFromLink.slice(0, guestLimit) : [];
+
+  const invitedGroupForClient = formatGuestNames(lockedGuestNames);
+  let guestResponses = hasLockedGuestNames
+    ? lockedGuestNames.map((name, index) => ({
+      slot: 'Guest ' + (index + 1),
+      name: name,
+      attending: '',
+      manualAttendance: false,
+      locked: true
+    }))
+    : Array.from({ length: guestLimit }, (_, index) => ({
+      slot: 'Guest ' + (index + 1),
+      name: '',
+      attending: '',
+      manualAttendance: false,
+      locked: false
+    }));
+
+  function applyPersonalGuestLink() {
+    const guestWelcomeName = document.getElementById('guestWelcomeName');
+    const personalGuestNote = document.getElementById('personalGuestNote');
+    const manualWrap = document.getElementById('manualGuestListWrap');
+
+    if (guestWelcomeName) {
+      guestWelcomeName.textContent = hasLockedGuestNames ? invitedGroupForClient : 'Guest';
+    }
+
+    if (personalGuestNote) {
+      personalGuestNote.textContent = hasLockedGuestNames
+        ? 'Please confirm who can attend from this invitation.'
+        : (guestLimit === 1
+          ? 'Please enter your name to confirm the RSVP.'
+          : 'Please enter the guest names to confirm the RSVP.');
+    }
+
+    if (manualWrap) manualWrap.style.display = 'block';
+
+    renderGuestNameBoxes();
+    updateGuestTotal();
+  }
+
+  function renderGuestNameBoxes() {
+    const boxList = document.getElementById('guestSlotNameList');
+    if (!boxList) return;
+
+    boxList.innerHTML = guestResponses.map((guest, index) => {
+      const safeName = escapeHTML(guest.name || '');
+      const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
+      const noChecked = guest.attending === 'No' ? ' checked' : '';
+      const lockedClass = guest.locked ? ' locked' : '';
+      const readonlyAttr = guest.locked ? ' readonly aria-readonly="true"' : '';
+      const inputHandler = guest.locked ? '' : ` oninput="setGuestName(${index}, this.value)"`;
+      const labelText = guest.locked ? escapeHTML(guest.name) : 'Guest ' + (index + 1);
+      return `
+        <div class="guest-slot-name-box${lockedClass}">
+          <label class="guest-slot-name-label" for="guestSlotInput${index}">${labelText}</label>
+          <input
+            id="guestSlotInput${index}"
+            type="text"
+            value="${safeName}"
+            placeholder="Write name"
+            ${readonlyAttr}${inputHandler}
+          />
+          <div class="guest-slot-attendance" aria-label="Guest ${index + 1} attendance">
+            <span>Attending?</span>
+            <div class="guest-response-options">
+              <label>
+                <input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')" />
+                <span class="guest-response-pill">Yes</span>
+              </label>
+              <label>
+                <input type="radio" name="guestAttend${index}" value="No"${noChecked} onchange="setGuestResponse(${index}, 'No')" />
+                <span class="guest-response-pill">No</span>
+              </label>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function renderGuestResponseList() {
+    const list = document.getElementById('guestResponseList');
+    if (!list) return;
+
+    const namedGuests = getNamedGuestResponses();
+
+    list.innerHTML = namedGuests.map(({ guest, index }) => {
+      const safeName = escapeHTML(guest.name || guest.slot);
+      const yesChecked = guest.attending === 'Yes' ? ' checked' : '';
+      const noChecked = guest.attending === 'No' ? ' checked' : '';
+      return `
+        <div class="guest-response-card">
+          <div class="guest-response-name">
+            <div>${safeName}</div>
+          </div>
+          <div class="guest-response-options">
+            <label>
+              <input type="radio" name="guestAttend${index}" value="Yes"${yesChecked} onchange="setGuestResponse(${index}, 'Yes')" />
+              <span class="guest-response-pill">Yes</span>
+            </label>
+            <label>
+              <input type="radio" name="guestAttend${index}" value="No"${noChecked} onchange="setGuestResponse(${index}, 'No')" />
+              <span class="guest-response-pill">No</span>
+            </label>
+          </div>
+        </div>`;
+    }).join('');
+
+    updateGuestTotal();
+  }
+
+  function getNamedGuestResponses() {
+    return guestResponses
+      .map((guest, index) => ({ guest, index }))
+      .filter(item => item.guest.name && item.guest.name.trim());
+  }
+
+  function setGuestName(index, value) {
+    if (!guestResponses[index]) return;
+    guestResponses[index].name = value.trim();
+    const errName = document.getElementById('errName');
+    if (errName) errName.style.display = 'none';
+    updateGuestTotal();
+  }
+
+  function setGuestResponse(index, value) {
+    if (!guestResponses[index]) return;
+    guestResponses[index].attending = value;
+    guestResponses[index].manualAttendance = true;
+    const err = document.getElementById('errAttend');
+    if (err) err.style.display = 'none';
+    updateGuestTotal();
+  }
+
+  function updateGuestTotal() {
+    const total = guestResponses.filter(guest => guest.name && guest.name.trim() && guest.attending === 'Yes').length;
+    const totalEl = document.getElementById('guestCount');
+    if (totalEl) totalEl.textContent = total;
+  }
+
+  applyPersonalGuestLink();
+
   function goStep(from, to) {
-    if (from === 1) {
-      const name = document.getElementById('guestName').value.trim();
-      if (!name) { document.getElementById('errName').style.display = 'block'; return; }
-      document.getElementById('errName').style.display = 'none';
+    if (from === 1 && to === 3) {
+      const namedGuests = getNamedGuestResponses();
+      if (!namedGuests.length) {
+        const errName = document.getElementById('errName');
+        if (errName) {
+          errName.textContent = 'Please enter at least one guest name.';
+          errName.style.display = 'block';
+        }
+        return;
+      }
+
+      const guestsMissingAttendance = namedGuests.some(({ guest }) => guest.attending !== 'Yes' && guest.attending !== 'No');
+      if (guestsMissingAttendance) {
+        const errName = document.getElementById('errName');
+        if (errName) {
+          errName.textContent = 'Please choose Yes or No for each guest.';
+          errName.style.display = 'block';
+        }
+        return;
+      }
+
+      guestResponses.forEach(guest => {
+        if (!guest.name || !guest.name.trim()) guest.attending = 'No';
+      });
+
+      const errName = document.getElementById('errName');
+      if (errName) errName.style.display = 'none';
     }
-    if (from === 2 && to === 3) {
-      const attend = document.querySelector('input[name="attend"]:checked');
-      if (!attend) { document.getElementById('errAttend').style.display = 'block'; return; }
-      document.getElementById('errAttend').style.display = 'none';
-      if (attend.value === 'no') { submitRSVP(); return; }
-    }
+
     document.getElementById('step' + from).style.display = 'none';
     document.getElementById('step' + to).style.display = 'block';
-    [1,2,3].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= to));
+    const activeDot = to === 3 ? 2 : 1;
+    [1,2].forEach(i => document.getElementById('dot-' + i).classList.toggle('on', i <= activeDot));
+
+    if (from === 1 && to === 3) {
+      const focused = document.activeElement;
+      if (focused && typeof focused.blur === 'function') focused.blur();
+
+      const keepRSVPInView = () => {
+        const rsvpSection = document.getElementById('rsvp');
+        if (rsvpSection) {
+          rsvpSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
+      };
+
+      requestAnimationFrame(keepRSVPInView);
+      setTimeout(keepRSVPInView, 350);
+    }
   }
+
   const COUPLE_NAME = 'Thomas & Sarah';
-  const CLIENT_EMAIL = 'nemer.david9@gmail.com';
+  const CUSTOMER_EMAIL = 'cardia.studios@gmail.com';
+  const RSVP_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzSs_cUnM9Su_Q5Z4fFMWFV5JKVJqF6l_NG_ulTrkpP39ncxUoG8snT5iR4ixZ78RB-/exec';
+
+  function showRSVPThankYou(groupName, attendingCount) {
+    ['step1','step2','step3'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    const dots = document.querySelector('#rsvp .step-dots');
+    if (dots) dots.style.display = 'none';
+    const ok = document.getElementById('stepOk');
+    if (ok) ok.style.display = 'block';
+    const okMsg = document.getElementById('okMsg');
+    if (okMsg) {
+      okMsg.innerHTML = "Thank you, <strong>" + escapeHTML(groupName) + "</strong>!<br />We received your RSVP for " + attendingCount + " guest" + (attendingCount === 1 ? '' : 's') + ".";
+    }
+  }
+
+  function postRSVPToGoogleSheet(payload) {
+    const iframeName = 'rsvpGoogleSheetFrame';
+    let iframe = document.getElementById(iframeName);
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.name = iframeName;
+      iframe.id = iframeName;
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = RSVP_SCRIPT_URL;
+    form.target = iframeName;
+    form.style.display = 'none';
+    Object.entries(payload).forEach(([key, value]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(() => form.remove(), 1500);
+  }
 
   function submitRSVP() {
-    const name = document.getElementById('guestName').value.trim() || 'Guest';
-    const attend = document.querySelector('input[name="attend"]:checked');
     const msg = document.getElementById('guestMsg') ? document.getElementById('guestMsg').value.trim() : '';
-    const yes = attend && attend.value === 'yes';
     const sendBtn = document.getElementById('sendBtn');
+    if (sendBtn) { sendBtn.textContent = 'Sending...'; sendBtn.disabled = true; }
 
-    if (sendBtn) {
-      sendBtn.textContent = 'Sending...';
-      sendBtn.disabled = true;
+    if (!RSVP_SCRIPT_URL || RSVP_SCRIPT_URL.includes('PASTE_YOUR_GOOGLE_APPS_SCRIPT')) {
+      alert('Please paste your Google Apps Script Web App URL into RSVP_SCRIPT_URL first.');
+      if (sendBtn) { sendBtn.textContent = 'Send RSVP'; sendBtn.disabled = false; }
+      return;
     }
 
-    fetch('https://formsubmit.co/ajax/' + CLIENT_EMAIL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
-      },
-      body: JSON.stringify({
-        _subject: 'New RSVP - ' + COUPLE_NAME,
-        _template: 'table',
-        name: name,
-        attending: yes ? 'Yes' : 'No',
-        guests: yes ? guestCount : 0,
-        message: msg || '(none)'
-      })
-    })
-    .then(r => r.json())
-    .then(data => {
-      if (data.success === 'true' || data.success === true) {
-        ['step1','step2','step3'].forEach(id => {
-          const el = document.getElementById(id);
-          if (el) el.style.display = 'none';
-        });
-        document.querySelector('.step-dots').style.display = 'none';
-        document.getElementById('stepOk').style.display = 'block';
-        document.getElementById('okMsg').innerHTML = yes
-          ? "We're so excited to celebrate with you, <strong>" + name + "</strong>!<br />See you on August 14th."
-          : "We'll miss you, <strong>" + name + "</strong>.<br />Thank you for letting us know.";
-      } else {
-        throw new Error('RSVP failed');
-      }
-    })
-    .catch(() => {
-      if (sendBtn) {
-        sendBtn.textContent = 'Send ✦';
-        sendBtn.disabled = false;
-      }
-      alert('Something went wrong. Please try again.');
+    const namedGuests = getNamedGuestResponses();
+    const guestsMissingAttendance = namedGuests.some(({ guest }) => guest.attending !== 'Yes' && guest.attending !== 'No');
+    if (guestsMissingAttendance) {
+      alert('Please choose Yes or No for each guest before sending.');
+      if (sendBtn) { sendBtn.textContent = 'Send RSVP'; sendBtn.disabled = false; }
+      return;
+    }
+
+    guestResponses.forEach(guest => {
+      if (!guest.name || !guest.name.trim()) guest.attending = 'No';
+    });
+
+    const namedResponses = guestResponses
+      .filter(guest => guest.name && guest.name.trim())
+      .map(guest => ({
+        slot: guest.slot || '',
+        name: guest.name.trim(),
+        attending: guest.attending === 'Yes' ? 'Yes' : 'No'
+      }));
+
+    const attendingGuestsList = namedResponses
+      .filter(guest => guest.attending === 'Yes')
+      .map(guest => guest.name);
+
+    const notAttendingGuestsList = namedResponses
+      .filter(guest => guest.attending !== 'Yes')
+      .map(guest => guest.name);
+
+    const attendingCount = attendingGuestsList.length;
+    const submittedGuestNames = namedResponses.map(guest => guest.name);
+    const groupName = formatGuestNames(submittedGuestNames);
+
+    const responseLines = namedResponses
+      .map(guest => guest.name + ' — ' + (guest.attending === 'Yes' ? 'Attending' : 'Not attending'))
+      .join('\n');
+
+    const attendingGuests = attendingGuestsList.join(', ');
+    const notAttendingGuests = notAttendingGuestsList.join(', ');
+
+    const payload = {
+      event: COUPLE_NAME,
+      customer_email: CUSTOMER_EMAIL,
+      guest_name: groupName,
+      invited_guest_from_link: invitedGroupForClient,
+      attending: attendingCount > 0 ? 'Yes' : 'No',
+      guest_count: attendingCount,
+      guest_limit: guestLimit,
+
+      attending_guests: attendingGuests,
+      not_attending_guests: notAttendingGuests,
+      individual_responses: responseLines,
+
+      attending_summary: responseLines,
+      guest_responses: responseLines,
+      responses: responseLines,
+      guests_json: JSON.stringify(namedResponses),
+
+      message: msg || '',
+      page_url: window.location.href,
+      submitted_at: new Date().toISOString()
+    };
+
+    postRSVPToGoogleSheet(payload);
+    setTimeout(() => {
+      if (sendBtn) { sendBtn.textContent = 'Sent ✓'; sendBtn.disabled = true; }
+      showRSVPThankYou(groupName, attendingCount);
+    }, 650);
+  }
+
+  const PHOTO_ALBUM_IMAGES = [
+    { src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed', alt: 'Couple photo 1' },
+    { src: 'https://images.unsplash.com/photo-1537633552985-df8429e8048b', alt: 'Couple photo 2' },
+    { src: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde', alt: 'Couple photo 3' }
+  ];
+
+  let photoAlbumIndex = 0;
+  let photoAlbumTouchStartX = 0;
+
+  function renderPhotoAlbum() {
+    const image = document.getElementById('photoLightboxImage');
+    const counter = document.getElementById('photoLightboxCounter');
+    if (!image || !counter || !PHOTO_ALBUM_IMAGES.length) return;
+
+    const photo = PHOTO_ALBUM_IMAGES[photoAlbumIndex];
+    image.src = photo.src;
+    image.alt = photo.alt;
+    counter.textContent = (photoAlbumIndex + 1) + ' / ' + PHOTO_ALBUM_IMAGES.length;
+  }
+
+  function openPhotoAlbum(index = 0) {
+    const lightbox = document.getElementById('photoLightbox');
+    if (!lightbox) return;
+
+    photoAlbumIndex = (index + PHOTO_ALBUM_IMAGES.length) % PHOTO_ALBUM_IMAGES.length;
+    renderPhotoAlbum();
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+
+    PHOTO_ALBUM_IMAGES.forEach(photo => {
+      const preload = new Image();
+      preload.src = photo.src;
     });
   }
 
-  (function initAlbum() {
-    const track = document.getElementById('albumTrack');
-    const dotsWrap = document.getElementById('albumDots');
-    const counter = document.getElementById('albumCounter');
-    const album = document.getElementById('album');
-    if (!track || !dotsWrap || !counter || !album) return;
-    const total = track.children.length;
-    let current = 0;
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.type = 'button';
-      dot.className = 'album-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', 'Go to photo ' + (i + 1));
-      dot.addEventListener('click', () => goToAlbum(i));
-      dotsWrap.appendChild(dot);
-    }
-    function goToAlbum(index) {
-      current = (index + total) % total;
-      track.style.transform = 'translateX(-' + (current * 100) + '%)';
-      document.querySelectorAll('.album-dot').forEach((dot, i) => dot.classList.toggle('active', i === current));
-      counter.textContent = (current + 1) + ' / ' + total;
-    }
-    window.moveAlbum = function(direction) { goToAlbum(current + direction); };
-    let startX = 0;
-    album.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-    album.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 45) goToAlbum(current + (dx < 0 ? 1 : -1));
+  function closePhotoAlbum() {
+    const lightbox = document.getElementById('photoLightbox');
+    if (!lightbox) return;
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function movePhotoAlbum(direction) {
+    photoAlbumIndex = (photoAlbumIndex + direction + PHOTO_ALBUM_IMAGES.length) % PHOTO_ALBUM_IMAGES.length;
+    renderPhotoAlbum();
+  }
+
+  (function initPhotoLightbox() {
+    const lightbox = document.getElementById('photoLightbox');
+    const stage = document.getElementById('photoLightboxStage');
+    if (!lightbox || !stage) return;
+
+    stage.addEventListener('touchstart', event => {
+      photoAlbumTouchStartX = event.touches[0].clientX;
     }, { passive: true });
+
+    stage.addEventListener('touchend', event => {
+      const dx = event.changedTouches[0].clientX - photoAlbumTouchStartX;
+      if (Math.abs(dx) > 45) movePhotoAlbum(dx < 0 ? 1 : -1);
+    }, { passive: true });
+
+    lightbox.addEventListener('click', event => {
+      if (event.target === lightbox) closePhotoAlbum();
+    });
+
+    document.addEventListener('keydown', event => {
+      if (!lightbox.classList.contains('open')) return;
+      if (event.key === 'Escape') closePhotoAlbum();
+      if (event.key === 'ArrowLeft') movePhotoAlbum(-1);
+      if (event.key === 'ArrowRight') movePhotoAlbum(1);
+    });
   })();
 </script>
 </body>
