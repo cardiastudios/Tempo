@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <title>Thomas & Sarah — Hobbit Garden Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Cinzel:wght@400;600&family=Montserrat:wght@200;300;400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Cinzel:wght@400;600&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
 
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -213,12 +213,28 @@
   .section-hero {
     position: relative;
     width: 100%;
-    aspect-ratio: 9 / 16;
     min-height: 0;
-    height: auto;
+    height: 924.444444px; /* JS scales this from the 520 × 924.444 master composition */
     overflow: hidden;
     cursor: pointer;
   }
+
+  /* Fixed 520 × 924 master canvas. The whole scene is scaled as ONE unit,
+     so every PNG/text layer keeps exactly the same relative position on phone and desktop. */
+  .hero-stage {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 520px;
+    height: 924.444444px;
+    overflow: hidden;
+    transform-origin: top left;
+    will-change: transform;
+  }
+
+  /* Keep typography identical inside the master composition too. */
+  .hero-stage .hero-name { font-size: 83.2px !important; }
+  .hero-stage .hero-weds { font-size: 28px !important; }
   .hero-bg {
     position: absolute;
     inset: 0;
@@ -330,7 +346,7 @@
   
   .l-balloon {
   left: -15%;
-  top: 20%;
+  top: 10%;
   width: 53% !important;
   max-width: none !important;
   height: auto !important;
@@ -521,6 +537,7 @@ transform-origin: center top; }
 }
   .l-torn3a { left: 35px; top: 32%; width: 240px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
   .l-Cloud2 { left: 75px; top: 32%; width: 140px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
+  .l-Cloud2 { left: 75px; top: 42%; width: 140px; z-index: 3; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
   .l-Cloud3 { right: 65px; top: 35%; width: 140px; z-index: 5; transform: scaleX(-1); animation: floatMed 5s ease-in-out infinite .3s; }
   .l-cover-frame { inset: 0; width: 100%; height: 30%; position: absolute; top: -1%; z-index: 8; object-fit: cover; }
 
@@ -908,28 +925,119 @@ transform-origin: center top; }
   .bank-name { font-family: 'Great Vibes', cursive; font-size: 40px; margin-bottom: 16px; color: var(--garden-dark); }
   .bank-line { font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.5; color: var(--ink); }
 
-  .bg-page7 .gift-dark-card {
-    background: rgba(255,255,255,.88) !important;
-    border: 1px solid rgba(255,255,255,.92) !important;
+  /* ═════════ CLEAN GIFT REGISTRY CARD ═════════ */
+  .gift-registry-card {
+    padding: 0 30px 34px;
+    overflow: hidden;
+    background: rgba(255,255,255,.97) !important;
   }
-  
-  
-  
-  .bg-page7 .kicker {
+
+  .gift-registry-card .loc-illustration-wrap2 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0 2px;
+  }
+
+  .gift-registry-card .loc-illustration-wrap2 img {
+    width: 285px;
+    max-height: 285px;
+    margin: 0 auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 16px rgba(37,58,21,.10));
+  }
+
+  .gift-registry-card .kicker {
+    margin: 8px 0 8px;
     color: #4f7a35 !important;
     text-shadow: none;
   }
-  .bg-page7 .section-title {
+
+  .gift-registry-card .section-title {
+    margin: 0;
     color: #244b29 !important;
-    text-shadow: 0 2px 10px rgba(255,255,255,.65);
+    font-size: 58px;
+    line-height: .98;
+    text-shadow: none;
   }
-  .bg-page7 .body-text {
+
+  .gift-registry-card .body-text {
+    width: 100%;
+    max-width: 340px;
+    margin: 24px auto 0;
+    padding: 0 4px;
     color: #2f2417 !important;
+    font-size: 20px;
+    line-height: 1.58;
     font-weight: 500;
-    text-shadow: 0 1px 8px rgba(255,255,255,.70);
+    text-shadow: none;
   }
-  .bg-page7 .info-card {
-    background: rgba(244,239,227,.92);
+
+  .gift-registry-card .info-card {
+    width: min(100%, 310px);
+    margin: 24px auto 0;
+    padding: 20px 22px 18px;
+    border-radius: 18px;
+    background: #f8f3e8;
+    border: 1px solid rgba(185,139,82,.28);
+    box-shadow: 0 10px 26px rgba(39,55,23,.08);
+  }
+
+  .gift-registry-card .bank-name {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 21px;
+    line-height: 1.2;
+    letter-spacing: .08em;
+    font-weight: 600;
+    color: var(--garden-dark);
+  }
+
+  .gift-registry-card .thin-line {
+    width: 62px;
+    margin: 13px auto 14px;
+    background: rgba(185,139,82,.42);
+  }
+
+  .gift-registry-card .bank-line {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    letter-spacing: .10em;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 420px) {
+    .gift-registry-card {
+      padding: 0 24px 30px;
+    }
+
+    .gift-registry-card .loc-illustration-wrap2 {
+      padding-top: 20px;
+    }
+
+    .gift-registry-card .loc-illustration-wrap2 img {
+      width: 250px;
+      max-height: 255px;
+    }
+
+    .gift-registry-card .section-title {
+      font-size: 52px;
+    }
+
+    .gift-registry-card .body-text {
+      font-size: 19px;
+      line-height: 1.55;
+      margin-top: 20px;
+    }
+
+    .gift-registry-card .info-card {
+      margin-top: 22px;
+      padding: 18px 18px 17px;
+    }
   }
 
   .photo-section { padding: 58px 20px 70px; }
@@ -990,8 +1098,35 @@ transform-origin: center top; }
   .footer .date-line { color: rgba(55,55,55); font-weight: 800; }
   .footer .thin-line { background: rgba(255,255,255,.38); }
   .cardia-credit { margin-top: 34px; text-align: center; }
-  .cardia-credit a { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; color: rgba(0,0,0); text-decoration: none; }
-  .cardia-credit a:hover { color: #fff; }
+  .cardia-credit a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+    font-size: 13px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: #ffffff !important;
+    text-decoration: none;
+    text-shadow:
+      0 2px 5px rgba(0,0,0,.78),
+      0 0 2px rgba(0,0,0,.95);
+    -webkit-font-smoothing: antialiased;
+  }
+  .cardia-credit a u {
+    color: #ffffff !important;
+    font-weight: 900;
+    text-decoration-color: #ffffff;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+  .cardia-credit a:visited,
+  .cardia-credit a:hover,
+  .cardia-credit a:active {
+    color: #ffffff !important;
+  }
 
   .reveal { opacity: 0; transform: translateY(22px); transition: opacity .9s ease, transform .9s ease; }
   .reveal.visible { opacity: 1; transform: none; }
@@ -1016,12 +1151,6 @@ transform-origin: center top; }
     .album-slide img { height: 560px !important; }
     .rsvp-section .page-card { padding: 40px 20px 44px; }
     .names { font-size: 60px; }
-    .hero-name { font-size: clamp(2.55rem, 12vw, 3.2rem); }
-    .section-hero {
-      aspect-ratio: 9 / 16;
-      min-height: 0;
-      height: auto;
-    }
   }
 
   @keyframes floatBalloon {
@@ -1075,10 +1204,140 @@ transform-origin: center top; }
 
   .music-toggle-btn.show { display: flex; }
 
+
+
+  /* ═════════ ASSET LOADER ═════════ */
+  body.assets-loading {
+    overflow: hidden !important;
+  }
+
+  body.assets-loading .page {
+    visibility: hidden;
+  }
+
+  .asset-loader {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+      radial-gradient(circle at center, rgba(71, 91, 45, .28), transparent 38%),
+      #0d180f;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .55s ease, visibility .55s ease;
+  }
+
+  .asset-loader.is-ready {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .asset-loader-inner {
+    width: min(78vw, 300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .asset-loader-ring {
+    width: min(46vw, 180px);
+    height: auto;
+    display: block;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 0 22px rgba(214, 173, 74, .28));
+  }
+
+  .asset-loader-text {
+    color: rgba(247, 234, 196, .94);
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: .26em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    text-shadow: 0 2px 12px rgba(0,0,0,.5);
+  }
+
+  .asset-loader-progress {
+    width: 100%;
+    height: 2px;
+    margin-top: 18px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255,255,255,.12);
+  }
+
+  .asset-loader-progress span {
+    display: block;
+    width: 0%;
+    height: 100%;
+    border-radius: inherit;
+    background: rgba(227, 192, 104, .94);
+    transition: width .2s ease;
+  }
+
+  .asset-loader-percent {
+    margin-top: 10px;
+    color: rgba(247, 234, 196, .72);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 9px;
+    letter-spacing: .18em;
+  }
+
+  /* ═════════ PAGE INTERSECTION COVER ═════════
+     Zero-height divider placed between each invitation page.
+     The vine sits above both neighboring sections so it hides the seam. */
+  .page-seam-cover {
+    position: relative;
+    z-index: 500;
+    height: 0;
+    width: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .page-seam-cover img {
+    position: absolute;
+    z-index: 501;
+    left: 50%;
+    top: 0;
+    width: 108%;
+    max-width: none !important;
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    user-select: none;
+    filter: drop-shadow(0 8px 10px rgba(39, 55, 23, .16));
+  }
+
+  @media (max-width: 420px) {
+    .page-seam-cover img { width: 112%; }
+    .asset-loader-ring { width: min(52vw, 170px); }
+  }
+
 </style>
 </head>
 
-<body>
+<body class="assets-loading">
+
+<div class="asset-loader" id="assetLoader" aria-live="polite" aria-label="Loading invitation">
+  <div class="asset-loader-inner">
+    <img
+      class="asset-loader-ring"
+      id="assetLoaderRing"
+      src="https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Ring.gif"
+      alt="Loading"
+    />
+    <div class="asset-loader-text" id="assetLoaderText">Loading your invitation</div>
+    <div class="asset-loader-progress" aria-hidden="true"><span id="assetLoaderBar"></span></div>
+    <div class="asset-loader-percent" id="assetLoaderPercent">0%</div>
+  </div>
+</div>
+
 <div class="page">
 
 
@@ -1108,6 +1367,7 @@ transform-origin: center top; }
 
 
   <section class="section-hero" id="heroCover">
+    <div class="hero-stage" id="heroStage">
     <div class="hero-bg"></div>
 
     <div class="star layer" style="left:12%;top:20%;width:10px;height:10px;animation-delay:0s"></div>
@@ -1149,15 +1409,8 @@ transform-origin: center top; }
     
 
     
-        <img class="layer l-8pngD" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/DaisyA.png" alt="" />
-     <img class="layer l-8pngT" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" /> 
-        <img class="layer l-8pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aL.png" alt="" />
-      <img class="layer l-F2pngL" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aR.png" alt="" />
+
     
-    
-    
-    <img class="layer l-8png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F5aR.png" alt="" />
-      <img class="layer l-F2png" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/F4aL.png" alt="" />
     
     
     
@@ -1169,6 +1422,14 @@ transform-origin: center top; }
     <img class="layer l-torn3a" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
     <img class="layer l-Cloud2" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
     <img class="layer l-Cloud3" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
+    <img class="layer l-Cloud4" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Clouds-a.png" alt="" />
+    
+    
+    
+    
+    
+    
+    
     <img class="layer l-cover-frame" src="https://raw.githubusercontent.com/NemerDavid/web-des/refs/heads/main/Hobbit/Window2.png" alt="" />
 
     <div class="hero-text">
@@ -1177,6 +1438,7 @@ transform-origin: center top; }
       <span class="hero-name">Sarah</span>
     </div>
 
+    </div><!-- /.hero-stage -->
   </section>
 
   <main id="mainInvite">
@@ -1325,7 +1587,7 @@ transform-origin: center top; }
     </section>
 
     <section class="section green bg-page7">
-      <div class="loc-card reveal invitation-frame-card2">
+      <div class="loc-card reveal invitation-frame-card2 gift-registry-card">
    
         
              <div class="loc-illustration-wrap2">
@@ -1468,6 +1730,216 @@ transform-origin: center top; }
 </div>
 
 <script>
+
+  /* ═════════ PAGE SEAMS + COMPLETE ASSET PRELOADER ═════════ */
+  const PAGE_SEAM_URL = 'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/5.png';
+  const LOADER_GIF_URL = 'https://raw.githubusercontent.com/cardiastudios/Tempo/refs/heads/main/Hobbit/Ring.gif';
+
+
+  /* ═════════ FIXED HERO COMPOSITION SCALER ═════════
+     Desktop master = 520 × 924. On smaller screens we scale the ENTIRE scene,
+     instead of recalculating every PNG separately. */
+  const HERO_BASE_WIDTH = 520;
+  const HERO_BASE_HEIGHT = 924.444444;
+
+  function syncHeroScale() {
+    const hero = document.getElementById('heroCover');
+    const stage = document.getElementById('heroStage');
+    if (!hero || !stage) return;
+
+    const scale = hero.clientWidth / HERO_BASE_WIDTH;
+    stage.style.transform = `scale(${scale})`;
+    hero.style.height = `${HERO_BASE_HEIGHT * scale}px`;
+  }
+
+  syncHeroScale();
+  window.addEventListener('resize', syncHeroScale, { passive: true });
+  window.addEventListener('orientationchange', syncHeroScale);
+
+  if ('ResizeObserver' in window) {
+    const hero = document.getElementById('heroCover');
+    if (hero) new ResizeObserver(syncHeroScale).observe(hero);
+  }
+
+  function installPageSeams() {
+    const main = document.getElementById('mainInvite');
+    if (!main || main.dataset.seamsInstalled === 'true') return;
+
+    /*
+      Add 5.png only BETWEEN the internal invitation pages.
+      - No seam between page 1 (hero) and page 2.
+      - No seam between the last page and the footer.
+    */
+    const pages = Array.from(main.children).filter(el =>
+      el.classList.contains('section')
+    );
+
+    pages.forEach((page, index) => {
+      if (index === 0) return; // no 5.png between page 1 and page 2
+
+      const seam = document.createElement('div');
+      seam.className = 'page-seam-cover';
+      seam.setAttribute('aria-hidden', 'true');
+
+      const vine = document.createElement('img');
+      vine.src = PAGE_SEAM_URL;
+      vine.alt = '';
+      vine.loading = 'eager';
+      vine.decoding = 'async';
+
+      seam.appendChild(vine);
+      main.insertBefore(seam, page);
+    });
+
+    main.dataset.seamsInstalled = 'true';
+  }
+
+  function normalizeAssetUrl(url) {
+    try { return new URL(url, document.baseURI).href; }
+    catch (e) { return url; }
+  }
+
+  function getImageAssetUrls() {
+    const urls = new Set();
+
+    document.querySelectorAll('img[src]').forEach(img => {
+      img.loading = 'eager';
+      if (img.src) urls.add(normalizeAssetUrl(img.src));
+    });
+
+    /* Also include images used only in CSS backgrounds / pseudo-elements. */
+    document.querySelectorAll('style').forEach(style => {
+      const cssText = style.textContent || '';
+      const regex = /url\(\s*(['"]?)(.*?)\1\s*\)/g;
+      let match;
+      while ((match = regex.exec(cssText))) {
+        const raw = (match[2] || '').trim();
+        if (!raw || raw.startsWith('data:')) continue;
+        const absolute = normalizeAssetUrl(raw);
+        if (/\.(?:png|jpe?g|gif|webp|avif|svg)(?:[?#].*)?$/i.test(absolute) || /[?&]raw=true(?:&|$)/i.test(absolute)) {
+          urls.add(absolute);
+        }
+      }
+    });
+
+    /* The loader GIF is already the thing being shown, so it must not wait on itself. */
+    urls.delete(normalizeAssetUrl(LOADER_GIF_URL));
+    return Array.from(urls);
+  }
+
+  function preloadImage(url) {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = async () => {
+        try { if (img.decode) await img.decode(); } catch (e) {}
+        resolve({ url, ok: true });
+      };
+      img.onerror = () => resolve({ url, ok: false });
+      img.src = url;
+      if (img.complete && img.naturalWidth > 0) img.onload();
+    });
+  }
+
+  function getMediaSource(media) {
+    if (!media) return '';
+    if (media.currentSrc) return media.currentSrc;
+    if (media.src) return media.src;
+    const source = media.querySelector('source[src]');
+    return source ? source.src : '';
+  }
+
+  async function fullyPreloadMedia(media) {
+    const originalUrl = getMediaSource(media);
+    if (!originalUrl) return { url: '', ok: true };
+
+    media.preload = 'auto';
+
+    /* Fetching the complete file first means the MP3/MP4 bytes are fully present
+       before the invitation is revealed. We then play from the in-memory Blob. */
+    try {
+      const response = await fetch(originalUrl, { cache: 'force-cache', mode: 'cors' });
+      if (!response.ok) throw new Error('HTTP ' + response.status);
+      const blob = await response.blob();
+      const objectUrl = URL.createObjectURL(blob);
+      media.dataset.originalSrc = originalUrl;
+      media.src = objectUrl;
+      media.load();
+
+      await new Promise(resolve => {
+        if (media.readyState >= 2) return resolve();
+        const done = () => resolve();
+        media.addEventListener('loadeddata', done, { once: true });
+        media.addEventListener('error', done, { once: true });
+      });
+
+      return { url: originalUrl, ok: true };
+    } catch (err) {
+      /* Fallback to the browser's native media loader if a host blocks fetch(). */
+      return await new Promise(resolve => {
+        const done = ok => resolve({ url: originalUrl, ok });
+        if (media.readyState >= 4) return done(true);
+        media.addEventListener('canplaythrough', () => done(true), { once: true });
+        media.addEventListener('error', () => done(false), { once: true });
+        media.load();
+      });
+    }
+  }
+
+  async function startInvitationPreloader() {
+    installPageSeams();
+
+    const loader = document.getElementById('assetLoader');
+    const bar = document.getElementById('assetLoaderBar');
+    const percent = document.getElementById('assetLoaderPercent');
+    const text = document.getElementById('assetLoaderText');
+
+    const imageUrls = getImageAssetUrls();
+    const mediaElements = Array.from(document.querySelectorAll('audio, video'));
+    const tasks = [
+      ...imageUrls.map(url => () => preloadImage(url)),
+      ...mediaElements.map(media => () => fullyPreloadMedia(media))
+    ];
+
+    const total = Math.max(1, tasks.length);
+    let completed = 0;
+    let failures = 0;
+
+    const markComplete = result => {
+      completed += 1;
+      if (result && result.ok === false) failures += 1;
+      const value = Math.round((completed / total) * 100);
+      if (bar) bar.style.width = value + '%';
+      if (percent) percent.textContent = value + '%';
+    };
+
+    await Promise.all(tasks.map(task =>
+      Promise.resolve()
+        .then(task)
+        .then(result => { markComplete(result); return result; })
+        .catch(() => { markComplete({ ok: false }); return { ok: false }; })
+    ));
+
+    /* Decode the actual DOM images too, so the first revealed frame does not flash. */
+    await Promise.all(Array.from(document.images)
+      .filter(img => img.id !== 'assetLoaderRing')
+      .map(img => img.decode ? img.decode().catch(() => {}) : Promise.resolve())
+    );
+
+    if (bar) bar.style.width = '100%';
+    if (percent) percent.textContent = '100%';
+    if (text) text.textContent = failures ? 'Invitation ready' : 'Invitation ready';
+
+    document.body.classList.remove('assets-loading');
+    if (loader) loader.classList.add('is-ready');
+
+    /* Remove the loader from the DOM after its fade-out. */
+    window.setTimeout(() => {
+      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 650);
+  }
+
+  startInvitationPreloader();
 
 
   const introCover = document.getElementById('introCover');
